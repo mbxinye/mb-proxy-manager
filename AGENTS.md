@@ -72,7 +72,7 @@ f-strings only.
 - `scripts/fetcher.py` — download subscriptions via `urllib` + `ThreadPoolExecutor`
 - `scripts/parser.py` — parse Base64 / YAML / URI formats
 - `scripts/tester.py` — TCP socket connect test via `ThreadPoolExecutor`
-- `scripts/output.py` — generate Clash YAML (clash_config.yml, clash_mini.yml)
+- `scripts/output.py` — generate Clash YAML (clash_config.yml, clash_mini.yml) + plain URI list (nodes.txt)
 - `scripts/main.py` — pipeline orchestration
 - `run.py` — thin entry point
 
@@ -80,6 +80,7 @@ f-strings only.
 
 - `output/clash_config.yml` — full config (100 nodes) for Karing/Hiddify subscription
 - `output/clash_mini.yml` — 30 best nodes
+- `output/nodes.txt` — plain text, one URI per line; Hiddify/v2rayN/NekoBox compatible
 - `output/valid_nodes.json` — debug data
 
 ### Subscription Sources

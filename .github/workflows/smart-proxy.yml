@@ -43,6 +43,7 @@ jobs:
         mkdir -p pages
         cp output/clash_config.yml pages/clash.yml
         cp output/clash_mini.yml pages/clash_mini.yml
+        cp output/nodes.txt pages/nodes.txt
         cp output/valid_nodes.json pages/valid_nodes.json
 
         cat > pages/index.html << 'EOF'
@@ -73,6 +74,10 @@ jobs:
             <div class="link">
               <a href="./clash_mini.yml">Clash Config (Mini)</a>
               <div class="info">30 nodes - Lightweight version</div>
+            </div>
+            <div class="link">
+              <a href="./nodes.txt">Plain URI List</a>
+              <div class="info">Hiddify / v2rayN / NekoBox compatible</div>
             </div>
             <p style="color: #999; font-size: 12px; margin-top: 30px;">Updates every 3 hours via GitHub Actions</p>
           </div>

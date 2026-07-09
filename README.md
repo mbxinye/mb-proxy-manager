@@ -16,8 +16,9 @@
 │   └── utils.py                 # 国家识别、名称生成
 ├── subscriptions.txt          # 订阅链接（每行一个）
 ├── output/
-│   ├── clash_config.yml       # 50 最佳节点
+│   ├── clash_config.yml       # 100 最佳节点
 │   ├── clash_mini.yml         # 30 最佳节点
+│   ├── nodes.txt              # Hiddify 兼容纯文本订阅（每行一个 URI）
 │   └── valid_nodes.json       # 调试数据
 └── .github/workflows/
     └── smart-proxy.yml        # 每 3 小时自动运行 + 手动触发
@@ -39,7 +40,10 @@
 ```
 https://你的用户名.github.io/仓库名/clash.yml
 https://你的用户名.github.io/仓库名/clash_mini.yml
+https://你的用户名.github.io/仓库名/nodes.txt
 ```
+
+> `nodes.txt` 为纯文本逐行 URI 格式，Hiddify / v2rayN / NekoBox 等客户端可直接订阅。
 
 ## 环境变量
 
