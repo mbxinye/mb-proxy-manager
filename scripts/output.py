@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 
+import base64
 import json
+import urllib.parse
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 import yaml
 
@@ -144,6 +146,125 @@ def _to_clash_node(node: Dict) -> Dict:
   return base
 
 
+def _b64(s: str) -> str:
+  return base64.b64encode(s.encode("utf-8")).decode("ascii").rstrip("=")
+
+
+def _frag(name: str) -> str:
+  return urllib.parse.quote(name or "", safe="")
+
+
+def _qval(v) -> str:
+  return urllib.parse.quote(str(v), safe="")
+
+
+def _query(params: Dict) -> str:
+  return "&".join(f"{k}={_qval(v)}" for k, v in params.items() if v not in (None, ""))
+
+
+def _to_uri(node: Dict) -> Optional[str]:
+  ptype = node.get("type", "").lower()
+  server = node.get("server", "")
+  port = node.get("port", "")
+  name = node.get("name", "")
+  if not server or not port:
+    return None
+  try:
+    if ptype == "ss":
+      cipher = node.get("cipher", "aes-256-gcm")
+      password = node.get("password", "")
+      return f"ss://{_b64(f'{cipher}:{password}')}@{server}:{port}#{_frag(name)}"
+
+    if ptype == "vmess":
+      cfg = {
+        "v": "2",
+        "ps": name,
+        "add": server,
+        "port": str(port),
+        "id": node.get("uuid", ""),
+        "aid": str(node.get("alterId", 0)),
+        "scy": node.get("security", "auto"),
+        "net": node.get("network", "tcp"),
+        "type": node.get("headerType", "none"),
+        "host": node.get("host", ""),
+        "path": node.get("path", ""),
+        "tls": node.get("tls", ""),
+        "sni": node.get("sni", ""),
+        "alpn": node.get("alpn", ""),
+      }
+      return "vmess://" + _b64(json.dumps(cfg, ensure_ascii=False, indent=2))
+
+    if ptype == "vless":
+      params: Dict = {"encryption": "none"}
+      reality = node.get("reality-opts") or {}
+      if reality.get("public-key"):
+        params["security"] = "reality"
+        params["sni"] = node.get("sni", "")
+        params["flow"] = node.get("flow", "")
+        params["type"] = node.get("network", "tcp")
+        params["host"] = node.get("host", "")
+        params["path"] = node.get("path", "")
+        params["pbk"] = reality.get("public-key", "")
+        params["sid"] = reality.get("short-id", "")
+        params["fp"] = node.get("client-fingerprint", "chrome")
+      else:
+        if node.get("security") == "tls" or node.get("tls"):
+          params["security"] = "tls"
+        params["sni"] = node.get("sni", "")
+        params["flow"] = node.get("flow", "")
+        net = node.get("network", "tcp")
+        if net and net != "tcp":
+          params["type"] = net
+        params["host"] = node.get("host", "")
+        params["path"] = node.get("path", "")
+      q = _query(params)
+      return f"vless://{node.get('uuid', '')}@{server}:{port}?{q}#{_frag(name)}"
+
+    if ptype == "trojan":
+      params: Dict = {}
+      if node.get("sni"):
+        params["security"] = "tls"
+        params["sni"] = node["sni"]
+      net = node.get("network", "tcp")
+      if net and net != "tcp":
+        params["type"] = net
+      params["host"] = node.get("host", "")
+      params["path"] = node.get("path", "")
+      if node.get("skip-cert-verify"):
+        params["allowInsecure"] = "1"
+      q = _query(params)
+      prefix = f"trojan://{node.get('password', '')}@{server}:{port}"
+      return f"{prefix}?{q}#{_frag(name)}" if q else f"{prefix}#{_frag(name)}"
+
+    if ptype == "hysteria2":
+      params: Dict = {}
+      if node.get("sni"):
+        params["sni"] = node["sni"]
+      if node.get("skip-cert-verify"):
+        params["insecure"] = "1"
+      q = _query(params)
+      prefix = f"hysteria2://{node.get('password', '')}@{server}:{port}"
+      return f"{prefix}?{q}#{_frag(name)}" if q else f"{prefix}#{_frag(name)}"
+
+    if ptype == "ssr":
+      password_b64 = _b64(node.get("password", ""))
+      main = f"{server}:{port}:{node.get('protocol', 'origin')}:{node.get('cipher', 'aes-256-cfb')}:{node.get('obfs', 'plain')}:{password_b64}"
+      extra: Dict = {}
+      if node.get("obfs-param"):
+        extra["obfsparam"] = _b64(node["obfs-param"])
+      if node.get("protocol-param"):
+        extra["protoparam"] = _b64(node["protocol-param"])
+      if name:
+        extra["remarks"] = _b64(name)
+      if extra:
+        main += "/?" + _query(extra)
+      return "ssr://" + _b64(main)
+
+  except Exception:
+    return None
+  return None
+
+
 def write(valid_nodes: List[Dict], max_full: int, max_mini: int):
   OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -200,6 +321,13 @@ def write(valid_nodes: List[Dict], max_full: int, max_mini: int):
     f.write("---\n")
     yaml.dump(mini_config, f, allow_unicode=True, sort_keys=False, indent=2)
   print(f"  \u2713 clash_mini.yml ({len(mini_nodes)} \u8282\u70b9)")
+
+  # Plain URI list (Hiddify-compatible)
+  uris = [u for u in (_to_uri(n) for n in selected) if u]
+  txt_path = OUTPUT_DIR / "nodes.txt"
+  with open(txt_path, "w", encoding="utf-8") as f:
+    f.write("\n".join(uris) + ("\n" if uris else ""))
+  print(f"  \u2713 nodes.txt ({len(uris)} \u8282\u70b9)")
 
   # Debug JSON
   with open(OUTPUT_DIR / "valid_nodes.json", "w", encoding="utf-8") as f:

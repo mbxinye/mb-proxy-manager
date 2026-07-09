@@ -254,8 +254,9 @@ class NodeParser:
       }
       if query.get("sni", [None])[0]:
         node["sni"] = query["sni"][0]
-      if query.get("network", [None])[0]:
-        node["network"] = query["network"][0]
+      net = query.get("type", [None])[0] or query.get("network", [None])[0]
+      if net:
+        node["network"] = net
       if query.get("path", [None])[0]:
         node["path"] = query["path"][0]
       if query.get("host", [None])[0]:
@@ -293,8 +294,9 @@ class NodeParser:
         node["client-fingerprint"] = query.get("fp", ["chrome"])[0]
       if query.get("sni", [None])[0]:
         node["sni"] = query["sni"][0]
-      if query.get("network", [None])[0]:
-        node["network"] = query["network"][0]
+      net = query.get("type", [None])[0] or query.get("network", [None])[0]
+      if net:
+        node["network"] = net
       if query.get("headerType", [None])[0]:
         node["headerType"] = query["headerType"][0]
       if query.get("host", [None])[0]:
