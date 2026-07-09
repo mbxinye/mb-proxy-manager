@@ -1,0 +1,81 @@
+name: Proxy Filter Updater
+
+on:
+  schedule:
+    - cron: '0 */3 * * *'
+  workflow_dispatch:
+
+env:
+  PYTHON_VERSION: '3.11'
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+
+    - name: Install dependencies
+      run: pip install pyyaml
+
+    - name: Run filter
+      run: python3 run.py
+
+    - name: Prepare GitHub Pages
+      run: |
+        mkdir -p pages
+        cp output/clash_config.yml pages/clash.yml
+        cp output/clash_mini.yml pages/clash_mini.yml
+        cp output/valid_nodes.json pages/valid_nodes.json
+
+        cat > pages/index.html << 'EOF'
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Proxy Config</title>
+          <style>
+            body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; max-width: 700px; margin: 50px auto; padding: 20px; background: #f5f5f5; }
+            .card { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+            h1 { border-bottom: 3px solid #4CAF50; padding-bottom: 10px; }
+            .link { background: #f9f9f9; padding: 15px; margin: 10px 0; border-radius: 6px; border-left: 4px solid #4CAF50; }
+            .link a { color: #2196F3; text-decoration: none; font-size: 16px; font-weight: bold; }
+            .link a:hover { text-decoration: underline; }
+            .info { color: #666; font-size: 13px; margin-top: 5px; }
+          </style>
+        </head>
+        <body>
+          <div class="card">
+            <h1>Proxy Config</h1>
+            <p>Auto-updated proxy node list</p>
+            <div class="link">
+              <a href="./clash.yml">Clash Config (Full)</a>
+              <div class="info">100 nodes - Import in Karing / Hiddify / Clash</div>
+            </div>
+            <div class="link">
+              <a href="./clash_mini.yml">Clash Config (Mini)</a>
+              <div class="info">30 nodes - Lightweight version</div>
+            </div>
+            <p style="color: #999; font-size: 12px; margin-top: 30px;">Updates every 3 hours via GitHub Actions</p>
+          </div>
+        </body>
+        </html>
+        EOF
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./pages
+        publish_branch: gh-pages
+        force_orphan: true

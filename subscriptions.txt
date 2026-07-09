@@ -1,0 +1,32 @@
+# 订阅链接列表
+# 每行一个链接，以 # 开头的是注释
+# 支持所有主流格式的订阅链接
+
+# 示例链接（请删除并添加你自己的）
+# https://example1.com/subscription
+# https://example2.com/api/subscribe
+# https://example3.com/clash.yaml
+
+https://raw.githubusercontent.com/zhangkaiitugithub/passcro/main/speednodes.yaml
+https://gist.githubusercontent.com/shuaidaoya/9e5cf2749c0ce79932dd9229d9b4162b/raw/all.yaml
+https://raw.githubusercontent.com/snakem982/proxypool/main/source/clash-meta.yaml
+https://raw.githubusercontent.com/ts-sf/fly/main/clash
+https://raw.githubusercontent.com/chengaopan/AutoMergePublicNodes/master/list.meta.yml
+https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml
+https://raw.githubusercontent.com/snakem982/proxypool/main/source/clash-meta.yaml
+https://raw.githubusercontent.com/snakem982/proxypool/main/source/clash-meta-2.yaml
+https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml
+https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/all.yaml
+https://gh-proxy.com/raw.githubusercontent.com/Barabama/FreeNodes/main/nodes/yudou66.yaml
+https://gh-proxy.com/raw.githubusercontent.com/Barabama/FreeNodes/main/nodes/blues.yaml
+https://gh-proxy.com/raw.githubusercontent.com/Barabama/FreeNodes/main/nodes/clashmeta.yaml
+https://gh-proxy.com/raw.githubusercontent.com/Barabama/FreeNodes/main/nodes/ndnode.yaml
+https://gh-proxy.com/raw.githubusercontent.com/Barabama/FreeNodes/main/nodes/nodev2ray.yaml
+https://gh-proxy.com/raw.githubusercontent.com/Barabama/FreeNodes/main/nodes/nodefree.yaml
+https://gh-proxy.com/raw.githubusercontent.com/Barabama/FreeNodes/main/nodes/v2rayshare.yaml
+https://gh-proxy.com/raw.githubusercontent.com/Barabama/FreeNodes/main/nodes/wenode.yaml
+https://raw.githubusercontent.com/asgharkapk/Sub-Config-Extractor/refs/heads/main/output_configs/clash/10ium/HiN-VPN/subscription/hiddify/vless.yaml
+https://raw.githubusercontent.com/asgharkapk/Sub-Config-Extractor/refs/heads/main/output_configs/clash/Surfboardv2ray/TGParse/splitted/vless.yaml
+https://raw.githubusercontent.com/asgharkapk/Sub-Config-Extractor/refs/heads/main/output_configs/clash/MatinGhanbari/v2ray-configs/vless.txt.yaml
+https://gh-proxy.com/raw.githubusercontent.com/a2470982985/getNode/main/clash.yaml
+https://gh-proxy.com/raw.githubusercontent.com/ts-sf/fly/main/clash

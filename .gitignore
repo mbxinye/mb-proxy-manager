@@ -1,0 +1,49 @@
+# 项目忽略文件
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+
+# Linter cache
+.ruff_cache/
+.mypy_cache/
+
+# 输出文件（自动生成，不需要提交）
+output/*.json
+output/*.yml
+output/*.txt
+output/*.md
+
+# 订阅缓存
+subscriptions/*.txt
+
+# 数据文件 - 保留目录但忽略生成内容（数据库文件需要提交）
+data/*.tmp
+data/*.log
+data/*.bak
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 日志
+*.log
+
+# 临时文件
+tmp/
+temp/
+
+# core_memory
+.codebase-memory/
