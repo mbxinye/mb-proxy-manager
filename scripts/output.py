@@ -25,9 +25,11 @@ def _to_clash_node(node: Dict) -> Dict:
     "name": node["name"],
     "type": ptype,
     "server": node["server"],
-    "port": int(node["port"]),
-    "udp": True,
+    "port": str(int(node["port"])),
   }
+
+  if node.get("udp"):
+    base["udp"] = True
 
   if ptype == "ss":
     base["cipher"] = node.get("cipher", "aes-256-gcm")
@@ -72,7 +74,8 @@ def _to_clash_node(node: Dict) -> Dict:
     base["password"] = node.get("password", "")
     if node.get("sni"):
       base["sni"] = node["sni"]
-    base["skip-cert-verify"] = node.get("skip-cert-verify", False)
+    if node.get("skip-cert-verify"):
+      base["skip-cert-verify"] = True
     network = node.get("network", "")
     if network in ("ws", "websocket"):
       base["network"] = "ws"
@@ -94,9 +97,10 @@ def _to_clash_node(node: Dict) -> Dict:
     sni = node.get("sni") or node.get("servername")
     if sni:
       base["servername"] = sni
-    if node.get("reality-opts"):
+    reality = node.get("reality-opts") or {}
+    if reality.get("public-key"):
       base["tls"] = True
-      base["reality-opts"] = node["reality-opts"]
+      base["reality-opts"] = reality
       base["client-fingerprint"] = node.get("client-fingerprint", "chrome")
     elif node.get("tls"):
       base["tls"] = True
@@ -120,6 +124,12 @@ def _to_clash_node(node: Dict) -> Dict:
     base["password"] = node.get("password", "")
     if node.get("sni"):
       base["sni"] = node["sni"]
+    if node.get("skip-cert-verify"):
+      base["skip-cert-verify"] = True
+    if node.get("up"):
+      base["up"] = node["up"]
+    if node.get("down"):
+      base["down"] = node["down"]
 
   elif ptype in ("http", "socks5"):
     if node.get("username"):
@@ -170,6 +180,7 @@ def write(valid_nodes: List[Dict], max_full: int, max_mini: int):
 
   full_path = OUTPUT_DIR / "clash_config.yml"
   with open(full_path, "w", encoding="utf-8") as f:
+    f.write("---\n")
     yaml.dump(full_config, f, allow_unicode=True, sort_keys=False, indent=2)
   print(f"  \u2713 clash_config.yml ({len(clash_nodes)} \u8282\u70b9)")
 
@@ -186,6 +197,7 @@ def write(valid_nodes: List[Dict], max_full: int, max_mini: int):
   ]
   mini_path = OUTPUT_DIR / "clash_mini.yml"
   with open(mini_path, "w", encoding="utf-8") as f:
+    f.write("---\n")
     yaml.dump(mini_config, f, allow_unicode=True, sort_keys=False, indent=2)
   print(f"  \u2713 clash_mini.yml ({len(mini_nodes)} \u8282\u70b9)")
 
