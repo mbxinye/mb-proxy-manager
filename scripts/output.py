@@ -13,8 +13,8 @@ from scripts.utils import extract_country, generate_node_name
 
 OUTPUT_DIR = Path("output")
 PROTOCOL_PRIORITY = {
-  "vless-reality": 1, "vless": 2, "hysteria2": 3, "tuic": 4,
-  "trojan": 5, "vmess": 6, "anytls": 7, "ss": 8, "ssr": 9,
+  "hysteria2": 1, "trojan": 2, "tuic": 3, "vless-reality": 4, "vless": 5,
+  "vmess": 6, "anytls": 7, "ss": 8, "ssr": 9,
   "socks5": 10, "http": 11,
 }
 

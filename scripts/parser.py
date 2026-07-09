@@ -277,6 +277,7 @@ class NodeParser:
       name = parsed.fragment or query.get("remarks", [f"VLESS_{server[:15]}"])[0]
       if name:
         name = urllib.parse.unquote(name)
+      security = query.get("security", [""])[0]
       node: Dict = {
         "type": "vless",
         "name": name[:50],
@@ -284,13 +285,17 @@ class NodeParser:
         "port": parsed.port or 443,
         "uuid": uuid,
         "flow": query.get("flow", [None])[0],
-        "security": query.get("security", [""])[0],
+        "security": security,
       }
-      if query.get("security", [""])[0] == "reality":
+      if security in ("tls", "reality"):
+        node["tls"] = True
+      if security == "reality":
         node["reality-opts"] = {
           "public-key": query.get("pbk", [""])[0],
           "short-id": query.get("sid", [""])[0],
         }
+        node["client-fingerprint"] = query.get("fp", ["chrome"])[0]
+      elif security == "tls":
         node["client-fingerprint"] = query.get("fp", ["chrome"])[0]
       if query.get("sni", [None])[0]:
         node["sni"] = query["sni"][0]
