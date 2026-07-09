@@ -49,52 +49,87 @@ def _to_clash_node(node: Dict) -> Dict:
     base["cipher"] = node.get("security", "auto")
     if node.get("tls"):
       base["tls"] = True
-      if node.get("sni"):
-        base["servername"] = node["sni"]
+      sni = node.get("sni") or node.get("servername")
+      if sni:
+        base["servername"] = sni
+    if "skip-cert-verify" in node:
+      base["skip-cert-verify"] = node["skip-cert-verify"]
     network = node.get("network", "tcp")
     if network in ("ws", "websocket"):
       base["network"] = "ws"
-      ws_opts = {}
-      if node.get("path"):
-        ws_opts["path"] = node["path"]
-      if node.get("host"):
-        ws_opts["headers"] = {"Host": node["host"]}
-      if ws_opts:
-        base["ws-opts"] = ws_opts
+      if node.get("ws-opts"):
+        base["ws-opts"] = node["ws-opts"]
+      else:
+        ws_opts = {}
+        if node.get("path"):
+          ws_opts["path"] = node["path"]
+        if node.get("host"):
+          ws_opts["headers"] = {"Host": node["host"]}
+        if ws_opts:
+          base["ws-opts"] = ws_opts
 
   elif ptype == "trojan":
     base["password"] = node.get("password", "")
     if node.get("sni"):
       base["sni"] = node["sni"]
     base["skip-cert-verify"] = node.get("skip-cert-verify", False)
+    network = node.get("network", "")
+    if network in ("ws", "websocket"):
+      base["network"] = "ws"
+      if node.get("ws-opts"):
+        base["ws-opts"] = node["ws-opts"]
+      else:
+        ws_opts = {}
+        if node.get("path"):
+          ws_opts["path"] = node["path"]
+        if node.get("host"):
+          ws_opts["headers"] = {"Host": node["host"]}
+        if ws_opts:
+          base["ws-opts"] = ws_opts
 
   elif ptype == "vless":
     base["uuid"] = node.get("uuid", "")
     if node.get("flow"):
       base["flow"] = node["flow"]
-    if node.get("sni"):
-      base["servername"] = node["sni"]
-    if node.get("security") == "reality" and node.get("reality-opts"):
+    sni = node.get("sni") or node.get("servername")
+    if sni:
+      base["servername"] = sni
+    if node.get("reality-opts"):
       base["tls"] = True
       base["reality-opts"] = node["reality-opts"]
-      base["fingerprint"] = node.get("fingerprint", "chrome")
+      base["client-fingerprint"] = node.get("client-fingerprint", "chrome")
     elif node.get("tls"):
       base["tls"] = True
+    if "skip-cert-verify" in node:
+      base["skip-cert-verify"] = node["skip-cert-verify"]
     network = node.get("network", "tcp")
     if network in ("ws", "websocket"):
       base["network"] = "ws"
-      ws_opts = {}
-      if node.get("path"):
-        ws_opts["path"] = node["path"]
-      if node.get("host"):
-        ws_opts["headers"] = {"Host": node["host"]}
-      if ws_opts:
-        base["ws-opts"] = ws_opts
+      if node.get("ws-opts"):
+        base["ws-opts"] = node["ws-opts"]
+      else:
+        ws_opts = {}
+        if node.get("path"):
+          ws_opts["path"] = node["path"]
+        if node.get("host"):
+          ws_opts["headers"] = {"Host": node["host"]}
+        if ws_opts:
+          base["ws-opts"] = ws_opts
 
   elif ptype == "hysteria2":
     base["password"] = node.get("password", "")
     if node.get("sni"):
       base["sni"] = node["sni"]
+
+  elif ptype in ("http", "socks5"):
+    if node.get("username"):
+      base["username"] = node["username"]
+    if node.get("password"):
+      base["password"] = node["password"]
+    if node.get("tls"):
+      base["tls"] = True
+    if node.get("skip-cert-verify"):
+      base["skip-cert-verify"] = True
 
   return base
 

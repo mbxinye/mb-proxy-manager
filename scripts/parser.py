@@ -89,7 +89,7 @@ class NodeParser:
         "server": server,
         "port": int(port),
       }
-      for field in ["uuid", "password", "cipher", "alterId", "network", "tls", "sni", "flow", "udp"]:
+      for field in ["uuid", "password", "cipher", "alterId", "network", "tls", "sni", "flow", "udp", "ws-opts", "servername", "client-fingerprint", "skip-cert-verify", "username"]:
         if field in proxy:
           node[field] = proxy[field]
       if ptype == "vmess":
@@ -97,7 +97,7 @@ class NodeParser:
       elif ptype == "vless":
         if "reality-opts" in proxy:
           node["reality-opts"] = proxy["reality-opts"]
-          node["fingerprint"] = proxy.get("fingerprint", "chrome")
+          node["client-fingerprint"] = proxy.get("client-fingerprint", "chrome")
       elif ptype == "trojan":
         node["skip-cert-verify"] = proxy.get("skip-cert-verify", False)
       return node
@@ -215,7 +215,7 @@ class NodeParser:
       if not decoded:
         return None
       config = json.loads(decoded)
-      return {
+      node = {
         "type": "vmess",
         "name": config.get("ps", "VMess")[:50],
         "server": config.get("add", ""),
@@ -226,6 +226,11 @@ class NodeParser:
         "network": config.get("net", "tcp"),
         "tls": config.get("tls", ""),
       }
+      for short, long in [("p", "path"), ("host", "host"), ("sni", "sni"), ("fp", "client-fingerprint"), ("alpn", "alpn")]:
+        val = config.get(long) or config.get(short)
+        if val:
+          node[long] = val
+      return node
     except Exception:
       return None
 
@@ -249,6 +254,12 @@ class NodeParser:
       }
       if query.get("sni", [None])[0]:
         node["sni"] = query["sni"][0]
+      if query.get("network", [None])[0]:
+        node["network"] = query["network"][0]
+      if query.get("path", [None])[0]:
+        node["path"] = query["path"][0]
+      if query.get("host", [None])[0]:
+        node["host"] = query["host"][0]
       node["skip-cert-verify"] = query.get("allowInsecure", ["0"])[0] == "1"
       return node
     except Exception:
@@ -279,7 +290,7 @@ class NodeParser:
           "public-key": query.get("pbk", [""])[0],
           "short-id": query.get("sid", [""])[0],
         }
-        node["fingerprint"] = query.get("fp", ["chrome"])[0]
+        node["client-fingerprint"] = query.get("fp", ["chrome"])[0]
       if query.get("sni", [None])[0]:
         node["sni"] = query["sni"][0]
       if query.get("network", [None])[0]:
