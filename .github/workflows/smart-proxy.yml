@@ -27,7 +27,15 @@ jobs:
     - name: Install dependencies
       run: pip install pyyaml
 
+    - name: Cache mihomo binary
+      uses: actions/cache@v4
+      with:
+        path: bin/
+        key: mihomo-v1.19.13-linux-amd64-v3
+
     - name: Run filter
+      env:
+        PROXY_MIHOMO_VERSION: 'v1.19.13'
       run: python3 run.py
 
     - name: Prepare GitHub Pages

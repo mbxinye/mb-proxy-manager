@@ -47,3 +47,9 @@ temp/
 
 # core_memory
 .codebase-memory/
+
+# mihomo 内核二进制（按需下载，不提交）
+bin/
+
+# trae 归档文件
+.trae/

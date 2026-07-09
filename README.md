@@ -46,11 +46,12 @@ https://你的用户名.github.io/仓库名/clash_mini.yml
 | 变量 | 默认值 | 说明 |
 |---|---|---|
 | `PROXY_SUB_TIMEOUT` | 30 | 订阅下载超时（秒） |
-| `PROXY_TCP_TIMEOUT` | 3 | TCP 连接测试超时（秒） |
-| `PROXY_BATCH_SIZE` | 200 | 并发 TCP 测试数 |
-| `PROXY_MAX_LATENCY` | 5000 | 最大允许延迟（ms） |
-| `PROXY_MAX_OUTPUT_NODES` | 50 | 完整版输出节点数 |
+| `PROXY_MAX_OUTPUT_NODES` | 100 | 完整版输出节点数 |
 | `PROXY_MINI_OUTPUT_NODES` | 30 | 精简版输出节点数 |
+| `PROXY_MIHOMO_VERSION` | v1.19.13 | mihomo 内核版本（按需下载，不提交进仓库） |
+| `PROXY_TEST_URL` | http://www.gstatic.com/generate_204 | 端到端真实代理测试用的 URL |
+| `PROXY_TEST_TIMEOUT` | 2000 | mihomo delay 测试超时（ms） |
+| `PROXY_TEST_CONCURRENCY` | 100 | mihomo delay 并发测试数 |
 
 ## 本地运行
 

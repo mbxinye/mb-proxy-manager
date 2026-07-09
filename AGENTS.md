@@ -25,11 +25,12 @@ python3 -c "from scripts.parser import NodeParser; print('OK')"
 | Variable | Default | Description |
 |---|---|---|
 | `PROXY_SUB_TIMEOUT` | 30 | Subscription fetch timeout (seconds) |
-| `PROXY_TCP_TIMEOUT` | 3 | TCP connection test timeout (seconds) |
-| `PROXY_BATCH_SIZE` | 200 | Concurrent TCP tests |
-| `PROXY_MAX_LATENCY` | 5000 | Max allowed latency (ms) |
 | `PROXY_MAX_OUTPUT_NODES` | 100 | Max output nodes |
 | `PROXY_MINI_OUTPUT_NODES` | 30 | Mini output nodes |
+| `PROXY_MIHOMO_VERSION` | v1.19.13 | mihomo kernel version (downloaded on demand) |
+| `PROXY_TEST_URL` | http://www.gstatic.com/generate_204 | URL used for real end-to-end proxy test |
+| `PROXY_TEST_TIMEOUT` | 2000 | mihomo delay-test timeout (ms) |
+| `PROXY_TEST_CONCURRENCY` | 100 | Concurrent mihomo delay tests |
 
 ### GitHub Actions
 

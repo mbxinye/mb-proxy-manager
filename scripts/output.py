@@ -16,7 +16,7 @@ PROTOCOL_PRIORITY = {
 
 
 def _sort_key(n: Dict) -> tuple:
-  return (PROTOCOL_PRIORITY.get(n.get("type", "").lower(), 999), n.get("latency", 9999))
+  return (n.get("latency", 9999), PROTOCOL_PRIORITY.get(n.get("type", "").lower(), 999))
 
 
 def _to_clash_node(node: Dict) -> Dict:
