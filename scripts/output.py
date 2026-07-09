@@ -8,17 +8,37 @@ from typing import Dict, List, Optional
 
 import yaml
 
+from scripts.config import PREFERRED_COUNTRIES
 from scripts.utils import extract_country, generate_node_name
 
 OUTPUT_DIR = Path("output")
 PROTOCOL_PRIORITY = {
-  "vless": 1, "vmess": 2, "trojan": 3, "hysteria2": 4,
-  "tuic": 5, "anytls": 6, "ss": 7, "ssr": 8, "socks5": 9, "http": 10,
+  "vless-reality": 1, "vless": 2, "hysteria2": 3, "tuic": 4,
+  "trojan": 5, "vmess": 6, "anytls": 7, "ss": 8, "ssr": 9,
+  "socks5": 10, "http": 11,
 }
+
+_COUNTRY_RANK = {code: i for i, code in enumerate(PREFERRED_COUNTRIES)}
+
+
+def _country_rank(node: Dict) -> int:
+  code = extract_country(node.get("name", ""))
+  return _COUNTRY_RANK.get(code, 99) if code else 99
+
+
+def _protocol_rank(n: Dict) -> int:
+  ptype = n.get("type", "").lower()
+  if ptype == "vless" and n.get("reality-opts"):
+    ptype = "vless-reality"
+  return PROTOCOL_PRIORITY.get(ptype, 999)
 
 
 def _sort_key(n: Dict) -> tuple:
-  return (n.get("latency", 9999), PROTOCOL_PRIORITY.get(n.get("type", "").lower(), 999))
+  return (
+    _country_rank(n),
+    _protocol_rank(n),
+    n.get("latency", 9999),
+  )
 
 
 def _to_clash_node(node: Dict) -> Dict:

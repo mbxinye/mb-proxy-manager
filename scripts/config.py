@@ -15,3 +15,9 @@ MIHOMO_VERSION = os.getenv("PROXY_MIHOMO_VERSION", "v1.19.13")
 MIHOMO_TEST_URL = os.getenv("PROXY_TEST_URL", "http://www.gstatic.com/generate_204")
 MIHOMO_TEST_TIMEOUT = _int_env("PROXY_TEST_TIMEOUT", 2000)
 PROXY_TEST_CONCURRENCY = _int_env("PROXY_TEST_CONCURRENCY", 100)
+
+PREFERRED_COUNTRIES = [
+  c.strip().upper()
+  for c in os.getenv("PROXY_PREFERRED_COUNTRIES", "US,KR,JP,SG,HK,TW").split(",")
+  if c.strip()
+]
