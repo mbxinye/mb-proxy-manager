@@ -3,6 +3,7 @@
 import json
 import sys
 import time
+from collections import Counter
 from pathlib import Path
 
 from scripts.config import MAX_OUTPUT_NODES, MINI_OUTPUT_NODES
@@ -50,6 +51,16 @@ def run():
   print("=" * 50)
   print("\u9a8c\u8bc1\u8282\u70b9...")
   valid = test_all(unique)
+
+  # Per-subscription stats: parsed / deduped / valid
+  parsed_by = Counter(n.get("_sub_url", "?") for n in all_nodes)
+  dedup_by = Counter(n.get("_sub_url", "?") for n in unique)
+  valid_by = Counter(n.get("_sub_url", "?") for n in valid)
+  print("\n\u8ba2\u9605\u8282\u70b9\u7edf\u8ba1 (\u89e3\u6790 / \u53bb\u91cd / \u53ef\u7528):")
+  for url in urls:
+    p, d, v = parsed_by.get(url, 0), dedup_by.get(url, 0), valid_by.get(url, 0)
+    print(f"  {url[:60]:62} {p:>4} / {d:>4} / {v:>4}")
+  print(f"  {'\u6c47\u603b':62} {len(all_nodes):>4} / {len(unique):>4} / {len(valid):>4}")
 
   # 5. Output (always writes files, even if empty)
   print("\n" + "=" * 50)
