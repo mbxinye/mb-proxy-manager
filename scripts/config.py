@@ -8,8 +8,8 @@ def _int_env(key: str, default: int) -> int:
 
 
 SUBSCRIPTION_TIMEOUT = _int_env("PROXY_SUB_TIMEOUT", 30)
-MAX_OUTPUT_NODES = _int_env("PROXY_MAX_OUTPUT_NODES", 100)
-MINI_OUTPUT_NODES = _int_env("PROXY_MINI_OUTPUT_NODES", 30)
+MAX_OUTPUT_NODES = _int_env("PROXY_MAX_OUTPUT_NODES", 200)
+MINI_OUTPUT_NODES = _int_env("PROXY_MINI_OUTPUT_NODES", 100)
 
 MIHOMO_VERSION = os.getenv("PROXY_MIHOMO_VERSION", "v1.19.13")
 MIHOMO_TEST_URL = os.getenv("PROXY_TEST_URL", "http://www.gstatic.com/generate_204")

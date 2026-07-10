@@ -9,7 +9,6 @@
 
 https://raw.githubusercontent.com/zhangkaiitugithub/passcro/main/speednodes.yaml
 https://gist.githubusercontent.com/shuaidaoya/9e5cf2749c0ce79932dd9229d9b4162b/raw/all.yaml
-https://raw.githubusercontent.com/snakem982/proxypool/main/source/clash-meta.yaml
 https://raw.githubusercontent.com/ts-sf/fly/main/clash
 https://raw.githubusercontent.com/chengaopan/AutoMergePublicNodes/master/list.meta.yml
 https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml
@@ -17,16 +16,13 @@ https://raw.githubusercontent.com/snakem982/proxypool/main/source/clash-meta.yam
 https://raw.githubusercontent.com/snakem982/proxypool/main/source/clash-meta-2.yaml
 https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml
 https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/all.yaml
-https://raw.githubusercontent.com/Barabama/FreeNodes/main/nodes/yudou66.yaml
-https://raw.githubusercontent.com/Barabama/FreeNodes/main/nodes/blues.yaml
-https://raw.githubusercontent.com/Barabama/FreeNodes/main/nodes/clashmeta.yaml
-https://raw.githubusercontent.com/Barabama/FreeNodes/main/nodes/ndnode.yaml
-https://raw.githubusercontent.com/Barabama/FreeNodes/main/nodes/nodev2ray.yaml
-https://raw.githubusercontent.com/Barabama/FreeNodes/main/nodes/nodefree.yaml
-https://raw.githubusercontent.com/Barabama/FreeNodes/main/nodes/v2rayshare.yaml
-https://raw.githubusercontent.com/Barabama/FreeNodes/main/nodes/wenode.yaml
-https://raw.githubusercontent.com/asgharkapk/Sub-Config-Extractor/refs/heads/main/output_configs/clash/10ium/HiN-VPN/subscription/hiddify/vless.yaml
-https://raw.githubusercontent.com/asgharkapk/Sub-Config-Extractor/refs/heads/main/output_configs/clash/Surfboardv2ray/TGParse/splitted/vless.yaml
-https://raw.githubusercontent.com/asgharkapk/Sub-Config-Extractor/refs/heads/main/output_configs/clash/MatinGhanbari/v2ray-configs/vless.txt.yaml
+https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/feat/ai-crawler-v2/nodes/clashmeta.yaml
+https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/feat/ai-crawler-v2/nodes/nodev2ray.yaml
+https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/feat/ai-crawler-v2/nodes/freeclashnode.yaml
+https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/feat/ai-crawler-v2/nodes/clashnode.yaml
+https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/feat/ai-crawler-v2/nodes/oneclash.yaml
+https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/feat/ai-crawler-v2/nodes/clashstair.yaml
+https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/feat/ai-crawler-v2/nodes/datiya.yaml
+https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/feat/ai-crawler-v2/nodes/merged.yaml
 https://raw.githubusercontent.com/a2470982985/getNode/main/clash.yaml
 https://raw.githubusercontent.com/ts-sf/fly/main/clash

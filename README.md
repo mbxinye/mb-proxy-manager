@@ -1,6 +1,6 @@
 # Proxy Manager
 
-自动聚合多路代理订阅 → TCP 连通性测试 → 生成 Clash 配置文件，通过 GitHub Actions 每 3 小时自动更新。
+自动聚合多路代理订阅 → mihomo 端到端测试 → 生成 Clash 配置文件，通过 GitHub Actions 每 3 小时自动更新。
 
 ## 项目结构
 
@@ -11,13 +11,13 @@
 │   ├── config.py              # 环境变量配置
 │   ├── fetcher.py             # 下载订阅（urllib + ThreadPool）
 │   ├── parser.py              # 解析 SS/SSR/VMess/Trojan/VLESS/Hysteria2
-│   ├── tester.py              # TCP 连接测试（ThreadPool）
+│   ├── tester.py              # mihomo 端到端测试（按需下载内核）
 │   ├── output.py              # 生成 Clash YAML + JSON
 │   └── utils.py                 # 国家识别、名称生成
 ├── subscriptions.txt          # 订阅链接（每行一个）
 ├── output/
-│   ├── clash_config.yml       # 100 最佳节点
-│   ├── clash_mini.yml         # 30 最佳节点
+│   ├── clash_config.yml       # 200 最佳节点
+│   ├── clash_mini.yml         # 100 最佳节点
 │   ├── nodes.txt              # Hiddify 兼容纯文本订阅（每行一个 URI）
 │   └── valid_nodes.json       # 调试数据
 └── .github/workflows/
@@ -50,8 +50,8 @@ https://你的用户名.github.io/仓库名/nodes.txt
 | 变量 | 默认值 | 说明 |
 |---|---|---|
 | `PROXY_SUB_TIMEOUT` | 30 | 订阅下载超时（秒） |
-| `PROXY_MAX_OUTPUT_NODES` | 100 | 完整版输出节点数 |
-| `PROXY_MINI_OUTPUT_NODES` | 30 | 精简版输出节点数 |
+| `PROXY_MAX_OUTPUT_NODES` | 200 | 完整版输出节点数 |
+| `PROXY_MINI_OUTPUT_NODES` | 100 | 精简版输出节点数 |
 | `PROXY_MIHOMO_VERSION` | v1.19.13 | mihomo 内核版本（按需下载，不提交进仓库） |
 | `PROXY_TEST_URL` | http://www.gstatic.com/generate_204 | 端到端真实代理测试用的 URL |
 | `PROXY_TEST_TIMEOUT` | 2000 | mihomo delay 测试超时（ms） |

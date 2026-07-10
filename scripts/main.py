@@ -46,7 +46,7 @@ def run():
       unique.append(n)
   print(f"  \u53bb\u91cd\u540e: {len(unique)} \u4e2a\u552f\u4e00\u8282\u70b9\n")
 
-  # 4. TCP test
+  # 4. mihomo end-to-end test
   print("=" * 50)
   print("\u9a8c\u8bc1\u8282\u70b9...")
   valid = test_all(unique)

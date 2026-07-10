@@ -25,8 +25,8 @@ python3 -c "from scripts.parser import NodeParser; print('OK')"
 | Variable | Default | Description |
 |---|---|---|
 | `PROXY_SUB_TIMEOUT` | 30 | Subscription fetch timeout (seconds) |
-| `PROXY_MAX_OUTPUT_NODES` | 100 | Max output nodes |
-| `PROXY_MINI_OUTPUT_NODES` | 30 | Mini output nodes |
+| `PROXY_MAX_OUTPUT_NODES` | 200 | Max output nodes |
+| `PROXY_MINI_OUTPUT_NODES` | 100 | Mini output nodes |
 | `PROXY_MIHOMO_VERSION` | v1.19.13 | mihomo kernel version (downloaded on demand) |
 | `PROXY_TEST_URL` | http://www.gstatic.com/generate_204 | URL used for real end-to-end proxy test |
 | `PROXY_TEST_TIMEOUT` | 2000 | mihomo delay-test timeout (ms) |
@@ -71,15 +71,15 @@ f-strings only.
 - `scripts/config.py` — env-based config
 - `scripts/fetcher.py` — download subscriptions via `urllib` + `ThreadPoolExecutor`
 - `scripts/parser.py` — parse Base64 / YAML / URI formats
-- `scripts/tester.py` — TCP socket connect test via `ThreadPoolExecutor`
+- `scripts/tester.py` — mihomo kernel end-to-end tunnel test (downloads binary on demand)
 - `scripts/output.py` — generate Clash YAML (clash_config.yml, clash_mini.yml) + plain URI list (nodes.txt)
 - `scripts/main.py` — pipeline orchestration
 - `run.py` — thin entry point
 
 ### Output
 
-- `output/clash_config.yml` — full config (100 nodes) for Karing/Hiddify subscription
-- `output/clash_mini.yml` — 30 best nodes
+- `output/clash_config.yml` — full config (200 nodes) for Karing/Hiddify subscription
+- `output/clash_mini.yml` — 100 best nodes
 - `output/nodes.txt` — plain text, one URI per line; Hiddify/v2rayN/NekoBox compatible
 - `output/valid_nodes.json` — debug data
 

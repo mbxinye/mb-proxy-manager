@@ -69,11 +69,11 @@ jobs:
             <p>Auto-updated proxy node list</p>
             <div class="link">
               <a href="./clash.yml">Clash Config (Full)</a>
-              <div class="info">100 nodes - Import in Karing / Hiddify / Clash</div>
+              <div class="info">200 nodes - Import in Karing / Hiddify / Clash</div>
             </div>
             <div class="link">
               <a href="./clash_mini.yml">Clash Config (Mini)</a>
-              <div class="info">30 nodes - Lightweight version</div>
+              <div class="info">100 nodes - Lightweight version</div>
             </div>
             <div class="link">
               <a href="./nodes.txt">Plain URI List</a>
