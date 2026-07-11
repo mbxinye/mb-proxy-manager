@@ -28,9 +28,10 @@ python3 -c "from scripts.parser import NodeParser; print('OK')"
 | `PROXY_MAX_OUTPUT_NODES` | 200 | Max output nodes |
 | `PROXY_MINI_OUTPUT_NODES` | 100 | Mini output nodes |
 | `PROXY_MIHOMO_VERSION` | v1.19.13 | mihomo kernel version (downloaded on demand) |
-| `PROXY_TEST_URL` | http://www.gstatic.com/generate_204 | URL used for real end-to-end proxy test |
+| `PROXY_TEST_URL` | https://www.gstatic.com/generate_204 | URL used for real end-to-end proxy test |
 | `PROXY_TEST_TIMEOUT` | 2000 | mihomo delay-test timeout (ms) |
 | `PROXY_TEST_CONCURRENCY` | 100 | Concurrent mihomo delay tests |
+| `PROXY_MAX_LATENCY` | 1500 | Reject nodes with latency above this (ms), 0=disable |
 
 ### GitHub Actions
 

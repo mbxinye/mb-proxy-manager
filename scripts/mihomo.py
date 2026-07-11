@@ -21,6 +21,7 @@ from urllib.request import ProxyHandler, Request, build_opener, urlopen
 import yaml
 
 from scripts.config import (
+  MAX_LATENCY,
   MIHOMO_TEST_TIMEOUT,
   MIHOMO_TEST_URL,
   MIHOMO_VERSION,
@@ -185,6 +186,7 @@ def _run_delay_tests(
   base = f"http://127.0.0.1:{port}/proxies"
   results: List[Dict] = []
   total = len(proxy_to_node)
+  latency_dropped = 0
   with ThreadPoolExecutor(max_workers=PROXY_TEST_CONCURRENCY) as pool:
     futures = {pool.submit(_test_one, base, name): name for name in proxy_to_node}
     done = 0
@@ -195,9 +197,14 @@ def _run_delay_tests(
       if latency is not None:
         node = proxy_to_node[name]
         node["latency"] = latency
-        results.append(node)
+        if MAX_LATENCY > 0 and latency > MAX_LATENCY:
+          latency_dropped += 1
+        else:
+          results.append(node)
       if done % 50 == 0 or done == total:
         print(f"    进度 {done}/{total}, 可用 {len(results)}")
+  if latency_dropped:
+    print(f"    延迟超阈值(>{MAX_LATENCY}ms)剔除: {latency_dropped}")
   return results
 
 

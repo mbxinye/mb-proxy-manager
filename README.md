@@ -66,9 +66,10 @@ https://你的用户名.github.io/仓库名/nodes_mini.txt
 | `PROXY_MAX_OUTPUT_NODES` | 200 | 完整版输出节点数 |
 | `PROXY_MINI_OUTPUT_NODES` | 100 | 精简版输出节点数 |
 | `PROXY_MIHOMO_VERSION` | v1.19.13 | mihomo 内核版本（按需下载，不提交进仓库） |
-| `PROXY_TEST_URL` | http://www.gstatic.com/generate_204 | 端到端真实代理测试用的 URL |
+| `PROXY_TEST_URL` | https://www.gstatic.com/generate_204 | 端到端真实代理测试用的 URL |
 | `PROXY_TEST_TIMEOUT` | 2000 | mihomo delay 测试超时（ms） |
 | `PROXY_TEST_CONCURRENCY` | 100 | mihomo delay 并发测试数 |
+| `PROXY_MAX_LATENCY` | 1500 | 拒绝延迟超过此值(ms)的节点，0=禁用 |
 
 ## 本地运行
 
