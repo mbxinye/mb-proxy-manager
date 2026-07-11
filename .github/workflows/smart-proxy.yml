@@ -43,6 +43,7 @@ jobs:
         mkdir -p pages
         cp output/clash_config.yml pages/clash.yml
         cp output/clash_mini.yml pages/clash_mini.yml
+        cp output/clash_all.yml pages/clash_all.yml
         cp output/nodes.txt pages/nodes.txt
         cp output/valid_nodes.json pages/valid_nodes.json
 
@@ -70,6 +71,10 @@ jobs:
             <div class="link">
               <a href="./clash.yml">Clash Config (Full)</a>
               <div class="info">200 nodes - Import in Karing / Hiddify / Clash</div>
+            </div>
+            <div class="link">
+              <a href="./clash_all.yml">Clash Config (All)</a>
+              <div class="info">All valid nodes (uncapped) - Full availability</div>
             </div>
             <div class="link">
               <a href="./clash_mini.yml">Clash Config (Mini)</a>

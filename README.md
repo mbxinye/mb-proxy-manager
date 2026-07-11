@@ -14,10 +14,11 @@
 │   ├── tester.py              # mihomo 端到端测试（按需下载内核）
 │   ├── output.py              # 生成 Clash YAML + JSON
 │   └── utils.py                 # 国家识别、名称生成
-├── subscriptions.txt          # 订阅链接（每行一个）
+├── subscriptions.txt          # 订阅链接（每行一个，可带优先级）
 ├── output/
 │   ├── clash_config.yml       # 200 最佳节点
 │   ├── clash_mini.yml         # 100 最佳节点
+│   ├── clash_all.yml          # 全量可用节点（不截断）
 │   ├── nodes.txt              # Hiddify 兼容纯文本订阅（每行一个 URI）
 │   └── valid_nodes.json       # 调试数据
 └── .github/workflows/
@@ -34,15 +35,23 @@
    - Base64 编码订阅
    - SS / SSR / VMess / Trojan / VLESS / Hysteria2 URI 直链
 
+   **订阅优先级**：在 URL 后加空格+数字，数字越大在输出排序中越靠前（默认 0）：
+   ```
+   https://example.com/high-quality-sub 10
+   https://example.com/normal-sub
+   ```
+
 3. **手动触发首次运行**：Actions → Proxy Filter Updater → Run workflow
 4. **启用 GitHub Pages** 后可通过以下链接订阅：
 
 ```
 https://你的用户名.github.io/仓库名/clash.yml
+https://你的用户名.github.io/仓库名/clash_all.yml
 https://你的用户名.github.io/仓库名/clash_mini.yml
 https://你的用户名.github.io/仓库名/nodes.txt
 ```
 
+> `clash_all.yml` 为全量可用节点（不截断），适合需要最大节点池的场景。
 > `nodes.txt` 为纯文本逐行 URI 格式，Hiddify / v2rayN / NekoBox 等客户端可直接订阅。
 
 ## 环境变量

@@ -72,7 +72,7 @@ f-strings only.
 - `scripts/fetcher.py` — download subscriptions via `urllib` + `ThreadPoolExecutor`
 - `scripts/parser.py` — parse Base64 / YAML / URI formats
 - `scripts/tester.py` — mihomo kernel end-to-end tunnel test (downloads binary on demand)
-- `scripts/output.py` — generate Clash YAML (clash_config.yml, clash_mini.yml) + plain URI list (nodes.txt)
+- `scripts/output.py` — generate Clash YAML (clash_config.yml, clash_mini.yml, clash_all.yml) + plain URI list (nodes.txt)
 - `scripts/main.py` — pipeline orchestration
 - `run.py` — thin entry point
 
@@ -80,12 +80,15 @@ f-strings only.
 
 - `output/clash_config.yml` — full config (200 nodes) for Karing/Hiddify subscription
 - `output/clash_mini.yml` — 100 best nodes
+- `output/clash_all.yml` — all valid nodes (uncapped)
 - `output/nodes.txt` — plain text, one URI per line; Hiddify/v2rayN/NekoBox compatible
 - `output/valid_nodes.json` — debug data
 
 ### Subscription Sources
 
 URLs in `subscriptions.txt`, one per line, `#` for comments.
+Optional priority after URL (space-separated, higher = sorted first, default 0):
+`https://example.com/sub 10`
 
 ### Protocols
 

@@ -21,11 +21,17 @@ def run():
     print("\u274c \u672a\u627e\u5230 subscriptions.txt")
     sys.exit(1)
 
-  urls = [
-    line.strip()
-    for line in subs_file.read_text(encoding="utf-8").split("\n")
-    if line.strip() and not line.startswith("#")
-  ]
+  urls = []
+  sub_priority: dict = {}
+  for line in subs_file.read_text(encoding="utf-8").split("\n"):
+    line = line.strip()
+    if not line or line.startswith("#"):
+      continue
+    parts = line.split()
+    url = parts[0]
+    prio = int(parts[1]) if len(parts) > 1 and parts[1].lstrip("-").isdigit() else 0
+    urls.append(url)
+    sub_priority[url] = prio
   print(f"\u8ba2\u9605\u6765\u6e90: {len(urls)} \u4e2a\u94fe\u63a5\n")
 
   # 1. Fetch
@@ -52,15 +58,21 @@ def run():
   print("\u9a8c\u8bc1\u8282\u70b9...")
   valid = test_all(unique)
 
-  # Per-subscription stats: parsed / deduped / valid
+  # 注入订阅优先级到节点（复用 _sub_url 关联）
+  for n in valid:
+    n["_sub_priority"] = sub_priority.get(n.get("_sub_url", ""), 0)
+
+  # Per-subscription stats: parsed / deduped / valid (with priority)
   parsed_by = Counter(n.get("_sub_url", "?") for n in all_nodes)
   dedup_by = Counter(n.get("_sub_url", "?") for n in unique)
   valid_by = Counter(n.get("_sub_url", "?") for n in valid)
-  print("\n\u8ba2\u9605\u8282\u70b9\u7edf\u8ba1 (\u89e3\u6790 / \u53bb\u91cd / \u53ef\u7528):")
+  print("\n\u8ba2\u9605\u8282\u70b9\u7edf\u8ba1 (\u4f18\u5148\u7ea7 | \u89e3\u6790 / \u53bb\u91cd / \u53ef\u7528):")
   for url in urls:
+    prio = sub_priority.get(url, 0)
     p, d, v = parsed_by.get(url, 0), dedup_by.get(url, 0), valid_by.get(url, 0)
-    print(f"  {url[:60]:62} {p:>4} / {d:>4} / {v:>4}")
-  print(f"  {'\u6c47\u603b':62} {len(all_nodes):>4} / {len(unique):>4} / {len(valid):>4}")
+    print(f"  [{prio:>3}] {url[:56]:58} {p:>4} / {d:>4} / {v:>4}")
+  total_label = "\u6c47\u603b"
+  print(f"  {'':5}{total_label:58} {len(all_nodes):>4} / {len(unique):>4} / {len(valid):>4}")
 
   # 5. Output (always writes files, even if empty)
   print("\n" + "=" * 50)

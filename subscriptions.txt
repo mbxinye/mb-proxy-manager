@@ -1,5 +1,7 @@
 # 订阅链接列表
 # 每行一个链接，以 # 开头的是注释
+# 可在 URL 后加空格+数字表示优先级（越大越靠前，默认 0）：
+#   https://example.com/sub 10
 # 支持所有主流格式的订阅链接
 
 # 示例链接（请删除并添加你自己的）
@@ -11,11 +13,11 @@ https://raw.githubusercontent.com/zhangkaiitugithub/passcro/main/speednodes.yaml
 https://gist.githubusercontent.com/shuaidaoya/9e5cf2749c0ce79932dd9229d9b4162b/raw/all.yaml
 https://raw.githubusercontent.com/ts-sf/fly/main/clash
 https://raw.githubusercontent.com/chengaopan/AutoMergePublicNodes/master/list.meta.yml
-https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml
+https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml 100
 https://raw.githubusercontent.com/snakem982/proxypool/main/source/clash-meta.yaml
 https://raw.githubusercontent.com/snakem982/proxypool/main/source/clash-meta-2.yaml
-https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml
-https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/all.yaml
+https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml 100
+https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/all.yaml 100
 https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/feat/ai-crawler-v2/nodes/clashmeta.yaml
 https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/feat/ai-crawler-v2/nodes/nodev2ray.yaml
 https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/feat/ai-crawler-v2/nodes/freeclashnode.yaml

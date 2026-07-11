@@ -35,6 +35,7 @@ def _protocol_rank(n: Dict) -> int:
 
 def _sort_key(n: Dict) -> tuple:
   return (
+    -n.get("_sub_priority", 0),
     _country_rank(n),
     _protocol_rank(n),
     n.get("latency", 9999),
@@ -353,6 +354,32 @@ def write(valid_nodes: List[Dict], max_full: int, max_mini: int):
   with open(OUTPUT_DIR / "valid_nodes.json", "w", encoding="utf-8") as f:
     json.dump(selected, f, indent=2, ensure_ascii=False)
   print(f"  \u2713 valid_nodes.json")
+
+  # clash_all.yml: 全量可用节点（不截断）
+  all_counters: Dict[str, int] = {}
+  for node in valid_nodes:
+    name = node.get("name", f"Node_{node['server']}")
+    code = extract_country(name) or "XX"
+    all_counters[code] = all_counters.get(code, 0) + 1
+    node["name"] = generate_node_name(name, all_counters[code], node.get("latency", 9999))
+  all_clash_nodes = [_to_clash_node(n) for n in valid_nodes]
+  all_config = {
+    "port": 7890,
+    "socks-port": 7891,
+    "allow-lan": True,
+    "mode": "rule",
+    "log-level": "warning",
+    "proxies": all_clash_nodes,
+    "proxy-groups": [
+      {"name": "Proxy", "type": "select", "proxies": [n["name"] for n in all_clash_nodes]},
+    ],
+    "rules": ["MATCH,Proxy"],
+  }
+  all_path = OUTPUT_DIR / "clash_all.yml"
+  with open(all_path, "w", encoding="utf-8") as f:
+    f.write("---\n")
+    yaml.dump(all_config, f, allow_unicode=True, sort_keys=False, indent=2)
+  print(f"  \u2713 clash_all.yml ({len(all_clash_nodes)} \u8282\u70b9)")
 
   # Stats
   type_counts: Dict[str, int] = {}
