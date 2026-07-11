@@ -19,7 +19,9 @@
 │   ├── clash_config.yml       # 200 最佳节点
 │   ├── clash_mini.yml         # 100 最佳节点
 │   ├── clash_all.yml          # 全量可用节点（不截断）
-│   ├── nodes.txt              # Hiddify 兼容纯文本订阅（每行一个 URI）
+│   ├── nodes.txt              # 200 节点 URI 列表
+│   ├── nodes_mini.txt         # 100 节点 URI 列表
+│   ├── nodes_all.txt          # 全量节点 URI 列表（不截断）
 │   └── valid_nodes.json       # 调试数据
 └── .github/workflows/
     └── smart-proxy.yml        # 每 3 小时自动运行 + 手动触发
@@ -49,10 +51,12 @@ https://你的用户名.github.io/仓库名/clash.yml
 https://你的用户名.github.io/仓库名/clash_all.yml
 https://你的用户名.github.io/仓库名/clash_mini.yml
 https://你的用户名.github.io/仓库名/nodes.txt
+https://你的用户名.github.io/仓库名/nodes_all.txt
+https://你的用户名.github.io/仓库名/nodes_mini.txt
 ```
 
-> `clash_all.yml` 为全量可用节点（不截断），适合需要最大节点池的场景。
-> `nodes.txt` 为纯文本逐行 URI 格式，Hiddify / v2rayN / NekoBox 等客户端可直接订阅。
+> `clash_all.yml` / `nodes_all.txt` 为全量可用节点（不截断），适合需要最大节点池的场景。
+> `nodes*.txt` 为纯文本逐行 URI 格式，Hiddify / v2rayN / NekoBox 等客户端可直接订阅。
 
 ## 环境变量
 

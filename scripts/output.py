@@ -343,12 +343,15 @@ def write(valid_nodes: List[Dict], max_full: int, max_mini: int):
     yaml.dump(mini_config, f, allow_unicode=True, sort_keys=False, indent=2)
   print(f"  \u2713 clash_mini.yml ({len(mini_nodes)} \u8282\u70b9)")
 
-  # Plain URI list (Hiddify-compatible)
-  uris = [u for u in (_to_uri(n) for n in selected) if u]
-  txt_path = OUTPUT_DIR / "nodes.txt"
-  with open(txt_path, "w", encoding="utf-8") as f:
-    f.write("\n".join(uris) + ("\n" if uris else ""))
-  print(f"  \u2713 nodes.txt ({len(uris)} \u8282\u70b9)")
+  # Plain URI lists (Hiddify-compatible) — full / mini / all
+  def _write_uris(path: Path, nodes: List[Dict]):
+    uris = [u for u in (_to_uri(n) for n in nodes) if u]
+    with open(path, "w", encoding="utf-8") as f:
+      f.write("\n".join(uris) + ("\n" if uris else ""))
+    print(f"  \u2713 {path.name} ({len(uris)} \u8282\u70b9)")
+
+  _write_uris(OUTPUT_DIR / "nodes.txt", selected)
+  _write_uris(OUTPUT_DIR / "nodes_mini.txt", selected[:max_mini])
 
   # Debug JSON
   with open(OUTPUT_DIR / "valid_nodes.json", "w", encoding="utf-8") as f:
@@ -380,6 +383,9 @@ def write(valid_nodes: List[Dict], max_full: int, max_mini: int):
     f.write("---\n")
     yaml.dump(all_config, f, allow_unicode=True, sort_keys=False, indent=2)
   print(f"  \u2713 clash_all.yml ({len(all_clash_nodes)} \u8282\u70b9)")
+
+  # nodes_all.txt: 全量可用节点 URI（不截断）
+  _write_uris(OUTPUT_DIR / "nodes_all.txt", valid_nodes)
 
   # Stats
   type_counts: Dict[str, int] = {}
