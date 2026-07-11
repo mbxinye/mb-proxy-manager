@@ -22,7 +22,11 @@ _COUNTRY_RANK = {code: i for i, code in enumerate(PREFERRED_COUNTRIES)}
 
 
 def _country_rank(node: Dict) -> int:
-  code = extract_country(node.get("name", ""))
+  code = extract_country(
+    node.get("name", ""),
+    node.get("server", ""),
+    node.get("sni") or node.get("servername") or "",
+  )
   return _COUNTRY_RANK.get(code, 99) if code else 99
 
 
@@ -296,7 +300,11 @@ def write(valid_nodes: List[Dict], max_full: int, max_mini: int):
   counters: Dict[str, int] = {}
   for node in selected:
     name = node.get("name", f"Node_{node['server']}")
-    code = extract_country(name) or "XX"
+    code = extract_country(
+      name,
+      node.get("server", ""),
+      node.get("sni") or node.get("servername") or "",
+    ) or "XX"
     counters[code] = counters.get(code, 0) + 1
     node["name"] = generate_node_name(name, counters[code], node.get("latency", 9999))
 
@@ -362,7 +370,11 @@ def write(valid_nodes: List[Dict], max_full: int, max_mini: int):
   all_counters: Dict[str, int] = {}
   for node in valid_nodes:
     name = node.get("name", f"Node_{node['server']}")
-    code = extract_country(name) or "XX"
+    code = extract_country(
+      name,
+      node.get("server", ""),
+      node.get("sni") or node.get("servername") or "",
+    ) or "XX"
     all_counters[code] = all_counters.get(code, 0) + 1
     node["name"] = generate_node_name(name, all_counters[code], node.get("latency", 9999))
   all_clash_nodes = [_to_clash_node(n) for n in valid_nodes]
