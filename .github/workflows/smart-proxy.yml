@@ -2,7 +2,7 @@ name: Proxy Filter Updater
 
 on:
   schedule:
-    - cron: '0 */3 * * *'
+    - cron: '*/5 * * * *'
   workflow_dispatch:
 
 env:
@@ -94,7 +94,7 @@ jobs:
               <a href="./nodes_mini.txt">Plain URI List (Mini)</a>
               <div class="info">100 nodes - Lightweight version</div>
             </div>
-            <p style="color: #999; font-size: 12px; margin-top: 30px;">Updates every 3 hours via GitHub Actions</p>
+            <p style="color: #999; font-size: 12px; margin-top: 30px;">Updates every 5 minutes via GitHub Actions</p>
           </div>
         </body>
         </html>
