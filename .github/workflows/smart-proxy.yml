@@ -2,11 +2,12 @@ name: Proxy Filter Updater
 
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '13 */1 * * *'
   workflow_dispatch:
 
 env:
   PYTHON_VERSION: '3.11'
+  PROXY_MIHOMO_VERSION: 'v1.19.13'
 
 jobs:
   update:
@@ -31,11 +32,9 @@ jobs:
       uses: actions/cache@v4
       with:
         path: bin/
-        key: mihomo-v1.19.13-linux-amd64-v3
+        key: mihomo-${{ env.PROXY_MIHOMO_VERSION }}-linux-amd64-v3
 
     - name: Run filter
-      env:
-        PROXY_MIHOMO_VERSION: 'v1.19.13'
       run: python3 run.py
 
     - name: Prepare GitHub Pages
@@ -94,7 +93,7 @@ jobs:
               <a href="./nodes_mini.txt">Plain URI List (Mini)</a>
               <div class="info">100 nodes - Lightweight version</div>
             </div>
-            <p style="color: #999; font-size: 12px; margin-top: 30px;">Updates every 5 minutes via GitHub Actions</p>
+            <p style="color: #999; font-size: 12px; margin-top: 30px;">Updates every hour via GitHub Actions</p>
           </div>
         </body>
         </html>

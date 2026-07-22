@@ -294,11 +294,10 @@ def write(valid_nodes: List[Dict], max_full: int, max_mini: int):
   OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
   valid_nodes.sort(key=_sort_key)
-  selected = valid_nodes[:max_full]
 
-  # Generate display names
+  # 一次性为全量节点生成显示名（避免重复命名、保证 full/all 编号一致）
   counters: Dict[str, int] = {}
-  for node in selected:
+  for node in valid_nodes:
     name = node.get("name", f"Node_{node['server']}")
     code = extract_country(
       name,
@@ -308,6 +307,7 @@ def write(valid_nodes: List[Dict], max_full: int, max_mini: int):
     counters[code] = counters.get(code, 0) + 1
     node["name"] = generate_node_name(name, counters[code], node.get("latency", 9999))
 
+  selected = valid_nodes[:max_full]
   clash_nodes = [_to_clash_node(n) for n in selected]
 
   # Full config
@@ -367,16 +367,6 @@ def write(valid_nodes: List[Dict], max_full: int, max_mini: int):
   print(f"  \u2713 valid_nodes.json")
 
   # clash_all.yml: 全量可用节点（不截断）
-  all_counters: Dict[str, int] = {}
-  for node in valid_nodes:
-    name = node.get("name", f"Node_{node['server']}")
-    code = extract_country(
-      name,
-      node.get("server", ""),
-      node.get("sni") or node.get("servername") or "",
-    ) or "XX"
-    all_counters[code] = all_counters.get(code, 0) + 1
-    node["name"] = generate_node_name(name, all_counters[code], node.get("latency", 9999))
   all_clash_nodes = [_to_clash_node(n) for n in valid_nodes]
   all_config = {
     "port": 7890,

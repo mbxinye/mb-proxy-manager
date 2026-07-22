@@ -1,6 +1,6 @@
 # Proxy Manager
 
-自动聚合多路代理订阅 → mihomo 端到端测试 → 生成 Clash 配置文件，通过 GitHub Actions 每 3 小时自动更新。
+自动聚合多路代理订阅 → mihomo 端到端测试 → 生成 Clash 配置文件，通过 GitHub Actions 每小时自动更新。
 
 ## 项目结构
 

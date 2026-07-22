@@ -43,11 +43,22 @@ def run():
   print("\n\u89e3\u6790\u8282\u70b9...")
   all_nodes = parse_all(fetched)
 
-  # 3. Dedup
+  # 3. Dedup (含凭证，避免同地址不同凭证节点被误删)
+  def _dedup_key(n):
+    t = n.get("type", "")
+    base = f"{n.get('server', '')}:{n.get('port', '')}:{t}"
+    if t in ("ss", "ssr"):
+      return f"{base}:{n.get('cipher', '')}:{n.get('password', '')}"
+    if t in ("vmess", "vless"):
+      return f"{base}:{n.get('uuid', '')}"
+    if t in ("trojan", "hysteria2"):
+      return f"{base}:{n.get('password', '')}"
+    return base
+
   seen = set()
   unique = []
   for n in all_nodes:
-    key = f"{n['server']}:{n['port']}:{n.get('type', '')}"
+    key = _dedup_key(n)
     if key not in seen:
       seen.add(key)
       unique.append(n)

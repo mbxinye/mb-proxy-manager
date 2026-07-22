@@ -10,6 +10,9 @@ import yaml
 
 class NodeParser:
 
+  def __init__(self):
+    self._skipped = 0
+
   def parse_subscription(self, content: str) -> List[Dict]:
     nodes = []
     content = content.strip()
@@ -33,11 +36,13 @@ class NodeParser:
     else:
       for line in content.split("\n"):
         line = line.strip()
-        if not line:
+        if not line or line.startswith(("#", "//")):
           continue
         node = self.parse_uri(line)
         if node:
           nodes.append(node)
+        else:
+          self._skipped += 1
     return nodes
 
   def _try_base64_decode(self, content: str) -> Optional[str]:
@@ -348,4 +353,6 @@ def parse_all(results: List[dict]) -> List[Dict]:
       n["_sub_url"] = r["url"]
     all_nodes.extend(nodes)
   print(f"  \u89e3\u6790\u5b8c\u6210: {len(all_nodes)} \u4e2a\u8282\u70b9")
+  if parser._skipped:
+    print(f"  \u89e3\u6790\u8df3\u8fc7: {parser._skipped} \u884c\u65e0\u6548/\u4e0d\u652f\u6301")
   return all_nodes

@@ -17,8 +17,6 @@ USER_AGENT = (
 def _fetch_one(url: str) -> dict:
   try:
     ctx = ssl.create_default_context()
-    ctx.check_hostname = False
-    ctx.verify_mode = ssl.CERT_NONE
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     with urllib.request.urlopen(req, timeout=SUBSCRIPTION_TIMEOUT, context=ctx) as resp:
       content = resp.read().decode("utf-8", errors="ignore")

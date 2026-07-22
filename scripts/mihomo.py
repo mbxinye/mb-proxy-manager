@@ -120,15 +120,17 @@ def _free_port() -> int:
 
 def _build_test_config(
   nodes: List[Dict], port: int
-) -> Tuple[Dict, Dict[str, Dict]]:
+) -> Tuple[Dict, Dict[str, Dict], List[int]]:
   clash_proxies: List[Dict] = []
   proxy_to_node: Dict[str, Dict] = {}
+  proxy_node_indices: List[int] = []
   for i, n in enumerate(nodes):
     synthetic = dict(n)
     synthetic["name"] = f"node-{i}"
     try:
       clash_proxies.append(_to_clash_node(synthetic))
       proxy_to_node[f"node-{i}"] = n
+      proxy_node_indices.append(i)
     except (KeyError, ValueError, TypeError):
       continue
   config = {
@@ -147,7 +149,7 @@ def _build_test_config(
     ],
     "rules": ["MATCH,TEST"],
   }
-  return config, proxy_to_node
+  return config, proxy_to_node, proxy_node_indices
 
 
 def _wait_ready(port: int, timeout: float = 30.0) -> bool:
@@ -209,13 +211,13 @@ def _run_delay_tests(
 
 
 def _validate_config(binary: Path, nodes: List[Dict]) -> List[Dict]:
-  """用 mihomo -t 预校验配置，循环剔除致命节点，保证返回的节点列表 0 fatal。"""
+  """用 mihomo -t 预校验配置，批量剔除致命节点，保证返回的节点列表 0 fatal。"""
   current = list(nodes)
   total_dropped = 0
   while True:
     if not current:
       break
-    config, _ = _build_test_config(current, 0)
+    config, _, proxy_node_indices = _build_test_config(current, 0)
     with tempfile.TemporaryDirectory(prefix="mihomo-validate-") as workdir:
       cfg_path = Path(workdir) / "config.yaml"
       with open(cfg_path, "w", encoding="utf-8") as f:
@@ -226,16 +228,20 @@ def _validate_config(binary: Path, nodes: List[Dict]) -> List[Dict]:
       )
       if r.returncode == 0:
         break
-      # 解析 "proxy N: ..." 提取错误节点索引（N 对应 proxies 列表位置，从 0 起）
-      m = re.search(r"proxy (\d+):", r.stdout or r.stderr or "")
-      if not m:
+      # 收集所有报错的 proxy 位置，一次性批量剔除（避免多次启动 mihomo）
+      text = r.stdout or r.stderr or ""
+      positions = [int(p) for p in re.findall(r"proxy (\d+):", text)]
+      node_idxs = sorted(
+        {proxy_node_indices[p] for p in positions if 0 <= p < len(proxy_node_indices)},
+        reverse=True,
+      )
+      if not node_idxs:
         # 无法定位错误，放弃校验直接返回当前列表（交给兜底处理）
         break
-      idx = int(m.group(1))
-      if idx >= len(current):
-        break
-      current.pop(idx)
-      total_dropped += 1
+      for idx in node_idxs:
+        if 0 <= idx < len(current):
+          current.pop(idx)
+          total_dropped += 1
   if total_dropped:
     print(f"  配置校验剔除: {total_dropped} 个致命节点")
   return current
@@ -246,7 +252,7 @@ def _test_batch(binary: Path, nodes: List[Dict]) -> List[Dict]:
   if not nodes:
     return []
   port = _free_port()
-  config, proxy_to_node = _build_test_config(nodes, port)
+  config, proxy_to_node, _ = _build_test_config(nodes, port)
   if not proxy_to_node:
     return []
 

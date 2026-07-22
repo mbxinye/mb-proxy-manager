@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+from typing import Optional
+
 
 def sanitize_name(name: str) -> str:
   if not name:
@@ -126,7 +128,7 @@ CITY_CODE_MAP = {
 }
 
 
-def _flag_emoji_to_code(name: str) -> str | None:
+def _flag_emoji_to_code(name: str) -> Optional[str]:
   for i in range(len(name) - 1):
     a, b = ord(name[i]), ord(name[i + 1])
     if _FLAG_START <= a <= _FLAG_START + 25 and _FLAG_START <= b <= _FLAG_START + 25:
@@ -134,7 +136,7 @@ def _flag_emoji_to_code(name: str) -> str | None:
   return None
 
 
-def _city_code_to_country(text: str) -> str | None:
+def _city_code_to_country(text: str) -> Optional[str]:
   text_lower = text.lower()
   for city_code, country in CITY_CODE_MAP.items():
     if city_code in text_lower:
@@ -142,7 +144,7 @@ def _city_code_to_country(text: str) -> str | None:
   return None
 
 
-def extract_country(name: str, server: str = "", sni: str = "") -> str | None:
+def extract_country(name: str, server: str = "", sni: str = "") -> Optional[str]:
   code = _flag_emoji_to_code(name)
   if code:
     return code

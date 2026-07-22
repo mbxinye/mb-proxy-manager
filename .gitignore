@@ -53,3 +53,5 @@ bin/
 
 # trae 归档文件
 .trae/
+
+.workbuddy/

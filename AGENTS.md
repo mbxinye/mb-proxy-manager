@@ -35,7 +35,7 @@ python3 -c "from scripts.parser import NodeParser; print('OK')"
 
 ### GitHub Actions
 
-Runs every 3 hours via `.github/workflows/smart-proxy.yml`.
+Runs every hour via `.github/workflows/smart-proxy.yml` (`13 */1 * * *`).
 Manual trigger also supported via `workflow_dispatch`.
 
 ## Code Style Guidelines
