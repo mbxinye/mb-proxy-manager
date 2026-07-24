@@ -1,0 +1,1393 @@
+---
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: warning
+proxies:
+- name: 🇺🇸 US 01 [152]
+  type: vless
+  server: 154.193.55.183
+  port: '443'
+  udp: true
+  uuid: 11e57eeb-ffdf-4983-a9fa-ad352dea7253
+  flow: xtls-rprx-vision
+  servername: storage.yandex.net
+  tls: true
+  reality-opts:
+    public-key: EMS0wzISeSbEe4JABPD8EgDnyLXgDmrX4_lcfG6VVX4
+    short-id: dbbe8dca27a92c35
+  client-fingerprint: chrome
+  skip-cert-verify: true
+- name: 🇺🇸 US 02 [158]
+  type: vless
+  server: 154.193.55.183
+  port: '443'
+  udp: true
+  uuid: f75814f6-8f81-4847-b792-168c41f2dc85
+  flow: xtls-rprx-vision
+  servername: storage.yandex.net
+  tls: true
+  reality-opts:
+    public-key: EMS0wzISeSbEe4JABPD8EgDnyLXgDmrX4_lcfG6VVX4
+    short-id: c76ba2c2fb172e8b
+  client-fingerprint: firefox
+  skip-cert-verify: true
+- name: 🇺🇸 US 03 [260]
+  type: vless
+  server: 172.64.144.82
+  port: '2095'
+  udp: true
+  uuid: 86c50e3a-5b87-49dd-bd20-03c7f2735e40
+  network: ws
+  ws-opts:
+    headers:
+      Host: fangbinxingnmsl.pusytroller.gq
+      User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like
+        Gecko) Chrome/51.0.2704.103 Safari/537.36
+    path: /
+- name: 🇺🇸 US 04 [278]
+  type: vless
+  server: 172.64.145.202
+  port: '2095'
+  udp: true
+  uuid: 86c50e3a-5b87-49dd-bd20-03c7f2735e40
+  network: ws
+  ws-opts:
+    headers:
+      Host: fangbinxingnmsl.pusytroller.gq
+      User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/53.0.2785.143 Safari/537.36
+    path: /
+- name: 🇺🇸 US 05 [295]
+  type: vless
+  server: 172.64.146.153
+  port: '2095'
+  udp: true
+  uuid: 86c50e3a-5b87-49dd-bd20-03c7f2735e40
+  network: ws
+  ws-opts:
+    headers:
+      Host: fangbinxingnmsl.pusytroller.gq
+      User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/70.0.3538.110 Safari/537.36
+    path: /
+- name: 🇺🇸 US 06 [148]
+  type: ss
+  server: 54.167.54.100
+  port: '443'
+  cipher: aes-256-cfb
+  password: amazonskr05
+- name: 🇰🇷 KR 01 [755]
+  type: trojan
+  server: outgoing-ladybird.rooster465.autos
+  port: '443'
+  udp: true
+  password: FC60532879
+  sni: outgoing-ladybird.rooster465.autos
+  skip-cert-verify: true
+- name: 🇰🇷 KR 02 [764]
+  type: trojan
+  server: powerful-opossum.rooster465.autos
+  port: '443'
+  udp: true
+  password: FC60532879
+  sni: powerful-opossum.rooster465.autos
+  skip-cert-verify: true
+- name: 🇰🇷 KR 03 [778]
+  type: trojan
+  server: humorous-starling.rooster465.autos
+  port: '443'
+  udp: true
+  password: FC60532879
+  sni: humorous-starling.rooster465.autos
+  skip-cert-verify: true
+- name: 🇯🇵 JP 01 [515]
+  type: trojan
+  server: wise-longhorn.rooster465.autos
+  port: '443'
+  udp: true
+  password: FC60532879
+  sni: wise-longhorn.rooster465.autos
+  skip-cert-verify: true
+- name: 🇯🇵 JP 02 [515]
+  type: trojan
+  server: square-anchovy.rooster465.autos
+  port: '443'
+  udp: true
+  password: IQ68037294
+  sni: square-anchovy.rooster465.autos
+  skip-cert-verify: true
+- name: 🇸🇬 SG 01 [184]
+  type: trojan
+  server: 188.164.248.122
+  port: '443'
+  udp: true
+  password: c206d543-023d-46cc-9d5a-1f0f2fc16323
+  sni: space.byu.id.yxls.eu.cc
+  network: ws
+  ws-opts:
+    headers:
+      User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/64.0.3282.186 Safari/537.36
+    path: /in-pdr
+- name: 🇸🇬 SG 02 [757]
+  type: trojan
+  server: neat-quail.rooster465.autos
+  port: '443'
+  udp: true
+  password: FC60532879
+  sni: neat-quail.rooster465.autos
+  skip-cert-verify: true
+- name: 🇸🇬 SG 03 [759]
+  type: trojan
+  server: bright-quagga.rooster465.autos
+  port: '443'
+  udp: true
+  password: FC60532879
+  sni: bright-quagga.rooster465.autos
+  skip-cert-verify: true
+- name: 🇸🇬 SG 04 [760]
+  type: trojan
+  server: definite-sturgeon.rooster465.autos
+  port: '443'
+  udp: true
+  password: FC60532879
+  sni: definite-sturgeon.rooster465.autos
+  skip-cert-verify: true
+- name: 🇸🇬 SG 05 [150]
+  type: vless
+  server: 162.159.48.193
+  port: '8880'
+  udp: true
+  uuid: ba746959-18e7-471c-b00f-fa5cdd930abf
+  network: ws
+  ws-opts:
+    headers:
+      Host: crimson-bread-c38e.295.workers.dev
+      User-Agent: Mozilla/5.0 (Windows NT 6.0; WOW64) AppleWebKit/537.36 (KHTML, like
+        Gecko) Chrome/51.0.2704.106 Safari/537.36
+    path: /pyip=ProxyIP.JP.CMLiussss.net
+- name: 🇸🇬 SG 06 [213]
+  type: vless
+  server: 104.18.39.123
+  port: '443'
+  udp: true
+  uuid: c19735a7-ff97-a112-3f07-60e500f7719b
+  servername: ldggej--MiTiVPN---MiTiVPN-o.App-Cloud.ir
+  tls: true
+  network: ws
+  ws-opts:
+    headers:
+      Host: l-j-pjj-MiTiVPN---MiTiVPN-o.App-Cloud.ir
+      User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/60.0.3112.90 Safari/537.36
+    path: /---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN=des
+- name: 🇸🇬 SG 07 [1390]
+  type: vless
+  server: 141.193.213.20
+  port: '2096'
+  udp: true
+  uuid: edb26c67-44b7-4448-ac19-625f503db1a5
+  flow: none
+  servername: lk.thenuka.online
+  tls: true
+  network: ws
+  ws-opts:
+    headers:
+      Host: lk.thenuka.online
+      User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/60.0.3112.90 Safari/537.36
+    path: /
+- name: 🇭🇰 HK 01 [830]
+  type: trojan
+  server: 185.244.208.64
+  port: '443'
+  udp: true
+  password: IQ68037294
+  sni: desired-tahr.rooster465.autos
+  skip-cert-verify: true
+- name: 🇭🇰 HK 02 [873]
+  type: trojan
+  server: saved-mudfish.rooster465.autos
+  port: '443'
+  udp: true
+  password: JA96378052
+  sni: saved-mudfish.rooster465.autos
+  skip-cert-verify: true
+- name: 🇭🇰 HK 03 [890]
+  type: trojan
+  server: eminent-lamb.rooster465.autos
+  port: '443'
+  udp: true
+  password: HW85960347
+  sni: eminent-lamb.rooster465.autos
+  skip-cert-verify: true
+- name: 🇭🇰 HK 04 [893]
+  type: trojan
+  server: pretty-vervet.rooster465.autos
+  port: '443'
+  udp: true
+  password: KV63147582
+  sni: pretty-vervet.rooster465.autos
+  skip-cert-verify: true
+- name: 🇭🇰 HK 05 [507]
+  type: vmess
+  server: 47.244.120.197
+  port: '44867'
+  udp: true
+  uuid: 845e6b08-2919-4290-ade0-5dc7dcea59ca
+  alterId: 0
+  cipher: auto
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /arki?ed=2048
+- name: 🇹🇼 TW 01 [856]
+  type: http
+  server: twmoon1-cdn-route.couldflare-cdn.com
+  port: '1443'
+  username: mrwdfNTD8M79LCukCieldrqZWqs=
+  password: exaxgqkKkd0TAMrCxeonWg==
+  tls: true
+- name: 🇳🇱 NL 01 [521]
+  type: trojan
+  server: thorough-falcon.rooster465.autos
+  port: '443'
+  udp: true
+  password: NQ26071394
+  sni: thorough-falcon.rooster465.autos
+  skip-cert-verify: true
+- name: 🇨🇭 CH 01 [580]
+  type: trojan
+  server: 86.106.84.195
+  port: '53261'
+  udp: true
+  password: y3b03zx3tznhyo538p4c
+  sni: 86.106.84.195
+  skip-cert-verify: true
+- name: 🇪🇸 ES 01 [619]
+  type: trojan
+  server: 193.148.19.213
+  port: '52794'
+  udp: true
+  password: 2eutknankxtbgkwcajzt
+  sni: 193.148.19.213
+  skip-cert-verify: true
+- name: 🇦🇺 AU 01 [761]
+  type: trojan
+  server: evident-gnat.rooster465.autos
+  port: '443'
+  udp: true
+  password: JA96378052
+  sni: evident-gnat.rooster465.autos
+  skip-cert-verify: true
+- name: XX 01 [551]
+  type: vless
+  server: 2.27.25.13
+  port: '443'
+  udp: true
+  uuid: 4bf4c3ce-c4bb-4e0b-85d8-79238539c4a9
+  flow: xtls-rprx-vision
+  servername: deepl.com
+  tls: true
+  reality-opts:
+    public-key: vnjp7zIK2H3CGdjSis_79KXqS6IG-opmpbETPUD-EC8
+    short-id: 15affa0af66dfc79
+  client-fingerprint: firefox
+  skip-cert-verify: true
+- name: 🇷🇴 RO 01 [633]
+  type: vless
+  server: 76.164.202.212
+  port: '448'
+  udp: true
+  uuid: ecfb4271-790e-4011-9364-6e168ed8a82a
+  servername: www.samsung.com
+  tls: true
+  reality-opts:
+    public-key: i34zHKfyydOveuaYnjEU4ocu662Wagkf7fIbj9qiQRA
+    short-id: 9e96f30390d6be81
+  client-fingerprint: chrome
+  skip-cert-verify: true
+- name: 🇫🇷 FR 01 [691]
+  type: vless
+  server: fl4.raketa-balance.com
+  port: '443'
+  udp: true
+  uuid: d7fc372d-c057-43ce-8070-9b96abbc60f3
+  flow: xtls-rprx-vision
+  servername: fl4.raketa-balance.com
+  tls: true
+  reality-opts:
+    public-key: JaP4bhvIMW-l7T0_RkLra59DeBYI6W9XemKa8MyRPSY
+    short-id: 6c6082a2223c1d03
+  client-fingerprint: firefox
+  skip-cert-verify: true
+- name: XX 02 [761]
+  type: vless
+  server: node.mxvpn.dev
+  port: '443'
+  udp: true
+  uuid: 564082ff-cf3c-48db-9e10-8ad2312847b4
+  flow: xtls-rprx-vision
+  servername: node.mxvpn.dev
+  tls: true
+  reality-opts:
+    public-key: TlpXTLz1Y-v8B6q9MX55U6eypjfL0LCSNE5zQP4yRHw
+    short-id: bbc68cec8bb8d2e3
+  client-fingerprint: firefox
+  skip-cert-verify: true
+- name: 🇷🇴 RO 02 [775]
+  type: vless
+  server: 93.114.194.116
+  port: '448'
+  udp: true
+  uuid: bc5b801f-49a7-4db7-ac92-a2c57d42d132
+  servername: www.samsung.com
+  tls: true
+  reality-opts:
+    public-key: qX6IJfWNN-SNray6xJugb8pCpgY_zjeyCfvq9IUyd3w
+    short-id: e1bdc95c1554c8eb
+  client-fingerprint: chrome
+  skip-cert-verify: true
+- name: LT 01 [842]
+  type: vless
+  server: 45.81.254.101
+  port: '443'
+  udp: true
+  uuid: c01c2da7-6977-4b53-a493-cda17fa61b4f
+  flow: xtls-rprx-vision
+  servername: travel.catanduanes.ru
+  tls: true
+  reality-opts:
+    public-key: igTVOq5qGZYKOLuu_RJFMyNC-vY_oi3MCSpQ6HOoYH8
+    short-id: 81711c3d1425c374
+  client-fingerprint: firefox
+  skip-cert-verify: true
+- name: 🇸🇪 SE 01 [844]
+  type: vless
+  server: node1.mxvpn.dev
+  port: '443'
+  udp: true
+  uuid: 564082ff-cf3c-48db-9e10-8ad2312847b4
+  flow: xtls-rprx-vision
+  servername: node1.mxvpn.dev
+  tls: true
+  reality-opts:
+    public-key: TlpXTLz1Y-v8B6q9MX55U6eypjfL0LCSNE5zQP4yRHw
+    short-id: bbc68cec8bb8d2e3
+  client-fingerprint: firefox
+  skip-cert-verify: true
+- name: 🇷🇺 RU 01 [845]
+  type: vless
+  server: 188.225.46.217
+  port: '443'
+  udp: true
+  uuid: 2a12bb81-f3a3-41bb-99ab-36febf676b4a
+  flow: xtls-rprx-vision
+  servername: api-maps.yandex.ru
+  tls: true
+  reality-opts:
+    public-key: KgKu2yHqldNUFnYCY7suz-YTQKi6ZX2mLBduS2yy1xs
+  client-fingerprint: chrome
+  skip-cert-verify: true
+- name: 🇬🇧 GB 01 [889]
+  type: vless
+  server: uk1.panel11.ru
+  port: '443'
+  udp: true
+  uuid: d385a48f-9f6f-406a-8d3c-e409b371c565
+  flow: xtls-rprx-vision
+  servername: uk1.panel11.ru
+  tls: true
+  reality-opts:
+    public-key: L5qLDM9pWlBV6gU9yCT4_yc7jz982FiLi2CZWLo3Ki0
+    short-id: dcbf3f13ce2dbe37
+  client-fingerprint: firefox
+  skip-cert-verify: true
+- name: 🇬🇧 GB 02 [974]
+  type: vless
+  server: 45.155.52.231
+  port: '443'
+  udp: true
+  uuid: 219f9fec-8983-4f6f-af8c-31bd0c6dbf19
+  servername: ru2.skydrgn-online.online
+  tls: true
+  reality-opts:
+    public-key: 6p0aVCkOgd-xaxqSMANYABL6O4Tdbftnxjiy5qcmISQ
+    short-id: 0b
+  client-fingerprint: firefox
+  skip-cert-verify: true
+- name: 🇳🇱 NL 02 [983]
+  type: vless
+  server: nl1.panel11.ru
+  port: '443'
+  udp: true
+  uuid: d385a48f-9f6f-406a-8d3c-e409b371c565
+  flow: xtls-rprx-vision
+  servername: nl1.panel11.ru
+  tls: true
+  reality-opts:
+    public-key: SyTPcYz068PdWyB0tongXPgSe1QU2nn-_yYsO959nUQ
+    short-id: 5578c19d39bec828
+  client-fingerprint: firefox
+  skip-cert-verify: true
+- name: 🇷🇺 RU 02 [1114]
+  type: vless
+  server: 213.219.212.24
+  port: '443'
+  udp: true
+  uuid: 8bdaaef0-44b3-4f2f-8858-aa4d16a64e92
+  flow: xtls-rprx-vision
+  servername: pro-ru-213.emrata.top
+  tls: true
+  reality-opts:
+    public-key: AAZjVvbC7AwPKot_1ygO5VMpN7XYifCA7lG0RNR5sEk
+  client-fingerprint: firefox
+  skip-cert-verify: true
+- name: SC 01 [1258]
+  type: vless
+  server: 45.196.201.96
+  port: '443'
+  udp: true
+  uuid: f75814f6-8f81-4847-b792-168c41f2dc85
+  flow: xtls-rprx-vision
+  servername: storage.yandex.net
+  tls: true
+  reality-opts:
+    public-key: zii4nGNapnFKL6SN8GzWNqFlElBvUCUFUThEP0kFH04
+    short-id: c6ef72e4635d15a5
+  client-fingerprint: chrome
+  skip-cert-verify: true
+- name: SC 02 [1269]
+  type: vless
+  server: 45.196.201.68
+  port: '443'
+  udp: true
+  uuid: f75814f6-8f81-4847-b792-168c41f2dc85
+  flow: xtls-rprx-vision
+  servername: storage.yandex.net
+  tls: true
+  reality-opts:
+    public-key: zii4nGNapnFKL6SN8GzWNqFlElBvUCUFUThEP0kFH04
+    short-id: c6ef72e4635d15a5
+  client-fingerprint: firefox
+  skip-cert-verify: true
+- name: SC 03 [1292]
+  type: vless
+  server: 45.196.201.28
+  port: '443'
+  udp: true
+  uuid: f75814f6-8f81-4847-b792-168c41f2dc85
+  flow: xtls-rprx-vision
+  servername: storage.yandex.net
+  tls: true
+  reality-opts:
+    public-key: zii4nGNapnFKL6SN8GzWNqFlElBvUCUFUThEP0kFH04
+    short-id: c6ef72e4635d15a5
+  client-fingerprint: firefox
+  skip-cert-verify: true
+- name: SC 04 [1410]
+  type: vless
+  server: 45.196.201.15
+  port: '443'
+  udp: true
+  uuid: f75814f6-8f81-4847-b792-168c41f2dc85
+  flow: xtls-rprx-vision
+  servername: storage.yandex.net
+  tls: true
+  reality-opts:
+    public-key: zii4nGNapnFKL6SN8GzWNqFlElBvUCUFUThEP0kFH04
+    short-id: c6ef72e4635d15a5
+  client-fingerprint: firefox
+  skip-cert-verify: true
+- name: XX 03 [122]
+  type: vless
+  server: 162.159.42.163
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 04 [127]
+  type: vless
+  server: 162.159.8.123
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 05 [127]
+  type: vless
+  server: 162.159.36.166
+  port: '8443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 06 [128]
+  type: vless
+  server: 162.159.3.48
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 07 [130]
+  type: vless
+  server: 162.159.48.245
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 08 [131]
+  type: vless
+  server: 104.18.35.13
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 09 [132]
+  type: vless
+  server: 172.64.146.229
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 10 [133]
+  type: vless
+  server: 108.162.196.3
+  port: '2083'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 11 [133]
+  type: vless
+  server: 162.159.21.206
+  port: '2083'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 12 [134]
+  type: vless
+  server: 162.159.1.37
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 13 [134]
+  type: vless
+  server: 162.159.4.221
+  port: '8443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 14 [134]
+  type: vless
+  server: 104.18.37.237
+  port: '8443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 15 [134]
+  type: vless
+  server: 162.159.8.42
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 16 [136]
+  type: vless
+  server: 162.159.4.2
+  port: '8443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 17 [136]
+  type: vless
+  server: 172.64.145.2
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 18 [136]
+  type: vless
+  server: 162.159.32.239
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 19 [136]
+  type: vless
+  server: 108.162.198.43
+  port: '8443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 20 [137]
+  type: vless
+  server: 172.64.151.158
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 21 [138]
+  type: vless
+  server: 162.159.34.23
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 22 [138]
+  type: vless
+  server: 162.159.42.182
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 23 [139]
+  type: vless
+  server: 172.64.149.209
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 24 [141]
+  type: vless
+  server: 172.64.150.246
+  port: '2083'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 25 [141]
+  type: vless
+  server: 162.159.41.198
+  port: '8443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 26 [142]
+  type: vless
+  server: 108.162.196.3
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 27 [142]
+  type: vless
+  server: 172.64.41.202
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 28 [142]
+  type: vless
+  server: 104.16.148.8
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 29 [143]
+  type: vless
+  server: 162.159.21.235
+  port: '8443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 30 [144]
+  type: vless
+  server: 104.16.253.227
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 31 [145]
+  type: vless
+  server: 162.159.1.170
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 32 [145]
+  type: vless
+  server: 162.159.3.141
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 33 [146]
+  type: vless
+  server: 172.64.153.159
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 34 [147]
+  type: vless
+  server: 162.159.24.39
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 35 [147]
+  type: vless
+  server: 104.18.44.198
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 36 [148]
+  type: vless
+  server: 162.159.60.167
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 37 [148]
+  type: vless
+  server: 104.16.72.50
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /fp
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 38 [148]
+  type: vless
+  server: 162.159.5.231
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 39 [149]
+  type: vless
+  server: 172.64.40.79
+  port: '2083'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 40 [151]
+  type: vless
+  server: 172.64.35.37
+  port: '8443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 41 [151]
+  type: vless
+  server: 198.41.223.238
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 42 [153]
+  type: vless
+  server: 104.17.184.155
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 43 [154]
+  type: vless
+  server: 162.159.46.24
+  port: '8443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 44 [155]
+  type: vless
+  server: 172.64.40.49
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 45 [155]
+  type: vless
+  server: 162.159.16.154
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 46 [157]
+  type: vless
+  server: 172.64.145.186
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 47 [158]
+  type: vless
+  server: 162.159.14.252
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 48 [158]
+  type: vless
+  server: 104.18.45.249
+  port: '8443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 49 [160]
+  type: vless
+  server: 162.159.46.67
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 50 [161]
+  type: vless
+  server: 162.159.10.87
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 51 [164]
+  type: vless
+  server: 162.159.11.57
+  port: '2083'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 52 [178]
+  type: vless
+  server: 162.159.12.210
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 53 [182]
+  type: vless
+  server: 172.64.147.104
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 54 [185]
+  type: vless
+  server: 104.16.72.41
+  port: '443'
+  udp: true
+  uuid: c19735a7-ff97-a112-3f07-60e500f7719b
+  servername: l-j-uu-MiTiVPN---MiTiVPN-o.MAQROR.ir
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN=finland
+    headers:
+      Host: l-j-iii-MiTiVPN---MiTiVPN-o.MAQROR.ir
+- name: XX 55 [215]
+  type: vless
+  server: 104.17.108.103
+  port: '443'
+  udp: true
+  uuid: c19735a7-ff97-a112-3f07-60e500f7719b
+  servername: l-j-o-MiTiVPN---MiTiVPN-o.MAQROR.ir
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN=sweden
+    headers:
+      Host: l-j--bMiTiVPN---MiTiVPN-o.MAQROR.ir
+- name: XX 56 [216]
+  type: vless
+  server: 172.64.42.44
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 57 [219]
+  type: vless
+  server: 172.64.40.84
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: XX 58 [225]
+  type: vless
+  server: 172.64.52.18
+  port: '443'
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+proxy-groups:
+- name: Proxy
+  type: select
+  proxies:
+  - 🇺🇸 US 01 [152]
+  - 🇺🇸 US 02 [158]
+  - 🇺🇸 US 03 [260]
+  - 🇺🇸 US 04 [278]
+  - 🇺🇸 US 05 [295]
+  - 🇺🇸 US 06 [148]
+  - 🇰🇷 KR 01 [755]
+  - 🇰🇷 KR 02 [764]
+  - 🇰🇷 KR 03 [778]
+  - 🇯🇵 JP 01 [515]
+  - 🇯🇵 JP 02 [515]
+  - 🇸🇬 SG 01 [184]
+  - 🇸🇬 SG 02 [757]
+  - 🇸🇬 SG 03 [759]
+  - 🇸🇬 SG 04 [760]
+  - 🇸🇬 SG 05 [150]
+  - 🇸🇬 SG 06 [213]
+  - 🇸🇬 SG 07 [1390]
+  - 🇭🇰 HK 01 [830]
+  - 🇭🇰 HK 02 [873]
+  - 🇭🇰 HK 03 [890]
+  - 🇭🇰 HK 04 [893]
+  - 🇭🇰 HK 05 [507]
+  - 🇹🇼 TW 01 [856]
+  - 🇳🇱 NL 01 [521]
+  - 🇨🇭 CH 01 [580]
+  - 🇪🇸 ES 01 [619]
+  - 🇦🇺 AU 01 [761]
+  - XX 01 [551]
+  - 🇷🇴 RO 01 [633]
+  - 🇫🇷 FR 01 [691]
+  - XX 02 [761]
+  - 🇷🇴 RO 02 [775]
+  - LT 01 [842]
+  - 🇸🇪 SE 01 [844]
+  - 🇷🇺 RU 01 [845]
+  - 🇬🇧 GB 01 [889]
+  - 🇬🇧 GB 02 [974]
+  - 🇳🇱 NL 02 [983]
+  - 🇷🇺 RU 02 [1114]
+  - SC 01 [1258]
+  - SC 02 [1269]
+  - SC 03 [1292]
+  - SC 04 [1410]
+  - XX 03 [122]
+  - XX 04 [127]
+  - XX 05 [127]
+  - XX 06 [128]
+  - XX 07 [130]
+  - XX 08 [131]
+  - XX 09 [132]
+  - XX 10 [133]
+  - XX 11 [133]
+  - XX 12 [134]
+  - XX 13 [134]
+  - XX 14 [134]
+  - XX 15 [134]
+  - XX 16 [136]
+  - XX 17 [136]
+  - XX 18 [136]
+  - XX 19 [136]
+  - XX 20 [137]
+  - XX 21 [138]
+  - XX 22 [138]
+  - XX 23 [139]
+  - XX 24 [141]
+  - XX 25 [141]
+  - XX 26 [142]
+  - XX 27 [142]
+  - XX 28 [142]
+  - XX 29 [143]
+  - XX 30 [144]
+  - XX 31 [145]
+  - XX 32 [145]
+  - XX 33 [146]
+  - XX 34 [147]
+  - XX 35 [147]
+  - XX 36 [148]
+  - XX 37 [148]
+  - XX 38 [148]
+  - XX 39 [149]
+  - XX 40 [151]
+  - XX 41 [151]
+  - XX 42 [153]
+  - XX 43 [154]
+  - XX 44 [155]
+  - XX 45 [155]
+  - XX 46 [157]
+  - XX 47 [158]
+  - XX 48 [158]
+  - XX 49 [160]
+  - XX 50 [161]
+  - XX 51 [164]
+  - XX 52 [178]
+  - XX 53 [182]
+  - XX 54 [185]
+  - XX 55 [215]
+  - XX 56 [216]
+  - XX 57 [219]
+  - XX 58 [225]
+rules:
+- MATCH,Proxy
