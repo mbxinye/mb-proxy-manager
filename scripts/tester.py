@@ -3,6 +3,13 @@
 from typing import Dict, List
 
 from scripts import mihomo
+from scripts.config import (
+  EXCLUDE_CN_OUTPUT,
+  RELAY_ENABLED,
+  RELAY_MAX_PER_RELAY,
+  RELAY_MAX_RELAYS,
+)
+from scripts.utils import is_china_node
 
 
 def _is_field_complete(node: Dict) -> bool:
@@ -57,5 +64,55 @@ def run(nodes: List[Dict]) -> List[Dict]:
 
   valid = mihomo.test_nodes(complete)
 
-  valid.sort(key=lambda x: x.get("latency", 9999))
-  return valid
+  # Stage-1 done: `valid` holds directly-reachable nodes (from US runner).
+
+  # Split into China relays and foreign exit nodes (by object identity).
+  china = [
+    n for n in valid
+    if is_china_node(
+      n.get("name", ""),
+      n.get("server", ""),
+      n.get("sni", "") or n.get("servername", "") or "",
+    )
+  ]
+  china_ids = {id(n) for n in china}
+  foreign = [n for n in valid if id(n) not in china_ids]
+  print(f"  stage-1: {len(valid)} reachable (CN relay {len(china)} / foreign {len(foreign)})")
+
+  # Stage-2: re-test foreign nodes through China relays (dialer-proxy).
+  # This verifies reachability from a China network egress, the view that
+  # actually matters for the user. Failure here == the unusable nodes.
+  if RELAY_ENABLED and china:
+    relays = sorted(china, key=lambda x: x.get("latency", 9999))[:RELAY_MAX_RELAYS]
+    remaining = list(foreign)
+    confirmed: List[Dict] = []
+    for relay in relays:
+      if not remaining:
+        break
+      batch = remaining
+      if RELAY_MAX_PER_RELAY > 0:
+        batch = remaining[:RELAY_MAX_PER_RELAY]
+      relay_latency = relay.get("latency", 0) or 0
+      print(
+        f"  relay {relay.get('name', '')} ({relay_latency}ms) "
+        f"-> testing {len(batch)} remaining"
+      )
+      got = mihomo.test_nodes_relay(batch, relay, relay_latency)
+      got_ids = {id(n) for n in got}
+      confirmed.extend(got)
+      remaining = [n for n in remaining if id(n) not in got_ids]
+      print(f"    confirmed {len(confirmed)} total, {len(remaining)} left")
+    foreign = confirmed
+    if not foreign:
+      # No foreign node reachable via any relay: fall back to stage-1 foreign
+      # so the run still produces output (with the caveat it is US-tested).
+      print("  WARN 0 nodes reachable via relay; falling back to stage-1 foreign")
+      foreign = [n for n in valid if id(n) not in china_ids]
+  else:
+    print("  no China relay available; skipping stage-2 (using stage-1 results)")
+
+  final = list(foreign)
+  if not EXCLUDE_CN_OUTPUT:
+    final.extend(china)
+  final.sort(key=lambda x: x.get("latency", 9999))
+  return final

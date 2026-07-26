@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import re
 from typing import Optional
 
 
@@ -70,6 +71,8 @@ COUNTRY_KEYWORDS = {
   "kazakhstan": "KZ", "哈萨克斯坦": "KZ",
   "qatar": "QA", "卡塔尔": "QA",
   "saudi arabia": "SA", "沙特": "SA",
+  "china": "CN", "cn": "CN", "中国": "CN", "大陆": "CN", "国内": "CN",
+  "移动": "CN", "电信": "CN", "联通": "CN", "中转": "CN",
 }
 
 COUNTRY_FLAGS = {
@@ -171,3 +174,41 @@ def generate_node_name(name: str, index: int, latency: int) -> str:
   if flag:
     return f"{flag} {code} {index:02d} [{latency_str}]"
   return f"{code} {index:02d} [{latency_str}]"
+
+
+# Mainland-CN relay detection must be precise: false positives exclude usable
+# foreign nodes and mis-pick a non-China relay (no GFW traversal). We treat
+# HK/TW as foreign exits and never classify them as China.
+_NON_CN_HINTS = ("hong kong", "hongkong", "hk", "taiwan", "taipei", "tw")
+_CN_WORDS = (
+  "china", "mainland",
+  "中国", "大陆", "国内", "移动", "电信", "联通", "中转", "回国", "落地",
+)
+_CN_CITIES = (
+  "beijing", "shanghai", "guangzhou", "shenzhen", "chengdu",
+  "chongqing", "nanjing", "hangzhou", "wuhan", "xian", "qingdao",
+)
+_CN_TOKEN = re.compile(r"(?:^|[^a-z0-9])cn(?:[^a-z0-9]|$)", re.IGNORECASE)
+
+
+def is_china_node(name: str, server: str = "", sni: str = "") -> bool:
+  name = name or ""
+  server = server or ""
+  sni = sni or ""
+  name_lower = name.lower()
+  for hint in _NON_CN_HINTS:
+    if hint in name_lower:
+      return False
+  code = _flag_emoji_to_code(name)
+  if code:
+    return code == "CN"
+  text = f"{name} {server} {sni}".lower()
+  for w in _CN_WORDS:
+    if w in text:
+      return True
+  for c in _CN_CITIES:
+    if c in text:
+      return True
+  if _CN_TOKEN.search(name):
+    return True
+  return False

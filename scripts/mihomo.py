@@ -26,6 +26,7 @@ from scripts.config import (
   MIHOMO_TEST_URL,
   MIHOMO_VERSION,
   PROXY_TEST_CONCURRENCY,
+  RELAY_CONCURRENCY,
 )
 from scripts.output import _to_clash_node
 
@@ -119,16 +120,27 @@ def _free_port() -> int:
 
 
 def _build_test_config(
-  nodes: List[Dict], port: int
+  nodes: List[Dict], port: int,
+  relay_node: Optional[Dict] = None,
 ) -> Tuple[Dict, Dict[str, Dict], List[int]]:
   clash_proxies: List[Dict] = []
   proxy_to_node: Dict[str, Dict] = {}
   proxy_node_indices: List[int] = []
+  relay_name = None
+  if relay_node is not None:
+    try:
+      clash_proxies.append(_to_clash_node({**relay_node, "name": "RELAY"}))
+      relay_name = "RELAY"
+    except (KeyError, ValueError, TypeError):
+      relay_name = None
   for i, n in enumerate(nodes):
     synthetic = dict(n)
     synthetic["name"] = f"node-{i}"
     try:
-      clash_proxies.append(_to_clash_node(synthetic))
+      clash = _to_clash_node(synthetic)
+      if relay_name:
+        clash["dialer-proxy"] = relay_name
+      clash_proxies.append(clash)
       proxy_to_node[f"node-{i}"] = n
       proxy_node_indices.append(i)
     except (KeyError, ValueError, TypeError):
@@ -183,13 +195,16 @@ def _test_one(base: str, name: str) -> Optional[int]:
 
 
 def _run_delay_tests(
-  port: int, proxy_to_node: Dict[str, Dict]
+  port: int, proxy_to_node: Dict[str, Dict],
+  concurrency: int = PROXY_TEST_CONCURRENCY,
+  latency_offset: int = 0,
+  latency_cap: int = MAX_LATENCY,
 ) -> List[Dict]:
   base = f"http://127.0.0.1:{port}/proxies"
   results: List[Dict] = []
   total = len(proxy_to_node)
   latency_dropped = 0
-  with ThreadPoolExecutor(max_workers=PROXY_TEST_CONCURRENCY) as pool:
+  with ThreadPoolExecutor(max_workers=concurrency) as pool:
     futures = {pool.submit(_test_one, base, name): name for name in proxy_to_node}
     done = 0
     for f in as_completed(futures):
@@ -197,9 +212,12 @@ def _run_delay_tests(
       name = futures[f]
       latency = f.result()
       if latency is not None:
+        adj = latency - latency_offset
+        if adj < 1:
+          adj = 1
         node = proxy_to_node[name]
-        node["latency"] = latency
-        if MAX_LATENCY > 0 and latency > MAX_LATENCY:
+        node["latency"] = adj
+        if latency_cap > 0 and adj > latency_cap:
           latency_dropped += 1
         else:
           results.append(node)
@@ -247,12 +265,20 @@ def _validate_config(binary: Path, nodes: List[Dict]) -> List[Dict]:
   return current
 
 
-def _test_batch(binary: Path, nodes: List[Dict]) -> List[Dict]:
+def _test_batch(
+  binary: Path, nodes: List[Dict],
+  relay_node: Optional[Dict] = None,
+  concurrency: int = PROXY_TEST_CONCURRENCY,
+  latency_offset: int = 0,
+  latency_cap: int = MAX_LATENCY,
+) -> List[Dict]:
   """单批测试：启动一个 mihomo 实例测全部节点。启动失败抛 RuntimeError。"""
   if not nodes:
     return []
   port = _free_port()
-  config, proxy_to_node, _ = _build_test_config(nodes, port)
+  config, proxy_to_node, _ = _build_test_config(
+    nodes, port, relay_node=relay_node,
+  )
   if not proxy_to_node:
     return []
 
@@ -277,7 +303,12 @@ def _test_batch(binary: Path, nodes: List[Dict]) -> List[Dict]:
           except Exception:
             pass
         raise RuntimeError(out)
-      return _run_delay_tests(port, proxy_to_node)
+      return _run_delay_tests(
+        port, proxy_to_node,
+        concurrency=concurrency,
+        latency_offset=latency_offset,
+        latency_cap=latency_cap,
+      )
     finally:
       proc.terminate()
       try:
@@ -286,7 +317,13 @@ def _test_batch(binary: Path, nodes: List[Dict]) -> List[Dict]:
         proc.kill()
 
 
-def _fallback_split(binary: Path, nodes: List[Dict]) -> List[Dict]:
+def _fallback_split(
+  binary: Path, nodes: List[Dict],
+  relay_node: Optional[Dict] = None,
+  concurrency: int = PROXY_TEST_CONCURRENCY,
+  latency_offset: int = 0,
+  latency_cap: int = MAX_LATENCY,
+) -> List[Dict]:
   """兜底：-t 漏报导致单批 fatal 时，二分拆分重试定位问题节点。"""
   BATCH_THRESHOLD = 1
 
@@ -294,7 +331,13 @@ def _fallback_split(binary: Path, nodes: List[Dict]) -> List[Dict]:
     if not batch:
       return []
     try:
-      return _test_batch(binary, batch)
+      return _test_batch(
+        binary, batch,
+        relay_node=relay_node,
+        concurrency=concurrency,
+        latency_offset=latency_offset,
+        latency_cap=latency_cap,
+      )
     except RuntimeError:
       if len(batch) <= BATCH_THRESHOLD:
         return []
@@ -327,4 +370,41 @@ def test_nodes(nodes: List[Dict]) -> List[Dict]:
     valid = _fallback_split(binary, valid_config_nodes)
 
   print(f"  \u5b9e\u6d4b\u53ef\u7528: {len(valid)}/{len(nodes)}")
+  return valid
+
+
+def test_nodes_relay(
+  nodes: List[Dict],
+  relay_node: Dict,
+  relay_self_latency: int = 0,
+  concurrency: int = RELAY_CONCURRENCY,
+  latency_cap: int = MAX_LATENCY,
+) -> List[Dict]:
+  """Stage-2 end-to-end test of foreign nodes through a China relay (dialer-proxy).
+
+  Measured latency is the full-path RTT; subtracting the relay's own latency
+  approximates the relay->target leg, which filters/sorts closer to a China view.
+  """
+  if not nodes or relay_node is None:
+    return []
+  binary = ensure_binary()
+  print(f"  relay-test {len(nodes)} nodes via relay (concurrency {concurrency})...")
+  try:
+    valid = _test_batch(
+      binary, nodes,
+      relay_node=relay_node,
+      concurrency=concurrency,
+      latency_offset=relay_self_latency,
+      latency_cap=latency_cap,
+    )
+  except RuntimeError as e:
+    print(f"  WARN relay single-batch failed, fallback split: {str(e)[:100]}")
+    valid = _fallback_split(
+      binary, nodes,
+      relay_node=relay_node,
+      concurrency=concurrency,
+      latency_offset=relay_self_latency,
+      latency_cap=latency_cap,
+    )
+  print(f"  relay valid: {len(valid)}/{len(nodes)}")
   return valid

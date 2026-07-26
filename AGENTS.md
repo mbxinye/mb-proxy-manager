@@ -32,6 +32,11 @@ python3 -c "from scripts.parser import NodeParser; print('OK')"
 | `PROXY_TEST_TIMEOUT` | 2000 | mihomo delay-test timeout (ms) |
 | `PROXY_TEST_CONCURRENCY` | 100 | Concurrent mihomo delay tests |
 | `PROXY_MAX_LATENCY` | 1500 | Reject nodes with latency above this (ms), 0=disable |
+| `PROXY_RELAY_ENABLED` | true | Enable two-stage China-relay verification |
+| `PROXY_RELAY_CONCURRENCY` | 50 | Delay-test concurrency when tunneling through a China relay |
+| `PROXY_RELAY_MAX_RELAYS` | 5 | How many China relays to try (best coverage across carriers) |
+| `PROXY_RELAY_MAX_PER_RELAY` | 0 | Cap nodes tested per relay (0 = no cap) |
+| `PROXY_EXCLUDE_CN_OUTPUT` | true | Exclude mainland-China nodes from the final output |
 
 ### GitHub Actions
 
@@ -73,6 +78,13 @@ f-strings only.
 - `scripts/fetcher.py` — download subscriptions via `urllib` + `ThreadPoolExecutor`
 - `scripts/parser.py` — parse Base64 / YAML / URI formats
 - `scripts/tester.py` — mihomo kernel end-to-end tunnel test (downloads binary on demand)
+Two-stage verification pipeline:
+
+1. Stage-1 direct end-to-end tunnel test (GitHub Actions runner, US egress) picks reachable nodes.
+2. Identifies mainland-China nodes as candidate relays.
+3. Stage-2 re-tests every foreign node through the China relay via mihomo `dialer-proxy`, so the tested path is `runner -> China relay -> foreign node -> 204` — i.e. reachability from a China egress. Nodes that fail here are exactly the ones unusable from China and are dropped.
+4. Up to `PROXY_RELAY_MAX_RELAYS` relays are tried in order so a node only needs to be reachable via one of them.
+5. China relay nodes are excluded from the final output by default (`PROXY_EXCLUDE_CN_OUTPUT`). Falls back to stage-1 results when no China relay is available.
 - `scripts/output.py` — generate Clash YAML (clash_config.yml, clash_mini.yml, clash_all.yml) + plain URI list (nodes.txt, nodes_mini.txt, nodes_all.txt)
 - `scripts/main.py` — pipeline orchestration
 - `run.py` — thin entry point
