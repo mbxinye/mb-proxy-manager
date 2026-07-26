@@ -163,7 +163,9 @@ def extract_country(name: str, server: str = "", sni: str = "") -> Optional[str]
     code = _city_code_to_country(sni)
     if code:
       return code
-  return None
+  # Fallback: real GeoIP on the server address -> covers bare-IP / unknown hosts.
+  from scripts.geoip import server_country
+  return server_country(server)
 
 
 def generate_node_name(name: str, index: int, latency: int) -> str:
@@ -211,4 +213,10 @@ def is_china_node(name: str, server: str = "", sni: str = "") -> bool:
       return True
   if _CN_TOKEN.search(name):
     return True
+  # Fallback: real GeoIP on the actual server address. Picks up bare-IP /
+  # foreign-named relays whose physical egress is in mainland China.
+  from scripts.geoip import server_country
+  country = server_country(server)
+  if country:
+    return country == "CN"
   return False

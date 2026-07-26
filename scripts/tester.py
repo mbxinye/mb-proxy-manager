@@ -9,6 +9,7 @@ from scripts.config import (
   RELAY_MAX_PER_RELAY,
   RELAY_MAX_RELAYS,
 )
+from scripts.geoip import prefetch_countries
 from scripts.utils import is_china_node
 
 
@@ -67,6 +68,7 @@ def run(nodes: List[Dict]) -> List[Dict]:
   # Stage-1 done: `valid` holds directly-reachable nodes (from US runner).
 
   # Split into China relays and foreign exit nodes (by object identity).
+  prefetch_countries([n.get("server", "") for n in valid])
   china = [
     n for n in valid
     if is_china_node(

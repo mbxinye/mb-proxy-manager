@@ -32,3 +32,11 @@ PREFERRED_COUNTRIES = [
   for c in os.getenv("PROXY_PREFERRED_COUNTRIES", "US,KR,JP,SG,HK,TW").split(",")
   if c.strip()
 ]
+
+GEOIP_DB_PATH = os.getenv("PROXY_GEOIP_DB", "geoip/GeoLite2-Country.mmdb")
+GEOIP_DB_URL = os.getenv(
+  "PROXY_GEOIP_DB_URL",
+  "https://github.com/P3TERX/GeoLite.mmdb/releases/latest/download/GeoLite2-Country.mmdb",
+)
+GEOIP_MAX_AGE_DAYS = _int_env("PROXY_GEOIP_MAX_AGE_DAYS", 35)
+GEOIP_DNS_WORKERS = _int_env("PROXY_GEOIP_DNS_WORKERS", 20)

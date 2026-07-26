@@ -38,6 +38,14 @@ python3 -c "from scripts.parser import NodeParser; print('OK')"
 | `PROXY_RELAY_MAX_PER_RELAY` | 0 | Cap nodes tested per relay (0 = no cap) |
 | `PROXY_EXCLUDE_CN_OUTPUT` | true | Exclude mainland-China nodes from the final output |
 
+### GeoIP (China-relay detection)
+
+| Variable | Default | Description |
+|---|---|---|
+| `PROXY_GEOIP_DB` | `geoip/GeoLite2-Country.mmdb` | Path to the MaxMind GeoLite2-Country MMDB |
+| `PROXY_GEOIP_DB_URL` | P3TERX latest release | URL auto-downloaded when the MMDB is missing or stale |
+| `PROXY_GEOIP_MAX_AGE_DAYS` | 35 | Re-download the MMDB if older than this (days) |
+| `PROXY_GEOIP_DNS_WORKERS` | 20 | Parallel host-to-IP resolutions during geoip prefetch |
 ### GitHub Actions
 
 Runs every hour via `.github/workflows/smart-proxy.yml` (`13 */1 * * *`).
@@ -78,6 +86,7 @@ f-strings only.
 - `scripts/fetcher.py` — download subscriptions via `urllib` + `ThreadPoolExecutor`
 - `scripts/parser.py` — parse Base64 / YAML / URI formats
 - `scripts/tester.py` — mihomo kernel end-to-end tunnel test (downloads binary on demand)
+- `scripts/geoip.py` — MaxMind GeoLite2-Country lookup (downloads MMDB on demand, caches DNS). CN-relay identification runs text heuristics on node names first (covers self-described `中转`/`上海` relays); when inconclusive, `is_china_node`/`extract_country` fall back to GeoIP on the resolved `server` IP. The MMDB is downloaded once and reused (`PROXY_GEOIP_MAX_AGE_DAYS`); GitHub Actions caches it per day so only the first run of each day re-downloads.
 Two-stage verification pipeline:
 
 1. Stage-1 direct end-to-end tunnel test (GitHub Actions runner, US egress) picks reachable nodes.

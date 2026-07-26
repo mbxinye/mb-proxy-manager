@@ -50,6 +50,8 @@ temp/
 
 # mihomo 内核二进制（按需下载，不提交）
 bin/
+# MaxMind GeoLite2 MMDB（按需下载，不提交）
+geoip/
 
 # trae 归档文件
 .trae/
