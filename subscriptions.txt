@@ -14,7 +14,6 @@ https://gist.githubusercontent.com/shuaidaoya/9e5cf2749c0ce79932dd9229d9b4162b/r
 https://raw.githubusercontent.com/ts-sf/fly/main/clash
 https://raw.githubusercontent.com/chengaopan/AutoMergePublicNodes/master/list.meta.yml
 https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml 100
-https://raw.githubusercontent.com/snakem982/proxypool/main/source/clash-meta.yaml
 https://raw.githubusercontent.com/snakem982/proxypool/main/source/clash-meta-2.yaml
 https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml 100
 https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/all.yaml 100
@@ -28,3 +27,7 @@ https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/feat/ai-crawler-
 https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/feat/ai-crawler-v2/nodes/merged.yaml
 https://raw.githubusercontent.com/a2470982985/getNode/main/clash.yaml
 https://raw.githubusercontent.com/ts-sf/fly/main/clash
+https://raw.githubusercontent.com/xiaoji235/airport-free/main/v2ray.txt
+https://raw.githubusercontent.com/mfuu/v2ray/master/clash.yaml
+https://raw.githubusercontent.com/HakurouKen/free-node/main/public
+https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml
