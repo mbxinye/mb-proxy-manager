@@ -44,7 +44,8 @@ jobs:
       with:
         path: geoip/GeoLite2-Country.mmdb
         key: geolite2-country-${{ env.GEOIP_DB_VERSION }}-${{ steps.date.outputs.d }}
-        update-existing: true
+        restore-keys: |
+          geolite2-country-${{ env.GEOIP_DB_VERSION }}-
 
     - name: Run filter
       run: python3 run.py
