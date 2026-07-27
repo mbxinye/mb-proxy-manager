@@ -347,7 +347,7 @@ def _fallback_split(
   return _run(nodes)
 
 
-def test_nodes(nodes: List[Dict]) -> List[Dict]:
+def test_nodes(nodes: List[Dict], latency_cap: int = MAX_LATENCY) -> List[Dict]:
   if not nodes:
     return []
   binary = ensure_binary()
@@ -363,11 +363,11 @@ def test_nodes(nodes: List[Dict]) -> List[Dict]:
 
   # 单批跑完，不再二分降级
   try:
-    valid = _test_batch(binary, valid_config_nodes)
+    valid = _test_batch(binary, valid_config_nodes, latency_cap=latency_cap)
   except RuntimeError as e:
     # 兜底：-t 漏报导致仍 fatal，退回二分（极少触发）
     print(f"  \u26a0 \u5355\u6279\u542f\u52a8\u5931\u8d25\uff0c\u9000\u56de\u5206\u6279: {str(e)[:100]}")
-    valid = _fallback_split(binary, valid_config_nodes)
+    valid = _fallback_split(binary, valid_config_nodes, latency_cap=latency_cap)
 
   print(f"  \u5b9e\u6d4b\u53ef\u7528: {len(valid)}/{len(nodes)}")
   return valid

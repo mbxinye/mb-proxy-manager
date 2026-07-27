@@ -8,9 +8,13 @@ from scripts.config import (
   RELAY_ENABLED,
   RELAY_MAX_PER_RELAY,
   RELAY_MAX_RELAYS,
+  RELAY_EXTERNAL_ENABLED,
+  RELAY_EXTERNAL_MAX,
+  RELAY_EXTERNAL_LATENCY,
 )
 from scripts.geoip import prefetch_countries
 from scripts.utils import is_china_node
+from scripts.relay_sources import fetch_external_relays
 
 
 def _is_field_complete(node: Dict) -> bool:
@@ -81,11 +85,25 @@ def run(nodes: List[Dict]) -> List[Dict]:
   foreign = [n for n in valid if id(n) not in china_ids]
   print(f"  stage-1: {len(valid)} reachable (CN relay {len(china)} / foreign {len(foreign)})")
 
+  # External China relays: free-proxy aggregators supplement a thin CN pool.
+  # They are stage-1 tested from the runner (must be alive + support tunneling
+  # to gstatic, which implies CONNECT/SOCKS5-connect capability) and then tried
+  # AFTER subscription CN relays. They never enter the final output.
+  ext_relays: List[Dict] = []
+  if RELAY_EXTERNAL_ENABLED:
+    candidates = fetch_external_relays()
+    if candidates:
+      print(f"  external relay stage-1: testing {len(candidates)} candidate proxies")
+      ext_valid = mihomo.test_nodes(candidates, latency_cap=RELAY_EXTERNAL_LATENCY)
+      ext_relays = sorted(ext_valid, key=lambda x: x.get("latency", 9999))[:RELAY_EXTERNAL_MAX]
+      print(f"  external relay usable: {len(ext_relays)}")
+
   # Stage-2: re-test foreign nodes through China relays (dialer-proxy).
   # This verifies reachability from a China network egress, the view that
   # actually matters for the user. Failure here == the unusable nodes.
-  if RELAY_ENABLED and china:
+  if RELAY_ENABLED and (china or ext_relays):
     relays = sorted(china, key=lambda x: x.get("latency", 9999))[:RELAY_MAX_RELAYS]
+    relays.extend(ext_relays)
     remaining = list(foreign)
     confirmed: List[Dict] = []
     for relay in relays:

@@ -38,6 +38,23 @@ python3 -c "from scripts.parser import NodeParser; print('OK')"
 | `PROXY_RELAY_MAX_PER_RELAY` | 0 | Cap nodes tested per relay (0 = no cap) |
 | `PROXY_EXCLUDE_CN_OUTPUT` | true | Exclude mainland-China nodes from the final output |
 
+### External China-relay sources
+
+When the subscription pool has few mainland-China nodes, free-proxy aggregators
+supply extra candidate relays. They are scraped, stage-1 tested from the runner
+(must be alive and tunnel to `gstatic/generate_204`, i.e. CONNECT/SOCKS5-connect
+capable), then tried in stage-2 AFTER subscription CN relays. They never enter
+the final output.
+
+| Variable | Default | Description |
+|---|---|---|
+| `PROXY_RELAY_EXTERNAL_ENABLED` | true | Fetch external CN-relay candidates and use them in stage-2 |
+| `PROXY_RELAY_EXTERNAL_SOURCES` | `freevpnnode` | Comma list of source keys (currently `freevpnnode`) |
+| `PROXY_RELAY_EXTERNAL_PAGES` | 3 | Pages to scrape per source |
+| `PROXY_RELAY_EXTERNAL_PROTOCOLS` | `socks5,http` | Proxy protocols to keep (socks4 is dropped; mihomo has no socks4 outbound) |
+| `PROXY_RELAY_EXTERNAL_MAX` | 5 | How many external relays to try in stage-2 |
+| `PROXY_RELAY_EXTERNAL_LATENCY` | 2500 | Stage-1 latency cap (ms) for external relays (looser than node output) |
+
 ### GeoIP (China-relay detection)
 
 | Variable | Default | Description |
@@ -87,13 +104,15 @@ f-strings only.
 - `scripts/parser.py` — parse Base64 / YAML / URI formats
 - `scripts/tester.py` — mihomo kernel end-to-end tunnel test (downloads binary on demand)
 - `scripts/geoip.py` — MaxMind GeoLite2-Country lookup (downloads MMDB on demand, caches DNS). CN-relay identification runs text heuristics on node names first (covers self-described `中转`/`上海` relays); when inconclusive, `is_china_node`/`extract_country` fall back to GeoIP on the resolved `server` IP. The MMDB is downloaded once and reused (`PROXY_GEOIP_MAX_AGE_DAYS`); GitHub Actions caches it per day so only the first run of each day re-downloads.
+- `scripts/relay_sources.py` — fetches external mainland-China relay candidates from free-proxy aggregators (default: `cn.freevpnnode.com/free-proxy-for-china/`). Scrapes the HTML table, builds mihomo `http`/`socks5` outbounds (socks4 dropped), and dedupes. `tester.run` stage-1 tests them from the runner before they may be used as `dialer-proxy` relays; they never enter the final output.
 Two-stage verification pipeline:
 
 1. Stage-1 direct end-to-end tunnel test (GitHub Actions runner, US egress) picks reachable nodes.
 2. Identifies mainland-China nodes as candidate relays.
-3. Stage-2 re-tests every foreign node through the China relay via mihomo `dialer-proxy`, so the tested path is `runner -> China relay -> foreign node -> 204` — i.e. reachability from a China egress. Nodes that fail here are exactly the ones unusable from China and are dropped.
-4. Up to `PROXY_RELAY_MAX_RELAYS` relays are tried in order so a node only needs to be reachable via one of them.
-5. China relay nodes are excluded from the final output by default (`PROXY_EXCLUDE_CN_OUTPUT`). Falls back to stage-1 results when no China relay is available.
+3. Phase-1 relays = the `PROXY_RELAY_MAX_RELAYS` fastest subscription CN nodes. Phase-2 relays = external candidates (`scripts/relay_sources.py`) that pass their own stage-1 test. If the subscription pool has few CN nodes, external relays are what keeps stage-2 meaningful.
+4. Stage-2 re-tests every foreign node through the China relay via mihomo `dialer-proxy`, so the tested path is `runner -> China relay -> foreign node -> 204` — i.e. reachability from a China egress. Nodes that fail here are exactly the ones unusable from China and are dropped. Phase-1 (subscription) relays are tried before external free-proxy relays.
+5. Up to `PROXY_RELAY_MAX_RELAYS` subscription relays + `PROXY_RELAY_EXTERNAL_MAX` external relays are tried in order so a node only needs to be reachable via one of them.
+6. China relay nodes are excluded from the final output by default (`PROXY_EXCLUDE_CN_OUTPUT`). External free-proxy relays are never output. Falls back to stage-1 results when no relay is available.
 - `scripts/output.py` — generate Clash YAML (clash_config.yml, clash_mini.yml, clash_all.yml) + plain URI list (nodes.txt, nodes_mini.txt, nodes_all.txt)
 - `scripts/main.py` — pipeline orchestration
 - `run.py` — thin entry point
