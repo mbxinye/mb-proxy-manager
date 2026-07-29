@@ -21,23 +21,6 @@ RELAY_MAX_RELAYS = _int_env("PROXY_RELAY_MAX_RELAYS", 5)
 RELAY_MAX_PER_RELAY = _int_env("PROXY_RELAY_MAX_PER_RELAY", 0)
 EXCLUDE_CN_OUTPUT = _bool_env("PROXY_EXCLUDE_CN_OUTPUT", True)
 
-# External China-relay sources (e.g. free-proxy aggregators). When the
-# subscription pool has few mainland-CN nodes, these are fetched, given a
-# stage-1 reachability test from the runner, and then tried in stage-2 AFTER
-# the subscription CN relays. They never appear in the final output.
-RELAY_EXTERNAL_ENABLED = _bool_env("PROXY_RELAY_EXTERNAL_ENABLED", True)
-RELAY_EXTERNAL_SOURCES = [
-  s.strip() for s in os.getenv("PROXY_RELAY_EXTERNAL_SOURCES", "freevpnnode,proxyscrape").split(",")
-  if s.strip()
-]
-RELAY_EXTERNAL_PAGES = _int_env("PROXY_RELAY_EXTERNAL_PAGES", 3)
-RELAY_EXTERNAL_PROTOCOLS = [
-  p.strip().lower() for p in os.getenv("PROXY_RELAY_EXTERNAL_PROTOCOLS", "socks5,http").split(",")
-  if p.strip()
-]
-RELAY_EXTERNAL_MAX = _int_env("PROXY_RELAY_EXTERNAL_MAX", 5)
-RELAY_EXTERNAL_LATENCY = _int_env("PROXY_RELAY_EXTERNAL_LATENCY", 2500)
-
 MIHOMO_VERSION = os.getenv("PROXY_MIHOMO_VERSION", "v1.19.13")
 MIHOMO_TEST_URL = os.getenv("PROXY_TEST_URL", "https://www.gstatic.com/generate_204")
 # CN relay stage-1 必须用国内可达目标（gstatic 被 GFW 拦，CN 出口物理不可达）

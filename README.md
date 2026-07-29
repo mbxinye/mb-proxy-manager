@@ -66,23 +66,11 @@ https://你的用户名.github.io/仓库名/nodes_mini.txt
 | `PROXY_MAX_OUTPUT_NODES` | 200 | 完整版输出节点数 |
 | `PROXY_MINI_OUTPUT_NODES` | 100 | 精简版输出节点数 |
 | `PROXY_MIHOMO_VERSION` | v1.19.13 | mihomo 内核版本（按需下载，不提交进仓库） |
-| `PROXY_TEST_URL` | https://www.gstatic.com/generate_204 | 端到端真实代理测试用的 URL |
+| `PROXY_TEST_URL` | https://www.gstatic.com/generate_204 | foreign 节点端到端测试 URL |
+| `PROXY_TEST_URL_CN` | https://www.baidu.com/ | CN 跳板 stage-1 测试 URL（必须国内可达） |
 | `PROXY_TEST_TIMEOUT` | 2000 | mihomo delay 测试超时（ms） |
 | `PROXY_TEST_CONCURRENCY` | 100 | mihomo delay 并发测试数 |
 | `PROXY_MAX_LATENCY` | 1500 | 拒绝延迟超过此值(ms)的节点，0=禁用 |
-
-### 外部中国跳板（补充国内中转）
-
-订阅池里 CN 节点很少时，从免费代理聚合站抓取国内代理候选，经 stage-1 测试后作为 stage-2 的补充跳板（仅在订阅 CN 跳板之后尝试，永不出现在最终输出中）。
-
-| 变量 | 默认值 | 说明 |
-|---|---|---|
-| `PROXY_RELAY_EXTERNAL_ENABLED` | true | 是否抓取并使用外部 CN 跳板 |
-| `PROXY_RELAY_EXTERNAL_SOURCES` | `freevpnnode` | 外部来源标识，逗号分隔（当前支持 `freevpnnode`） |
-| `PROXY_RELAY_EXTERNAL_PAGES` | 3 | 每个来源抓取的页数 |
-| `PROXY_RELAY_EXTERNAL_PROTOCOLS` | `socks5,http` | 保留的协议（socks4 丢弃，mihomo 无 socks4 outbound） |
-| `PROXY_RELAY_EXTERNAL_MAX` | 5 | stage-2 尝试的外部跳板上限 |
-| `PROXY_RELAY_EXTERNAL_LATENCY` | 2500 | 外部跳板 stage-1 延迟上限(ms，比输出节点宽松) |
 
 ## 本地运行
 
