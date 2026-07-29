@@ -5,6 +5,7 @@ from typing import Dict, List
 from scripts import mihomo
 from scripts.config import (
   EXCLUDE_CN_OUTPUT,
+  MIHOMO_TEST_URL_CN,
   RELAY_ENABLED,
   RELAY_MAX_PER_RELAY,
   RELAY_MAX_RELAYS,
@@ -65,36 +66,40 @@ def run(nodes: List[Dict]) -> List[Dict]:
   if dropped:
     print(f"  \u5b57\u6bb5\u4e0d\u5b8c\u6574\u629b\u5f03: {dropped}/{total}")
 
-  print(f"  \u6b63\u5728\u6d4b\u8bd5 {len(complete)} \u4e2a\u8282\u70b9 (mihomo \u7aef\u5230\u7aef)...")
-
-  valid = mihomo.test_nodes(complete)
-
-  # Stage-1 done: `valid` holds directly-reachable nodes (from US runner).
-
-  # Split into China relays and foreign exit nodes (by object identity).
-  prefetch_countries([n.get("server", "") for n in valid])
-  china = [
-    n for n in valid
+  # Stage-1 前先分流 CN/foreign：CN 出口物理上无法访问 GFW 外目标（gstatic），
+  # 必须用国内可达 URL 测可达性，否则 CN relay 候选会在 stage-1 全部被误杀。
+  prefetch_countries([n.get("server", "") for n in complete])
+  china_candidates: List[Dict] = []
+  foreign_candidates: List[Dict] = []
+  for n in complete:
     if is_china_node(
       n.get("name", ""),
       n.get("server", ""),
       n.get("sni", "") or n.get("servername", "") or "",
-    )
-  ]
+    ):
+      china_candidates.append(n)
+    else:
+      foreign_candidates.append(n)
+  print(f"  \u5206\u6d41: CN relay {len(china_candidates)} / foreign {len(foreign_candidates)}")
+
+  # CN relay 用国内 URL（baidu），foreign 用 gstatic
+  cn_valid = mihomo.test_nodes(china_candidates, test_url=MIHOMO_TEST_URL_CN) if china_candidates else []
+  foreign_valid = mihomo.test_nodes(foreign_candidates) if foreign_candidates else []
+  valid = cn_valid + foreign_valid
+
+  china = cn_valid
   china_ids = {id(n) for n in china}
-  foreign = [n for n in valid if id(n) not in china_ids]
+  foreign = foreign_valid
   print(f"  stage-1: {len(valid)} reachable (CN relay {len(china)} / foreign {len(foreign)})")
 
   # External China relays: free-proxy aggregators supplement a thin CN pool.
-  # They are stage-1 tested from the runner (must be alive + support tunneling
-  # to gstatic, which implies CONNECT/SOCKS5-connect capability) and then tried
-  # AFTER subscription CN relays. They never enter the final output.
+  # 用国内 URL 测可达性（CN 出口无法访问 gstatic）。仅作 dialer，永不入最终输出。
   ext_relays: List[Dict] = []
   if RELAY_EXTERNAL_ENABLED:
     candidates = fetch_external_relays()
     if candidates:
       print(f"  external relay stage-1: testing {len(candidates)} candidate proxies")
-      ext_valid = mihomo.test_nodes(candidates, latency_cap=RELAY_EXTERNAL_LATENCY)
+      ext_valid = mihomo.test_nodes(candidates, latency_cap=RELAY_EXTERNAL_LATENCY, test_url=MIHOMO_TEST_URL_CN)
       ext_relays = sorted(ext_valid, key=lambda x: x.get("latency", 9999))[:RELAY_EXTERNAL_MAX]
       print(f"  external relay usable: {len(ext_relays)}")
 

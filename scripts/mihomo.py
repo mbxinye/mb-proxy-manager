@@ -177,10 +177,10 @@ def _wait_ready(port: int, timeout: float = 30.0) -> bool:
   return False
 
 
-def _test_one(base: str, name: str) -> Optional[int]:
+def _test_one(base: str, name: str, test_url: str = MIHOMO_TEST_URL) -> Optional[int]:
   url = (
     f"{base}/{quote(name, safe='')}/delay"
-    f"?timeout={MIHOMO_TEST_TIMEOUT}&url={quote(MIHOMO_TEST_URL, safe='')}"
+    f"?timeout={MIHOMO_TEST_TIMEOUT}&url={quote(test_url, safe='')}"
   )
   http_timeout = MIHOMO_TEST_TIMEOUT / 1000 + 3
   try:
@@ -199,13 +199,14 @@ def _run_delay_tests(
   concurrency: int = PROXY_TEST_CONCURRENCY,
   latency_offset: int = 0,
   latency_cap: int = MAX_LATENCY,
+  test_url: str = MIHOMO_TEST_URL,
 ) -> List[Dict]:
   base = f"http://127.0.0.1:{port}/proxies"
   results: List[Dict] = []
   total = len(proxy_to_node)
   latency_dropped = 0
   with ThreadPoolExecutor(max_workers=concurrency) as pool:
-    futures = {pool.submit(_test_one, base, name): name for name in proxy_to_node}
+    futures = {pool.submit(_test_one, base, name, test_url): name for name in proxy_to_node}
     done = 0
     for f in as_completed(futures):
       done += 1
@@ -271,6 +272,7 @@ def _test_batch(
   concurrency: int = PROXY_TEST_CONCURRENCY,
   latency_offset: int = 0,
   latency_cap: int = MAX_LATENCY,
+  test_url: str = MIHOMO_TEST_URL,
 ) -> List[Dict]:
   """单批测试：启动一个 mihomo 实例测全部节点。启动失败抛 RuntimeError。"""
   if not nodes:
@@ -308,6 +310,7 @@ def _test_batch(
         concurrency=concurrency,
         latency_offset=latency_offset,
         latency_cap=latency_cap,
+        test_url=test_url,
       )
     finally:
       proc.terminate()
@@ -323,6 +326,7 @@ def _fallback_split(
   concurrency: int = PROXY_TEST_CONCURRENCY,
   latency_offset: int = 0,
   latency_cap: int = MAX_LATENCY,
+  test_url: str = MIHOMO_TEST_URL,
 ) -> List[Dict]:
   """兜底：-t 漏报导致单批 fatal 时，二分拆分重试定位问题节点。"""
   BATCH_THRESHOLD = 1
@@ -337,6 +341,7 @@ def _fallback_split(
         concurrency=concurrency,
         latency_offset=latency_offset,
         latency_cap=latency_cap,
+        test_url=test_url,
       )
     except RuntimeError:
       if len(batch) <= BATCH_THRESHOLD:
@@ -347,7 +352,11 @@ def _fallback_split(
   return _run(nodes)
 
 
-def test_nodes(nodes: List[Dict], latency_cap: int = MAX_LATENCY) -> List[Dict]:
+def test_nodes(
+  nodes: List[Dict],
+  latency_cap: int = MAX_LATENCY,
+  test_url: str = MIHOMO_TEST_URL,
+) -> List[Dict]:
   if not nodes:
     return []
   binary = ensure_binary()
@@ -363,11 +372,11 @@ def test_nodes(nodes: List[Dict], latency_cap: int = MAX_LATENCY) -> List[Dict]:
 
   # 单批跑完，不再二分降级
   try:
-    valid = _test_batch(binary, valid_config_nodes, latency_cap=latency_cap)
+    valid = _test_batch(binary, valid_config_nodes, latency_cap=latency_cap, test_url=test_url)
   except RuntimeError as e:
     # 兜底：-t 漏报导致仍 fatal，退回二分（极少触发）
     print(f"  \u26a0 \u5355\u6279\u542f\u52a8\u5931\u8d25\uff0c\u9000\u56de\u5206\u6279: {str(e)[:100]}")
-    valid = _fallback_split(binary, valid_config_nodes, latency_cap=latency_cap)
+    valid = _fallback_split(binary, valid_config_nodes, latency_cap=latency_cap, test_url=test_url)
 
   print(f"  \u5b9e\u6d4b\u53ef\u7528: {len(valid)}/{len(nodes)}")
   return valid

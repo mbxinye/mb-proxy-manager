@@ -27,7 +27,7 @@ EXCLUDE_CN_OUTPUT = _bool_env("PROXY_EXCLUDE_CN_OUTPUT", True)
 # the subscription CN relays. They never appear in the final output.
 RELAY_EXTERNAL_ENABLED = _bool_env("PROXY_RELAY_EXTERNAL_ENABLED", True)
 RELAY_EXTERNAL_SOURCES = [
-  s.strip() for s in os.getenv("PROXY_RELAY_EXTERNAL_SOURCES", "freevpnnode").split(",")
+  s.strip() for s in os.getenv("PROXY_RELAY_EXTERNAL_SOURCES", "freevpnnode,proxyscrape").split(",")
   if s.strip()
 ]
 RELAY_EXTERNAL_PAGES = _int_env("PROXY_RELAY_EXTERNAL_PAGES", 3)
@@ -40,6 +40,8 @@ RELAY_EXTERNAL_LATENCY = _int_env("PROXY_RELAY_EXTERNAL_LATENCY", 2500)
 
 MIHOMO_VERSION = os.getenv("PROXY_MIHOMO_VERSION", "v1.19.13")
 MIHOMO_TEST_URL = os.getenv("PROXY_TEST_URL", "https://www.gstatic.com/generate_204")
+# CN relay stage-1 必须用国内可达目标（gstatic 被 GFW 拦，CN 出口物理不可达）
+MIHOMO_TEST_URL_CN = os.getenv("PROXY_TEST_URL_CN", "https://www.baidu.com/")
 MIHOMO_TEST_TIMEOUT = _int_env("PROXY_TEST_TIMEOUT", 2000)
 PROXY_TEST_CONCURRENCY = _int_env("PROXY_TEST_CONCURRENCY", 100)
 MAX_LATENCY = _int_env("PROXY_MAX_LATENCY", 1500)

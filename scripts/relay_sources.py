@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
 import html
+import json
 import re
+import socket
 import ssl
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -42,6 +44,29 @@ def _credential(cell: str) -> str:
     return ""
   v = m.group(1)
   return "" if v.lower() == "no need" else v
+
+
+def _tcp_reachable(server: str, port: int, timeout: float = 3.0) -> bool:
+  # 免费代理存活时间在分钟级，抓取到 mihomo 测试之间有延迟。
+  # TCP 预过滤（socket 3s）先剔除端口关闭/主机不可达的代理，
+  # 避免把 33 个死代理全塞进 mihomo（启动 + delay test 耗时约 30s）。
+  try:
+    with socket.create_connection((server, port), timeout=timeout):
+      return True
+  except (OSError, socket.timeout):
+    return False
+
+
+def _tcp_prefilter(nodes: List[Dict], timeout: float = 3.0) -> List[Dict]:
+  if not nodes:
+    return []
+  with ThreadPoolExecutor(max_workers=min(len(nodes), 20)) as pool:
+    futures = {
+      pool.submit(_tcp_reachable, n["server"], n["port"], timeout): n
+      for n in nodes
+    }
+    reachable = [futures[f] for f in as_completed(futures) if f.result()]
+  return reachable
 
 
 def _fetch(url: str) -> Optional[str]:
@@ -111,8 +136,56 @@ def _source_freevpnnode() -> List[Dict]:
   return nodes
 
 
+_PROXYSCRAPE_URL = (
+  "https://api.proxyscrape.com/v4/free-proxy-list/get"
+  "?request=display_free_proxies&proxy_format=protocolipport"
+  "&format=json&country=CN&timeout=10000"
+)
+
+
+def _source_proxyscrape() -> List[Dict]:
+  # proxyscrape API 返回 JSON，含中国代理列表（从 US runner 可访问）
+  print("  [external relay] proxyscrape")
+  content = _fetch(_PROXYSCRAPE_URL)
+  if not content:
+    return []
+  try:
+    data = json.loads(content)
+  except (json.JSONDecodeError, ValueError):
+    return []
+  proxies = data.get("proxies", []) if isinstance(data, dict) else []
+  allowed = set(RELAY_EXTERNAL_PROTOCOLS)
+  nodes: List[Dict] = []
+  for p in proxies:
+    proto = (p.get("protocol") or "").lower()
+    ip = p.get("ip") or p.get("server") or ""
+    port = p.get("port")
+    if not ip or not port or proto not in allowed:
+      continue
+    try:
+      port_i = int(port)
+    except (ValueError, TypeError):
+      continue
+    node: Dict = {
+      "type": proto,
+      "name": f"CN-RELAY-PS-{ip}:{port_i}",
+      "server": ip,
+      "port": port_i,
+      "_external_relay": True,
+    }
+    user = p.get("username")
+    pwd = p.get("password")
+    if user:
+      node["username"] = user
+    if pwd:
+      node["password"] = pwd
+    nodes.append(node)
+  return nodes
+
+
 _SOURCES = {
   "freevpnnode": _source_freevpnnode,
+  "proxyscrape": _source_proxyscrape,
 }
 
 
@@ -143,4 +216,12 @@ def fetch_external_relays() -> List[Dict]:
     seen.add(k)
     nodes.append(n)
   print(f"  [external relay] collected {len(nodes)} unique CN relays")
+
+  # TCP 预过滤：免费代理存活率在分钟级，抓取时活的到 mihomo 测试可能已死。
+  # 用 socket 3s 并发测 TCP 连通性，先剔除端口关闭/主机不可达的代理，
+  # 避免把死代理全塞进 mihomo（启动 + delay test 耗时约 30s）。
+  if nodes:
+    before = len(nodes)
+    nodes = _tcp_prefilter(nodes)
+    print(f"  [external relay] TCP prefilter: {before} -> {len(nodes)} reachable")
   return nodes
