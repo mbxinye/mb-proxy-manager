@@ -29,7 +29,7 @@ python3 -c "from scripts.parser import NodeParser; print('OK')"
 | `PROXY_MINI_OUTPUT_NODES` | 100 | Mini output nodes |
 | `PROXY_MIHOMO_VERSION` | v1.19.13 | mihomo kernel version (downloaded on demand) |
 | `PROXY_TEST_URL` | https://www.gstatic.com/generate_204 | URL used for foreign-node end-to-end test |
-| `PROXY_TEST_URL_CN` | https://www.baidu.com/ | URL used for CN-relay stage-1 test (must be reachable from China egress) |
+| `PROXY_TEST_URL_CN` | http://connect.rom.miui.com/generate_204 | URL used for CN-relay stage-1 test (must be a 204 endpoint reachable from China egress; non-204 responses cause mihomo delay-test to report failure) |
 | `PROXY_TEST_TIMEOUT` | 2000 | mihomo delay-test timeout (ms) |
 | `PROXY_TEST_CONCURRENCY` | 100 | Concurrent mihomo delay tests |
 | `PROXY_MAX_LATENCY` | 1500 | Reject nodes with latency above this (ms), 0=disable |
@@ -85,12 +85,12 @@ f-strings only.
 
 - `scripts/config.py` — env-based config
 - `scripts/fetcher.py` — download subscriptions via `urllib` + `ThreadPoolExecutor`
-- `scripts/parser.py` — parse Base64 / YAML / URI formats
-- `scripts/tester.py` — mihomo kernel end-to-end tunnel test (downloads binary on demand)
+- `scripts/parser.py` — parse Base64 / YAML / URI formats. YAML field whitelist covers all protocol-required fields (ssr `protocol`/`obfs`/params, hysteria2 `obfs`/`up`/`down`, `grpc-opts`/`h2-opts`, `alpn`); URI parsers extract `obfs`/`alpn`/`up`/`down` for hysteria2 and `alpn` for vless/trojan. Clash config detection scans the full content for `proxies:`/`proxy-groups:` (a 30-line window missed full Clash configs where `proxies:` appears after `mixed-port`/`dns`/`rules`, causing the entire YAML to be skipped line-by-line). `parse_all` reports per-URL skip counts to surface malformed subscriptions.
+- `scripts/tester.py` — mihomo kernel end-to-end tunnel test (downloads binary on demand). `_is_field_complete` pre-filters nodes missing protocol-required credentials; TLS nodes without explicit sni are kept (mihomo falls back to `server`); reality nodes must carry `public-key`.
 - `scripts/geoip.py` — MaxMind GeoLite2-Country lookup (downloads MMDB on demand, caches DNS). CN-relay identification runs text heuristics on node names first (covers self-described `中转`/`上海` relays); when inconclusive, `is_china_node`/`extract_country` fall back to GeoIP on the resolved `server` IP. The MMDB is downloaded once and reused (`PROXY_GEOIP_MAX_AGE_DAYS`); GitHub Actions caches it per day so only the first run of each day re-downloads.
 Two-stage verification pipeline:
 
-1. Stage-1 splits nodes into CN-relay candidates and foreign exit nodes **before** testing, because CN egress cannot reach GFW-blocked targets (e.g. `gstatic.com`). CN candidates are tested against `PROXY_TEST_URL_CN` (default `baidu.com`); foreign nodes against `PROXY_TEST_URL` (default `gstatic/generate_204`). Both tests run from the GitHub Actions runner (US egress).
+1. Stage-1 splits nodes into CN-relay candidates and foreign exit nodes **before** testing, because CN egress cannot reach GFW-blocked targets (e.g. `gstatic.com`). CN candidates are tested against `PROXY_TEST_URL_CN` (default `connect.rom.miui.com/generate_204`, a 204 endpoint — non-204 URLs like `baidu.com` cause mihomo delay-test to fail and silently kill all CN relay candidates); foreign nodes against `PROXY_TEST_URL` (default `gstatic/generate_204`). Both tests run from the GitHub Actions runner (US egress).
 2. The `PROXY_RELAY_MAX_RELAYS` fastest subscription CN nodes become stage-2 relays.
 3. Stage-2 re-tests every foreign node through each China relay via mihomo `dialer-proxy`, so the tested path is `runner -> China relay -> foreign node -> 204` — i.e. reachability from a China egress. Nodes that fail here are exactly the ones unusable from China and are dropped. Relays are tried in order; a node only needs to be reachable via one.
 4. China relay nodes are excluded from the final output by default (`PROXY_EXCLUDE_CN_OUTPUT`). Falls back to stage-1 results when no relay is available.

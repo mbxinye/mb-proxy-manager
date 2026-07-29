@@ -26,12 +26,10 @@ class NodeParser:
       if decoded:
         content = decoded
 
-    first_lines = "\n".join(content.split("\n")[:30]).lower()
-
-    if "proxies:" in first_lines or (
-      "type:" in first_lines
-      and ("server:" in first_lines or "port:" in first_lines)
-    ):
+    # Clash 配置判定：全文扫描 proxies:/proxy-groups: 关键字。
+    # 旧逻辑只看前 30 行，完整 Clash 配置（mixed-port 开头）的 proxies: 常在第 50-200 行，
+    # 会漏判走 URI 逐行分支，把整个 YAML 当文本逐行 skip（单订阅可误杀上万行）。
+    if "proxies:" in content or "proxy-groups:" in content:
       nodes = self._parse_yaml(content)
     else:
       for line in content.split("\n"):
@@ -94,7 +92,16 @@ class NodeParser:
         "server": server,
         "port": int(port),
       }
-      for field in ["uuid", "password", "cipher", "alterId", "network", "tls", "sni", "flow", "udp", "ws-opts", "servername", "client-fingerprint", "skip-cert-verify", "username"]:
+      # 字段白名单覆盖各协议必需字段：ssr(protocol/obfs/param)、
+      # hysteria2(obfs/up/down)、grpc/h2 传输、alpn 等。缺失会导致输出残缺节点连接失败。
+      for field in [
+        "uuid", "password", "cipher", "alterId", "network", "tls", "sni", "flow",
+        "udp", "ws-opts", "servername", "client-fingerprint", "skip-cert-verify",
+        "username",
+        "protocol", "obfs", "protocol-param", "obfs-param",
+        "grpc-opts", "h2-opts", "alpn",
+        "obfs-password", "insecure", "up", "down",
+      ]:
         if field in proxy:
           node[field] = proxy[field]
       if ptype == "vmess":
@@ -266,6 +273,8 @@ class NodeParser:
         node["path"] = query["path"][0]
       if query.get("host", [None])[0]:
         node["host"] = query["host"][0]
+      if query.get("alpn", [None])[0]:
+        node["alpn"] = query["alpn"][0]
       node["skip-cert-verify"] = query.get("allowInsecure", ["0"])[0] == "1"
       return node
     except Exception:
@@ -313,6 +322,8 @@ class NodeParser:
         node["host"] = query["host"][0]
       if query.get("path", [None])[0]:
         node["path"] = query["path"][0]
+      if query.get("alpn", [None])[0]:
+        node["alpn"] = query["alpn"][0]
       return node
     except Exception:
       return None
@@ -337,6 +348,18 @@ class NodeParser:
       }
       if query.get("sni", [None])[0]:
         node["sni"] = query["sni"][0]
+      if query.get("obfs", [None])[0]:
+        node["obfs"] = query["obfs"][0]
+      if query.get("obfs-password", [None])[0]:
+        node["obfs-password"] = query["obfs-password"][0]
+      if query.get("insecure", ["0"])[0] == "1":
+        node["skip-cert-verify"] = True
+      if query.get("up", [None])[0]:
+        node["up"] = query["up"][0]
+      if query.get("down", [None])[0]:
+        node["down"] = query["down"][0]
+      if query.get("alpn", [None])[0]:
+        node["alpn"] = query["alpn"][0]
       return node
     except Exception:
       return None
@@ -345,14 +368,22 @@ class NodeParser:
 def parse_all(results: List[dict]) -> List[Dict]:
   parser = NodeParser()
   all_nodes: List[Dict] = []
+  per_url_skip = []
   for r in results:
     if not r["success"] or not r.get("content"):
       continue
+    before = parser._skipped
     nodes = parser.parse_subscription(r["content"])
+    delta = parser._skipped - before
+    if delta > 0:
+      per_url_skip.append((r["url"], delta))
     for n in nodes:
       n["_sub_url"] = r["url"]
     all_nodes.extend(nodes)
   print(f"  \u89e3\u6790\u5b8c\u6210: {len(all_nodes)} \u4e2a\u8282\u70b9")
   if parser._skipped:
     print(f"  \u89e3\u6790\u8df3\u8fc7: {parser._skipped} \u884c\u65e0\u6548/\u4e0d\u652f\u6301")
+    print("  \u8df3\u8fc7\u660e\u7ec6 (URL | skip\u6570):")
+    for url, n in sorted(per_url_skip, key=lambda x: -x[1]):
+      print(f"    [{n:>6}] {url[:60]}")
   return all_nodes

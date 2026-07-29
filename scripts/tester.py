@@ -36,6 +36,10 @@ def _is_field_complete(node: Dict) -> bool:
   elif ptype == "vless":
     if not node.get("uuid"):
       return False
+    # reality 必须有 public-key，否则 mihomo 加载 fatal
+    reality = node.get("reality-opts") or {}
+    if reality and not reality.get("public-key"):
+      return False
   elif ptype in ("http", "socks5"):
     if not node.get("username") or not node.get("password"):
       return False
@@ -46,11 +50,8 @@ def _is_field_complete(node: Dict) -> bool:
     if "path" not in ws_opts and not node.get("path"):
       return False
 
-  # TLS 节点必须有 sni/servername（mihomo 要求）
-  if node.get("tls"):
-    if not node.get("servername") and not node.get("sni"):
-      return False
-
+  # 注意：TLS 节点缺 sni/servername 时不剔除——mihomo 会回退用 server 字段作 SNI，
+  # 强校验会误杀大量合法节点（vmess 的 tls 字段在解析时存为字符串 "tls"，旧逻辑必丢）。
   return True
 
 

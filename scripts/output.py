@@ -46,6 +46,45 @@ def _sort_key(n: Dict) -> tuple:
   )
 
 
+def _normalize_alpn(val) -> Optional[List[str]]:
+  """mihomo 要求 alpn 为 list；URI/JSON 里常是逗号分隔字符串。"""
+  if not val:
+    return None
+  if isinstance(val, list):
+    return val
+  if isinstance(val, str):
+    return [s.strip() for s in val.split(",") if s.strip()]
+  return None
+
+
+def _apply_transport(base: Dict, node: Dict):
+  """应用 ws/grpc/h2 传输层配置和 alpn。vmess/vless/trojan 共用，避免重复逻辑。"""
+  network = node.get("network", "tcp")
+  if network in ("ws", "websocket"):
+    base["network"] = "ws"
+    if node.get("ws-opts"):
+      base["ws-opts"] = node["ws-opts"]
+    else:
+      ws_opts: Dict = {}
+      if node.get("path"):
+        ws_opts["path"] = node["path"]
+      if node.get("host"):
+        ws_opts["headers"] = {"Host": node["host"]}
+      if ws_opts:
+        base["ws-opts"] = ws_opts
+  elif network == "grpc":
+    base["network"] = "grpc"
+    if node.get("grpc-opts"):
+      base["grpc-opts"] = node["grpc-opts"]
+  elif network == "h2":
+    base["network"] = "h2"
+    if node.get("h2-opts"):
+      base["h2-opts"] = node["h2-opts"]
+  alpn = _normalize_alpn(node.get("alpn"))
+  if alpn:
+    base["alpn"] = alpn
+
+
 def _to_clash_node(node: Dict) -> Dict:
   ptype = node.get("type", "").lower()
   base = {
@@ -83,19 +122,7 @@ def _to_clash_node(node: Dict) -> Dict:
         base["servername"] = sni
     if "skip-cert-verify" in node:
       base["skip-cert-verify"] = node["skip-cert-verify"]
-    network = node.get("network", "tcp")
-    if network in ("ws", "websocket"):
-      base["network"] = "ws"
-      if node.get("ws-opts"):
-        base["ws-opts"] = node["ws-opts"]
-      else:
-        ws_opts = {}
-        if node.get("path"):
-          ws_opts["path"] = node["path"]
-        if node.get("host"):
-          ws_opts["headers"] = {"Host": node["host"]}
-        if ws_opts:
-          base["ws-opts"] = ws_opts
+    _apply_transport(base, node)
 
   elif ptype == "trojan":
     base["password"] = node.get("password", "")
@@ -103,19 +130,7 @@ def _to_clash_node(node: Dict) -> Dict:
       base["sni"] = node["sni"]
     if node.get("skip-cert-verify"):
       base["skip-cert-verify"] = True
-    network = node.get("network", "")
-    if network in ("ws", "websocket"):
-      base["network"] = "ws"
-      if node.get("ws-opts"):
-        base["ws-opts"] = node["ws-opts"]
-      else:
-        ws_opts = {}
-        if node.get("path"):
-          ws_opts["path"] = node["path"]
-        if node.get("host"):
-          ws_opts["headers"] = {"Host": node["host"]}
-        if ws_opts:
-          base["ws-opts"] = ws_opts
+    _apply_transport(base, node)
 
   elif ptype == "vless":
     base["uuid"] = node.get("uuid", "")
@@ -133,19 +148,7 @@ def _to_clash_node(node: Dict) -> Dict:
       base["tls"] = True
     if "skip-cert-verify" in node:
       base["skip-cert-verify"] = node["skip-cert-verify"]
-    network = node.get("network", "tcp")
-    if network in ("ws", "websocket"):
-      base["network"] = "ws"
-      if node.get("ws-opts"):
-        base["ws-opts"] = node["ws-opts"]
-      else:
-        ws_opts = {}
-        if node.get("path"):
-          ws_opts["path"] = node["path"]
-        if node.get("host"):
-          ws_opts["headers"] = {"Host": node["host"]}
-        if ws_opts:
-          base["ws-opts"] = ws_opts
+    _apply_transport(base, node)
 
   elif ptype == "hysteria2":
     base["password"] = node.get("password", "")
@@ -153,10 +156,17 @@ def _to_clash_node(node: Dict) -> Dict:
       base["sni"] = node["sni"]
     if node.get("skip-cert-verify"):
       base["skip-cert-verify"] = True
+    if node.get("obfs"):
+      base["obfs"] = node["obfs"]
+    if node.get("obfs-password"):
+      base["obfs-password"] = node["obfs-password"]
     if node.get("up"):
       base["up"] = node["up"]
     if node.get("down"):
       base["down"] = node["down"]
+    alpn = _normalize_alpn(node.get("alpn"))
+    if alpn:
+      base["alpn"] = alpn
 
   elif ptype in ("http", "socks5"):
     if node.get("username"):
@@ -242,6 +252,8 @@ def _to_uri(node: Dict) -> Optional[str]:
           params["type"] = net
         params["host"] = node.get("host", "")
         params["path"] = node.get("path", "")
+      if node.get("alpn"):
+        params["alpn"] = node["alpn"]
       q = _query(params)
       return f"vless://{node.get('uuid', '')}@{server}:{port}?{q}#{_frag(name)}"
 
@@ -255,6 +267,8 @@ def _to_uri(node: Dict) -> Optional[str]:
         params["type"] = net
       params["host"] = node.get("host", "")
       params["path"] = node.get("path", "")
+      if node.get("alpn"):
+        params["alpn"] = node["alpn"]
       if node.get("skip-cert-verify"):
         params["allowInsecure"] = "1"
       q = _query(params)
@@ -265,8 +279,18 @@ def _to_uri(node: Dict) -> Optional[str]:
       params: Dict = {}
       if node.get("sni"):
         params["sni"] = node["sni"]
-      if node.get("skip-cert-verify"):
+      if node.get("obfs"):
+        params["obfs"] = node["obfs"]
+      if node.get("obfs-password"):
+        params["obfs-password"] = node["obfs-password"]
+      if node.get("insecure") or node.get("skip-cert-verify"):
         params["insecure"] = "1"
+      if node.get("up"):
+        params["up"] = node["up"]
+      if node.get("down"):
+        params["down"] = node["down"]
+      if node.get("alpn"):
+        params["alpn"] = node["alpn"]
       q = _query(params)
       prefix = f"hysteria2://{node.get('password', '')}@{server}:{port}"
       return f"{prefix}?{q}#{_frag(name)}" if q else f"{prefix}#{_frag(name)}"
