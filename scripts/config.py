@@ -11,7 +11,7 @@ def _bool_env(key: str, default: bool) -> bool:
   return os.getenv(key, str(int(default))).strip().lower() in ("1", "true", "yes", "on", "y")
 
 
-SUBSCRIPTION_TIMEOUT = _int_env("PROXY_SUB_TIMEOUT", 30)
+SUBSCRIPTION_TIMEOUT = _int_env("PROXY_SUB_TIMEOUT", 10)
 MAX_OUTPUT_NODES = _int_env("PROXY_MAX_OUTPUT_NODES", 200)
 MINI_OUTPUT_NODES = _int_env("PROXY_MINI_OUTPUT_NODES", 100)
 

@@ -36,6 +36,8 @@ class SSParser(BaseProtocolParser):
                     return None
                 method, password = method_pass.split(":", 1)
                 server, port_str = server_port.rsplit(":", 1)
+                # 处理 ss://method:password@server:port?plugin=... 格式
+                port_str = port_str.split("?")[0]
             else:
                 # SIP008 format: ss://BASE64(method:password@server:port)
                 decoded = self._try_base64_decode(rest)
@@ -48,6 +50,7 @@ class SSParser(BaseProtocolParser):
                     return None
                 method, password = method_pass.split(":", 1)
                 server, port_str = server_port.rsplit(":", 1)
+                port_str = port_str.split("?")[0]
 
             return {
                 "type": "ss",

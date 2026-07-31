@@ -66,22 +66,87 @@ class NodeParser:
             pass
         return None
     
+    @staticmethod
+    def _fix_yaml_flow_quotes(content: str) -> str:
+        """修复 YAML flow mapping 中未转义的双引号。
+        
+        处理形如 {name: "🇫🇷FR-"2001:bc"} 的问题——节点名含 " 但未转义，
+        导致 PyYAML 把 "🇫🇷FR-" 当作完整引号字符串，然后被 2001:bc 弄晕。
+        """
+        result = []
+        in_flow = False
+        in_quote = False
+        i = 0
+        while i < len(content):
+            c = content[i]
+            if c == '{':
+                in_flow = True
+                result.append(c)
+            elif c == '}':
+                in_flow = False
+                in_quote = False
+                result.append(c)
+            elif c == '"' and in_flow:
+                if not in_quote:
+                    in_quote = True
+                    result.append(c)
+                else:
+                    # 判断当前 " 是否为闭合引号：后面紧跟 , } 或行尾空格+逗号/花括号
+                    j = i + 1
+                    while j < len(content) and content[j] in ' \t\r\n':
+                        j += 1
+                    if j < len(content) and content[j] in ',}':
+                        in_quote = False
+                        result.append(c)
+                    else:
+                        # 未转义的内嵌引号 → 转义
+                        result.append('\\"')
+            elif c == '\\' and in_flow and in_quote and i + 1 < len(content):
+                # 已转义字符，跳过下一个
+                result.append(c)
+                i += 1
+                result.append(content[i])
+            else:
+                result.append(c)
+            i += 1
+        return ''.join(result)
+
     def _parse_yaml(self, content: str) -> List[Dict]:
-        """解析 Clash YAML 配置"""
+        """解析 Clash YAML 配置（支持多文档，处理 --- 分隔）"""
         nodes = []
-        try:
-            data = yaml.safe_load(content)
-            if not isinstance(data, dict):
-                return nodes
-            proxies = data.get("proxies", []) or []
-            for proxy in proxies:
-                if not isinstance(proxy, dict):
+        for attempt in range(2):
+            try:
+                # 先用 safe_load_all 处理多文档 YAML（--- 分隔的订阅源）
+                for doc in yaml.safe_load_all(content):
+                    if not isinstance(doc, dict):
+                        continue
+                    proxies = doc.get("proxies", []) or []
+                    for proxy in proxies:
+                        if not isinstance(proxy, dict):
+                            continue
+                        node = self._proxy_to_node(proxy)
+                        if node:
+                            nodes.append(node)
+                if nodes or attempt > 0:
+                    break
+            except Exception:
+                if attempt == 0:
+                    # 首次失败 → 尝试修复引号后重试
+                    content = self._fix_yaml_flow_quotes(content)
                     continue
-                node = self._proxy_to_node(proxy)
-                if node:
-                    nodes.append(node)
-        except Exception as e:
-            print(f"  ⚠ YAML 解析失败: {str(e)[:100]}")
+                # 次轮仍失败 → 回退到单文档解析
+                try:
+                    data = yaml.safe_load(content)
+                    if isinstance(data, dict):
+                        proxies = data.get("proxies", []) or []
+                        for proxy in proxies:
+                            if not isinstance(proxy, dict):
+                                continue
+                            node = self._proxy_to_node(proxy)
+                            if node:
+                                nodes.append(node)
+                except Exception:
+                    pass
         return nodes
     
     def _proxy_to_node(self, proxy: Dict) -> Optional[Dict]:
@@ -93,12 +158,13 @@ class NodeParser:
             port = proxy.get("port", 0)
             if not server or not port:
                 return None
-
+            # 容错脏端口（上游 YAML 可能写入 "443?" 等带 query 的字符串）
+            port = int(str(port).split("?")[0].strip())
             node: Dict = {
                 "type": ptype,
                 "name": name,
                 "server": server,
-                "port": int(port),
+                "port": port,
             }
             # 字段白名单覆盖各协议必需字段
             for field in [
