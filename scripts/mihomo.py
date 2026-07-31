@@ -13,7 +13,6 @@ from typing import Dict, List, Optional
 
 from scripts.config import (
     MAX_LATENCY,
-    MIHOMO_TEST_TIMEOUT,
     MIHOMO_TEST_URL,
     MIHOMO_VERSION,
     PROXY_TEST_CONCURRENCY,
@@ -209,34 +208,3 @@ def _free_port() -> int:
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.bind(("127.0.0.1", 0))
         return s.getsockname()[1]
-
-
-# 保持向后兼容的函数接口
-def ensure_binary() -> Path:
-    manager = BinaryManager(MIHOMO_VERSION)
-    return manager.ensure_binary()
-
-
-def test_nodes(
-    nodes: List[Dict],
-    latency_cap: int = MAX_LATENCY,
-    test_url: str = MIHOMO_TEST_URL,
-) -> List[Dict]:
-    tester = MihomoTester()
-    return tester.test_nodes(nodes, latency_cap=latency_cap, test_url=test_url)
-
-
-def test_nodes_relay(
-    nodes: List[Dict],
-    relay_node: Dict,
-    relay_self_latency: int = 0,
-    concurrency: int = RELAY_CONCURRENCY,
-    latency_cap: int = MAX_LATENCY,
-) -> List[Dict]:
-    tester = MihomoTester()
-    return tester.test_nodes_relay(
-        nodes, relay_node,
-        relay_self_latency=relay_self_latency,
-        concurrency=concurrency,
-        latency_cap=latency_cap,
-    )

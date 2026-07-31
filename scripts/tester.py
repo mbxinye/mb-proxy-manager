@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
+"""节点验证管线 - SRP：run() 仅编排，各阶段逻辑下沉到独立函数；DIP：依赖 MihomoTester 抽象。"""
 
-from typing import Dict, List
+from typing import Dict, List, Tuple
 
-from scripts import mihomo
 from scripts.config import (
   EXCLUDE_CN_OUTPUT,
   MIHOMO_TEST_URL_CN,
@@ -10,119 +10,85 @@ from scripts.config import (
   RELAY_MAX_PER_RELAY,
   RELAY_MAX_RELAYS,
 )
+from scripts.country import is_china_node
 from scripts.geoip import prefetch_countries
-from scripts.utils import is_china_node
+from scripts.mihomo import MihomoTester
+from scripts.protocols.registry import get_registry
 
 
-def _is_field_complete(node: Dict) -> bool:
-  ptype = node.get("type", "").lower()
-
-  # 各协议必填凭证（mihomo 启动时严格校验，缺失会 fatal 中断整个配置加载）
-  if ptype == "ss":
-    if not node.get("password") or not node.get("cipher"):
-      return False
-  elif ptype == "ssr":
-    if not node.get("password") or not node.get("cipher"):
-      return False
-  elif ptype == "trojan":
-    if not node.get("password"):
-      return False
-  elif ptype == "hysteria2":
-    if not node.get("password"):
-      return False
-  elif ptype == "vmess":
-    if not node.get("uuid"):
-      return False
-  elif ptype == "vless":
-    if not node.get("uuid"):
-      return False
-    # reality 必须有 public-key，否则 mihomo 加载 fatal
-    reality = node.get("reality-opts") or {}
-    if reality and not reality.get("public-key"):
-      return False
-  elif ptype in ("http", "socks5"):
-    if not node.get("username") or not node.get("password"):
-      return False
-
-  # WS 传输必须有 path
-  if node.get("network") in ("ws", "websocket"):
-    ws_opts = node.get("ws-opts") or {}
-    if "path" not in ws_opts and not node.get("path"):
-      return False
-
-  # 注意：TLS 节点缺 sni/servername 时不剔除——mihomo 会回退用 server 字段作 SNI，
-  # 强校验会误杀大量合法节点（vmess 的 tls 字段在解析时存为字符串 "tls"，旧逻辑必丢）。
-  return True
-
-
-def run(nodes: List[Dict]) -> List[Dict]:
-  total = len(nodes)
-
-  complete = [n for n in nodes if _is_field_complete(n)]
-  dropped = total - len(complete)
+def _filter_complete(nodes: List[Dict]) -> List[Dict]:
+  """预过滤：剔除协议必填凭证缺失的节点（mihomo 启动会 fatal 中断整批加载）。"""
+  registry = get_registry()
+  complete = [n for n in nodes if registry.is_field_complete(n)]
+  dropped = len(nodes) - len(complete)
   if dropped:
-    print(f"  \u5b57\u6bb5\u4e0d\u5b8c\u6574\u629b\u5f03: {dropped}/{total}")
+    print(f"  字段不完整抛弃: {dropped}/{len(nodes)}")
+  return complete
 
-  # Stage-1 前先分流 CN/foreign：CN 出口物理上无法访问 GFW 外目标（gstatic），
-  # 必须用国内可达 URL 测可达性，否则 CN relay 候选会在 stage-1 全部被误杀。
-  prefetch_countries([n.get("server", "") for n in complete])
-  china_candidates: List[Dict] = []
-  foreign_candidates: List[Dict] = []
-  for n in complete:
+
+def _split_by_region(nodes: List[Dict]) -> Tuple[List[Dict], List[Dict]]:
+  """Stage-1 前分流 CN/foreign：CN 出口无法达 GFW 外目标，必须用国内 URL 测可达性。"""
+  prefetch_countries([n.get("server", "") for n in nodes])
+  china, foreign = [], []
+  for n in nodes:
     if is_china_node(
       n.get("name", ""),
       n.get("server", ""),
       n.get("sni", "") or n.get("servername", "") or "",
     ):
-      china_candidates.append(n)
+      china.append(n)
     else:
-      foreign_candidates.append(n)
-  print(f"  \u5206\u6d41: CN relay {len(china_candidates)} / foreign {len(foreign_candidates)}")
+      foreign.append(n)
+  print(f"  分流: CN relay {len(china)} / foreign {len(foreign)}")
+  return china, foreign
 
-  # CN relay 用国内 URL（baidu），foreign 用 gstatic
-  cn_valid = mihomo.test_nodes(china_candidates, test_url=MIHOMO_TEST_URL_CN) if china_candidates else []
-  foreign_valid = mihomo.test_nodes(foreign_candidates) if foreign_candidates else []
-  valid = cn_valid + foreign_valid
 
-  china = cn_valid
-  china_ids = {id(n) for n in china}
-  foreign = foreign_valid
-  print(f"  stage-1: {len(valid)} reachable (CN relay {len(china)} / foreign {len(foreign)})")
+def _stage1(tester: MihomoTester, cn: List[Dict], foreign: List[Dict]) -> Tuple[List[Dict], List[Dict]]:
+  """Stage-1：CN relay 用国内 204 端点，foreign 用 gstatic（runner 为美国出口）。"""
+  cn_valid = tester.test_nodes(cn, test_url=MIHOMO_TEST_URL_CN) if cn else []
+  foreign_valid = tester.test_nodes(foreign) if foreign else []
+  print(f"  stage-1: {len(cn_valid) + len(foreign_valid)} reachable (CN relay {len(cn_valid)} / foreign {len(foreign_valid)})")
+  return cn_valid, foreign_valid
 
-  # Stage-2: re-test foreign nodes through China relays (dialer-proxy).
-  # This verifies reachability from a China network egress, the view that
-  # actually matters for the user. Failure here == the unusable nodes.
-  if RELAY_ENABLED and china:
-    relays = sorted(china, key=lambda x: x.get("latency", 9999))[:RELAY_MAX_RELAYS]
-    remaining = list(foreign)
-    confirmed: List[Dict] = []
-    for relay in relays:
-      if not remaining:
-        break
-      batch = remaining
-      if RELAY_MAX_PER_RELAY > 0:
-        batch = remaining[:RELAY_MAX_PER_RELAY]
-      relay_latency = relay.get("latency", 0) or 0
-      print(
-        f"  relay {relay.get('name', '')} ({relay_latency}ms) "
-        f"-> testing {len(batch)} remaining"
-      )
-      got = mihomo.test_nodes_relay(batch, relay, relay_latency)
-      got_ids = {id(n) for n in got}
-      confirmed.extend(got)
-      remaining = [n for n in remaining if id(n) not in got_ids]
-      print(f"    confirmed {len(confirmed)} total, {len(remaining)} left")
-    foreign = confirmed
-    if not foreign:
-      # No foreign node reachable via any relay: fall back to stage-1 foreign
-      # so the run still produces output (with the caveat it is US-tested).
-      print("  WARN 0 nodes reachable via relay; falling back to stage-1 foreign")
-      foreign = [n for n in valid if id(n) not in china_ids]
+
+def _stage2_relay(tester: MihomoTester, foreign: List[Dict], relays: List[Dict]) -> List[Dict]:
+  """Stage-2：经 China relay 重新测 foreign（dialer-proxy），验证国内出口可达性。
+
+  失败节点即国内不可用节点；逐 relay 尝试，任一 relay 通即保留。
+  全部 relay 均无节点可达时回退 stage-1 foreign，保证仍有产出。"""
+  remaining = list(foreign)
+  confirmed: List[Dict] = []
+  for relay in relays:
+    if not remaining:
+      break
+    batch = remaining[:RELAY_MAX_PER_RELAY] if RELAY_MAX_PER_RELAY > 0 else remaining
+    relay_latency = relay.get("latency", 0) or 0
+    print(f"  relay {relay.get('name', '')} ({relay_latency}ms) -> testing {len(batch)} remaining")
+    got = tester.test_nodes_relay(batch, relay, relay_latency)
+    got_ids = {id(n) for n in got}
+    confirmed.extend(got)
+    remaining = [n for n in remaining if id(n) not in got_ids]
+    print(f"    confirmed {len(confirmed)} total, {len(remaining)} left")
+  if not confirmed and foreign:
+    print("  WARN 0 nodes reachable via relay; falling back to stage-1 foreign")
+    return list(foreign)
+  return confirmed
+
+
+def run(nodes: List[Dict]) -> List[Dict]:
+  tester = MihomoTester()
+  complete = _filter_complete(nodes)
+  china_candidates, foreign_candidates = _split_by_region(complete)
+  cn_valid, foreign_valid = _stage1(tester, china_candidates, foreign_candidates)
+
+  if RELAY_ENABLED and cn_valid:
+    relays = sorted(cn_valid, key=lambda x: x.get("latency", 9999))[:RELAY_MAX_RELAYS]
+    foreign_valid = _stage2_relay(tester, foreign_valid, relays)
   else:
     print("  no China relay available; skipping stage-2 (using stage-1 results)")
 
-  final = list(foreign)
+  final = list(foreign_valid)
   if not EXCLUDE_CN_OUTPUT:
-    final.extend(china)
+    final.extend(cn_valid)
   final.sort(key=lambda x: x.get("latency", 9999))
   return final

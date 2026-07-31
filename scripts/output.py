@@ -8,7 +8,7 @@ import yaml
 
 from scripts.clash_converter import to_clash_node, to_uri
 from scripts.config import PREFERRED_COUNTRIES
-from scripts.utils import extract_country, generate_node_name
+from scripts.country import extract_country, generate_node_name
 
 OUTPUT_DIR = Path("output")
 PROTOCOL_PRIORITY = {

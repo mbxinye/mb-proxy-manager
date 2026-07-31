@@ -14,24 +14,18 @@ USER_AGENT = (
   "Chrome/131.0.0.0 Safari/537.36"
 )
 
-# 单次重试即可；urllib timeout 不覆盖 Windows DNS 解析，加 socket 级兜底
-_MAX_RETRIES = 0
-
 
 def _fetch_one(url: str) -> dict:
-  for attempt in range(_MAX_RETRIES + 1):
-    try:
-      # socket.setdefaulttimeout 覆盖 DNS 解析阶段（urllib timeout 不保证覆盖）
-      socket.setdefaulttimeout(SUBSCRIPTION_TIMEOUT)
-      ctx = ssl.create_default_context()
-      req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-      with urllib.request.urlopen(req, timeout=SUBSCRIPTION_TIMEOUT, context=ctx) as resp:
-        content = resp.read().decode("utf-8", errors="ignore")
-        return {"url": url, "content": content, "success": True}
-    except Exception as e:
-      if attempt < _MAX_RETRIES:
-        continue
-      return {"url": url, "content": None, "error": str(e)[:60], "success": False}
+  try:
+    # socket.setdefaulttimeout 覆盖 DNS 解析阶段（urllib timeout 不保证覆盖 Windows DNS）
+    socket.setdefaulttimeout(SUBSCRIPTION_TIMEOUT)
+    ctx = ssl.create_default_context()
+    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    with urllib.request.urlopen(req, timeout=SUBSCRIPTION_TIMEOUT, context=ctx) as resp:
+      content = resp.read().decode("utf-8", errors="ignore")
+      return {"url": url, "content": content, "success": True}
+  except Exception as e:
+    return {"url": url, "content": None, "error": str(e)[:60], "success": False}
 
 
 def fetch_all(urls: List[str]) -> List[dict]:
