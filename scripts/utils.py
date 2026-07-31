@@ -4,6 +4,12 @@ import re
 from typing import Optional
 
 
+def get_local_opener():
+    """获取绕过系统代理的 opener，避免 127.0.0.1 被系统代理劫持"""
+    from urllib.request import ProxyHandler, build_opener
+    return build_opener(ProxyHandler({}))
+
+
 def sanitize_name(name: str) -> str:
   if not name:
     return "Node"

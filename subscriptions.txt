@@ -26,7 +26,6 @@ https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/feat/ai-crawler-
 https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/feat/ai-crawler-v2/nodes/datiya.yaml
 https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/feat/ai-crawler-v2/nodes/merged.yaml
 https://raw.githubusercontent.com/a2470982985/getNode/main/clash.yaml
-https://raw.githubusercontent.com/ts-sf/fly/main/clash
 https://raw.githubusercontent.com/xiaoji235/airport-free/main/v2ray.txt
 https://raw.githubusercontent.com/mfuu/v2ray/master/clash.yaml
 https://raw.githubusercontent.com/HakurouKen/free-node/main/public

@@ -1,419 +1,242 @@
 #!/usr/bin/env python3
+"""
+Mihomo 测试模块 - 协调二进制管理、配置构建、进程管理和延迟测试
+符合 DIP: 依赖抽象接口，各组件可独立替换
+"""
 
-import gzip
-import json
-import os
-import platform
 import re
 import socket
-import stat
 import subprocess
-import tarfile
 import tempfile
-import time
-import zipfile
-from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
-from urllib.parse import quote
-from urllib.request import ProxyHandler, Request, build_opener, urlopen
-
-import yaml
+from typing import Dict, List, Optional
 
 from scripts.config import (
-  MAX_LATENCY,
-  MIHOMO_TEST_TIMEOUT,
-  MIHOMO_TEST_URL,
-  MIHOMO_VERSION,
-  PROXY_TEST_CONCURRENCY,
-  RELAY_CONCURRENCY,
+    MAX_LATENCY,
+    MIHOMO_TEST_TIMEOUT,
+    MIHOMO_TEST_URL,
+    MIHOMO_VERSION,
+    PROXY_TEST_CONCURRENCY,
+    RELAY_CONCURRENCY,
 )
-from scripts.output import _to_clash_node
-
-BIN_DIR = Path("bin")
-DOWNLOAD_BASE = "https://github.com/MetaCubeX/mihomo/releases/download"
-
-# 访问本地 mihomo API 必须绕过系统代理 env（HTTP_PROXY 会把 127.0.0.1 也走代理）
-_LOCAL_OPENER = build_opener(ProxyHandler({}))
+from scripts.config_builder import ConfigBuilder
+from scripts.latency_tester import LatencyTester
+from scripts.mihomo_manager import BinaryManager
+from scripts.process_manager import ProcessManager
 
 
-def _platform_asset(ver: str) -> Tuple[str, str]:
-  system = platform.system().lower()
-  machine = platform.machine().lower()
-  if machine in ("x86_64", "amd64"):
-    arch = "amd64-v3"
-  elif machine in ("arm64", "aarch64"):
-    arch = "arm64"
-  else:
-    arch = machine
-  if system in ("linux", "darwin"):
-    return f"mihomo-{system}-{arch}-{ver}.gz", "gz"
-  if system == "windows":
-    return f"mihomo-windows-{arch}-{ver}.zip", "zip"
-  raise RuntimeError(f"unsupported platform: {system}/{machine}")
+class MihomoTester:
+    """mihomo 测试协调器 - 组合各职责类完成端到端测试"""
 
+    def __init__(self, binary_manager: Optional[BinaryManager] = None):
+        self._config_builder = ConfigBuilder()
+        self._binary_manager = binary_manager or BinaryManager(MIHOMO_VERSION)
+        self._binary: Optional[Path] = None
 
-def _download(url: str, dest: Path, timeout: int = 180):
-  req = Request(url, headers={"User-Agent": "mb-proxy-manager"})
-  with urlopen(req, timeout=timeout) as resp:
-    if resp.status != 200:
-      raise RuntimeError(f"下载失败: HTTP {resp.status}")
-    with open(dest, "wb") as f:
-      while True:
-        chunk = resp.read(65536)
-        if not chunk:
-          break
-        f.write(chunk)
+    @property
+    def binary(self) -> Path:
+        if self._binary is None:
+            self._binary = self._binary_manager.ensure_binary()
+        return self._binary
 
+    def test_nodes(
+        self,
+        nodes: List[Dict],
+        latency_cap: int = MAX_LATENCY,
+        test_url: str = MIHOMO_TEST_URL,
+    ) -> List[Dict]:
+        """测试节点可用性"""
+        if not nodes:
+            return []
 
-def _extract_binary(archive: Path, target: Path, kind: str):
-  if kind == "zip":
-    with zipfile.ZipFile(archive) as zf:
-      names = [n for n in zf.namelist() if not n.endswith("/")]
-      member = next(
-        (n for n in names if n.lower().endswith(("mihomo.exe", "mihomo"))),
-        names[0],
-      )
-      with zf.open(member) as src, open(target, "wb") as dst:
-        dst.write(src.read())
-  else:
-    # 版本化 .gz 可能是单文件 gzip 二进制，也可能是 tar.gz；先按 tar 试，失败则按单 gzip。
-    try:
-      with tarfile.open(archive, "r:gz") as tf:
-        members = [m for m in tf.getmembers() if m.isfile()]
-        bin_member = next(
-          (m for m in members if os.path.basename(m.name).lower().endswith("mihomo")),
-          members[0],
+        print(f"  真实测试 {len(nodes)} 个节点 (并发 {PROXY_TEST_CONCURRENCY})...")
+
+        # 预校验：剔除会让 mihomo fatal 的节点
+        valid_config_nodes = self._validate_config(nodes)
+        if not valid_config_nodes:
+            print("  无配置合法节点")
+            return []
+
+        # 单批跑完
+        try:
+            valid = self._test_batch(valid_config_nodes, latency_cap=latency_cap, test_url=test_url)
+        except RuntimeError as e:
+            print(f"  ⚠ 单批启动失败，退回分批: {str(e)[:100]}")
+            valid = self._fallback_split(valid_config_nodes, latency_cap=latency_cap, test_url=test_url)
+
+        print(f"  实测可用: {len(valid)}/{len(nodes)}")
+        return valid
+
+    def test_nodes_relay(
+        self,
+        nodes: List[Dict],
+        relay_node: Dict,
+        relay_self_latency: int = 0,
+        concurrency: int = RELAY_CONCURRENCY,
+        latency_cap: int = MAX_LATENCY,
+    ) -> List[Dict]:
+        """通过 China relay 测试 foreign 节点（Stage-2）"""
+        if not nodes or relay_node is None:
+            return []
+
+        print(f"  relay-test {len(nodes)} nodes via relay (concurrency {concurrency})...")
+        return self._test_batch(
+            nodes,
+            relay_node=relay_node,
+            concurrency=concurrency,
+            latency_offset=relay_self_latency,
+            latency_cap=latency_cap,
         )
-        src = tf.extractfile(bin_member)
-        with open(target, "wb") as dst:
-          dst.write(src.read())
-    except tarfile.ReadError:
-      with gzip.open(archive, "rb") as gz, open(target, "wb") as dst:
-        dst.write(gz.read())
-  if os.name != "nt":
-    mode = os.stat(target).st_mode
-    os.chmod(target, mode | stat.S_IEXEC | stat.S_IXGRP | stat.S_IXOTH)
 
+    def _validate_config(self, nodes: List[Dict]) -> List[Dict]:
+        """用 mihomo -t 预校验配置，批量剔除致命节点"""
+        current = list(nodes)
+        total_dropped = 0
 
-def ensure_binary() -> Path:
-  exe_name = "mihomo.exe" if os.name == "nt" else "mihomo"
-  target = BIN_DIR / exe_name
-  if target.exists():
-    return target
-  BIN_DIR.mkdir(parents=True, exist_ok=True)
-  asset, kind = _platform_asset(MIHOMO_VERSION)
-  url = f"{DOWNLOAD_BASE}/{MIHOMO_VERSION}/{asset}"
-  print(f"  下载 mihomo 内核 {MIHOMO_VERSION}: {url}")
-  tmp_archive = BIN_DIR / asset
-  _download(url, tmp_archive)
-  _extract_binary(tmp_archive, target, kind)
-  tmp_archive.unlink(missing_ok=True)
-  print(f"  \u2713 mihomo 就绪: {target}")
-  return target
+        while True:
+            if not current:
+                break
+
+            config, _, proxy_node_indices = self._config_builder.build_test_config(current, 0)
+
+            with tempfile.TemporaryDirectory(prefix="mihomo-validate-") as workdir:
+                cfg_path = Path(workdir) / "config.yaml"
+                self._config_builder.write_config(config, cfg_path)
+
+                r = subprocess.run(
+                    [str(self.binary), "-t", "-d", workdir, "-f", str(cfg_path)],
+                    capture_output=True, text=True, timeout=30,
+                )
+                if r.returncode == 0:
+                    break
+
+                # 收集所有报错的 proxy 位置，一次性批量剔除
+                text = r.stdout or r.stderr or ""
+                positions = [int(p) for p in re.findall(r"proxy (\d+):", text)]
+                node_idxs = sorted(
+                    {proxy_node_indices[p] for p in positions if 0 <= p < len(proxy_node_indices)},
+                    reverse=True,
+                )
+                if not node_idxs:
+                    break
+                for idx in node_idxs:
+                    if 0 <= idx < len(current):
+                        current.pop(idx)
+                        total_dropped += 1
+
+        if total_dropped:
+            print(f"  配置校验剔除: {total_dropped} 个致命节点")
+        return current
+
+    def _test_batch(
+        self,
+        nodes: List[Dict],
+        relay_node: Optional[Dict] = None,
+        concurrency: int = PROXY_TEST_CONCURRENCY,
+        latency_offset: int = 0,
+        latency_cap: int = MAX_LATENCY,
+        test_url: str = MIHOMO_TEST_URL,
+    ) -> List[Dict]:
+        """单批测试：启动一个 mihomo 实例测全部节点"""
+        if not nodes:
+            return []
+
+        port = _free_port()
+        config, proxy_to_node, _ = self._config_builder.build_test_config(
+            nodes, port, relay_node=relay_node,
+        )
+        if not proxy_to_node:
+            return []
+
+        with tempfile.TemporaryDirectory(prefix="mihomo-test-") as workdir:
+            cfg_path = Path(workdir) / "config.yaml"
+            self._config_builder.write_config(config, cfg_path)
+
+            proc_mgr = ProcessManager(self.binary, workdir)
+            proc_mgr.start(cfg_path)
+
+            try:
+                if not proc_mgr.wait_ready(port):
+                    out = proc_mgr.get_startup_output()
+                    raise RuntimeError(out)
+
+                tester = LatencyTester(
+                    port=port,
+                    proxy_to_node=proxy_to_node,
+                    concurrency=concurrency,
+                    latency_offset=latency_offset,
+                    latency_cap=latency_cap,
+                    test_url=test_url,
+                )
+                return tester.run_tests()
+            finally:
+                proc_mgr.terminate()
+
+    def _fallback_split(
+        self,
+        nodes: List[Dict],
+        relay_node: Optional[Dict] = None,
+        concurrency: int = PROXY_TEST_CONCURRENCY,
+        latency_offset: int = 0,
+        latency_cap: int = MAX_LATENCY,
+        test_url: str = MIHOMO_TEST_URL,
+    ) -> List[Dict]:
+        """兜底：二分拆分重试定位问题节点"""
+        BATCH_THRESHOLD = 1
+
+        def _run(batch: List[Dict]) -> List[Dict]:
+            if not batch:
+                return []
+            try:
+                return self._test_batch(
+                    batch,
+                    relay_node=relay_node,
+                    concurrency=concurrency,
+                    latency_offset=latency_offset,
+                    latency_cap=latency_cap,
+                    test_url=test_url,
+                )
+            except RuntimeError:
+                if len(batch) <= BATCH_THRESHOLD:
+                    return []
+                mid = len(batch) // 2
+                return _run(batch[:mid]) + _run(batch[mid:])
+
+        return _run(nodes)
 
 
 def _free_port() -> int:
-  with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-    s.bind(("127.0.0.1", 0))
-    return s.getsockname()[1]
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        s.bind(("127.0.0.1", 0))
+        return s.getsockname()[1]
 
 
-def _build_test_config(
-  nodes: List[Dict], port: int,
-  relay_node: Optional[Dict] = None,
-) -> Tuple[Dict, Dict[str, Dict], List[int]]:
-  clash_proxies: List[Dict] = []
-  proxy_to_node: Dict[str, Dict] = {}
-  proxy_node_indices: List[int] = []
-  relay_name = None
-  if relay_node is not None:
-    try:
-      clash_proxies.append(_to_clash_node({**relay_node, "name": "RELAY"}))
-      relay_name = "RELAY"
-    except (KeyError, ValueError, TypeError):
-      relay_name = None
-  for i, n in enumerate(nodes):
-    synthetic = dict(n)
-    synthetic["name"] = f"node-{i}"
-    try:
-      clash = _to_clash_node(synthetic)
-      if relay_name:
-        clash["dialer-proxy"] = relay_name
-      clash_proxies.append(clash)
-      proxy_to_node[f"node-{i}"] = n
-      proxy_node_indices.append(i)
-    except (KeyError, ValueError, TypeError):
-      continue
-  config = {
-    "external-controller": f"127.0.0.1:{port}",
-    "secret": "",
-    "mode": "rule",
-    "log-level": "silent",
-    "geo-auto-update": False,
-    "proxies": clash_proxies,
-    "proxy-groups": [
-      {
-        "name": "TEST",
-        "type": "select",
-        "proxies": ["DIRECT"] + [p["name"] for p in clash_proxies],
-      }
-    ],
-    "rules": ["MATCH,TEST"],
-  }
-  return config, proxy_to_node, proxy_node_indices
-
-
-def _wait_ready(port: int, timeout: float = 30.0) -> bool:
-  url = f"http://127.0.0.1:{port}/version"
-  deadline = time.monotonic() + timeout
-  while time.monotonic() < deadline:
-    try:
-      with _LOCAL_OPENER.open(url, timeout=1) as resp:
-        if resp.status == 200:
-          return True
-    except Exception:
-      time.sleep(0.3)
-  return False
-
-
-def _test_one(base: str, name: str, test_url: str = MIHOMO_TEST_URL) -> Optional[int]:
-  url = (
-    f"{base}/{quote(name, safe='')}/delay"
-    f"?timeout={MIHOMO_TEST_TIMEOUT}&url={quote(test_url, safe='')}"
-  )
-  http_timeout = MIHOMO_TEST_TIMEOUT / 1000 + 3
-  try:
-    with _LOCAL_OPENER.open(url, timeout=http_timeout) as resp:
-      if resp.status != 200:
-        return None
-      data = json.loads(resp.read().decode("utf-8"))
-      delay = data.get("delay")
-      return int(delay) if delay is not None else None
-  except Exception:
-    return None
-
-
-def _run_delay_tests(
-  port: int, proxy_to_node: Dict[str, Dict],
-  concurrency: int = PROXY_TEST_CONCURRENCY,
-  latency_offset: int = 0,
-  latency_cap: int = MAX_LATENCY,
-  test_url: str = MIHOMO_TEST_URL,
-) -> List[Dict]:
-  base = f"http://127.0.0.1:{port}/proxies"
-  results: List[Dict] = []
-  total = len(proxy_to_node)
-  latency_dropped = 0
-  with ThreadPoolExecutor(max_workers=concurrency) as pool:
-    futures = {pool.submit(_test_one, base, name, test_url): name for name in proxy_to_node}
-    done = 0
-    for f in as_completed(futures):
-      done += 1
-      name = futures[f]
-      latency = f.result()
-      if latency is not None:
-        adj = latency - latency_offset
-        if adj < 1:
-          adj = 1
-        node = proxy_to_node[name]
-        node["latency"] = adj
-        if latency_cap > 0 and adj > latency_cap:
-          latency_dropped += 1
-        else:
-          results.append(node)
-      if done % 50 == 0 or done == total:
-        print(f"    进度 {done}/{total}, 可用 {len(results)}")
-  if latency_dropped:
-    print(f"    延迟超阈值(>{MAX_LATENCY}ms)剔除: {latency_dropped}")
-  return results
-
-
-def _validate_config(binary: Path, nodes: List[Dict]) -> List[Dict]:
-  """用 mihomo -t 预校验配置，批量剔除致命节点，保证返回的节点列表 0 fatal。"""
-  current = list(nodes)
-  total_dropped = 0
-  while True:
-    if not current:
-      break
-    config, _, proxy_node_indices = _build_test_config(current, 0)
-    with tempfile.TemporaryDirectory(prefix="mihomo-validate-") as workdir:
-      cfg_path = Path(workdir) / "config.yaml"
-      with open(cfg_path, "w", encoding="utf-8") as f:
-        yaml.dump(config, f, allow_unicode=True, sort_keys=False, indent=2)
-      r = subprocess.run(
-        [str(binary), "-t", "-d", workdir, "-f", str(cfg_path)],
-        capture_output=True, text=True, timeout=30,
-      )
-      if r.returncode == 0:
-        break
-      # 收集所有报错的 proxy 位置，一次性批量剔除（避免多次启动 mihomo）
-      text = r.stdout or r.stderr or ""
-      positions = [int(p) for p in re.findall(r"proxy (\d+):", text)]
-      node_idxs = sorted(
-        {proxy_node_indices[p] for p in positions if 0 <= p < len(proxy_node_indices)},
-        reverse=True,
-      )
-      if not node_idxs:
-        # 无法定位错误，放弃校验直接返回当前列表（交给兜底处理）
-        break
-      for idx in node_idxs:
-        if 0 <= idx < len(current):
-          current.pop(idx)
-          total_dropped += 1
-  if total_dropped:
-    print(f"  配置校验剔除: {total_dropped} 个致命节点")
-  return current
-
-
-def _test_batch(
-  binary: Path, nodes: List[Dict],
-  relay_node: Optional[Dict] = None,
-  concurrency: int = PROXY_TEST_CONCURRENCY,
-  latency_offset: int = 0,
-  latency_cap: int = MAX_LATENCY,
-  test_url: str = MIHOMO_TEST_URL,
-) -> List[Dict]:
-  """单批测试：启动一个 mihomo 实例测全部节点。启动失败抛 RuntimeError。"""
-  if not nodes:
-    return []
-  port = _free_port()
-  config, proxy_to_node, _ = _build_test_config(
-    nodes, port, relay_node=relay_node,
-  )
-  if not proxy_to_node:
-    return []
-
-  with tempfile.TemporaryDirectory(prefix="mihomo-test-") as workdir:
-    cfg_path = Path(workdir) / "config.yaml"
-    with open(cfg_path, "w", encoding="utf-8") as f:
-      yaml.dump(config, f, allow_unicode=True, sort_keys=False, indent=2)
-
-    cmd = [str(binary), "-d", workdir, "-f", str(cfg_path)]
-    proc = subprocess.Popen(
-      cmd,
-      stdout=subprocess.PIPE,
-      stderr=subprocess.STDOUT,
-      text=True,
-    )
-    try:
-      if not _wait_ready(port):
-        out = ""
-        if proc.stdout:
-          try:
-            out = proc.stdout.read(4000)
-          except Exception:
-            pass
-        raise RuntimeError(out)
-      return _run_delay_tests(
-        port, proxy_to_node,
-        concurrency=concurrency,
-        latency_offset=latency_offset,
-        latency_cap=latency_cap,
-        test_url=test_url,
-      )
-    finally:
-      proc.terminate()
-      try:
-        proc.wait(timeout=3)
-      except subprocess.TimeoutExpired:
-        proc.kill()
-
-
-def _fallback_split(
-  binary: Path, nodes: List[Dict],
-  relay_node: Optional[Dict] = None,
-  concurrency: int = PROXY_TEST_CONCURRENCY,
-  latency_offset: int = 0,
-  latency_cap: int = MAX_LATENCY,
-  test_url: str = MIHOMO_TEST_URL,
-) -> List[Dict]:
-  """兜底：-t 漏报导致单批 fatal 时，二分拆分重试定位问题节点。"""
-  BATCH_THRESHOLD = 1
-
-  def _run(batch: List[Dict]) -> List[Dict]:
-    if not batch:
-      return []
-    try:
-      return _test_batch(
-        binary, batch,
-        relay_node=relay_node,
-        concurrency=concurrency,
-        latency_offset=latency_offset,
-        latency_cap=latency_cap,
-        test_url=test_url,
-      )
-    except RuntimeError:
-      if len(batch) <= BATCH_THRESHOLD:
-        return []
-      mid = len(batch) // 2
-      return _run(batch[:mid]) + _run(batch[mid:])
-
-  return _run(nodes)
+# 保持向后兼容的函数接口
+def ensure_binary() -> Path:
+    manager = BinaryManager(MIHOMO_VERSION)
+    return manager.ensure_binary()
 
 
 def test_nodes(
-  nodes: List[Dict],
-  latency_cap: int = MAX_LATENCY,
-  test_url: str = MIHOMO_TEST_URL,
+    nodes: List[Dict],
+    latency_cap: int = MAX_LATENCY,
+    test_url: str = MIHOMO_TEST_URL,
 ) -> List[Dict]:
-  if not nodes:
-    return []
-  binary = ensure_binary()
-
-  print(f"  \u771f\u5b9e\u6d4b\u8bd5 {len(nodes)} \u4e2a\u8282\u70b9 "
-        f"(\u5e76\u53d1 {PROXY_TEST_CONCURRENCY})...")
-
-  # 预校验：剔除会让 mihomo fatal 的节点，保证单批 0 fatal
-  valid_config_nodes = _validate_config(binary, nodes)
-  if not valid_config_nodes:
-    print("  \u65e0\u914d\u7f6e\u5408\u6cd5\u8282\u70b9")
-    return []
-
-  # 单批跑完，不再二分降级
-  try:
-    valid = _test_batch(binary, valid_config_nodes, latency_cap=latency_cap, test_url=test_url)
-  except RuntimeError as e:
-    # 兜底：-t 漏报导致仍 fatal，退回二分（极少触发）
-    print(f"  \u26a0 \u5355\u6279\u542f\u52a8\u5931\u8d25\uff0c\u9000\u56de\u5206\u6279: {str(e)[:100]}")
-    valid = _fallback_split(binary, valid_config_nodes, latency_cap=latency_cap, test_url=test_url)
-
-  print(f"  \u5b9e\u6d4b\u53ef\u7528: {len(valid)}/{len(nodes)}")
-  return valid
+    tester = MihomoTester()
+    return tester.test_nodes(nodes, latency_cap=latency_cap, test_url=test_url)
 
 
 def test_nodes_relay(
-  nodes: List[Dict],
-  relay_node: Dict,
-  relay_self_latency: int = 0,
-  concurrency: int = RELAY_CONCURRENCY,
-  latency_cap: int = MAX_LATENCY,
+    nodes: List[Dict],
+    relay_node: Dict,
+    relay_self_latency: int = 0,
+    concurrency: int = RELAY_CONCURRENCY,
+    latency_cap: int = MAX_LATENCY,
 ) -> List[Dict]:
-  """Stage-2 end-to-end test of foreign nodes through a China relay (dialer-proxy).
-
-  Measured latency is the full-path RTT; subtracting the relay's own latency
-  approximates the relay->target leg, which filters/sorts closer to a China view.
-  """
-  if not nodes or relay_node is None:
-    return []
-  binary = ensure_binary()
-  print(f"  relay-test {len(nodes)} nodes via relay (concurrency {concurrency})...")
-  try:
-    valid = _test_batch(
-      binary, nodes,
-      relay_node=relay_node,
-      concurrency=concurrency,
-      latency_offset=relay_self_latency,
-      latency_cap=latency_cap,
+    tester = MihomoTester()
+    return tester.test_nodes_relay(
+        nodes, relay_node,
+        relay_self_latency=relay_self_latency,
+        concurrency=concurrency,
+        latency_cap=latency_cap,
     )
-  except RuntimeError as e:
-    print(f"  WARN relay single-batch failed, fallback split: {str(e)[:100]}")
-    valid = _fallback_split(
-      binary, nodes,
-      relay_node=relay_node,
-      concurrency=concurrency,
-      latency_offset=relay_self_latency,
-      latency_cap=latency_cap,
-    )
-  print(f"  relay valid: {len(valid)}/{len(nodes)}")
-  return valid
