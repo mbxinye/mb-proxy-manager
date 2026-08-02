@@ -57,7 +57,11 @@ class LatencyTester:
                     if adj < 1:
                         adj = 1
                     node = self._proxy_to_node[name]
-                    node["latency"] = adj
+                    # relay 场景用独立字段，避免覆盖 stage-1 直连 latency
+                    if self._latency_offset > 0:
+                        node["relay_latency"] = adj
+                    else:
+                        node["latency"] = adj
                     if self._latency_cap > 0 and adj > self._latency_cap:
                         latency_dropped += 1
                     else:
@@ -66,7 +70,7 @@ class LatencyTester:
                     log.info(f"    进度 {done}/{total}, 可用 {len(results)}")
 
         if latency_dropped:
-            log.info(f"    延迟超阈值(>{TEST_MAX_LATENCY}ms)剔除: {latency_dropped}")
+            log.info(f"    延迟超阈值(>{self._latency_cap}ms)剔除: {latency_dropped}")
         return results
 
     def _test_one(self, base: str, name: str) -> Optional[int]:
@@ -76,7 +80,8 @@ class LatencyTester:
             f"{base}/{quote(name, safe='')}/delay"
             f"?timeout={TEST_TIMEOUT}&url={quote(self._test_url, safe='')}"
         )
-        http_timeout = TEST_TIMEOUT / 1000 + 3
+        # relay 场景（runner→CN relay→foreign→204）RTT 更长，放大 HTTP 超时
+        http_timeout = TEST_TIMEOUT / 1000 + 3 + (self._latency_offset / 1000 if self._latency_offset > 0 else 0)
         try:
             opener = get_local_opener()
             with opener.open(url, timeout=http_timeout) as resp:

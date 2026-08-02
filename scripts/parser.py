@@ -23,6 +23,11 @@ class NodeParser:
     self._skipped = 0
     self._registry = get_registry()
 
+  @property
+  def skipped(self) -> int:
+    """已跳过的无法解析行数（供 parse_all 统计）。"""
+    return self._skipped
+
   def parse_subscription(self, content: str) -> List[Dict]:
     nodes: List[Dict] = []
     content = content.strip()
@@ -141,7 +146,10 @@ class NodeParser:
     return nodes
 
   def _proxy_to_node(self, proxy: Dict) -> Optional[Dict]:
-    """Clash proxy dict → 内部节点格式。"""
+    """Clash proxy dict → 内部节点格式。
+
+    协议特定字段映射委托给各协议类的 from_clash_proxy（SRP/OCP），
+    parser 只负责公共字段提取与分派。"""
     name = proxy.get("name", "Unknown")[:50]  # 预赋值，避免 except 引用未定义变量
     try:
       ptype = proxy.get("type", "").lower()
@@ -157,7 +165,7 @@ class NodeParser:
         "server": server,
         "port": port,
       }
-      # 字段白名单覆盖各协议必需字段
+      # 公共字段白名单（跨协议共享的传输/TLS 字段）
       for field in [
         "uuid", "password", "cipher", "alterId", "network", "tls", "sni", "flow",
         "udp", "ws-opts", "servername", "client-fingerprint", "skip-cert-verify",
@@ -168,14 +176,10 @@ class NodeParser:
       ]:
         if field in proxy:
           node[field] = proxy[field]
-      if ptype == "vmess":
-        node["security"] = proxy.get("cipher", "auto")
-      elif ptype == "vless":
-        if "reality-opts" in proxy:
-          node["reality-opts"] = proxy["reality-opts"]
-          node["client-fingerprint"] = proxy.get("client-fingerprint", "chrome")
-      elif ptype == "trojan":
-        node["skip-cert-verify"] = proxy.get("skip-cert-verify", False)
+      # 协议特定字段映射委托给注册表
+      protocol = self._registry.get(ptype)
+      if protocol and hasattr(protocol, "from_clash_proxy"):
+        protocol.from_clash_proxy(proxy, node)
       return node
     except (ValueError, KeyError, TypeError, AttributeError) as e:
       log.warning(f"  ⚠ 节点转换失败: {name} ({e})")
@@ -189,9 +193,9 @@ def parse_all(results: List[dict]) -> List[Dict]:
   for r in results:
     if not r["success"] or not r.get("content"):
       continue
-    before = parser._skipped
+    before = parser.skipped
     nodes = parser.parse_subscription(r["content"])
-    delta = parser._skipped - before
+    delta = parser.skipped - before
     if delta > 0:
       per_url_skip.append((r["url"], delta))
     for n in nodes:

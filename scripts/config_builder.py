@@ -9,6 +9,9 @@ from typing import Dict, List, Optional, Tuple
 import yaml
 
 from scripts.clash_converter import to_clash_node
+from scripts.log import get_logger
+
+log = get_logger("config_builder")
 
 
 class ConfigBuilder:
@@ -35,7 +38,8 @@ class ConfigBuilder:
             try:
                 clash_proxies.append(to_clash_node({**relay_node, "name": "RELAY"}))
                 relay_name = "RELAY"
-            except (KeyError, ValueError, TypeError):
+            except (KeyError, ValueError, TypeError) as e:
+                log.warning(f"  ⚠ relay 节点转换失败，stage-2 将退化为直连测试（无国内可达性验证）: {str(e)[:80]}")
                 relay_name = None
 
         for i, n in enumerate(nodes):

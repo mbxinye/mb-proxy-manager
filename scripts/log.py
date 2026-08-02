@@ -5,21 +5,26 @@
 
 import logging
 import sys
+import threading
 
 _CONFIGURED = False
+_config_lock = threading.Lock()
 
 
 def _configure() -> None:
   global _CONFIGURED
   if _CONFIGURED:
     return
-  handler = logging.StreamHandler(sys.stdout)
-  handler.setFormatter(logging.Formatter("%(message)s"))
-  root = logging.getLogger("mbproxy")
-  root.setLevel(logging.INFO)
-  root.addHandler(handler)
-  root.propagate = False
-  _CONFIGURED = True
+  with _config_lock:
+    if _CONFIGURED:
+      return
+    handler = logging.StreamHandler(sys.stdout)
+    handler.setFormatter(logging.Formatter("%(message)s"))
+    root = logging.getLogger("mbproxy")
+    root.setLevel(logging.INFO)
+    root.addHandler(handler)
+    root.propagate = False
+    _CONFIGURED = True
 
 
 def get_logger(name: str = "mbproxy") -> logging.Logger:

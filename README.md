@@ -10,10 +10,20 @@
 ├── scripts/
 │   ├── config.py              # 环境变量配置
 │   ├── fetcher.py             # 下载订阅（urllib + ThreadPool）
-│   ├── parser.py              # 解析 SS/SSR/VMess/Trojan/VLESS/Hysteria2
-│   ├── tester.py              # mihomo 端到端测试（按需下载内核）
-│   ├── output.py              # 生成 Clash YAML + JSON
-│   └── utils.py                 # 国家识别、名称生成
+│   ├── parser.py              # 解析 Base64 / YAML / URI（协议分发到 protocols/）
+│   ├── protocols/             # 各协议解析与转换（SS/SSR/VMess/VLESS/Trojan/Hysteria2）
+│   ├── clash_converter.py     # Clash 转换外观（委托 protocols registry）
+│   ├── dedup.py               # 去重（registry dedup_key）
+│   ├── country.py             # 国家识别 / CN relay 判定 / 节点命名
+│   ├── geoip.py               # MaxMind GeoLite2 查询（按需下载）
+│   ├── tester.py              # mihomo 端到端测试编排（两阶段验证）
+│   ├── mihomo.py              # MihomoTester 协调器
+│   ├── config_builder.py      # mihomo 测试配置构建
+│   ├── latency_tester.py      # mihomo API 延迟测试
+│   ├── mihomo_manager.py      # mihomo 二进制下载与缓存
+│   ├── process_manager.py     # mihomo 进程生命周期管理
+│   ├── output.py              # 生成 Clash YAML + URI 列表 + JSON
+│   └── utils.py               # 工具函数
 ├── subscriptions.txt          # 订阅链接（每行一个，可带优先级）
 ├── output/
 │   ├── clash_config.yml       # 200 最佳节点
@@ -24,7 +34,7 @@
 │   ├── nodes_all.txt          # 全量节点 URI 列表（不截断）
 │   └── valid_nodes.json       # 调试数据
 └── .github/workflows/
-    └── smart-proxy.yml        # 每 3 小时自动运行 + 手动触发
+    └── smart-proxy.yml        # 每小时自动运行 + 手动触发
 ```
 
 ## 快速开始
@@ -67,10 +77,20 @@ https://你的用户名.github.io/仓库名/nodes_mini.txt
 | `PROXY_MINI_OUTPUT_NODES` | 100 | 精简版输出节点数 |
 | `PROXY_MIHOMO_VERSION` | v1.19.13 | mihomo 内核版本（按需下载，不提交进仓库） |
 | `PROXY_TEST_URL` | https://www.gstatic.com/generate_204 | foreign 节点端到端测试 URL |
-| `PROXY_TEST_URL_CN` | https://www.baidu.com/ | CN 跳板 stage-1 测试 URL（必须国内可达） |
+| `PROXY_TEST_URL_CN` | http://connect.rom.miui.com/generate_204 | CN relay stage-1 测试 URL（**必须为 204 端点**，非 204 如 baidu.com 会误杀全部 CN relay） |
 | `PROXY_TEST_TIMEOUT` | 2000 | mihomo delay 测试超时（ms） |
 | `PROXY_TEST_CONCURRENCY` | 100 | mihomo delay 并发测试数 |
 | `PROXY_MAX_LATENCY` | 1500 | 拒绝延迟超过此值(ms)的节点，0=禁用 |
+| `PROXY_RELAY_ENABLED` | true | 启用两阶段 China relay 验证 |
+| `PROXY_RELAY_CONCURRENCY` | 50 | 经 China relay 测试时的并发数 |
+| `PROXY_RELAY_MAX_RELAYS` | 5 | 尝试多少个 China relay（跨运营商覆盖） |
+| `PROXY_RELAY_MAX_PER_RELAY` | 0 | 每个 relay 测试的节点上限（0=不限） |
+| `PROXY_EXCLUDE_CN_OUTPUT` | true | 从最终输出中排除中国大陆节点 |
+| `PROXY_GEOIP_DB` | `geoip/GeoLite2-Country.mmdb` | MaxMind GeoLite2-Country MMDB 路径 |
+| `PROXY_GEOIP_DB_URL` | P3TERX latest release | MMDB 缺失或过期时自动下载的 URL |
+| `PROXY_GEOIP_MAX_AGE_DAYS` | 35 | MMDB 超过此天数则重新下载 |
+| `PROXY_GEOIP_DNS_WORKERS` | 20 | GeoIP 预取时的并行 DNS 解析数 |
+| `PROXY_PREFERRED_COUNTRIES` | US,KR,JP,SG,HK,TW | 输出排序优先国家（逗号分隔） |
 
 ## 本地运行
 

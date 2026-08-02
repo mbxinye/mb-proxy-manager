@@ -19,8 +19,8 @@ log = get_logger("output")
 
 OUTPUT_DIR = Path("output")
 PROTOCOL_PRIORITY = {
-  "hysteria2": 1, "trojan": 2, "tuic": 3, "vless-reality": 4, "vless": 5,
-  "vmess": 6, "anytls": 7, "ss": 8, "ssr": 9,
+  "hysteria2": 1, "trojan": 2, "vless-reality": 4, "vless": 5,
+  "vmess": 6, "ss": 8, "ssr": 9,
   "socks5": 10, "http": 11,
 }
 
@@ -96,7 +96,7 @@ def _rename_nodes(valid_nodes: List[Dict]) -> None:
       get_sni(node) or "",
     ) or "XX"
     counters[code] = counters.get(code, 0) + 1
-    node["name"] = generate_node_name(name, counters[code], node.get("latency", 9999))
+    node["name"] = generate_node_name(code, counters[code], node.get("latency", 9999))
 
 
 def _write_outputs(valid_nodes: List[Dict], max_full: int, max_mini: int) -> None:

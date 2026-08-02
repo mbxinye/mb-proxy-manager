@@ -5,6 +5,7 @@
 异常收窄为网络类具体异常；print 改 logging。"""
 
 import ssl
+import time
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed, TimeoutError as FuturesTimeoutError
 from typing import List
@@ -20,17 +21,28 @@ USER_AGENT = (
   "Chrome/131.0.0.0 Safari/537.36"
 )
 
+MAX_RETRIES = 2
+RETRY_BACKOFF = 2.0  # 指数退避基数（秒）
+
 
 def _fetch_one(url: str) -> dict:
   # 仅捕获网络/SSL 类异常，编程错误（TypeError 等）向上抛出便于定位
-  try:
-    ctx = ssl.create_default_context()
-    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-    with urllib.request.urlopen(req, timeout=SUBSCRIPTION_TIMEOUT, context=ctx) as resp:
-      content = resp.read().decode("utf-8", errors="ignore")
-      return {"url": url, "content": content, "success": True}
-  except (urllib.error.URLError, urllib.error.HTTPError, ssl.SSLError, TimeoutError, OSError) as e:
-    return {"url": url, "content": None, "error": str(e)[:60], "success": False}
+  ctx = ssl.create_default_context()
+  last_err = ""
+  for attempt in range(MAX_RETRIES + 1):
+    try:
+      req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+      with urllib.request.urlopen(req, timeout=SUBSCRIPTION_TIMEOUT, context=ctx) as resp:
+        content = resp.read().decode("utf-8", errors="ignore")
+        return {"url": url, "content": content, "success": True}
+    except (urllib.error.URLError, urllib.error.HTTPError, ssl.SSLError, TimeoutError, OSError) as e:
+      last_err = str(e)[:60]
+      # 5xx 与超时可重试；4xx（如 404/403）不重试
+      if isinstance(e, urllib.error.HTTPError) and e.code and 400 <= e.code < 500:
+        break
+      if attempt < MAX_RETRIES:
+        time.sleep(RETRY_BACKOFF * (attempt + 1))
+  return {"url": url, "content": None, "error": last_err, "success": False}
 
 
 def fetch_all(urls: List[str]) -> List[dict]:

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """SS / SSR 协议 - SRP：本文件承载 SS/SSR 的全部协议知识。"""
 
+import binascii
 import urllib.parse
 from typing import Dict, Optional
 

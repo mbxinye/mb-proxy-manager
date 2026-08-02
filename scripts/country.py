@@ -24,7 +24,7 @@ COUNTRY_KEYWORDS = {
   "italy": "IT", "it": "IT", "意大利": "IT",
   "spain": "ES", "es": "ES", "西班牙": "ES",
   "brazil": "BR", "br": "BR", "巴西": "BR",
-  "india": "IN", "in": "IN", "印度": "IN",
+  "india": "IN", "印度": "IN",
   "russia": "RU", "ru": "RU", "俄罗斯": "RU",
   "vietnam": "VN", "vn": "VN", "越南": "VN",
   "thailand": "TH", "th": "TH", "泰国": "TH",
@@ -78,6 +78,7 @@ COUNTRY_FLAGS = {
   "NO": "🇳🇴", "CZ": "🇨🇿", "RO": "🇷🇴", "BG": "🇧🇬",
   "GR": "🇬🇷", "MN": "🇲🇳", "KZ": "🇰🇿", "QA": "🇶🇦",
   "SA": "🇸🇦",
+  "CN": "🇨🇳",
 }
 
 # Regional indicator range: U+1F1E6 (A) .. U+1F1FF (Z)
@@ -130,12 +131,19 @@ def _flag_emoji_to_code(name: str) -> Optional[str]:
 
 # 预编译匹配正则：ASCII 关键词用 \b 词边界（避免 "in" 匹配 "Singapore"）；
 # 中文关键词无 \b 概念，用普通子串匹配。
+# 两字母缩写歧义高（"in"/"us"/"de" 等），仅保留全称与中文。
 _COUNTRY_KEYWORD_RES = []
 for _kw, _code in COUNTRY_KEYWORDS.items():
   if _kw.isascii():
     _COUNTRY_KEYWORD_RES.append((re.compile(rf"\b{re.escape(_kw)}\b", re.IGNORECASE), _code))
   else:
     _COUNTRY_KEYWORD_RES.append((re.compile(re.escape(_kw)), _code))
+
+# 城市码预编译：要求前后为非字母（- _ 数字 空格 边界），避免 "man" 匹配 "germany"
+_CITY_CODE_RES = [
+  (re.compile(rf"(?<![a-z]){re.escape(code)}(?![a-z])"), country)
+  for code, country in CITY_CODE_MAP.items()
+]
 
 
 def _keyword_to_country(text: str) -> Optional[str]:
@@ -148,8 +156,8 @@ def _keyword_to_country(text: str) -> Optional[str]:
 
 def _city_code_to_country(text: str) -> Optional[str]:
   text_lower = text.lower()
-  for city_code, country in CITY_CODE_MAP.items():
-    if city_code in text_lower:
+  for pattern, country in _CITY_CODE_RES:
+    if pattern.search(text_lower):
       return country
   return None
 
@@ -181,9 +189,9 @@ def extract_country(name: str, server: str = "", sni: str = "") -> Optional[str]
   return _detect_country_code(name, server, sni)
 
 
-def generate_node_name(name: str, index: int, latency: int) -> str:
-  country = extract_country(name)
-  code = country or "XX"
+def generate_node_name(code: str, index: int, latency: int) -> str:
+  """生成显示名。code 由调用方预先探测（避免重复探测与 GeoIP 丢失）。"""
+  code = code or "XX"
   flag = COUNTRY_FLAGS.get(code, "")
   latency_str = str(min(latency, 9999))
   if flag:

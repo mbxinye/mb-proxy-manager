@@ -17,6 +17,11 @@ from scripts.mihomo import MihomoTester
 from scripts.protocols._helpers import get_sni
 from scripts.protocols.registry import get_registry
 
+
+def _node_key(n: Dict) -> str:
+  """稳定的节点标识，用于跨批次去重（替代脆弱的 id() 引用契约）。"""
+  return get_registry().dedup_key(n)
+
 log = get_logger("tester")
 
 
@@ -59,22 +64,32 @@ def _stage2_relay(tester: MihomoTester, foreign: List[Dict], relays: List[Dict])
   """Stage-2：经 China relay 重新测 foreign（dialer-proxy），验证国内出口可达性。
 
   失败节点即国内不可用节点；逐 relay 尝试，任一 relay 通即保留。
-  全部 relay 均无节点可达时回退 stage-1 foreign，保证仍有产出。"""
+  全部 relay 均无节点可达时回退 stage-1 foreign，保证仍有产出（标记为未经验证）。"""
   remaining = list(foreign)
   confirmed: List[Dict] = []
   for relay in relays:
     if not remaining:
       break
-    batch = remaining[:RELAY_MAX_PER_RELAY] if RELAY_MAX_PER_RELAY > 0 else remaining
+    # RELAY_MAX_PER_RELAY>0 时截断，但确保所有 remaining 至少被一个 relay 测试
+    # （最后一个 relay 测全部剩余，避免未测节点被静默丢弃）
+    if RELAY_MAX_PER_RELAY > 0 and relay is not relays[-1]:
+      batch = remaining[:RELAY_MAX_PER_RELAY]
+    else:
+      batch = remaining
     relay_latency = relay.get("latency", 0) or 0
     log.info(f"  relay {relay.get('name', '')} ({relay_latency}ms) -> testing {len(batch)} remaining")
     got = tester.test_nodes_relay(batch, relay, relay_latency)
-    got_ids = {id(n) for n in got}
+    got_keys = {_node_key(n) for n in got}
     confirmed.extend(got)
-    remaining = [n for n in remaining if id(n) not in got_ids]
+    remaining = [n for n in remaining if _node_key(n) not in got_keys]
     log.info(f"    confirmed {len(confirmed)} total, {len(remaining)} left")
   if not confirmed and foreign:
-    log.warning("  WARN 0 nodes reachable via relay; falling back to stage-1 foreign")
+    log.warning(
+      "  WARN 0 nodes reachable via relay; falling back to stage-1 foreign "
+      "(these nodes are NOT verified for China-egress reachability)"
+    )
+    for n in foreign:
+      n["_relay_unverified"] = True
     return list(foreign)
   return confirmed
 

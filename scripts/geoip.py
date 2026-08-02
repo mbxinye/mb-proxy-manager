@@ -26,21 +26,29 @@ log = get_logger("geoip")
 
 
 class LRUCache:
-    """线程安全的 LRU 缓存 - 解决缓存无限增长问题"""
-    
+    """线程安全的 LRU 缓存 - 解决缓存无限增长问题。
+
+    用哨兵 _MISSING 区分「未命中」与「命中但值为 None」（如 DNS 解析失败），
+    避免 None 值被反复重新查询。"""
+    _MISSING = object()
+
     def __init__(self, max_size: int = 10000):
         self._cache: OrderedDict = OrderedDict()
         self._max_size = max_size
         self._lock = threading.Lock()
-    
-    def get(self, key: str) -> Optional[str]:
+
+    def get(self, key: str, default=None):
         with self._lock:
             if key in self._cache:
                 self._cache.move_to_end(key)
                 return self._cache[key]
-            return None
-    
-    def put(self, key: str, value: Optional[str]) -> None:
+            return default
+
+    def contains(self, key: str) -> bool:
+        with self._lock:
+            return key in self._cache
+
+    def put(self, key: str, value) -> None:
         with self._lock:
             if key in self._cache:
                 self._cache.move_to_end(key)
@@ -51,7 +59,8 @@ class LRUCache:
 
 class GeoIPService:
     """GeoIP 服务实现 - SRP: 只负责地理位置查询"""
-    
+    _MISSING = object()  # 哨兵：区分缓存未命中与值为 None
+
     def __init__(self, max_cache_size: int = 10000):
         self._reader = None
         self._reader_failed = False
@@ -109,9 +118,9 @@ class GeoIPService:
                 return None
     
     def _resolve_ip(self, server: str) -> Optional[str]:
-        """解析域名到 IP（带缓存）"""
-        cached = self._dns_cache.get(server)
-        if cached is not None:
+        """解析域名到 IP（带缓存，None 值也会被缓存避免重复查询）"""
+        cached = self._dns_cache.get(server, self._MISSING)
+        if cached is not self._MISSING:
             return cached
         
         ip = None
@@ -134,9 +143,9 @@ class GeoIPService:
         """获取服务器所属国家代码"""
         if not server:
             return None
-        
-        cached = self._country_cache.get(server)
-        if cached is not None:
+
+        cached = self._country_cache.get(server, self._MISSING)
+        if cached is not self._MISSING:
             return cached
         
         ip = self._resolve_ip(server)

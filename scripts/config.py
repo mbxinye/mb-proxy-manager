@@ -2,16 +2,30 @@
 
 import os
 
+from scripts.log import get_logger
+
+log = get_logger("config")
+
 
 def _int_env(key: str, default: int) -> int:
-  return int(os.getenv(key, str(default)))
+  raw = os.getenv(key)
+  if raw is None:
+    return default
+  try:
+    return int(raw)
+  except ValueError:
+    log.warning(f"  ⚠ 非法环境变量 {key}={raw!r}，回退默认 {default}")
+    return default
 
 
 def _bool_env(key: str, default: bool) -> bool:
-  return os.getenv(key, str(int(default))).strip().lower() in ("1", "true", "yes", "on", "y")
+  raw = os.getenv(key)
+  if raw is None:
+    return default
+  return raw.strip().lower() in ("1", "true", "yes", "on", "y")
 
 
-SUBSCRIPTION_TIMEOUT = _int_env("PROXY_SUB_TIMEOUT", 10)
+SUBSCRIPTION_TIMEOUT = _int_env("PROXY_SUB_TIMEOUT", 30)
 MAX_OUTPUT_NODES = _int_env("PROXY_MAX_OUTPUT_NODES", 200)
 MINI_OUTPUT_NODES = _int_env("PROXY_MINI_OUTPUT_NODES", 100)
 

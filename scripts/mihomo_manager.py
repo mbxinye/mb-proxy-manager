@@ -5,6 +5,7 @@ Mihomo 二进制管理器 - 负责下载和解压 mihomo 内核
 """
 
 import gzip
+import hashlib
 import os
 import platform
 import stat
@@ -35,6 +36,16 @@ def _platform_asset(ver: str) -> Tuple[str, str]:
     if system == "windows":
         return f"mihomo-windows-{arch}-{ver}.zip", "zip"
     raise RuntimeError(f"unsupported platform: {system}/{machine}")
+
+
+def _amd64_fallback(ver: str) -> Tuple[str, str]:
+    """amd64-v3 不支持时回退到 amd64（兼容旧 CPU）。"""
+    system = platform.system().lower()
+    if system in ("linux", "darwin"):
+        return f"mihomo-{system}-amd64-{ver}.gz", "gz"
+    if system == "windows":
+        return f"mihomo-windows-amd64-{ver}.zip", "zip"
+    raise RuntimeError(f"unsupported platform for fallback: {system}")
 
 
 class BinaryManager:
@@ -79,6 +90,20 @@ def _download(url: str, dest: Path, timeout: int = 180):
                 if not chunk:
                     break
                 f.write(chunk)
+    # SHA256 校验（若 release 提供 .sha256 文件）
+    sha_url = url + ".sha256"
+    try:
+        req2 = Request(sha_url, headers={"User-Agent": "mb-proxy-manager"})
+        with urlopen(req2, timeout=30) as resp2:
+            if resp2.status == 200:
+                expected = resp2.read().decode("utf-8", errors="ignore").strip().split()[0].lower()
+                actual = hashlib.sha256(dest.read_bytes()).hexdigest().lower()
+                if expected and actual != expected:
+                    dest.unlink(missing_ok=True)
+                    raise RuntimeError(f"SHA256 校验失败: 期望 {expected[:16]}… 实际 {actual[:16]}…")
+                log.info(f"  ✓ SHA256 校验通过")
+    except (OSError, TimeoutError):
+        pass  # 无 .sha256 文件时跳过校验（兼容旧 release）
 
 
 def _extract_binary(archive: Path, target: Path, kind: str):

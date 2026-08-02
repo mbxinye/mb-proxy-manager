@@ -13,6 +13,10 @@ env:
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
+    concurrency:
+      group: pages
+      cancel-in-progress: false
     permissions:
       contents: write
       pages: write
@@ -29,6 +33,7 @@ jobs:
       uses: actions/setup-python@v6
       with:
         python-version: ${{ env.PYTHON_VERSION }}
+        cache: pip
 
     - name: Install dependencies
       run: pip install -r requirements.txt
@@ -49,6 +54,14 @@ jobs:
 
     - name: Run filter
       run: python3 run.py
+
+    - name: Upload debug artifacts on failure
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: output-debug
+        path: output/
+        retention-days: 7
 
     - name: Prepare GitHub Pages
       run: |

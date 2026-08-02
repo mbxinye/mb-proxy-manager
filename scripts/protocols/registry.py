@@ -16,7 +16,7 @@ class ProtocolRegistry:
     self._by_type: Dict[str, BaseProtocol] = {}
 
   def register(self, protocol: BaseProtocol) -> None:
-    self._by_type[protocol.type_name] = protocol
+    self._by_type[protocol.type_name.lower()] = protocol
 
   def get(self, type_name: str) -> Optional[BaseProtocol]:
     return self._by_type.get((type_name or "").lower())

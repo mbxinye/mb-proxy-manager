@@ -65,12 +65,17 @@ class TrojanProtocol(BaseProtocol):
   def to_clash(self, node: Dict) -> Optional[Dict]:
     base = base_proxy(node)
     base["password"] = node.get("password", "")
-    if node.get("sni"):
-      base["sni"] = node["sni"]
+    sni = get_sni(node)
+    if sni:
+      base["sni"] = sni
     if node.get("skip-cert-verify"):
       base["skip-cert-verify"] = True
     apply_transport(base, node)
     return base
+
+  def from_clash_proxy(self, proxy: Dict, node: Dict) -> None:
+    """Trojan 协议特定字段：skip-cert-verify 默认值。"""
+    node["skip-cert-verify"] = proxy.get("skip-cert-verify", False)
 
   def to_uri(self, node: Dict) -> Optional[str]:
     params: Dict = {}
@@ -153,8 +158,9 @@ class Hysteria2Protocol(BaseProtocol):
   def to_clash(self, node: Dict) -> Optional[Dict]:
     base = base_proxy(node)
     base["password"] = node.get("password", "")
-    if node.get("sni"):
-      base["sni"] = node["sni"]
+    sni = get_sni(node)
+    if sni:
+      base["sni"] = sni
     if node.get("skip-cert-verify"):
       base["skip-cert-verify"] = True
     if node.get("obfs"):

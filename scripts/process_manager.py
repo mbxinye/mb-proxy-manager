@@ -46,16 +46,32 @@ class ProcessManager:
         return False
 
     def get_startup_output(self, max_chars: int = 4000) -> str:
-        """获取启动输出（用于错误诊断）"""
-        if self._proc and self._proc.stdout:
+        """获取启动输出（用于错误诊断）。
+
+        安全读取：先终止进程释放 pipe，再读取已缓冲的输出，避免 read() 阻塞死锁
+        （wait_ready 超时但进程未死时，read 会无限阻塞直到 EOF）。"""
+        if self._proc is None:
+            return ""
+        # 先终止进程，确保 stdout pipe 关闭，read 不会阻塞
+        self._proc.terminate()
+        try:
+            self._proc.wait(timeout=3.0)
+        except subprocess.TimeoutExpired:
+            self._proc.kill()
             try:
-                return self._proc.stdout.read(max_chars)
+                self._proc.wait(timeout=3.0)
+            except subprocess.TimeoutExpired:
+                pass
+        if self._proc.stdout:
+            try:
+                data = self._proc.stdout.read(max_chars)
+                return data or ""
             except (OSError, ValueError):
                 pass
         return ""
 
     def terminate(self, kill_timeout: float = 3.0) -> None:
-        """终止进程"""
+        """终止进程并回收，避免僵尸进程"""
         if self._proc is None:
             return
         self._proc.terminate()
@@ -63,6 +79,10 @@ class ProcessManager:
             self._proc.wait(timeout=kill_timeout)
         except subprocess.TimeoutExpired:
             self._proc.kill()
+            try:
+                self._proc.wait(timeout=kill_timeout)
+            except subprocess.TimeoutExpired:
+                pass
 
     @property
     def is_running(self) -> bool:

@@ -36,13 +36,21 @@ class VMessProtocol(BaseProtocol):
       if not decoded:
         return None
       config = json.loads(decoded)
+      try:
+        port = int(config.get("port", 443))
+      except (ValueError, TypeError):
+        port = 443
+      try:
+        alter_id = int(config.get("aid", 0))
+      except (ValueError, TypeError):
+        alter_id = 0
       node = {
         "type": "vmess",
         "name": config.get("ps", "VMess")[:50],
         "server": config.get("add", ""),
-        "port": int(config.get("port", 443)),
+        "port": port,
         "uuid": config.get("id", ""),
-        "alterId": int(config.get("aid", 0)),
+        "alterId": alter_id,
         "security": config.get("scy", "auto"),
         "network": config.get("net", "tcp"),
         "tls": config.get("tls", ""),
@@ -71,6 +79,10 @@ class VMessProtocol(BaseProtocol):
     apply_transport(base, node)
     return base
 
+  def from_clash_proxy(self, proxy: Dict, node: Dict) -> None:
+    """VMess 协议特定字段：cipher 映射为 security。"""
+    node["security"] = proxy.get("cipher", "auto")
+
   def to_uri(self, node: Dict) -> Optional[str]:
     cfg = {
       "v": "2", "ps": node.get("name", ""), "add": node["server"], "port": str(node["port"]),
@@ -80,7 +92,7 @@ class VMessProtocol(BaseProtocol):
       "path": node.get("path", ""), "tls": node.get("tls", ""),
       "sni": node.get("sni", ""), "alpn": node.get("alpn", ""),
     }
-    return "vmess://" + b64encode(json.dumps(cfg, ensure_ascii=False, indent=2))
+    return "vmess://" + b64encode(json.dumps(cfg, ensure_ascii=False, separators=(",", ":")))
 
   def dedup_key(self, node: Dict) -> str:
     return f"{super().dedup_key(node)}:{node.get('uuid', '')}"
@@ -174,6 +186,12 @@ class VLESSProtocol(BaseProtocol):
       base["skip-cert-verify"] = node["skip-cert-verify"]
     apply_transport(base, node)
     return base
+
+  def from_clash_proxy(self, proxy: Dict, node: Dict) -> None:
+    """VLESS 协议特定字段：reality-opts 与 client-fingerprint。"""
+    if "reality-opts" in proxy:
+      node["reality-opts"] = proxy["reality-opts"]
+      node["client-fingerprint"] = proxy.get("client-fingerprint", "chrome")
 
   def to_uri(self, node: Dict) -> Optional[str]:
     params: Dict = {"encryption": "none"}

@@ -55,8 +55,8 @@ class MihomoTester:
     def test_nodes(
         self,
         nodes: List[Dict],
-        latency_cap: int = TEST_MAX_LATENCY,
-        test_url: str = TEST_URL,
+        latency_cap: Optional[int] = None,
+        test_url: Optional[str] = None,
     ) -> List[Dict]:
         """测试节点可用性"""
         if not nodes:
@@ -70,7 +70,10 @@ class MihomoTester:
             log.info("  无配置合法节点")
             return []
 
-        cfg = TestConfig(latency_cap=latency_cap, test_url=test_url)
+        cfg = TestConfig(
+            latency_cap=latency_cap if latency_cap is not None else TEST_MAX_LATENCY,
+            test_url=test_url or TEST_URL,
+        )
         # 单批跑完
         try:
             valid = self._test_batch(valid_config_nodes, cfg)
@@ -87,7 +90,7 @@ class MihomoTester:
         relay_node: Dict,
         relay_self_latency: int = 0,
         concurrency: int = RELAY_CONCURRENCY,
-        latency_cap: int = TEST_MAX_LATENCY,
+        latency_cap: Optional[int] = None,
     ) -> List[Dict]:
         """通过 China relay 测试 foreign 节点（Stage-2）"""
         if not nodes or relay_node is None:
@@ -97,7 +100,7 @@ class MihomoTester:
         cfg = TestConfig(
             concurrency=concurrency,
             latency_offset=relay_self_latency,
-            latency_cap=latency_cap,
+            latency_cap=latency_cap if latency_cap is not None else TEST_MAX_LATENCY,
             relay_node=relay_node,
         )
         return self._test_batch(nodes, cfg)
@@ -117,10 +120,14 @@ class MihomoTester:
                 cfg_path = Path(workdir) / "config.yaml"
                 self._config_builder.write_config(config, cfg_path)
 
-                r = subprocess.run(
-                    [str(self.binary), "-t", "-d", workdir, "-f", str(cfg_path)],
-                    capture_output=True, text=True, timeout=30,
-                )
+                try:
+                    r = subprocess.run(
+                        [str(self.binary), "-t", "-d", workdir, "-f", str(cfg_path)],
+                        capture_output=True, text=True, timeout=30,
+                    )
+                except subprocess.TimeoutExpired:
+                    log.warning("  ⚠ mihomo -t 校验超时，跳过本轮校验")
+                    break
                 if r.returncode == 0:
                     break
 
@@ -132,6 +139,8 @@ class MihomoTester:
                     reverse=True,
                 )
                 if not node_idxs:
+                    # mihomo 报错但无法解析出 proxy 序号——可能输出格式已变更
+                    log.warning("  ⚠ mihomo -t 报错但无法解析 proxy 序号，跳过校验")
                     break
                 for idx in node_idxs:
                     if 0 <= idx < len(current):

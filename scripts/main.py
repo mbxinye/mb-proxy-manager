@@ -85,7 +85,5 @@ def run():
     log.info(f"\n✓ 完成! 耗时: {elapsed:.1f}秒")
     log.info(f"  {len(all_nodes)} 节点 → {len(valid)} 有效 → {min(len(valid), MAX_OUTPUT_NODES)} 输出")
   except Exception as e:
-    log.error(f"\n❌ 重大错误: {e}")
-    import traceback
-    traceback.print_exc()
+    log.exception(f"\n❌ 重大错误: {e}")
     sys.exit(1)

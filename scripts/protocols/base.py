@@ -33,9 +33,11 @@ class BaseProtocol(ABC):
     return None
 
   def dedup_key(self, node: Dict) -> str:
-    """去重键（含地址与类型，避免误删同地址不同协议节点）。"""
+    """去重键（含地址、类型、传输与 TLS，避免误删同地址不同传输/凭证节点）。"""
     t = node.get("type", "")
-    return f"{node.get('server', '')}:{node.get('port', '')}:{t}"
+    network = node.get("network", "tcp")
+    sni = node.get("sni") or node.get("servername") or ""
+    return f"{node.get('server', '')}:{node.get('port', '')}:{t}:{network}:{sni}"
 
   def is_field_complete(self, node: Dict) -> bool:
     """跨协议通用校验：WS 传输必须有 path；其余由子类叠加协议凭证校验。
@@ -47,3 +49,9 @@ class BaseProtocol(ABC):
       if "path" not in ws_opts and not node.get("path"):
         return False
     return True
+
+  def from_clash_proxy(self, proxy: Dict, node: Dict) -> None:
+    """从 Clash proxy dict 提取协议特定字段到内部 node（默认空操作，子类按需覆盖）。
+
+    SRP/OCP：协议特定字段映射回归协议自身，parser 只负责公共字段与分派。"""
+    pass
