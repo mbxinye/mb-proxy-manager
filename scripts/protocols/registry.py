@@ -74,3 +74,15 @@ def get_registry() -> ProtocolRegistry:
     _registry.register(HttpProtocol())
     _registry.register(Socks5Protocol())
   return _registry
+
+
+def reset_registry() -> None:
+  """测试钩子：重置全局注册表，便于注入 mock 或重新初始化。"""
+  global _registry
+  _registry = None
+
+
+def set_registry(registry: ProtocolRegistry) -> None:
+  """测试钩子：注入自定义注册表实例（依赖倒置，便于测试替换）。"""
+  global _registry
+  _registry = registry

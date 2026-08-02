@@ -6,6 +6,7 @@
 
 import subprocess
 import time
+import urllib.error
 from pathlib import Path
 from typing import Optional
 
@@ -40,7 +41,7 @@ class ProcessManager:
                 with opener.open(url, timeout=1) as resp:
                     if resp.status == 200:
                         return True
-            except Exception:
+            except (urllib.error.URLError, TimeoutError, OSError):
                 time.sleep(0.3)
         return False
 
@@ -49,7 +50,7 @@ class ProcessManager:
         if self._proc and self._proc.stdout:
             try:
                 return self._proc.stdout.read(max_chars)
-            except Exception:
+            except (OSError, ValueError):
                 pass
         return ""
 

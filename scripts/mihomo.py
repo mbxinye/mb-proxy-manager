@@ -8,20 +8,34 @@ import re
 import socket
 import subprocess
 import tempfile
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List, Optional
 
 from scripts.config import (
-    MAX_LATENCY,
-    MIHOMO_TEST_URL,
     MIHOMO_VERSION,
-    PROXY_TEST_CONCURRENCY,
     RELAY_CONCURRENCY,
+    TEST_CONCURRENCY,
+    TEST_MAX_LATENCY,
+    TEST_URL,
 )
 from scripts.config_builder import ConfigBuilder
 from scripts.latency_tester import LatencyTester
+from scripts.log import get_logger
 from scripts.mihomo_manager import BinaryManager
 from scripts.process_manager import ProcessManager
+
+log = get_logger("mihomo")
+
+
+@dataclass
+class TestConfig:
+    """测试参数封装 - 消除 _test_batch / _fallback_split 间的参数透传。"""
+    concurrency: int = TEST_CONCURRENCY
+    latency_offset: int = 0
+    latency_cap: int = TEST_MAX_LATENCY
+    test_url: str = TEST_URL
+    relay_node: Optional[Dict] = None
 
 
 class MihomoTester:
@@ -41,29 +55,30 @@ class MihomoTester:
     def test_nodes(
         self,
         nodes: List[Dict],
-        latency_cap: int = MAX_LATENCY,
-        test_url: str = MIHOMO_TEST_URL,
+        latency_cap: int = TEST_MAX_LATENCY,
+        test_url: str = TEST_URL,
     ) -> List[Dict]:
         """测试节点可用性"""
         if not nodes:
             return []
 
-        print(f"  真实测试 {len(nodes)} 个节点 (并发 {PROXY_TEST_CONCURRENCY})...")
+        log.info(f"  真实测试 {len(nodes)} 个节点 (并发 {TEST_CONCURRENCY})...")
 
         # 预校验：剔除会让 mihomo fatal 的节点
         valid_config_nodes = self._validate_config(nodes)
         if not valid_config_nodes:
-            print("  无配置合法节点")
+            log.info("  无配置合法节点")
             return []
 
+        cfg = TestConfig(latency_cap=latency_cap, test_url=test_url)
         # 单批跑完
         try:
-            valid = self._test_batch(valid_config_nodes, latency_cap=latency_cap, test_url=test_url)
+            valid = self._test_batch(valid_config_nodes, cfg)
         except RuntimeError as e:
-            print(f"  ⚠ 单批启动失败，退回分批: {str(e)[:100]}")
-            valid = self._fallback_split(valid_config_nodes, latency_cap=latency_cap, test_url=test_url)
+            log.warning(f"  ⚠ 单批启动失败，退回分批: {str(e)[:100]}")
+            valid = self._fallback_split(valid_config_nodes, cfg)
 
-        print(f"  实测可用: {len(valid)}/{len(nodes)}")
+        log.info(f"  实测可用: {len(valid)}/{len(nodes)}")
         return valid
 
     def test_nodes_relay(
@@ -72,20 +87,20 @@ class MihomoTester:
         relay_node: Dict,
         relay_self_latency: int = 0,
         concurrency: int = RELAY_CONCURRENCY,
-        latency_cap: int = MAX_LATENCY,
+        latency_cap: int = TEST_MAX_LATENCY,
     ) -> List[Dict]:
         """通过 China relay 测试 foreign 节点（Stage-2）"""
         if not nodes or relay_node is None:
             return []
 
-        print(f"  relay-test {len(nodes)} nodes via relay (concurrency {concurrency})...")
-        return self._test_batch(
-            nodes,
-            relay_node=relay_node,
+        log.info(f"  relay-test {len(nodes)} nodes via relay (concurrency {concurrency})...")
+        cfg = TestConfig(
             concurrency=concurrency,
             latency_offset=relay_self_latency,
             latency_cap=latency_cap,
+            relay_node=relay_node,
         )
+        return self._test_batch(nodes, cfg)
 
     def _validate_config(self, nodes: List[Dict]) -> List[Dict]:
         """用 mihomo -t 预校验配置，批量剔除致命节点"""
@@ -124,17 +139,13 @@ class MihomoTester:
                         total_dropped += 1
 
         if total_dropped:
-            print(f"  配置校验剔除: {total_dropped} 个致命节点")
+            log.info(f"  配置校验剔除: {total_dropped} 个致命节点")
         return current
 
     def _test_batch(
         self,
         nodes: List[Dict],
-        relay_node: Optional[Dict] = None,
-        concurrency: int = PROXY_TEST_CONCURRENCY,
-        latency_offset: int = 0,
-        latency_cap: int = MAX_LATENCY,
-        test_url: str = MIHOMO_TEST_URL,
+        cfg: TestConfig,
     ) -> List[Dict]:
         """单批测试：启动一个 mihomo 实例测全部节点"""
         if not nodes:
@@ -142,7 +153,7 @@ class MihomoTester:
 
         port = _free_port()
         config, proxy_to_node, _ = self._config_builder.build_test_config(
-            nodes, port, relay_node=relay_node,
+            nodes, port, relay_node=cfg.relay_node,
         )
         if not proxy_to_node:
             return []
@@ -162,10 +173,10 @@ class MihomoTester:
                 tester = LatencyTester(
                     port=port,
                     proxy_to_node=proxy_to_node,
-                    concurrency=concurrency,
-                    latency_offset=latency_offset,
-                    latency_cap=latency_cap,
-                    test_url=test_url,
+                    concurrency=cfg.concurrency,
+                    latency_offset=cfg.latency_offset,
+                    latency_cap=cfg.latency_cap,
+                    test_url=cfg.test_url,
                 )
                 return tester.run_tests()
             finally:
@@ -174,11 +185,7 @@ class MihomoTester:
     def _fallback_split(
         self,
         nodes: List[Dict],
-        relay_node: Optional[Dict] = None,
-        concurrency: int = PROXY_TEST_CONCURRENCY,
-        latency_offset: int = 0,
-        latency_cap: int = MAX_LATENCY,
-        test_url: str = MIHOMO_TEST_URL,
+        cfg: TestConfig,
     ) -> List[Dict]:
         """兜底：二分拆分重试定位问题节点"""
         BATCH_THRESHOLD = 1
@@ -187,14 +194,7 @@ class MihomoTester:
             if not batch:
                 return []
             try:
-                return self._test_batch(
-                    batch,
-                    relay_node=relay_node,
-                    concurrency=concurrency,
-                    latency_offset=latency_offset,
-                    latency_cap=latency_cap,
-                    test_url=test_url,
-                )
+                return self._test_batch(batch, cfg)
             except RuntimeError:
                 if len(batch) <= BATCH_THRESHOLD:
                     return []

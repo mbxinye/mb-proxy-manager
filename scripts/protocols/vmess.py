@@ -5,15 +5,19 @@ import json
 import urllib.parse
 from typing import Dict, Optional
 
+from scripts.log import get_logger
 from scripts.protocols._helpers import (
   apply_transport,
   base_proxy,
   b64encode,
   build_query,
+  get_sni,
   try_base64_decode,
   url_fragment,
 )
 from scripts.protocols.base import BaseProtocol
+
+log = get_logger("vmess")
 
 
 class VMessProtocol(BaseProtocol):
@@ -48,8 +52,8 @@ class VMessProtocol(BaseProtocol):
         if val:
           node[long] = val
       return node
-    except Exception as e:
-      print(f"  ⚠ VMess 解析失败: {url[:50]}... ({e})")
+    except (ValueError, KeyError, json.JSONDecodeError, urllib.parse.InvalidURL) as e:
+      log.warning(f"  ⚠ VMess 解析失败: {url[:50]}... ({e})")
       return None
 
   def to_clash(self, node: Dict) -> Optional[Dict]:
@@ -59,7 +63,7 @@ class VMessProtocol(BaseProtocol):
     base["cipher"] = node.get("security", "auto")
     if node.get("tls"):
       base["tls"] = True
-      sni = node.get("sni") or node.get("servername")
+      sni = get_sni(node)
       if sni:
         base["servername"] = sni
     if "skip-cert-verify" in node:
@@ -147,8 +151,8 @@ class VLESSProtocol(BaseProtocol):
         node["tls"] = True
       node["skip-cert-verify"] = query.get("allowInsecure", ["0"])[0] == "1"
       return node
-    except Exception as e:
-      print(f"  ⚠ VLESS 解析失败: {url[:50]}... ({e})")
+    except (ValueError, KeyError, urllib.parse.InvalidURL) as e:
+      log.warning(f"  ⚠ VLESS 解析失败: {url[:50]}... ({e})")
       return None
 
   def to_clash(self, node: Dict) -> Optional[Dict]:
@@ -156,7 +160,7 @@ class VLESSProtocol(BaseProtocol):
     base["uuid"] = node.get("uuid", "")
     if node.get("flow"):
       base["flow"] = node["flow"]
-    sni = node.get("sni") or node.get("servername")
+    sni = get_sni(node)
     if sni:
       base["servername"] = sni
     reality = node.get("reality-opts") or {}

@@ -13,8 +13,12 @@ import zipfile
 from pathlib import Path
 from typing import Tuple
 
+from scripts.log import get_logger
+
 BIN_DIR = Path("bin")
 DOWNLOAD_BASE = "https://github.com/MetaCubeX/mihomo/releases/download"
+
+log = get_logger("mihomo_manager")
 
 
 def _platform_asset(ver: str) -> Tuple[str, str]:
@@ -53,13 +57,13 @@ class BinaryManager:
         BIN_DIR.mkdir(parents=True, exist_ok=True)
         asset, kind = _platform_asset(self._version)
         url = f"{DOWNLOAD_BASE}/{self._version}/{asset}"
-        print(f"  下载 mihomo 内核 {self._version}: {url}")
+        log.info(f"  下载 mihomo 内核 {self._version}: {url}")
 
         tmp_archive = BIN_DIR / asset
         _download(url, tmp_archive)
         _extract_binary(tmp_archive, target, kind)
         tmp_archive.unlink(missing_ok=True)
-        print(f"  ✓ mihomo 就绪: {target}")
+        log.info(f"  ✓ mihomo 就绪: {target}")
         return target
 
 

@@ -1,13 +1,19 @@
 #!/usr/bin/env python3
 """订阅解析器 - SRP：NodeParser 只负责订阅文本 → 内部节点 dict；
-URI 分派委托 protocols 注册表（OCP），Base64/YAML 为本模块私有职责。"""
+URI 分派委托 protocols 注册表（OCP），Base64/YAML 为本模块私有职责。
+
+修复：异常收窄（YAML 解析失败用 yaml.YAMLError）；_proxy_to_node 的 name
+在 try 外预赋值避免 except 引用未定义变量；print 改 logging。"""
 
 from typing import Dict, List, Optional
 
 import yaml
 
+from scripts.log import get_logger
 from scripts.protocols._helpers import try_base64_decode
 from scripts.protocols.registry import get_registry
+
+log = get_logger("parser")
 
 
 class NodeParser:
@@ -108,7 +114,7 @@ class NodeParser:
       data = yaml.safe_load(fixed)
       if isinstance(data, dict):
         return self._proxies_from_list(data.get("proxies", []) or [])
-    except Exception:
+    except yaml.YAMLError:
       pass
     return []
 
@@ -121,7 +127,7 @@ class NodeParser:
           continue
         nodes.extend(self._proxies_from_list(doc.get("proxies", []) or []))
       return nodes
-    except Exception:
+    except yaml.YAMLError:
       return None
 
   def _proxies_from_list(self, proxies) -> List[Dict]:
@@ -136,9 +142,9 @@ class NodeParser:
 
   def _proxy_to_node(self, proxy: Dict) -> Optional[Dict]:
     """Clash proxy dict → 内部节点格式。"""
+    name = proxy.get("name", "Unknown")[:50]  # 预赋值，避免 except 引用未定义变量
     try:
       ptype = proxy.get("type", "").lower()
-      name = proxy.get("name", "Unknown")[:50]
       server = proxy.get("server", "")
       port = proxy.get("port", 0)
       if not server or not port:
@@ -171,8 +177,8 @@ class NodeParser:
       elif ptype == "trojan":
         node["skip-cert-verify"] = proxy.get("skip-cert-verify", False)
       return node
-    except Exception as e:
-      print(f"  ⚠ 节点转换失败: {name} ({e})")
+    except (ValueError, KeyError, TypeError, AttributeError) as e:
+      log.warning(f"  ⚠ 节点转换失败: {name} ({e})")
       return None
 
 
@@ -191,10 +197,10 @@ def parse_all(results: List[dict]) -> List[Dict]:
     for n in nodes:
       n["_sub_url"] = r["url"]
     all_nodes.extend(nodes)
-  print(f"  解析完成: {len(all_nodes)} 个节点")
+  log.info(f"  解析完成: {len(all_nodes)} 个节点")
   if parser._skipped:
-    print(f"  解析跳过: {parser._skipped} 行无效/不支持")
-    print("  跳过明细 (URL | skip数):")
+    log.info(f"  解析跳过: {parser._skipped} 行无效/不支持")
+    log.info("  跳过明细 (URL | skip数):")
     for url, n in sorted(per_url_skip, key=lambda x: -x[1]):
-      print(f"    [{n:>6}] {url[:60]}")
+      log.info(f"    [{n:>6}] {url[:60]}")
   return all_nodes

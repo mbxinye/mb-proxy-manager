@@ -8,15 +8,18 @@ from pathlib import Path
 from scripts.config import MAX_OUTPUT_NODES, MINI_OUTPUT_NODES
 from scripts.dedup import dedup_nodes
 from scripts.fetcher import fetch_all
+from scripts.log import get_logger
 from scripts.output import write
 from scripts.parser import parse_all
 from scripts.tester import run as test_all
+
+log = get_logger("main")
 
 
 def _load_subscriptions(path: Path):
   """加载订阅源列表，返回 (urls, sub_priority)"""
   if not path.exists():
-    print(f"\u274c \u672a\u627e\u5230 {path.name}")
+    log.error(f"❌ 未找到 {path.name}")
     sys.exit(1)
   urls = []
   sub_priority: dict = {}
@@ -37,24 +40,24 @@ def run():
 
   try:
     urls, sub_priority = _load_subscriptions(Path("subscriptions.txt"))
-    print(f"\u8ba2\u9605\u6765\u6e90: {len(urls)} \u4e2a\u94fe\u63a5\n")
+    log.info(f"订阅来源: {len(urls)} 个链接\n")
 
     # 1. Fetch
-    print("=" * 50)
-    print("\u4e0b\u8f7d\u8ba2\u9605...")
+    log.info("=" * 50)
+    log.info("下载订阅...")
     fetched = fetch_all(urls)
 
     # 2. Parse
-    print("\n\u89e3\u6790\u8282\u70b9...")
+    log.info("\n解析节点...")
     all_nodes = parse_all(fetched)
 
     # 3. Dedup
     unique = dedup_nodes(all_nodes)
-    print(f"  \u53bb\u91cd\u540e: {len(unique)} \u4e2a\u552f\u4e00\u8282\u70b9\n")
+    log.info(f"  去重后: {len(unique)} 个唯一节点\n")
 
     # 4. mihomo end-to-end test
-    print("=" * 50)
-    print("\u9a8c\u8bc1\u8282\u70b9...")
+    log.info("=" * 50)
+    log.info("验证节点...")
     valid = test_all(unique)
 
     # 注入订阅优先级到节点（复用 _sub_url 关联）
@@ -65,24 +68,24 @@ def run():
     parsed_by = Counter(n.get("_sub_url", "?") for n in all_nodes)
     dedup_by = Counter(n.get("_sub_url", "?") for n in unique)
     valid_by = Counter(n.get("_sub_url", "?") for n in valid)
-    print("\n\u8ba2\u9605\u8282\u70b9\u7edf\u8ba1 (\u4f18\u5148\u7ea7 | \u89e3\u6790 / \u53bb\u91cd / \u53ef\u7528):")
+    log.info("\n订阅节点统计 (优先级 | 解析 / 去重 / 可用):")
     for url in urls:
       prio = sub_priority.get(url, 0)
       p, d, v = parsed_by.get(url, 0), dedup_by.get(url, 0), valid_by.get(url, 0)
-      print(f"  [{prio:>3}] {url[:56]:58} {p:>4} / {d:>4} / {v:>4}")
-    total_label = "\u6c47\u603b"
-    print(f"  {'':5}{total_label:58} {len(all_nodes):>4} / {len(unique):>4} / {len(valid):>4}")
+      log.info(f"  [{prio:>3}] {url[:56]:58} {p:>4} / {d:>4} / {v:>4}")
+    total_label = "汇总"
+    log.info(f"  {'':5}{total_label:58} {len(all_nodes):>4} / {len(unique):>4} / {len(valid):>4}")
 
     # 5. Output (always writes files, even if empty)
-    print("\n" + "=" * 50)
-    print("\u751f\u6210\u914d\u7f6e...")
+    log.info("\n" + "=" * 50)
+    log.info("生成配置...")
     write(valid, MAX_OUTPUT_NODES, MINI_OUTPUT_NODES)
 
     elapsed = time.time() - start
-    print(f"\n\u2713 \u5b8c\u6210! \u8017\u65f6: {elapsed:.1f}\u79d2")
-    print(f"  {len(all_nodes)} \u8282\u70b9 \u2192 {len(valid)} \u6709\u6548 \u2192 {min(len(valid), MAX_OUTPUT_NODES)} \u8f93\u51fa")
+    log.info(f"\n✓ 完成! 耗时: {elapsed:.1f}秒")
+    log.info(f"  {len(all_nodes)} 节点 → {len(valid)} 有效 → {min(len(valid), MAX_OUTPUT_NODES)} 输出")
   except Exception as e:
-    print(f"\n\u274c \u91cd\u5927\u9519\u8bef: {e}")
+    log.error(f"\n❌ 重大错误: {e}")
     import traceback
     traceback.print_exc()
     sys.exit(1)

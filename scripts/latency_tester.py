@@ -5,11 +5,15 @@
 """
 
 import json
+import urllib.error
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Dict, List, Optional
 
-from scripts.config import MAX_LATENCY, MIHOMO_TEST_TIMEOUT, MIHOMO_TEST_URL, PROXY_TEST_CONCURRENCY
+from scripts.config import TEST_CONCURRENCY, TEST_MAX_LATENCY, TEST_TIMEOUT, TEST_URL
+from scripts.log import get_logger
 from scripts.utils import get_local_opener
+
+log = get_logger("latency")
 
 
 class LatencyTester:
@@ -19,10 +23,10 @@ class LatencyTester:
         self,
         port: int,
         proxy_to_node: Dict[str, Dict],
-        concurrency: int = PROXY_TEST_CONCURRENCY,
+        concurrency: int = TEST_CONCURRENCY,
         latency_offset: int = 0,
-        latency_cap: int = MAX_LATENCY,
-        test_url: str = MIHOMO_TEST_URL,
+        latency_cap: int = TEST_MAX_LATENCY,
+        test_url: str = TEST_URL,
     ):
         self._port = port
         self._proxy_to_node = proxy_to_node
@@ -59,10 +63,10 @@ class LatencyTester:
                     else:
                         results.append(node)
                 if done % 50 == 0 or done == total:
-                    print(f"    进度 {done}/{total}, 可用 {len(results)}")
+                    log.info(f"    进度 {done}/{total}, 可用 {len(results)}")
 
         if latency_dropped:
-            print(f"    延迟超阈值(>{MAX_LATENCY}ms)剔除: {latency_dropped}")
+            log.info(f"    延迟超阈值(>{TEST_MAX_LATENCY}ms)剔除: {latency_dropped}")
         return results
 
     def _test_one(self, base: str, name: str) -> Optional[int]:
@@ -70,9 +74,9 @@ class LatencyTester:
         from urllib.parse import quote
         url = (
             f"{base}/{quote(name, safe='')}/delay"
-            f"?timeout={MIHOMO_TEST_TIMEOUT}&url={quote(self._test_url, safe='')}"
+            f"?timeout={TEST_TIMEOUT}&url={quote(self._test_url, safe='')}"
         )
-        http_timeout = MIHOMO_TEST_TIMEOUT / 1000 + 3
+        http_timeout = TEST_TIMEOUT / 1000 + 3
         try:
             opener = get_local_opener()
             with opener.open(url, timeout=http_timeout) as resp:
@@ -81,5 +85,5 @@ class LatencyTester:
                 data = json.loads(resp.read().decode("utf-8"))
                 delay = data.get("delay")
                 return int(delay) if delay is not None else None
-        except Exception:
+        except (urllib.error.URLError, TimeoutError, OSError, json.JSONDecodeError, ValueError):
             return None

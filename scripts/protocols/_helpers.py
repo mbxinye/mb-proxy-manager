@@ -2,6 +2,7 @@
 """协议无关的编解码与传输层辅助函数（DRY：消除各协议解析器中的重复逻辑）。"""
 
 import base64
+import binascii
 import urllib.parse
 from typing import Dict, List, Optional
 
@@ -12,7 +13,7 @@ def try_base64_decode(content: str) -> Optional[str]:
     if "%" in content:
       try:
         content = urllib.parse.unquote(content)
-      except Exception:
+      except (ValueError, urllib.parse.InvalidURL):
         pass
     padding = len(content) % 4
     if padding > 0:
@@ -20,7 +21,7 @@ def try_base64_decode(content: str) -> Optional[str]:
     decoded = base64.b64decode(content).decode("utf-8", errors="ignore")
     if decoded and len(decoded) > len(content) / 2:
       return decoded
-  except Exception:
+  except (ValueError, binascii.Error, UnicodeDecodeError):
     pass
   return None
 
@@ -77,8 +78,18 @@ def base_proxy(node: Dict) -> Dict:
   return base
 
 
+def get_sni(node: Dict) -> Optional[str]:
+  """统一访问 SNI（兼容 sni / servername 两种字段名），消除 5 处重复兼容逻辑。"""
+  return node.get("sni") or node.get("servername")
+
+
 def b64encode(s: str) -> str:
   return base64.b64encode(s.encode("utf-8")).decode("ascii").rstrip("=")
+
+
+def b64decode_str(s: str) -> str:
+  """严格 Base64 解码（自动补 padding），用于 SSR 密码等必须成功的场景。"""
+  return base64.b64decode(s + "=" * (-len(s) % 4)).decode("utf-8", errors="ignore")
 
 
 def url_fragment(name: str) -> str:

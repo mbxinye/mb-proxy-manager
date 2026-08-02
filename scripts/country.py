@@ -58,6 +58,10 @@ COUNTRY_KEYWORDS = {
   "saudi arabia": "SA", "沙特": "SA",
   "china": "CN", "cn": "CN", "中国": "CN", "大陆": "CN", "国内": "CN",
   "移动": "CN", "电信": "CN", "联通": "CN", "中转": "CN",
+  "mainland": "CN", "回国": "CN", "落地": "CN",
+  "beijing": "CN", "shanghai": "CN", "guangzhou": "CN", "shenzhen": "CN",
+  "chengdu": "CN", "chongqing": "CN", "nanjing": "CN", "hangzhou": "CN",
+  "wuhan": "CN", "xian": "CN", "qingdao": "CN",
 }
 
 COUNTRY_FLAGS = {
@@ -110,7 +114,7 @@ CITY_CODE_MAP = {
   "mex": "MX",
   "bkk": "TH",
   "kul": "MY",
-  "cgk": "ID", "sin": "SG",
+  "cgk": "ID",
   "mnl": "PH",
   "hnl": "US",
 }
@@ -124,6 +128,24 @@ def _flag_emoji_to_code(name: str) -> Optional[str]:
   return None
 
 
+# 预编译匹配正则：ASCII 关键词用 \b 词边界（避免 "in" 匹配 "Singapore"）；
+# 中文关键词无 \b 概念，用普通子串匹配。
+_COUNTRY_KEYWORD_RES = []
+for _kw, _code in COUNTRY_KEYWORDS.items():
+  if _kw.isascii():
+    _COUNTRY_KEYWORD_RES.append((re.compile(rf"\b{re.escape(_kw)}\b", re.IGNORECASE), _code))
+  else:
+    _COUNTRY_KEYWORD_RES.append((re.compile(re.escape(_kw)), _code))
+
+
+def _keyword_to_country(text: str) -> Optional[str]:
+  """词边界匹配 ASCII 关键词、子串匹配中文关键词，避免短码误匹配。"""
+  for pattern, code in _COUNTRY_KEYWORD_RES:
+    if pattern.search(text):
+      return code
+  return None
+
+
 def _city_code_to_country(text: str) -> Optional[str]:
   text_lower = text.lower()
   for city_code, country in CITY_CODE_MAP.items():
@@ -132,14 +154,16 @@ def _city_code_to_country(text: str) -> Optional[str]:
   return None
 
 
-def extract_country(name: str, server: str = "", sni: str = "") -> Optional[str]:
+def _detect_country_code(name: str, server: str = "", sni: str = "") -> Optional[str]:
+  """公共国别探测链：flag emoji → 关键词 → 城市码(server/sni) → GeoIP。
+
+  extract_country 与 is_china_node 共用此链，消除重复实现。"""
   code = _flag_emoji_to_code(name)
   if code:
     return code
-  name_lower = name.lower()
-  for keyword, code in COUNTRY_KEYWORDS.items():
-    if keyword in name_lower:
-      return code
+  code = _keyword_to_country(name)
+  if code:
+    return code
   if server:
     code = _city_code_to_country(server)
     if code:
@@ -151,6 +175,10 @@ def extract_country(name: str, server: str = "", sni: str = "") -> Optional[str]
   # Fallback: real GeoIP on the server address -> covers bare-IP / unknown hosts.
   from scripts.geoip import server_country
   return server_country(server)
+
+
+def extract_country(name: str, server: str = "", sni: str = "") -> Optional[str]:
+  return _detect_country_code(name, server, sni)
 
 
 def generate_node_name(name: str, index: int, latency: int) -> str:
@@ -167,15 +195,6 @@ def generate_node_name(name: str, index: int, latency: int) -> str:
 # foreign nodes and mis-pick a non-China relay (no GFW traversal). We treat
 # HK/TW as foreign exits and never classify them as China.
 _NON_CN_HINTS = ("hong kong", "hongkong", "hk", "taiwan", "taipei", "tw")
-_CN_WORDS = (
-  "china", "mainland",
-  "中国", "大陆", "国内", "移动", "电信", "联通", "中转", "回国", "落地",
-)
-_CN_CITIES = (
-  "beijing", "shanghai", "guangzhou", "shenzhen", "chengdu",
-  "chongqing", "nanjing", "hangzhou", "wuhan", "xian", "qingdao",
-)
-_CN_TOKEN = re.compile(r"(?:^|[^a-z0-9])cn(?:[^a-z0-9]|$)", re.IGNORECASE)
 
 
 def is_china_node(name: str, server: str = "", sni: str = "") -> bool:
@@ -186,22 +205,7 @@ def is_china_node(name: str, server: str = "", sni: str = "") -> bool:
   for hint in _NON_CN_HINTS:
     if hint in name_lower:
       return False
-  code = _flag_emoji_to_code(name)
+  code = _detect_country_code(name, server, sni)
   if code:
     return code == "CN"
-  text = f"{name} {server} {sni}".lower()
-  for w in _CN_WORDS:
-    if w in text:
-      return True
-  for c in _CN_CITIES:
-    if c in text:
-      return True
-  if _CN_TOKEN.search(name):
-    return True
-  # Fallback: real GeoIP on the actual server address. Picks up bare-IP /
-  # foreign-named relays whose physical egress is in mainland China.
-  from scripts.geoip import server_country
-  country = server_country(server)
-  if country:
-    return country == "CN"
   return False

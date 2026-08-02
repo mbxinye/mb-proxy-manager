@@ -8,6 +8,7 @@ GeoIP 服务实现 - 单一职责(SRP) + 最少知识原则(LKP)
 import socket
 import threading
 import time
+import urllib.error
 import urllib.request
 from collections import OrderedDict
 from pathlib import Path
@@ -19,6 +20,9 @@ from scripts.config import (
   GEOIP_DNS_WORKERS,
   GEOIP_MAX_AGE_DAYS,
 )
+from scripts.log import get_logger
+
+log = get_logger("geoip")
 
 
 class LRUCache:
@@ -64,7 +68,7 @@ class GeoIPService:
                 return path
         
         path.parent.mkdir(parents=True, exist_ok=True)
-        print(f"  下载 GeoIP 数据库: {GEOIP_DB_URL}")
+        log.info(f"  下载 GeoIP 数据库: {GEOIP_DB_URL}")
         try:
             req = urllib.request.Request(GEOIP_DB_URL, headers={"User-Agent": "mb-proxy-manager"})
             tmp = path.with_suffix(".tmp")
@@ -76,10 +80,10 @@ class GeoIPService:
                             break
                         f.write(chunk)
             tmp.replace(path)
-            print(f"  ✓ GeoIP 就绪: {path} ({path.stat().st_size // 1024} KB)")
+            log.info(f"  ✓ GeoIP 就绪: {path} ({path.stat().st_size // 1024} KB)")
             return path
-        except Exception as e:
-            print(f"  ⚠ GeoIP 下载失败: {str(e)[:100]}")
+        except (urllib.error.URLError, OSError, TimeoutError) as e:
+            log.warning(f"  ⚠ GeoIP 下载失败: {str(e)[:100]}")
             if path.exists():
                 return path
             return None
@@ -99,8 +103,8 @@ class GeoIPService:
                     return None
                 self._reader = maxminddb.open_database(str(path))
                 return self._reader
-            except Exception as e:
-                print(f"  ⚠ GeoIP 加载失败: {str(e)[:100]}")
+            except (OSError, ImportError, ValueError) as e:
+                log.warning(f"  ⚠ GeoIP 加载失败: {str(e)[:100]}")
                 self._reader_failed = True
                 return None
     
@@ -119,7 +123,8 @@ class GeoIPService:
                 infos = socket.getaddrinfo(server, None, socket.AF_INET)
                 if infos:
                     ip = infos[0][4][0]
-            except Exception:
+            except (socket.gaierror, OSError, UnicodeError, ValueError):
+                # UnicodeError: IDNA 编码超长/非法 label；ValueError: 非法主机名
                 ip = None
         
         self._dns_cache.put(server, ip)
@@ -145,7 +150,7 @@ class GeoIPService:
                         country = rec.get("country")
                         if country:
                             code = country.get("iso_code")
-                except Exception:
+                except (KeyError, TypeError, ValueError):
                     code = None
         
         self._country_cache.put(server, code)
@@ -166,7 +171,7 @@ class GeoIPService:
         with ThreadPoolExecutor(max_workers=GEOIP_DNS_WORKERS) as pool:
             list(pool.map(self.get_country, uniq))
         
-        print(f"  GeoIP 预取 {len(uniq)} 个主机")
+        log.info(f"  GeoIP 预取 {len(uniq)} 个主机")
 
 
 # 全局单例
@@ -181,6 +186,20 @@ def get_geoip_service() -> "GeoIPService":
         if _geoip_service is None:
             _geoip_service = GeoIPService()
         return _geoip_service
+
+
+def reset_geoip_service() -> None:
+    """测试钩子：重置 GeoIP 单例，便于注入 mock 或重新初始化。"""
+    global _geoip_service
+    with _geoip_lock:
+        _geoip_service = None
+
+
+def set_geoip_service(service: "GeoIPService") -> None:
+    """测试钩子：注入自定义 GeoIP 服务（依赖倒置，便于测试替换）。"""
+    global _geoip_service
+    with _geoip_lock:
+        _geoip_service = service
 
 
 def prefetch_countries(servers: Iterable[str]) -> None:

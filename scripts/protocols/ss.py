@@ -4,14 +4,18 @@
 import urllib.parse
 from typing import Dict, Optional
 
+from scripts.log import get_logger
 from scripts.protocols._helpers import (
   base_proxy,
+  b64decode_str,
   b64encode,
   build_query,
   try_base64_decode,
   url_fragment,
 )
 from scripts.protocols.base import BaseProtocol
+
+log = get_logger("ss")
 
 
 class SSProtocol(BaseProtocol):
@@ -61,8 +65,8 @@ class SSProtocol(BaseProtocol):
         "password": password,
         "cipher": method,
       }
-    except Exception as e:
-      print(f"  ⚠ SS 解析失败: {url[:50]}... ({e})")
+    except (ValueError, IndexError, urllib.parse.InvalidURL) as e:
+      log.warning(f"  ⚠ SS 解析失败: {url[:50]}... ({e})")
       return None
 
   def to_clash(self, node: Dict) -> Optional[Dict]:
@@ -111,7 +115,7 @@ class SSRProtocol(BaseProtocol):
       password_b64 = parts[5]
       try:
         password = b64decode_str(password_b64)
-      except Exception:
+      except (ValueError, binascii.Error):
         password = password_b64
       params = ""
       obfs_param = ""
@@ -131,8 +135,8 @@ class SSRProtocol(BaseProtocol):
         "protocol-param": params,
         "obfs-param": obfs_param,
       }
-    except Exception as e:
-      print(f"  ⚠ SSR 解析失败: {url[:50]}... ({e})")
+    except (ValueError, IndexError, urllib.parse.InvalidURL) as e:
+      log.warning(f"  ⚠ SSR 解析失败: {url[:50]}... ({e})")
       return None
 
   def to_clash(self, node: Dict) -> Optional[Dict]:
@@ -171,8 +175,3 @@ class SSRProtocol(BaseProtocol):
     if not node.get("password") or not node.get("cipher"):
       return False
     return super().is_field_complete(node)
-
-
-def b64decode_str(s: str) -> str:
-  import base64
-  return base64.b64decode(s + "=" * (-len(s) % 4)).decode()

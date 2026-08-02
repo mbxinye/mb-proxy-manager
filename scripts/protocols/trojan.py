@@ -4,14 +4,18 @@
 import urllib.parse
 from typing import Dict, Optional
 
+from scripts.log import get_logger
 from scripts.protocols._helpers import (
   apply_transport,
   base_proxy,
   build_query,
+  get_sni,
   normalize_alpn,
   url_fragment,
 )
 from scripts.protocols.base import BaseProtocol
+
+log = get_logger("trojan")
 
 
 class TrojanProtocol(BaseProtocol):
@@ -54,8 +58,8 @@ class TrojanProtocol(BaseProtocol):
         node["alpn"] = query["alpn"][0]
       node["skip-cert-verify"] = query.get("allowInsecure", ["0"])[0] == "1"
       return node
-    except Exception as e:
-      print(f"  ⚠ Trojan 解析失败: {url[:50]}... ({e})")
+    except (ValueError, KeyError, urllib.parse.InvalidURL) as e:
+      log.warning(f"  ⚠ Trojan 解析失败: {url[:50]}... ({e})")
       return None
 
   def to_clash(self, node: Dict) -> Optional[Dict]:
@@ -142,8 +146,8 @@ class Hysteria2Protocol(BaseProtocol):
       if alpn:
         node["alpn"] = alpn
       return node
-    except Exception as e:
-      print(f"  ⚠ Hysteria2 解析失败: {url[:50]}... ({e})")
+    except (ValueError, KeyError, urllib.parse.InvalidURL) as e:
+      log.warning(f"  ⚠ Hysteria2 解析失败: {url[:50]}... ({e})")
       return None
 
   def to_clash(self, node: Dict) -> Optional[Dict]:

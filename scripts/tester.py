@@ -5,15 +5,19 @@ from typing import Dict, List, Tuple
 
 from scripts.config import (
   EXCLUDE_CN_OUTPUT,
-  MIHOMO_TEST_URL_CN,
   RELAY_ENABLED,
   RELAY_MAX_PER_RELAY,
   RELAY_MAX_RELAYS,
+  TEST_URL_CN,
 )
 from scripts.country import is_china_node
 from scripts.geoip import prefetch_countries
+from scripts.log import get_logger
 from scripts.mihomo import MihomoTester
+from scripts.protocols._helpers import get_sni
 from scripts.protocols.registry import get_registry
+
+log = get_logger("tester")
 
 
 def _filter_complete(nodes: List[Dict]) -> List[Dict]:
@@ -22,7 +26,7 @@ def _filter_complete(nodes: List[Dict]) -> List[Dict]:
   complete = [n for n in nodes if registry.is_field_complete(n)]
   dropped = len(nodes) - len(complete)
   if dropped:
-    print(f"  字段不完整抛弃: {dropped}/{len(nodes)}")
+    log.info(f"  字段不完整抛弃: {dropped}/{len(nodes)}")
   return complete
 
 
@@ -34,20 +38,20 @@ def _split_by_region(nodes: List[Dict]) -> Tuple[List[Dict], List[Dict]]:
     if is_china_node(
       n.get("name", ""),
       n.get("server", ""),
-      n.get("sni", "") or n.get("servername", "") or "",
+      get_sni(n) or "",
     ):
       china.append(n)
     else:
       foreign.append(n)
-  print(f"  分流: CN relay {len(china)} / foreign {len(foreign)}")
+  log.info(f"  分流: CN relay {len(china)} / foreign {len(foreign)}")
   return china, foreign
 
 
 def _stage1(tester: MihomoTester, cn: List[Dict], foreign: List[Dict]) -> Tuple[List[Dict], List[Dict]]:
   """Stage-1：CN relay 用国内 204 端点，foreign 用 gstatic（runner 为美国出口）。"""
-  cn_valid = tester.test_nodes(cn, test_url=MIHOMO_TEST_URL_CN) if cn else []
+  cn_valid = tester.test_nodes(cn, test_url=TEST_URL_CN) if cn else []
   foreign_valid = tester.test_nodes(foreign) if foreign else []
-  print(f"  stage-1: {len(cn_valid) + len(foreign_valid)} reachable (CN relay {len(cn_valid)} / foreign {len(foreign_valid)})")
+  log.info(f"  stage-1: {len(cn_valid) + len(foreign_valid)} reachable (CN relay {len(cn_valid)} / foreign {len(foreign_valid)})")
   return cn_valid, foreign_valid
 
 
@@ -63,14 +67,14 @@ def _stage2_relay(tester: MihomoTester, foreign: List[Dict], relays: List[Dict])
       break
     batch = remaining[:RELAY_MAX_PER_RELAY] if RELAY_MAX_PER_RELAY > 0 else remaining
     relay_latency = relay.get("latency", 0) or 0
-    print(f"  relay {relay.get('name', '')} ({relay_latency}ms) -> testing {len(batch)} remaining")
+    log.info(f"  relay {relay.get('name', '')} ({relay_latency}ms) -> testing {len(batch)} remaining")
     got = tester.test_nodes_relay(batch, relay, relay_latency)
     got_ids = {id(n) for n in got}
     confirmed.extend(got)
     remaining = [n for n in remaining if id(n) not in got_ids]
-    print(f"    confirmed {len(confirmed)} total, {len(remaining)} left")
+    log.info(f"    confirmed {len(confirmed)} total, {len(remaining)} left")
   if not confirmed and foreign:
-    print("  WARN 0 nodes reachable via relay; falling back to stage-1 foreign")
+    log.warning("  WARN 0 nodes reachable via relay; falling back to stage-1 foreign")
     return list(foreign)
   return confirmed
 
@@ -85,7 +89,7 @@ def run(nodes: List[Dict]) -> List[Dict]:
     relays = sorted(cn_valid, key=lambda x: x.get("latency", 9999))[:RELAY_MAX_RELAYS]
     foreign_valid = _stage2_relay(tester, foreign_valid, relays)
   else:
-    print("  no China relay available; skipping stage-2 (using stage-1 results)")
+    log.info("  no China relay available; skipping stage-2 (using stage-1 results)")
 
   final = list(foreign_valid)
   if not EXCLUDE_CN_OUTPUT:
