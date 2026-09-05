@@ -1,0 +1,55 @@
+---
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: warning
+proxies:
+- name: 🇹🇼 TW 01 [570]
+  type: ss
+  server: r3mrcg001287h3p.cybervena.com
+  port: '50099'
+  udp: true
+  cipher: chacha20-ietf-poly1305
+  password: b1ae0fce-9340-4f2e-882d-fdb2218e2e2b
+- name: 🇹🇼 TW 02 [605]
+  type: ss
+  server: R3MRCG001287H3P.cybervena.com
+  port: '50099'
+  udp: true
+  cipher: chacha20-ietf-poly1305
+  password: b1ae0fce-9340-4f2e-882d-fdb2218e2e2b
+- name: 🇹🇼 TW 03 [663]
+  type: ss
+  server: r3mrcg001286ek2.cybervena.com
+  port: '50099'
+  udp: true
+  cipher: chacha20-ietf-poly1305
+  password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
+- name: 🇩🇪 DE 01 [341]
+  type: vmess
+  server: newrelax.relaxedboy.online
+  port: '110'
+  udp: true
+  uuid: 8e9687fc-a3a7-414a-8676-8e2136797cfe
+  alterId: 0
+  cipher: auto
+  skip-cert-verify: false
+- name: 🇨🇦 CA 01 [519]
+  type: ss
+  server: ca225.vpnbook.com
+  port: '443'
+  udp: true
+  cipher: chacha20-ietf-poly1305
+  password: ytw2awn
+proxy-groups:
+- name: Proxy
+  type: select
+  proxies:
+  - 🇹🇼 TW 01 [570]
+  - 🇹🇼 TW 02 [605]
+  - 🇹🇼 TW 03 [663]
+  - 🇩🇪 DE 01 [341]
+  - 🇨🇦 CA 01 [519]
+rules:
+- MATCH,Proxy
