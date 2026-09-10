@@ -13,7 +13,7 @@ def try_base64_decode(content: str) -> Optional[str]:
     if "%" in content:
       try:
         content = urllib.parse.unquote(content)
-      except (ValueError, urllib.parse.InvalidURL):
+      except (ValueError):
         pass
     padding = len(content) % 4
     if padding > 0:

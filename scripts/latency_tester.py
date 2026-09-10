@@ -53,9 +53,12 @@ class LatencyTester:
                 name = futures[f]
                 latency = f.result()
                 if latency is not None:
+                    # relay 场景：减去中继自身延迟得到"国内出口→节点"的增量 RTT。
+                    # 减出 <=0 说明两跳测量的噪声大于真实增量（并发下常见），此时不 clamp 成
+                    # 1ms（那会伪造出一批"超快"节点），而是回退原始端到端值——宁可偏高不可造假。
                     adj = latency - self._latency_offset
                     if adj < 1:
-                        adj = 1
+                        adj = latency
                     node = self._proxy_to_node[name]
                     # relay 场景用独立字段，避免覆盖 stage-1 直连 latency
                     if self._latency_offset > 0:

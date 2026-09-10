@@ -30,7 +30,7 @@ python3 -c "from scripts.parser import NodeParser; print('OK')"
 | `PROXY_MIHOMO_VERSION` | v1.19.13 | mihomo kernel version (downloaded on demand) |
 | `PROXY_TEST_URL` | https://www.gstatic.com/generate_204 | URL used for foreign-node end-to-end test |
 | `PROXY_TEST_URL_CN` | http://connect.rom.miui.com/generate_204 | URL used for CN-relay stage-1 test (must be a 204 endpoint reachable from China egress; non-204 responses cause mihomo delay-test to report failure) |
-| `PROXY_TEST_TIMEOUT` | 2000 | mihomo delay-test timeout (ms) |
+| `PROXY_TEST_TIMEOUT` | 4000 | mihomo delay-test timeout (ms) — must stay well above `PROXY_MAX_LATENCY` or jitter kills usable nodes |
 | `PROXY_TEST_CONCURRENCY` | 100 | Concurrent mihomo delay tests |
 | `PROXY_MAX_LATENCY` | 1500 | Reject nodes with latency above this (ms), 0=disable |
 | `PROXY_RELAY_ENABLED` | true | Enable two-stage China-relay verification |
@@ -38,6 +38,14 @@ python3 -c "from scripts.parser import NodeParser; print('OK')"
 | `PROXY_RELAY_MAX_RELAYS` | 5 | How many China relays to try (best coverage across carriers) |
 | `PROXY_RELAY_MAX_PER_RELAY` | 0 | Cap nodes tested per relay (0 = no cap) |
 | `PROXY_EXCLUDE_CN_OUTPUT` | true | Exclude mainland-China nodes from the final output |
+| `PROXY_RELAY_FIXED` | _(empty)_ | Fixed China relays as a Clash node JSON array (e.g. home router). Takes priority over subscription-derived CN nodes |
+| `PROXY_RELAY_FIXED_ONLY` | false | Use only fixed relays, ignore subscription CN nodes entirely |
+| `PROXY_SPEED_TEST` | true | Enable stage-3 throughput test |
+| `PROXY_SPEED_TOP_N` | 100 | Only speed-test the N lowest-latency survivors |
+| `PROXY_SPEED_MIN_MBPS` | 2 | Drop nodes below this throughput |
+| `PROXY_SPEED_TIMEOUT` | 5 | Per-node speed test budget (seconds) |
+| `PROXY_SPEED_MAX_BYTES` | 4194304 | Max bytes downloaded per node during speed test |
+| `PROXY_SPEED_URL` | Cloudflare 10MB endpoint | Speed test target (must serve a large body) |
 
 ### GeoIP (China-relay detection)
 
@@ -90,15 +98,19 @@ f-strings only.
 - `scripts/clash_converter.py` — thin facade (`to_clash_node` / `to_uri`) delegating to the protocols registry; unknown types fall back to a minimal base proxy (filtered later by `mihomo -t`).
 - `scripts/dedup.py` — dedup via registry-provided `dedup_key` (includes credentials so same-address/different-credential nodes are not collapsed).
 - `scripts/country.py` — country/CN-relay detection + node naming (flag emoji, keyword/city-code heuristics, GeoIP fallback). HK/TW treated as foreign exits; `_CN_TOKEN` regex avoids matching `cn` inside other words.
-- `scripts/tester.py` — mihomo kernel end-to-end tunnel test orchestration; `run()` split into `_filter_complete` / `_split_by_region` / `_stage1` / `_stage2_relay`. Field-completeness pre-filter (registry `is_field_complete`): TLS nodes without explicit sni are kept (mihomo falls back to `server`); reality nodes must carry `public-key`.
+- `scripts/tester.py` — mihomo kernel end-to-end tunnel test orchestration; `run()` split into `_filter_complete` / `_split_by_region` / `_stage1` / `_stage2_relay` / `_stage3_speed`. Field-completeness pre-filter (registry `is_field_complete`): TLS nodes without explicit sni are kept (mihomo falls back to `server`); reality nodes must carry `public-key`.
+- `scripts/speed_tester.py` — per-node throughput test: switches the `TEST` selector via mihomo API, then times a capped download through `mixed-port`. Serial on purpose (parallel downloads make nodes compete for bandwidth and the numbers stop being comparable).
 - `scripts/mihomo.py` — `MihomoTester` coordinator composing `config_builder` / `latency_tester` / `mihomo_manager` / `process_manager` (DIP: each is independently replaceable). Pre-validates configs with `mihomo -t` and binary-split retries on fatal nodes.
 - `scripts/geoip.py` — MaxMind GeoLite2-Country lookup (downloads MMDB on demand, caches DNS). CN-relay identification runs text heuristics on node names first (covers self-described `中转`/`上海` relays); when inconclusive, `is_china_node`/`extract_country` fall back to GeoIP on the resolved `server` IP. The MMDB is downloaded once and reused (`PROXY_GEOIP_MAX_AGE_DAYS`); GitHub Actions caches it per day so only the first run of each day re-downloads.
-Two-stage verification pipeline:
+Three-stage verification pipeline:
 
 1. Stage-1 splits nodes into CN-relay candidates and foreign exit nodes **before** testing, because CN egress cannot reach GFW-blocked targets (e.g. `gstatic.com`). CN candidates are tested against `PROXY_TEST_URL_CN` (default `connect.rom.miui.com/generate_204`, a 204 endpoint — non-204 URLs like `baidu.com` cause mihomo delay-test to fail and silently kill all CN relay candidates); foreign nodes against `PROXY_TEST_URL` (default `gstatic/generate_204`). Both tests run from the GitHub Actions runner (US egress).
 2. The `PROXY_RELAY_MAX_RELAYS` fastest subscription CN nodes become stage-2 relays.
 3. Stage-2 re-tests every foreign node through each China relay via mihomo `dialer-proxy`, so the tested path is `runner -> China relay -> foreign node -> 204` — i.e. reachability from a China egress. Nodes that fail here are exactly the ones unusable from China and are dropped. Relays are tried in order; a node only needs to be reachable via one.
 4. China relay nodes are excluded from the final output by default (`PROXY_EXCLUDE_CN_OUTPUT`). Falls back to stage-1 results when no relay is available.
+5. Stage-3 speed-tests the `PROXY_SPEED_TOP_N` lowest-latency survivors against a large download target. **It deliberately does NOT go through a relay**: throughput is an intrinsic property of the node, whereas relay-tunnelled measurement yields the serial bandwidth of `relay + node` and gets capped by the relay — measured locally, that misreported *every* node as slow and emptied the output. China reachability is already guaranteed by stage-2.
+
+**Sorting must use `effective_latency()`** (`scripts/utils.py`), which prefers `relay_latency` over `latency`. `latency` is the stage-1 runner-direct value (US egress) and is meaningless to a China-side user; `relay_latency` is the stage-2 China-egress value. Sorting on raw `latency` silently ranks by US perspective.
 - `scripts/output.py` — generate Clash YAML (clash_config.yml, clash_mini.yml, clash_all.yml) + plain URI list (nodes.txt, nodes_mini.txt, nodes_all.txt)
 - `scripts/main.py` — pipeline orchestration
 - `run.py` — thin entry point

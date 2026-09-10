@@ -22,9 +22,13 @@ class ConfigBuilder:
         nodes: List[Dict],
         port: int,
         relay_node: Optional[Dict] = None,
+        http_port: Optional[int] = None,
     ) -> Tuple[Dict, Dict[str, Dict], List[int]]:
         """
         构建测试配置
+
+        Args:
+            http_port: 传入则额外开启 mixed-port，供带宽测速走该代理出网。
 
         Returns:
             (config, proxy_to_node, proxy_node_indices)
@@ -71,6 +75,9 @@ class ConfigBuilder:
             ],
             "rules": ["MATCH,TEST"],
         }
+        if http_port:
+            config["mixed-port"] = http_port
+            config["allow-lan"] = False
         return config, proxy_to_node, proxy_node_indices
 
     def write_config(self, config: Dict, path) -> None:

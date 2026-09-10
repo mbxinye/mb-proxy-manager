@@ -66,7 +66,7 @@ class SSProtocol(BaseProtocol):
         "password": password,
         "cipher": method,
       }
-    except (ValueError, IndexError, urllib.parse.InvalidURL) as e:
+    except (ValueError, IndexError) as e:
       log.warning(f"  ⚠ SS 解析失败: {url[:50]}... ({e})")
       return None
 
@@ -136,7 +136,7 @@ class SSRProtocol(BaseProtocol):
         "protocol-param": params,
         "obfs-param": obfs_param,
       }
-    except (ValueError, IndexError, urllib.parse.InvalidURL) as e:
+    except (ValueError, IndexError) as e:
       log.warning(f"  ⚠ SSR 解析失败: {url[:50]}... ({e})")
       return None
 

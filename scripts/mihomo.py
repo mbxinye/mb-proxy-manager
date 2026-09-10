@@ -15,6 +15,7 @@ from typing import Dict, List, Optional
 from scripts.config import (
     MIHOMO_VERSION,
     RELAY_CONCURRENCY,
+    SPEED_MIN_MBPS,
     TEST_CONCURRENCY,
     TEST_MAX_LATENCY,
     TEST_URL,
@@ -24,6 +25,7 @@ from scripts.latency_tester import LatencyTester
 from scripts.log import get_logger
 from scripts.mihomo_manager import BinaryManager
 from scripts.process_manager import ProcessManager
+from scripts.speed_tester import SpeedTester
 
 log = get_logger("mihomo")
 
@@ -104,6 +106,67 @@ class MihomoTester:
             relay_node=relay_node,
         )
         return self._test_batch(nodes, cfg)
+
+    def test_speed(
+        self,
+        nodes: List[Dict],
+        relay_node: Optional[Dict] = None,
+        min_mbps: float = SPEED_MIN_MBPS,
+    ) -> List[Dict]:
+        """对已通过延迟筛选的节点做带宽实测，剔除吞吐不足的。
+
+        必须复用验证该节点时所用的 relay，否则测的是 runner 本地出口带宽，
+        与国内用户视角无关。
+        """
+        if not nodes:
+            return []
+
+        log.info(f"  带宽实测 {len(nodes)} 个节点 (阈值 {min_mbps} Mbps)...")
+        api_port = _free_port()
+        http_port = _free_port()
+        config, proxy_to_node, _ = self._config_builder.build_test_config(
+            nodes, api_port, relay_node=relay_node, http_port=http_port,
+        )
+        if not proxy_to_node:
+            return []
+
+        with tempfile.TemporaryDirectory(prefix="mihomo-speed-") as workdir:
+            cfg_path = Path(workdir) / "config.yaml"
+            self._config_builder.write_config(config, cfg_path)
+
+            proc_mgr = ProcessManager(self.binary, workdir)
+            proc_mgr.start(cfg_path)
+            try:
+                if not proc_mgr.wait_ready(api_port):
+                    log.warning(f"  ⚠ 测速实例启动失败，跳过本批: {proc_mgr.get_startup_output()[:100]}")
+                    return list(nodes)
+
+                results = SpeedTester(
+                    api_port=api_port,
+                    http_port=http_port,
+                    proxy_to_node=proxy_to_node,
+                ).run(list(proxy_to_node.keys()))
+            finally:
+                proc_mgr.terminate()
+
+        # 测不出速度 ≠ 带宽不足：可能是目标站被该节点屏蔽、或单次抖动。
+        # 可达性已由 stage-1/2 验证过，这里只淘汰"确实跑得慢"的，避免误杀。
+        slow, untested = [], []
+        for n in nodes:
+            v = n.get("speed_mbps")
+            if v is None:
+                untested.append(n)
+            elif v < min_mbps:
+                slow.append(n)
+
+        slow_ids = {id(n) for n in slow}
+        kept = [n for n in nodes if id(n) not in slow_ids]
+        if slow:
+            log.info(f"  带宽不足(<{min_mbps}Mbps)剔除: {len(slow)}/{len(nodes)}")
+        if untested:
+            log.info(f"  未测出速度(保留): {len(untested)} — 检查 PROXY_SPEED_URL 是否被节点屏蔽")
+        log.info(f"  带宽实测保留: {len(kept)}/{len(nodes)}")
+        return kept
 
     def _validate_config(self, nodes: List[Dict]) -> List[Dict]:
         """用 mihomo -t 预校验配置，批量剔除致命节点"""

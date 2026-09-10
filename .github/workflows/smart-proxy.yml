@@ -2,18 +2,24 @@ name: Proxy Filter Updater
 
 on:
   schedule:
-    - cron: '13 */1 * * *'
+    - cron: '13 */6 * * *'
   workflow_dispatch:
 
 env:
   PYTHON_VERSION: '3.11'
   PROXY_MIHOMO_VERSION: 'v1.19.13'
   GEOIP_DB_VERSION: 'latest'
+  # 固定中国中继（Clash 节点 JSON 数组，如家里路由器）；含密钥，须在仓库 Settings->Secrets/Variables 配置
+  PROXY_RELAY_FIXED: ${{ vars.PROXY_RELAY_FIXED }}
+  # 带宽实测：只对延迟最优的 top N 做，N 越大越慢
+  PROXY_SPEED_TOP_N: '100'
+  PROXY_SPEED_MIN_MBPS: '2'
 
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    # stage-3 带宽实测会显著拉长耗时（每节点最多 5s），30 分钟不够
+    timeout-minutes: 45
     concurrency:
       group: pages
       cancel-in-progress: false

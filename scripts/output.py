@@ -14,6 +14,7 @@ from scripts.config import PREFERRED_COUNTRIES
 from scripts.country import extract_country, generate_node_name
 from scripts.log import get_logger
 from scripts.protocols._helpers import get_sni
+from scripts.utils import effective_latency
 
 log = get_logger("output")
 
@@ -48,7 +49,7 @@ def _sort_key(n: Dict) -> tuple:
     -n.get("_sub_priority", 0),
     _country_rank(n),
     _protocol_rank(n),
-    n.get("latency", 9999),
+    effective_latency(n),
   )
 
 
@@ -96,7 +97,7 @@ def _rename_nodes(valid_nodes: List[Dict]) -> None:
       get_sni(node) or "",
     ) or "XX"
     counters[code] = counters.get(code, 0) + 1
-    node["name"] = generate_node_name(code, counters[code], node.get("latency", 9999))
+    node["name"] = generate_node_name(code, counters[code], effective_latency(node))
 
 
 def _write_outputs(valid_nodes: List[Dict], max_full: int, max_mini: int) -> None:

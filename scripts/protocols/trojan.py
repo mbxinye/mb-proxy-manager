@@ -58,7 +58,7 @@ class TrojanProtocol(BaseProtocol):
         node["alpn"] = query["alpn"][0]
       node["skip-cert-verify"] = query.get("allowInsecure", ["0"])[0] == "1"
       return node
-    except (ValueError, KeyError, urllib.parse.InvalidURL) as e:
+    except (ValueError, KeyError) as e:
       log.warning(f"  ⚠ Trojan 解析失败: {url[:50]}... ({e})")
       return None
 
@@ -151,7 +151,7 @@ class Hysteria2Protocol(BaseProtocol):
       if alpn:
         node["alpn"] = alpn
       return node
-    except (ValueError, KeyError, urllib.parse.InvalidURL) as e:
+    except (ValueError, KeyError) as e:
       log.warning(f"  ⚠ Hysteria2 解析失败: {url[:50]}... ({e})")
       return None
 

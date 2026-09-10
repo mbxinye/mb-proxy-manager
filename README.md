@@ -2,6 +2,19 @@
 
 自动聚合多路代理订阅 → mihomo 端到端测试 → 生成 Clash 配置文件，通过 GitHub Actions 每小时自动更新。
 
+面向**国内出口**筛选：节点不是"连得上"就算好，而是必须经中国中继实测可用、且带宽达标。
+
+## 验证流水线
+
+| 阶段 | 干什么 | 剔除什么 |
+|---|---|---|
+| stage-1 | 从 runner 直连测可达性（CN 候选用国内 204，foreign 用 gstatic） | 连不上的 |
+| stage-2 | 经中国中继重测 foreign（`runner → 国内中继 → 节点 → 204`） | 国内出口不可达的 |
+| stage-3 | 对延迟最优的 top N 实测下载吞吐 | 连得上但跑不动的（<2 Mbps） |
+
+**排序全程使用 stage-2 测得的国内视角延迟**（`relay_latency`）。stage-1 的 `latency` 是 runner
+美国出口直连值，对国内用户没有参考意义，只用于筛选 relay 和兜底。
+
 ## 项目结构
 
 ```
@@ -16,10 +29,11 @@
 │   ├── dedup.py               # 去重（registry dedup_key）
 │   ├── country.py             # 国家识别 / CN relay 判定 / 节点命名
 │   ├── geoip.py               # MaxMind GeoLite2 查询（按需下载）
-│   ├── tester.py              # mihomo 端到端测试编排（两阶段验证）
+│   ├── tester.py              # mihomo 端到端测试编排（三阶段验证）
 │   ├── mihomo.py              # MihomoTester 协调器
 │   ├── config_builder.py      # mihomo 测试配置构建
 │   ├── latency_tester.py      # mihomo API 延迟测试
+│   ├── speed_tester.py        # 经 mixed-port 逐节点测吞吐
 │   ├── mihomo_manager.py      # mihomo 二进制下载与缓存
 │   ├── process_manager.py     # mihomo 进程生命周期管理
 │   ├── output.py              # 生成 Clash YAML + URI 列表 + JSON
@@ -86,6 +100,14 @@ https://你的用户名.github.io/仓库名/nodes_mini.txt
 | `PROXY_RELAY_MAX_RELAYS` | 5 | 尝试多少个 China relay（跨运营商覆盖） |
 | `PROXY_RELAY_MAX_PER_RELAY` | 0 | 每个 relay 测试的节点上限（0=不限） |
 | `PROXY_EXCLUDE_CN_OUTPUT` | true | 从最终输出中排除中国大陆节点 |
+| `PROXY_RELAY_FIXED` | 空 | 固定中国中继（Clash 节点 JSON 数组，如家里路由器）。配置后**优先于**订阅里的 CN 节点做 relay |
+| `PROXY_RELAY_FIXED_ONLY` | false | 只用固定中继，完全不用订阅里的 CN 节点 |
+| `PROXY_SPEED_TEST` | true | 启用 stage-3 带宽实测 |
+| `PROXY_SPEED_TOP_N` | 100 | 只测延迟最优的前 N 个节点（全量测速会拖爆 CI） |
+| `PROXY_SPEED_MIN_MBPS` | 2 | 吞吐低于此值(Mbps)的节点剔除 |
+| `PROXY_SPEED_TIMEOUT` | 5 | 单节点测速上限（秒） |
+| `PROXY_SPEED_MAX_BYTES` | 4194304 | 单节点测速最多下载字节数 |
+| `PROXY_SPEED_URL` | Cloudflare 10MB 测速端点 | 测速目标（**必须返回大量数据**，小文件测不出带宽） |
 | `PROXY_GEOIP_DB` | `geoip/GeoLite2-Country.mmdb` | MaxMind GeoLite2-Country MMDB 路径 |
 | `PROXY_GEOIP_DB_URL` | P3TERX latest release | MMDB 缺失或过期时自动下载的 URL |
 | `PROXY_GEOIP_MAX_AGE_DAYS` | 35 | MMDB 超过此天数则重新下载 |

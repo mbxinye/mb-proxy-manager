@@ -24,6 +24,11 @@ USER_AGENT = (
 MAX_RETRIES = 2
 RETRY_BACKOFF = 2.0  # 指数退避基数（秒）
 
+# 整体超时必须覆盖「单次超时 × 尝试次数 + 退避总和」，否则网络稍慢就会把仍在重试的
+# 任务全部判为超时取消——实测这会让 21 个订阅一次性全灭（0/21）。
+_BACKOFF_TOTAL = sum(RETRY_BACKOFF * (i + 1) for i in range(MAX_RETRIES))
+OVERALL_TIMEOUT = SUBSCRIPTION_TIMEOUT * (MAX_RETRIES + 1) + _BACKOFF_TOTAL + 15
+
 
 def _fetch_one(url: str) -> dict:
   # 仅捕获网络/SSL 类异常，编程错误（TypeError 等）向上抛出便于定位
@@ -53,7 +58,7 @@ def fetch_all(urls: List[str]) -> List[dict]:
   future_to_url = {pool.submit(_fetch_one, u): u for u in urls}
   remaining = set(future_to_url.keys())
   try:
-    for f in as_completed(future_to_url, timeout=SUBSCRIPTION_TIMEOUT + 15):
+    for f in as_completed(future_to_url, timeout=OVERALL_TIMEOUT):
       remaining.discard(f)
       r = f.result()
       results.append(r)

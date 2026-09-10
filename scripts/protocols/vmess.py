@@ -60,7 +60,7 @@ class VMessProtocol(BaseProtocol):
         if val:
           node[long] = val
       return node
-    except (ValueError, KeyError, json.JSONDecodeError, urllib.parse.InvalidURL) as e:
+    except (ValueError, KeyError, json.JSONDecodeError) as e:
       log.warning(f"  ⚠ VMess 解析失败: {url[:50]}... ({e})")
       return None
 
@@ -163,7 +163,7 @@ class VLESSProtocol(BaseProtocol):
         node["tls"] = True
       node["skip-cert-verify"] = query.get("allowInsecure", ["0"])[0] == "1"
       return node
-    except (ValueError, KeyError, urllib.parse.InvalidURL) as e:
+    except (ValueError, KeyError) as e:
       log.warning(f"  ⚠ VLESS 解析失败: {url[:50]}... ({e})")
       return None
 
