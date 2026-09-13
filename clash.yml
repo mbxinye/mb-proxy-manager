@@ -1,0 +1,2353 @@
+---
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: warning
+proxies:
+- name: 🇺🇸 US 01 [177]
+  type: hysteria2
+  server: 198.46.159.171
+  port: '8443'
+  password: EkkoHY2_2024!
+  skip-cert-verify: true
+- name: 🇺🇸 US 02 [201]
+  type: hysteria2
+  server: 107.175.219.48
+  port: '443'
+  password: 18bd49994f2eea74ff62798bd75fb7d1
+  skip-cert-verify: true
+- name: 🇺🇸 US 03 [215]
+  type: hysteria2
+  server: 173.249.210.76
+  port: '8443'
+  password: Q3mAdf68GvbGEGqTAXkWjg
+  skip-cert-verify: true
+- name: 🇺🇸 US 04 [246]
+  type: hysteria2
+  server: clash2.deep-links.com
+  port: '443'
+  password: 4c858cccff331e64c711a199a6cb256a
+  sni: clash2.deep-links.com
+- name: 🇺🇸 US 05 [381]
+  type: hysteria2
+  server: 107.174.255.14
+  port: '4356'
+  password: c2356e22-b026-4f12-8508-cf61f0b0c867
+  skip-cert-verify: true
+- name: 🇺🇸 US 06 [783]
+  type: hysteria2
+  server: 38.207.163.44
+  port: '8443'
+  password: 3DMpEHI94Ic7izl0YBXU
+  skip-cert-verify: true
+- name: 🇺🇸 US 07 [918]
+  type: hysteria2
+  server: 144.31.93.126
+  port: '443'
+  password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
+  sni: admin.wwwinternetvideo.click
+  skip-cert-verify: true
+- name: 🇺🇸 US 08 [954]
+  type: hysteria2
+  server: 2.27.249.79
+  port: '443'
+  password: cd74c0a406664a5bc0bac098220a2468
+  sni: nl1.sferavpn.pro
+  obfs: salamander
+  obfs-password: 44f1c1e2f8b99e792ceed574627a1eb0
+- name: 🇺🇸 US 09 [1117]
+  type: hysteria2
+  server: 107.172.67.52
+  port: '2053'
+  udp: true
+  password: maintell
+  sni: bing.com
+  skip-cert-verify: true
+  obfs: salamander
+  obfs-password: maintell
+- name: 🇺🇸 US 10 [1130]
+  type: hysteria2
+  server: 144.31.49.138
+  port: '443'
+  password: cd74c0a406664a5bc0bac098220a2468
+  sni: ru1.sferavpn.pro
+  obfs: salamander
+  obfs-password: 44f1c1e2f8b99e792ceed574627a1eb0
+- name: 🇺🇸 US 11 [322]
+  type: trojan
+  server: clash2.deep-links.com
+  port: '443'
+  udp: true
+  password: 06da30be2ce5ece28204119359fe4eb3
+- name: 🇺🇸 US 12 [584]
+  type: vless
+  server: 5.34.178.120
+  port: '443'
+  udp: true
+  uuid: 9063f9fb-e88a-4ee0-b4a4-a92ca7316a9f
+  flow: xtls-rprx-vision
+  servername: www.cloudflare.com
+  tls: true
+  reality-opts:
+    public-key: EVhq2BxKuw2Cody1DmF_HPvUYKwzdXbHP47blUv-eRM
+    short-id: 55ab5559e3a6d10a
+  client-fingerprint: chrome
+  skip-cert-verify: true
+- name: 🇺🇸 US 13 [658]
+  type: vless
+  server: 104.245.242.8
+  port: '8443'
+  udp: true
+  uuid: 4350213a-b4e7-262a-0bd7-bd16957cf71a
+  servername: download.nvidia.com
+  tls: true
+  reality-opts:
+    public-key: FOQzn10eHqu4F5xOxiXW2bTDG8lH4TdOXP6A5rDqKFk
+  client-fingerprint: chrome
+  network: grpc
+  grpc-opts:
+    grpc-mode: gun
+    grpc-service-name: TunService
+- name: 🇺🇸 US 14 [724]
+  type: vless
+  server: 207.57.135.46
+  port: '17144'
+  udp: true
+  uuid: e1be6b8f-a0f5-45a9-8aa6-634c26793325
+  flow: xtls-rprx-vision
+  servername: aws.amazon.com
+  tls: true
+  reality-opts:
+    public-key: vk8mcF1ox2RdeqR31z1eQp1XAhnDN7lY0Xbt3zMAfSc
+  client-fingerprint: chrome
+  skip-cert-verify: true
+- name: 🇺🇸 US 15 [726]
+  type: vless
+  server: 207.57.135.123
+  port: '35621'
+  udp: true
+  uuid: 6f8acdfd-0ce0-4386-ba02-5040da4c6fea
+  flow: xtls-rprx-vision
+  servername: www.amazon.com
+  tls: true
+  reality-opts:
+    public-key: wK6kCgPEjDA7KADag0eZUc8e523kdIOCh8Qavkb15nA
+  client-fingerprint: chrome
+  skip-cert-verify: true
+- name: 🇺🇸 US 16 [751]
+  type: vless
+  server: 207.57.133.49
+  port: '23156'
+  udp: true
+  uuid: 46554735-415f-4be5-9390-a19dc430a15c
+  flow: xtls-rprx-vision
+  servername: www.cloudflare.com
+  tls: true
+  reality-opts:
+    public-key: NjDiEVSSYysWC7yheN_cy4YkCXHtP91yB4vbpgQc2Q8
+  client-fingerprint: chrome
+  skip-cert-verify: true
+- name: 🇺🇸 US 17 [296]
+  type: vless
+  server: plan.api3-max.ru
+  port: '443'
+  udp: true
+  uuid: 97ecaad4-452c-45ec-b591-d68d3308aad4
+  flow: xtls-rprx-vision
+  servername: plan.api3-max.ru
+  tls: true
+  alpn:
+  - h2
+  - http/1.1
+- name: 🇺🇸 US 18 [1403]
+  type: vless
+  server: news.zoom.us
+  port: '8443'
+  udp: true
+  uuid: 29c3dd6b-b164-40ca-a0d5-f06aca52a8b2
+  servername: u.srilankangrill.online
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: u.srilankangrill.online
+- name: 🇺🇸 US 19 [132]
+  type: http
+  server: 138.199.35.211
+  port: '9002'
+  username: 'null'
+  password: 'null'
+  tls: true
+  skip-cert-verify: true
+- name: 🇺🇸 US 20 [132]
+  type: http
+  server: 138.199.35.212
+  port: '9002'
+  username: 'null'
+  password: 'null'
+  tls: true
+  skip-cert-verify: true
+- name: 🇺🇸 US 21 [248]
+  type: http
+  server: jewelscollecti.icu
+  port: '443'
+  username: 'null'
+  password: 'null'
+  tls: true
+  skip-cert-verify: true
+- name: 🇯🇵 JP 01 [639]
+  type: hysteria2
+  server: 138.3.208.26
+  port: '50160'
+  password: 184cdec28da5a09450803c8debcd2cc9
+  sni: www.bing.com
+  skip-cert-verify: true
+- name: 🇯🇵 JP 02 [1378]
+  type: hysteria2
+  server: 8.211.175.129
+  port: '443'
+  udp: true
+  password: 0bffb8e71bca29788862f986caae97b3
+  sni: 8.211.175.129
+  skip-cert-verify: true
+  obfs: salamander
+  obfs-password: 5c8f1a3e7b2d9046c1f8a5e3b7d04f2a
+- name: 🇸🇬 SG 01 [795]
+  type: hysteria2
+  server: 47.129.241.226
+  port: '443'
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  sni: vpn-sg-001.fastervpn.world
+  skip-cert-verify: true
+- name: 🇨🇦 CA 01 [219]
+  type: hysteria2
+  server: 15.223.122.197
+  port: '443'
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: t.me
+  skip-cert-verify: true
+- name: 🇳🇱 NL 01 [477]
+  type: hysteria2
+  server: 72.56.102.31
+  port: '443'
+  password: BWAFlp8g53
+  skip-cert-verify: true
+- name: 🇳🇱 NL 02 [514]
+  type: hysteria2
+  server: hysteria.udpgw.com
+  port: '8443'
+  password: HowdyHysteria2023w0W
+  sni: sni-here.com
+  skip-cert-verify: true
+  obfs: salamander
+  obfs-password: HysteriaHowdy
+- name: 🇬🇧 GB 01 [530]
+  type: hysteria2
+  server: vpn-uk-002.fastervpn.world
+  port: '443'
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: vpn-uk-002.fastervpn.world
+  skip-cert-verify: true
+- name: 🇦🇪 AE 01 [533]
+  type: hysteria2
+  server: 130.49.161.70
+  port: '443'
+  password: p7Q76LzlnS4hIzr1W3staBOnUe_WwSkR
+  sni: hy2.aspidnet.xyz
+  obfs: salamander
+  obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
+- name: 🇩🇪 DE 01 [607]
+  type: hysteria2
+  server: 31.76.27.23
+  port: '37009'
+  password: Telegram-vpnjey
+  sni: de.vpnjey.store
+  skip-cert-verify: true
+  obfs: salamander
+  obfs-password: Telegram@vpnjey
+  alpn:
+  - h3
+- name: 🇷🇴 RO 01 [609]
+  type: hysteria2
+  server: 162.249.126.7
+  port: '8443'
+  password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
+  sni: hopp-germany-new.ddnsguru.com
+  skip-cert-verify: true
+- name: 🇸🇪 SE 01 [723]
+  type: hysteria2
+  server: 77.110.96.201
+  port: '36264'
+  password: Telegram-vpnjey
+  sni: se.vpnjey2.dpdns.org
+  skip-cert-verify: true
+  obfs: salamander
+  obfs-password: Telegram@vpnjey
+  alpn:
+  - h3
+- name: 🇸🇪 SE 02 [757]
+  type: hysteria2
+  server: se-node.rumedia-cdn.com
+  port: '25443'
+  password: 29ffde49-e1d6-4dcd-a135-352920f9f0b8
+  sni: cf2.rumedia-cdn.com
+- name: 🇦🇺 AU 01 [796]
+  type: hysteria2
+  server: vpn-au-002.fastervpn.world
+  port: '443'
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: whatsapp.com
+  skip-cert-verify: true
+- name: 🇫🇮 FI 01 [800]
+  type: hysteria2
+  server: 138.124.0.168
+  port: '8080'
+  password: h_B9x3942fJ9x_Kpx3914KQ_nZ934HFg_rT
+  sni: hopp-legend-se.roxa.org
+- name: 🇩🇪 DE 02 [804]
+  type: hysteria2
+  server: 85.204.107.181
+  port: '8080'
+  password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
+  sni: hopp-romania-new.roxa.org
+- name: 🇷🇴 RO 02 [813]
+  type: hysteria2
+  server: 85.204.107.178
+  port: '8080'
+  password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
+  sni: hopp-romania-new.roxa.org
+  skip-cert-verify: true
+- name: 🇦🇺 AU 02 [823]
+  type: hysteria2
+  server: vpn-au-002.fastervpn.world
+  port: '443'
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: css.rbxcdn.com
+  skip-cert-verify: true
+- name: 🇷🇺 RU 01 [834]
+  type: hysteria2
+  server: msk.frkn.org
+  port: '443'
+  password: f317b5d6-d399-4d3d-a051-89d674ae953c
+- name: 🇷🇴 RO 03 [835]
+  type: hysteria2
+  server: 162.249.125.133
+  port: '443'
+  password: QCgqi_I4EkV8UR-OgQ_tG4EnVTEVvIyR2GgRBzrIn2s
+  sni: hy2-new.aspidnet.xyz
+  obfs: salamander
+  obfs-password: c1b4086fea89914496c7e10967a419216566
+- name: 🇩🇪 DE 03 [992]
+  type: hysteria2
+  server: 2.27.59.206
+  port: '443'
+  password: cd74c0a406664a5bc0bac098220a2468
+  sni: de1.sferavpn.pro
+  skip-cert-verify: true
+  obfs: salamander
+  obfs-password: 44f1c1e2f8b99e792ceed574627a1eb0
+- name: 🇧🇷 BR 01 [1007]
+  type: hysteria2
+  server: go.wwwinternetvideo.click
+  port: '443'
+  password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
+  sni: admin.wwwinternetvideo.click
+  skip-cert-verify: true
+- name: 🇮🇳 IN 01 [1042]
+  type: hysteria2
+  server: vpn-in-001.fastervpn.world
+  port: '443'
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: vpn-in-001.fastervpn.world
+  skip-cert-verify: true
+- name: 🇫🇷 FR 01 [598]
+  type: trojan
+  server: 104.16.174.14
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.ignitelimit.com
+  network: ws
+  ws-opts:
+    headers:
+      User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like
+        Gecko) Chrome/69.0.3497.100 Safari/537.36
+    path: /assignment
+- name: 🇫🇷 FR 02 [605]
+  type: trojan
+  server: 172.67.221.242
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.ignitelimit.com
+  network: ws
+  ws-opts:
+    headers:
+      User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; FIG-LX3 Build/HUAWEIFIG-LX3)
+        AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36
+    path: /assignment
+- name: 🇫🇷 FR 03 [626]
+  type: trojan
+  server: 104.16.7.70
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.ignitelimit.com
+  network: ws
+  ws-opts:
+    headers:
+      User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/70.0.3538.110 Safari/537.36
+    path: /assignment
+- name: 🇩🇪 DE 04 [546]
+  type: vless
+  server: 2.59.134.226
+  port: '443'
+  udp: true
+  uuid: 88281d02-b387-4fe3-918e-26ed331e6d08
+  flow: xtls-rprx-vision
+  servername: rich-falcon.cdn.cachefleet.com
+  tls: true
+  reality-opts:
+    public-key: 1sSmdw90uTiGuitDvp_q8zcXTcHXKQS3IVjA7T1UNiY
+  client-fingerprint: qq
+  skip-cert-verify: true
+- name: 🇪🇸 ES 01 [742]
+  type: vless
+  server: 46.28.71.247
+  port: '443'
+  udp: true
+  uuid: 12c53e32-e589-47d6-b857-e4132294f767
+  flow: xtls-rprx-vision
+  servername: www.cloudflare.com
+  tls: true
+  reality-opts:
+    public-key: v4MuZIvFrTPT5GHMSaPryUAbIZlLstmsUTzmC1E-JTE
+    short-id: 0dfc23fe80778c00
+  client-fingerprint: firefox
+  skip-cert-verify: true
+- name: 🇬🇧 GB 02 [913]
+  type: vless
+  server: 188.225.27.78
+  port: '443'
+  udp: true
+  uuid: 3b6a9df3-f1d1-4bc1-94a5-0d8f2d5512b1
+  flow: xtls-rprx-vision
+  servername: max.ru
+  tls: true
+  reality-opts:
+    public-key: Rf2jgZShaYRQ2kh9nF79eB2KFcIdiYHwPWJyFKA_CWU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇨🇭 CH 01 [1090]
+  type: vless
+  server: 132.243.162.30
+  port: '46280'
+  udp: true
+  uuid: 12af43c3-84b4-4248-878b-b75f35835487
+  flow: xtls-rprx-vision
+  servername: amp-api-edge.apps.apple.com
+  tls: true
+  reality-opts:
+    public-key: 3xEvhIbjIvO9bJSqHEF3D91YZEYaA3fWzb2JpxW0XmQ
+    short-id: e53690af52736850
+  client-fingerprint: chrome
+- name: 🇦🇪 AE 02 [1199]
+  type: vless
+  server: 5.35.81.60
+  port: '4443'
+  udp: true
+  uuid: cabd9303-ae32-4d25-86b9-26b312d0f044
+  servername: maps.apple.com
+  tls: true
+  reality-opts:
+    public-key: nhvyI4KrKDUSgw9Fa63SDeNATaTsAu9bRZ4qaraydRM
+    short-id: e5f6a1b2
+  client-fingerprint: chrome
+  network: grpc
+  grpc-opts:
+    grpc-service-name: snob-grpc-de
+- name: CY 01 [1470]
+  type: vless
+  server: 171.22.129.56
+  port: '2083'
+  udp: true
+  uuid: b2744db0-1c64-4218-a93b-9eba0e5f811f
+  flow: xtls-rprx-vision
+  servername: swe-one.quiet-rogue.site
+  tls: true
+  reality-opts:
+    public-key: 40eDnye2AHCQqgM2_ikKzRayZ4Vlu4rnnkHmLmNalQc
+    short-id: 32a37218722f0081
+  client-fingerprint: edge
+  skip-cert-verify: true
+- name: XX 01 [121]
+  type: vless
+  server: 162.159.81.104
+  port: '80'
+  udp: true
+  uuid: 4b00d726-e072-429b-997e-f07affea3b7f
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /eyJqdW5rIjoiUEVTdDRlR2hhc0JuYyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJlZml4IiwicGFuZWxJUHMiOlsiWzI2MDI6ZmM1OTpiMDo2NDo6XSJdfQ==
+    headers:
+      Host: icy-darkness-8ff1.farzambia12mo.workers.dev
+- name: XX 02 [122]
+  type: vless
+  server: 172.64.229.2
+  port: '2052'
+  udp: true
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: XX 03 [133]
+  type: vless
+  server: 104.16.106.213
+  port: '8880'
+  udp: true
+  uuid: 82a3c394-55b7-4780-93a0-5f45c0e89625
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /pyip=ProxyIP.SG.CMLiussss.net
+    headers:
+      Host: square-brook-e650.353-3ac.workers.dev
+- name: IM 01 [147]
+  type: vless
+  server: 185.162.229.40
+  port: '8880'
+  udp: true
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: vms.lifetime61.workers.dev
+- name: XX 04 [148]
+  type: vless
+  server: 104.17.190.223
+  port: '2087'
+  udp: true
+  uuid: 42c62a5a-cd31-4551-80ef-908732370287
+  servername: fq.jp188.dpdns.org
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /proxyip=154.17.22.207,69.63.210.157,134.195.211.13,172.236.245.153,209.146.115.209,64.186.224.194,149.28.94.52,107.151.188.57
+    headers:
+      Host: fq.jp188.dpdns.org
+- name: XX 05 [149]
+  type: vless
+  server: 104.17.177.165
+  port: '2087'
+  udp: true
+  uuid: 8666ab45-8e3d-4988-841b-2561d91e32d5
+  servername: mianfei-73q.pages.dev
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /proxyip=154.3.33.43
+    headers:
+      Host: mianfei-73q.pages.dev
+- name: XX 06 [149]
+  type: vless
+  server: 172.67.67.241
+  port: '2053'
+  udp: true
+  uuid: 8666ab45-8e3d-4988-841b-2561d91e32d5
+  servername: mianfei-73q.pages.dev
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /proxyip=154.3.33.43
+    headers:
+      Host: mianfei-73q.pages.dev
+- name: XX 07 [151]
+  type: vless
+  server: 104.19.49.155
+  port: '443'
+  udp: true
+  uuid: 42c62a5a-cd31-4551-80ef-908732370287
+  servername: fq.jp188.dpdns.org
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /proxyip=154.17.22.207,69.63.210.157,134.195.211.13,172.236.245.153,209.146.115.209,64.186.224.194,149.28.94.52,107.151.188.57
+    headers:
+      Host: fq.jp188.dpdns.org
+- name: XX 08 [151]
+  type: vless
+  server: 8.34.70.30
+  port: '8880'
+  udp: true
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: vms.lifetime09.workers.dev
+- name: XX 09 [153]
+  type: vless
+  server: 104.19.151.247
+  port: '8443'
+  udp: true
+  uuid: 42c62a5a-cd31-4551-80ef-908732370287
+  servername: fq.jp188.dpdns.org
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /proxyip=154.17.22.207,69.63.210.157,134.195.211.13,172.236.245.153,209.146.115.209,64.186.224.194,149.28.94.52,107.151.188.57
+    headers:
+      Host: fq.jp188.dpdns.org
+- name: XX 10 [154]
+  type: vless
+  server: 104.17.158.136
+  port: '2053'
+  udp: true
+  uuid: 42c62a5a-cd31-4551-80ef-908732370287
+  servername: fq.jp188.dpdns.org
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /proxyip=154.17.22.207,69.63.210.157,134.195.211.13,172.236.245.153,209.146.115.209,64.186.224.194,149.28.94.52,107.151.188.57
+    headers:
+      Host: fq.jp188.dpdns.org
+- name: XX 11 [164]
+  type: vless
+  server: 104.17.62.176
+  port: '2096'
+  udp: true
+  uuid: 42c62a5a-cd31-4551-80ef-908732370287
+  servername: fq.jp188.dpdns.org
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /proxyip=154.17.22.207,69.63.210.157,134.195.211.13,172.236.245.153,209.146.115.209,64.186.224.194,149.28.94.52,107.151.188.57
+    headers:
+      Host: fq.jp188.dpdns.org
+- name: XX 12 [169]
+  type: vless
+  server: 104.18.33.112
+  port: '2096'
+  udp: true
+  uuid: 42c62a5a-cd31-4551-80ef-908732370287
+  servername: fq.jp188.dpdns.org
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /proxyip=154.17.22.207,69.63.210.157,134.195.211.13,172.236.245.153,209.146.115.209,64.186.224.194,149.28.94.52,107.151.188.57
+    headers:
+      Host: fq.jp188.dpdns.org
+- name: XX 13 [170]
+  type: vless
+  server: 104.19.50.229
+  port: '443'
+  udp: true
+  uuid: 42c62a5a-cd31-4551-80ef-908732370287
+  servername: fq.jp188.dpdns.org
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /proxyip=154.17.22.207,69.63.210.157,134.195.211.13,172.236.245.153,209.146.115.209,64.186.224.194,149.28.94.52,107.151.188.57
+    headers:
+      Host: fq.jp188.dpdns.org
+- name: 🇬🇧 GB 03 [172]
+  type: vless
+  server: 91.193.59.255
+  port: '2096'
+  udp: true
+  uuid: 42c62a5a-cd31-4551-80ef-908732370287
+  servername: fq.jp188.dpdns.org
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /proxyip=154.17.22.207,69.63.210.157,134.195.211.13,172.236.245.153,209.146.115.209,64.186.224.194,149.28.94.52,107.151.188.57
+    headers:
+      Host: fq.jp188.dpdns.org
+- name: XX 14 [173]
+  type: vless
+  server: 104.17.179.247
+  port: '8443'
+  udp: true
+  uuid: 42c62a5a-cd31-4551-80ef-908732370287
+  servername: fq.jp188.dpdns.org
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /proxyip=154.17.22.207,69.63.210.157,134.195.211.13,172.236.245.153,209.146.115.209,64.186.224.194,149.28.94.52,107.151.188.57
+    headers:
+      Host: fq.jp188.dpdns.org
+- name: XX 15 [176]
+  type: vless
+  server: 104.18.33.76
+  port: '2087'
+  udp: true
+  uuid: 42c62a5a-cd31-4551-80ef-908732370287
+  servername: fq.jp188.dpdns.org
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /proxyip=154.17.22.207,69.63.210.157,134.195.211.13,172.236.245.153,209.146.115.209,64.186.224.194,149.28.94.52,107.151.188.57
+    headers:
+      Host: fq.jp188.dpdns.org
+- name: XX 16 [188]
+  type: vless
+  server: 104.17.221.54
+  port: '2053'
+  udp: true
+  uuid: 42c62a5a-cd31-4551-80ef-908732370287
+  servername: fq.jp188.dpdns.org
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /proxyip=154.17.22.207,69.63.210.157,134.195.211.13,172.236.245.153,209.146.115.209,64.186.224.194,149.28.94.52,107.151.188.57
+    headers:
+      Host: fq.jp188.dpdns.org
+- name: XX 17 [237]
+  type: vless
+  server: cf-socks.caoyuwu.eu.org
+  port: '443'
+  udp: true
+  uuid: 9cdcbaf0-d244-4f37-b227-90166e43f5b5
+  servername: cf-socks.caoyuwu.eu.org
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: cf-socks.caoyuwu.eu.org
+- name: 🇩🇪 DE 05 [621]
+  type: vless
+  server: 140.248.186.45
+  port: '443'
+  udp: true
+  uuid: XpnTeam-21
+  servername: ssl.fastly.com
+  tls: true
+  network: ws
+  ws-opts:
+    headers:
+      Host: Appxdn.global.ssl.fastly.net
+      User-Agent: Mozilla/5.0 (Windows NT 5.1; WOW64) AppleWebKit/537.36 (KHTML, like
+        Gecko) Chrome/46.0.2490.80 Safari/537.36
+    path: /
+  alpn:
+  - http/1.1
+- name: 🇩🇪 DE 06 [635]
+  type: vless
+  server: 199.232.78.160
+  port: '443'
+  udp: true
+  uuid: XpnTeam-22
+  servername: ssl.fastly.com
+  tls: true
+  network: ws
+  ws-opts:
+    headers:
+      Host: Appxdn.global.ssl.fastly.net
+      User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/65.0.3325.181 Safari/537.36
+    path: /
+  alpn:
+  - http/1.1
+- name: 🇩🇪 DE 07 [688]
+  type: vless
+  server: connect6.nyxserver.ir
+  port: '8446'
+  udp: true
+  uuid: 0b39a009-2a2a-4035-ba87-cc82894f8e21
+  tls: true
+  skip-cert-verify: true
+- name: 🇫🇮 FI 02 [744]
+  type: vless
+  server: a2.arshia-nova.ir
+  port: '443'
+  udp: true
+  uuid: 88b44962-7f99-4846-9113-6b0624b5a6a4
+  servername: ssl.fastly.com
+  tls: true
+  network: ws
+  ws-opts:
+    headers:
+      Host: c12.com
+      User-Agent: Mozilla/5.0 (Linux; Android 7.0; BLL-L22 Build/HUAWEIBLL-L22) AppleWebKit/537.36
+        (KHTML, like Gecko) Chrome/55.0.2883.91 Mobile Safari/537.36
+    path: /
+  alpn:
+  - h2
+- name: 🇨🇿 CZ 01 [827]
+  type: vless
+  server: 103.119.18.30
+  port: '443'
+  udp: true
+  uuid: 8666ab45-8e3d-4988-841b-2561d91e32d5
+  servername: mianfei-73q.pages.dev
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /proxyip=154.3.33.43
+    headers:
+      Host: mianfei-73q.pages.dev
+- name: XX 18 [1246]
+  type: vmess
+  server: www.shopify.com
+  port: '443'
+  udp: true
+  uuid: 3aa71202-a099-49c1-99fc-6662f3335369
+  alterId: 0
+  cipher: auto
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /3aa71202-a099-49c1-99fc-6662f3335369-vm
+    headers:
+      Host: yoga-suggesting-recording-calls.trycloudflare.com
+- name: 🇷🇴 RO 04 [871]
+  type: http
+  server: 193.176.84.19
+  port: '9002'
+  username: 'null'
+  password: 'null'
+  tls: true
+  skip-cert-verify: true
+- name: 🇺🇸 US 22 [113]
+  type: hysteria2
+  server: 155.248.209.237
+  port: '33333'
+  password: bce6c821-200d-421f-bf3d-7159e5246ea0
+  sni: hy2.123266.xyz
+  skip-cert-verify: true
+- name: 🇺🇸 US 23 [114]
+  type: hysteria2
+  server: 155.248.209.237
+  port: '33333'
+  password: bce6c821-200d-421f-bf3d-7159e5246ea0
+  sni: 155.248.209.237
+  skip-cert-verify: true
+- name: 🇺🇸 US 24 [116]
+  type: hysteria2
+  server: 163.192.14.135
+  port: '50160'
+  password: 099830134df5ac3a04a4b21d39b8c395
+  sni: css.rbxcdn.com
+  skip-cert-verify: true
+- name: 🇺🇸 US 25 [117]
+  type: hysteria2
+  server: 155.248.209.237
+  port: '33333'
+  password: bce6c821-200d-421f-bf3d-7159e5246ea0
+  sni: 155.248.209.2
+  skip-cert-verify: true
+- name: 🇺🇸 US 26 [118]
+  type: hysteria2
+  server: 163.192.14.135
+  port: '50160'
+  password: 099830134df5ac3a04a4b21d39b8c395
+  sni: speedtest.tinkoff.ru
+  skip-cert-verify: true
+- name: 🇺🇸 US 27 [118]
+  type: hysteria2
+  server: 155.248.209.237
+  port: '33333'
+  password: bce6c821-200d-421f-bf3d-7159e5246ea0
+  skip-cert-verify: true
+- name: 🇺🇸 US 28 [118]
+  type: hysteria2
+  server: 163.192.14.135
+  port: '50160'
+  password: 099830134df5ac3a04a4b21d39b8c395
+  sni: www.bing.com
+  skip-cert-verify: true
+- name: 🇺🇸 US 29 [118]
+  type: hysteria2
+  server: 163.192.14.135
+  port: '50160'
+  password: 099830134df5ac3a04a4b21d39b8c395
+  sni: vk.com
+  skip-cert-verify: true
+- name: 🇺🇸 US 30 [119]
+  type: hysteria2
+  server: 47.77.211.222
+  port: '8443'
+  password: zW4iYb6fsQ3WJm1DDP/M0nNfajL6tbApGLgrC2dOXFo=
+  skip-cert-verify: true
+- name: 🇺🇸 US 31 [119]
+  type: hysteria2
+  server: 163.192.14.135
+  port: '50160'
+  password: 099830134df5ac3a04a4b21d39b8c395
+  sni: google.com
+  skip-cert-verify: true
+- name: 🇺🇸 US 32 [125]
+  type: hysteria2
+  server: 163.192.14.135
+  port: '50160'
+  password: 099830134df5ac3a04a4b21d39b8c395
+  sni: whatsapp.com
+  skip-cert-verify: true
+- name: 🇺🇸 US 33 [128]
+  type: hysteria2
+  server: 163.192.14.135
+  port: '50160'
+  password: 099830134df5ac3a04a4b21d39b8c395
+  sni: t.me
+  skip-cert-verify: true
+- name: 🇺🇸 US 34 [136]
+  type: hysteria2
+  server: 66.94.121.46
+  port: '443'
+  password: gf1:gfhysteria2024
+  sni: vk.com
+  skip-cert-verify: true
+- name: 🇺🇸 US 35 [136]
+  type: hysteria2
+  server: hy2.123266.xyz
+  port: '33333'
+  password: bce6c821-200d-421f-bf3d-7159e5246ea0
+- name: 🇺🇸 US 36 [143]
+  type: hysteria2
+  server: 66.94.121.46
+  port: '443'
+  password: gf1:gfhysteria2024
+  skip-cert-verify: true
+- name: 🇺🇸 US 37 [147]
+  type: hysteria2
+  server: 66.94.121.46
+  port: '443'
+  password: gf1:gfhysteria2024
+  sni: www.broadcom.com
+  skip-cert-verify: true
+- name: 🇺🇸 US 38 [160]
+  type: hysteria2
+  server: hy2.561891.xyz
+  port: '44356'
+  password: dongtaiwang.com
+  sni: hy2.561891.xyz
+  skip-cert-verify: true
+- name: 🇺🇸 US 39 [162]
+  type: hysteria2
+  server: 142.249.37.90
+  port: '44356'
+  password: dongtaiwang.com
+  sni: hy2.561891.xyz
+- name: 🇺🇸 US 40 [181]
+  type: hysteria2
+  server: hy2.561891.xyz
+  port: '44356'
+  password: dongtaiwang.com
+  skip-cert-verify: true
+- name: 🇺🇸 US 41 [186]
+  type: hysteria2
+  server: hy2.123266.xyz
+  port: '33333'
+  password: bce6c821-200d-421f-bf3d-7159e5246ea0
+  sni: hy2.123266.xyz
+- name: 🇺🇸 US 42 [216]
+  type: hysteria2
+  server: 107.175.219.48
+  port: '443'
+  password: 18bd49994f2eea74ff62798bd75fb7d1
+  sni: 107.175.219.48
+  skip-cert-verify: true
+- name: 🇺🇸 US 43 [223]
+  type: hysteria2
+  server: vpn-us-006.fastervpn.world
+  port: '443'
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: vpn-us-006.fastervpn.world
+  skip-cert-verify: true
+- name: 🇺🇸 US 44 [247]
+  type: hysteria2
+  server: 159.223.157.129
+  port: '8443'
+  password: suAmQS9LlInNq4Wumh-FUF4GGlpgmG_g
+  sni: www.microsoft.com
+  skip-cert-verify: true
+- name: 🇺🇸 US 45 [251]
+  type: hysteria2
+  server: 159.223.157.129
+  port: '8443'
+  password: suAmQS9LlInNq4Wumh-FUF4GGlpgmG_g
+  sni: 159.223.157.129
+  skip-cert-verify: true
+- name: 🇺🇸 US 46 [288]
+  type: hysteria2
+  server: 144.202.99.96
+  port: '443'
+  password: user1:ShVN9wnGVNptyPsNNpdBhlTUBG7vKZqh
+  skip-cert-verify: true
+- name: 🇺🇸 US 47 [331]
+  type: hysteria2
+  server: vpn-us-003.fastervpn.world
+  port: '443'
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: 127.0.0.1
+  skip-cert-verify: true
+- name: 🇺🇸 US 48 [345]
+  type: hysteria2
+  server: vpn-us-003.fastervpn.world
+  port: '443'
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: vpn-us-003.fastervpn.world
+  skip-cert-verify: true
+- name: 🇺🇸 US 49 [756]
+  type: hysteria2
+  server: de.1.23.h2corp.org
+  port: '443'
+  password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
+  sni: germany3.h2corp.local
+  skip-cert-verify: true
+- name: 🇺🇸 US 50 [765]
+  type: hysteria2
+  server: 159.223.157.129
+  port: '8443'
+  password: suAmQS9LlInNq4Wumh-FUF4GGlpgmG_g
+  skip-cert-verify: true
+- name: 🇺🇸 US 51 [961]
+  type: hysteria2
+  server: nl1.sferavpn.pro
+  port: '443'
+  password: cd74c0a406664a5bc0bac098220a2468
+  sni: nl1.sferavpn.pro
+  skip-cert-verify: true
+  obfs: salamander
+  obfs-password: 44f1c1e2f8b99e792ceed574627a1eb0
+- name: 🇺🇸 US 52 [85]
+  type: trojan
+  server: 64.94.95.115
+  port: '57142'
+  password: kkzh2prsyr2ik47as615
+  sni: 64.94.95.115
+  skip-cert-verify: true
+- name: 🇺🇸 US 53 [86]
+  type: trojan
+  server: 64.94.95.118
+  port: '57142'
+  udp: true
+  password: kkzh2prsyr2ik47as615
+  sni: 64.94.95.118
+  skip-cert-verify: true
+- name: 🇺🇸 US 54 [86]
+  type: trojan
+  server: 64.94.95.117
+  port: '57142'
+  udp: true
+  password: kkzh2prsyr2ik47as615
+  sni: static.rutube.ru
+  skip-cert-verify: true
+- name: 🇺🇸 US 55 [86]
+  type: trojan
+  server: 64.94.95.118
+  port: '57142'
+  udp: true
+  password: kkzh2prsyr2ik47as615
+  skip-cert-verify: true
+- name: 🇺🇸 US 56 [87]
+  type: trojan
+  server: 64.94.95.115
+  port: '57142'
+  udp: true
+  password: kkzh2prsyr2ik47as615
+  skip-cert-verify: true
+- name: 🇺🇸 US 57 [87]
+  type: trojan
+  server: 64.94.95.114
+  port: '57142'
+  udp: true
+  password: kkzh2prsyr2ik47as615
+  sni: 64.94.95.114
+  skip-cert-verify: true
+- name: 🇺🇸 US 58 [88]
+  type: trojan
+  server: 64.94.95.115
+  port: '57142'
+  udp: true
+  password: kkzh2prsyr2ik47as615
+  sni: static.rutube.ru
+  skip-cert-verify: true
+- name: 🇺🇸 US 59 [92]
+  type: trojan
+  server: 64.94.95.114
+  port: '57142'
+  udp: true
+  password: kkzh2prsyr2ik47as615
+  skip-cert-verify: true
+- name: 🇺🇸 US 60 [92]
+  type: trojan
+  server: 64.94.95.117
+  port: '57142'
+  udp: true
+  password: kkzh2prsyr2ik47as615
+  skip-cert-verify: true
+- name: 🇺🇸 US 61 [94]
+  type: trojan
+  server: 64.94.95.114
+  port: '57142'
+  udp: true
+  password: kkzh2prsyr2ik47as615
+  sni: static.rutube.ru
+  skip-cert-verify: true
+- name: 🇺🇸 US 62 [94]
+  type: trojan
+  server: 64.94.95.117
+  port: '57142'
+  udp: true
+  password: kkzh2prsyr2ik47as615
+  sni: 64.94.95.117
+  skip-cert-verify: true
+- name: 🇺🇸 US 63 [100]
+  type: trojan
+  server: 64.94.95.118
+  port: '57142'
+  udp: true
+  password: kkzh2prsyr2ik47as615
+  sni: static.rutube.ru
+  skip-cert-verify: true
+- name: 🇺🇸 US 64 [134]
+  type: trojan
+  server: 104.16.148.5
+  port: '443'
+  password: 19877587-ed94-4033-88cd-4ac50a5e8718
+  sni: dimskiee.biz.id
+  network: ws
+  ws-opts:
+    path: /WangCai-8
+- name: 🇺🇸 US 65 [138]
+  type: trojan
+  server: 34.94.125.227
+  port: '443'
+  udp: true
+  password: M7v%w11Se*
+  sni: mxlo.wsone.icu
+- name: 🇺🇸 US 66 [244]
+  type: trojan
+  server: 64.20.209.125
+  port: '443'
+  password: UQfj7bdfjibTjpUHfg72aew51S7fB32g
+  sni: 64.20.209.125
+  skip-cert-verify: true
+- name: 🇺🇸 US 67 [257]
+  type: trojan
+  server: 64.20.209.125
+  port: '443'
+  udp: true
+  password: UQfj7bdfjibTjpUHfg72aew51S7fB32g
+  skip-cert-verify: true
+- name: 🇺🇸 US 68 [643]
+  type: trojan
+  server: 216.24.57.1
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.ignitelimit.com
+  network: ws
+  ws-opts:
+    headers:
+      User-Agent: Mozilla/5.0 (Linux; Android 6.0; vivo 1606 Build/MMB29M) AppleWebKit/537.36
+        (KHTML, like Gecko) Chrome/53.0.2785.124 Mobile Safari/537.36
+    path: /assignment
+- name: 🇺🇸 US 69 [803]
+  type: trojan
+  server: 216.24.57.7
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.ignitelimit.com
+  network: ws
+  ws-opts:
+    headers:
+      User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like
+        Gecko) Chrome/53.0.2785.143 Safari/537.36
+    path: /assignment
+  alpn:
+  - http/1.1
+- name: 🇺🇸 US 70 [118]
+  type: vless
+  server: 38.180.242.205
+  port: '13779'
+  udp: true
+  uuid: 928e6cce-8ced-4243-9a48-a6642edd09b0
+  flow: xtls-rprx-vision
+  servername: tesla.com
+  tls: true
+  reality-opts:
+    public-key: llTyp52oRXnJmQ3I9UUrmlwbMA79B-wLCRHCu-8dLGg
+    short-id: af1bdd293097b664
+  client-fingerprint: chrome
+- name: 🇺🇸 US 71 [139]
+  type: vless
+  server: 15.204.97.197
+  port: '23576'
+  udp: true
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+  flow: xtls-rprx-vision
+  servername: fuck.rkn
+  tls: true
+  reality-opts:
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: ''
+  client-fingerprint: random
+- name: 🇺🇸 US 72 [141]
+  type: vless
+  server: 15.204.97.195
+  port: '23576'
+  udp: true
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+  flow: xtls-rprx-vision
+  servername: fuck.rkn
+  tls: true
+  reality-opts:
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: ''
+  client-fingerprint: random
+- name: 🇺🇸 US 73 [141]
+  type: vless
+  server: 15.204.97.216
+  port: '23576'
+  udp: true
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+  flow: xtls-rprx-vision
+  servername: fuck.rkn
+  tls: true
+  reality-opts:
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: ''
+  client-fingerprint: random
+- name: 🇺🇸 US 74 [141]
+  type: vless
+  server: 15.204.97.206
+  port: '23576'
+  udp: true
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+  flow: xtls-rprx-vision
+  servername: fuck.rkn
+  tls: true
+  reality-opts:
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: ''
+  client-fingerprint: random
+- name: 🇺🇸 US 75 [144]
+  type: vless
+  server: 15.204.97.219
+  port: '23576'
+  udp: true
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+  flow: xtls-rprx-vision
+  servername: fuck.rkn
+  tls: true
+  reality-opts:
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: ''
+  client-fingerprint: random
+- name: 🇺🇸 US 76 [149]
+  type: vless
+  server: 15.204.97.198
+  port: '23576'
+  udp: true
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+  flow: xtls-rprx-vision
+  servername: fuck.rkn
+  tls: true
+  reality-opts:
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: ''
+  client-fingerprint: random
+- name: 🇺🇸 US 77 [150]
+  type: vless
+  server: 15.204.97.214
+  port: '23576'
+  udp: true
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+  flow: xtls-rprx-vision
+  servername: fuck.rkn
+  tls: true
+  reality-opts:
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: '01'
+  client-fingerprint: chrome
+- name: 🇺🇸 US 78 [151]
+  type: vless
+  server: 15.204.97.209
+  port: '23576'
+  udp: true
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+  flow: xtls-rprx-vision
+  servername: fuck.rkn
+  tls: true
+  reality-opts:
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: '01'
+  client-fingerprint: chrome
+- name: 🇺🇸 US 79 [152]
+  type: vless
+  server: 51.81.203.63
+  port: '443'
+  udp: true
+  uuid: cb2dbb6a-a1ea-4023-9ace-6466cee57241
+  flow: xtls-rprx-vision
+  servername: www.icloud.com
+  tls: true
+  reality-opts:
+    public-key: nqwCf6oW49tEtmQ0EzxigZ0uu1pg0E30CS54G40Iti0
+    short-id: 4477382ff6d3d41c
+  client-fingerprint: firefox
+- name: 🇺🇸 US 80 [152]
+  type: vless
+  server: 51.81.203.63
+  port: '443'
+  udp: true
+  uuid: cb2dbb6a-a1ea-4023-9ace-6466cee57241
+  flow: xtls-rprx-vision
+  servername: www.icloud.com
+  tls: true
+  reality-opts:
+    public-key: nqwCf6oW49tEtmQ0EzxigZ0uu1pg0E30CS54G40Iti0
+    short-id: 4477382ff6d3d41c
+  client-fingerprint: chrome
+- name: 🇺🇸 US 81 [169]
+  type: vless
+  server: 45.149.172.80
+  port: '443'
+  udp: true
+  uuid: 91d28760-ecf1-450b-9170-d310111a0e6d
+  flow: xtls-rprx-vision
+  servername: www.amazon.com
+  tls: true
+  reality-opts:
+    public-key: FKTaFzF4zfAqXBdDQHwSVl_XyNcC3T17s_FqhHyZchg
+    short-id: fb9456392070128e
+  client-fingerprint: chrome
+- name: 🇺🇸 US 82 [184]
+  type: vless
+  server: 172.235.43.210
+  port: '53957'
+  udp: true
+  uuid: 7ab29f89-6eef-4171-b232-fc4f580ad31b
+  flow: xtls-rprx-vision
+  servername: www.nvidia.com
+  tls: true
+  reality-opts:
+    public-key: XUHlbk5VH5z4E2wxZBhlpLZ33qevyQgqU7dheRDgoGQ
+    short-id: 44e82fd7b97b14
+  client-fingerprint: chrome
+- name: 🇺🇸 US 83 [187]
+  type: vless
+  server: 172.236.233.59
+  port: '443'
+  udp: true
+  uuid: abd1c29a-94cb-4648-8d1e-5baae9d2a807
+  flow: xtls-rprx-vision
+  servername: www.cloudflare.com
+  tls: true
+  reality-opts:
+    public-key: oTMDLwY2hloBfA7ShzVsrFhjL4QXR6mY32B93rMLxV0
+    short-id: 525e0ffc773f48ba
+  client-fingerprint: chrome
+- name: 🇺🇸 US 84 [192]
+  type: vless
+  server: 172.235.43.210
+  port: '53957'
+  udp: true
+  uuid: 7ab29f89-6eef-4171-b232-fc4f580ad31b
+  flow: xtls-rprx-vision
+  servername: www.nvidia.com
+  tls: true
+  reality-opts:
+    public-key: XUHlbk5VH5z4E2wxZBhlpLZ33qevyQgqU7dheRDgoGQ
+    short-id: 44e82fd7b97b14
+  client-fingerprint: random
+- name: 🇺🇸 US 85 [196]
+  type: vless
+  server: 47.253.226.114
+  port: '443'
+  udp: true
+  uuid: 055a1ce8-2a16-4a0d-a2c2-22826c9b2413
+  flow: xtls-rprx-vision
+  servername: www.cloudflare.com
+  tls: true
+  reality-opts:
+    public-key: Svl81isn16RPAFnjtmYw7A6TPnsEPLHuYYaJht65Rzc
+    short-id: ''
+  client-fingerprint: edge
+- name: 🇺🇸 US 86 [203]
+  type: vless
+  server: 172.235.38.85
+  port: '42942'
+  udp: true
+  uuid: bca46025-bf43-40c0-895b-054a6fbcfd32
+  flow: xtls-rprx-vision
+  servername: www.tesla.com
+  tls: true
+  reality-opts:
+    public-key: JmkfJoDWpAqt6gj4cbc4_cwItsdryMlV7joAGfNTKQU
+    short-id: a56d7d8da977f860
+  client-fingerprint: chrome
+- name: 🇺🇸 US 87 [206]
+  type: vless
+  server: 172.235.43.210
+  port: '53957'
+  udp: true
+  uuid: 7ab29f89-6eef-4171-b232-fc4f580ad31b
+  flow: xtls-rprx-vision
+  servername: www.nvidia.com
+  tls: true
+  reality-opts:
+    public-key: XUHlbk5VH5z4E2wxZBhlpLZ33qevyQgqU7dheRDgoGQ
+    short-id: 44e82fd7b97b14
+  client-fingerprint: chrome
+- name: 🇺🇸 US 88 [211]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: d25940f6-1d52-4f2d-968d-d34016d2b5ee
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 89 [212]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: 62d2db25-dd18-4427-b753-ff62938207ea
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 90 [214]
+  type: vless
+  server: 172.235.38.85
+  port: '42942'
+  udp: true
+  uuid: bca46025-bf43-40c0-895b-054a6fbcfd32
+  flow: xtls-rprx-vision
+  servername: www.tesla.com
+  tls: true
+  reality-opts:
+    public-key: JmkfJoDWpAqt6gj4cbc4_cwItsdryMlV7joAGfNTKQU
+    short-id: a56d7d8da977f860
+  client-fingerprint: random
+- name: 🇺🇸 US 91 [214]
+  type: vless
+  server: 47.89.186.170
+  port: '55861'
+  udp: true
+  uuid: d51ed55c-d6dd-400b-aaf6-017c33969bfe
+  flow: xtls-rprx-vision
+  servername: www.intel.com
+  tls: true
+  reality-opts:
+    public-key: t2ndf6SeVxinFCo5bcemnW_ZZhAtmHWiAkllks5qPWs
+    short-id: 7551ed1b
+  client-fingerprint: qq
+- name: 🇺🇸 US 92 [214]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: 4b2fbd30-1a64-4b27-aea9-713d62c9e69b
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: chrome
+- name: 🇺🇸 US 93 [216]
+  type: vless
+  server: 192.3.247.109
+  port: '43580'
+  udp: true
+  uuid: 25a6a9f3-ad9e-45f2-96e1-be21c9d97789
+  flow: xtls-rprx-vision
+  servername: apple.com
+  tls: true
+  reality-opts:
+    public-key: smOBJ9RB9nUF3SCGBJ5A1O24Dla9YlQY_YSUjmHRW2g
+    short-id: 0123456789abcdef
+  client-fingerprint: chrome
+- name: 🇺🇸 US 94 [216]
+  type: vless
+  server: 192.3.247.109
+  port: '32132'
+  udp: true
+  uuid: 23504a34-5216-4e10-86a0-b6a70976f996
+  servername: apple.com
+  tls: true
+  reality-opts:
+    public-key: Hv-DNm962AntB7xyaLnaHvui6rOJ092OFOY2E7TqyR0
+    short-id: 24cbfb05123722
+  client-fingerprint: chrome
+- name: 🇺🇸 US 95 [217]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: 72109745-9dbe-42a6-93c7-8b6eeb7aaed3
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 96 [219]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: 813a5411-08ac-4346-888a-992f35acbf89
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 97 [220]
+  type: vless
+  server: 137.184.218.169
+  port: '36925'
+  udp: true
+  uuid: c9fd0fb1-8251-4106-b09a-f4b426736f67
+  flow: xtls-rprx-vision
+  servername: www.cloudflare.com
+  tls: true
+  reality-opts:
+    public-key: lJ9INPpO4rdnm2Tek_yg0PGFyUrBB6MoKyvqt_Mfqm0
+    short-id: ''
+  client-fingerprint: chrome
+- name: 🇺🇸 US 98 [220]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: 6fba61f2-d538-4bba-8c86-b19568a0b687
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 99 [220]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: 72d995a9-df53-4e8e-a8b6-e83f3a7d08ea
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 100 [221]
+  type: vless
+  server: 195.123.235.177
+  port: '443'
+  udp: true
+  uuid: 729dd5f2-f5ff-4070-8c10-863eceded0b1
+  flow: xtls-rprx-vision
+  servername: gateway.icloud.com
+  tls: true
+  reality-opts:
+    public-key: 5B83otQ5ZQwtBFhR7xzsGJRXflkFKRJpQguYbE5JWGI
+    short-id: c85d029f5e8eb393
+  client-fingerprint: firefox
+- name: 🇺🇸 US 101 [222]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: 8a02c9f7-936a-4d78-a88f-c1e9229f4d5d
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 102 [226]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: e45762cb-9cd1-4e69-8638-9126456b79bd
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: chrome
+- name: 🇺🇸 US 103 [229]
+  type: vless
+  server: 107.173.237.146
+  port: '8443'
+  udp: true
+  uuid: 1d39f715-2740-4d99-bc3b-197cc48dcee7
+  servername: updates.cdn-apple.com
+  tls: true
+  reality-opts:
+    public-key: D3ojIs3AUKP_tV0E4TEjh90HBVJp24Nq3qMfdxD30kc
+    short-id: df8611c07d
+  client-fingerprint: chrome
+- name: 🇺🇸 US 104 [232]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: 0817a3bb-c8fb-4ddf-a05e-321565b39cd8
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 105 [233]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: a7ab9b00-42a1-4943-abba-096590d1edd0
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 106 [236]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: b222ebc7-569c-45ca-a0e4-756f171b247b
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 107 [237]
+  type: vless
+  server: 172.233.139.46
+  port: '53734'
+  udp: true
+  uuid: 56a1b253-cde4-490f-9c5e-09a523882bdd
+  flow: xtls-rprx-vision
+  servername: www.tesla.com
+  tls: true
+  reality-opts:
+    public-key: JAG5rl6KEt7KAV0y8Z2x6orWHymCXRSX49SkEnEftWU
+    short-id: a56d7d8da977f860
+  client-fingerprint: firefox
+- name: 🇺🇸 US 108 [237]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: e27dce75-b33b-49b6-afb7-17e29ce67bb1
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 109 [238]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: 06e00e3d-f71f-4621-99a2-779793daf449
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 110 [240]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: ab4f3d6c-674d-4e4d-b3fb-1f40d8ee2c18
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 111 [241]
+  type: vless
+  server: 144.172.104.26
+  port: '443'
+  udp: true
+  uuid: 77da6e30-ad4e-11f1-94d5-525400d1d4f7
+  flow: xtls-rprx-vision
+  servername: www.nvidia.com
+  tls: true
+  reality-opts:
+    public-key: n25FmewpAEsvLl9Vr0bRFcz044f4IE7orWeWOzu8rwk
+    short-id: ''
+  client-fingerprint: safari
+- name: 🇺🇸 US 112 [241]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: f9bd8170-6d98-4623-85e6-c86b14ea9b9c
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 113 [242]
+  type: vless
+  server: ww9.levikogjgfdd.ir
+  port: '36925'
+  udp: true
+  uuid: c9fd0fb1-8251-4106-b09a-f4b426736f67
+  flow: xtls-rprx-vision
+  servername: www.cloudflare.com
+  tls: true
+  reality-opts:
+    public-key: lJ9INPpO4rdnm2Tek_yg0PGFyUrBB6MoKyvqt_Mfqm0
+    short-id: ''
+  client-fingerprint: chrome
+- name: 🇺🇸 US 114 [247]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: 984ab184-21c2-44a0-9705-0ebaa410dc87
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 115 [249]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: e042b105-41f0-4fb7-8e7c-46a0cc6044e0
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 116 [253]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: 00dda8ac-c263-4106-a740-1e4478a7dc44
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: chrome
+- name: 🇺🇸 US 117 [256]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: fcdee475-6aa0-4b8b-be8d-f587b5c5478c
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 118 [259]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: a9dae5b2-ac94-417f-b3dd-882a3d7a6a85
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 119 [264]
+  type: vless
+  server: 198.251.78.29
+  port: '2053'
+  udp: true
+  uuid: c423cc1b-f88e-421c-9a16-c480d84da20f
+  servername: www.cloudflare.com
+  tls: true
+  reality-opts:
+    public-key: Uk5b-Wh_uxeCc7R8NS9iWE40xc0h9wWC04rSB9yhgAw
+    short-id: b5d625695ec82c7e
+  client-fingerprint: random
+- name: 🇺🇸 US 120 [265]
+  type: vless
+  server: 167.17.69.171
+  port: '443'
+  udp: true
+  uuid: 00144519-7e0d-476b-8d28-435576af9262
+  flow: xtls-rprx-vision
+  servername: www.cloudflare.com
+  tls: true
+  reality-opts:
+    public-key: ALT8hIGeZEhi0sQFbXP_ntBg8Xo-v7i0YCLrqTnBxRk
+    short-id: 0990d22f
+  client-fingerprint: chrome
+- name: 🇺🇸 US 121 [267]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: 8ed35e81-16b9-4316-bcb4-4be6c4db4449
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 122 [272]
+  type: vless
+  server: 159.89.87.21
+  port: '28190'
+  udp: true
+  uuid: 14c80e0e-f7ce-4991-94fc-99a1db4a9b1e
+  flow: xtls-rprx-vision
+  servername: aws.amazon.com
+  tls: true
+  reality-opts:
+    public-key: ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno
+    short-id: ''
+  client-fingerprint: chrome
+- name: 🇺🇸 US 123 [274]
+  type: vless
+  server: usa.demka.live
+  port: '443'
+  udp: true
+  uuid: 6230dfe2-7de5-4d4b-990f-73ac7f53e987
+  flow: xtls-rprx-vision
+  servername: usa.demka.live
+  tls: true
+  reality-opts:
+    public-key: cU1ph0JNcNsFk-fSIZ88D9MiiMDNMVu2eKKIa4Q6nhQ
+    short-id: 2f53900b845a6e34
+  client-fingerprint: edge
+- name: 🇺🇸 US 124 [284]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: dbaa08bd-7d18-4775-b44f-bab649be4815
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 125 [286]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: c91b7fa9-e8d1-4b49-94fa-72cce126e61b
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 126 [287]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: 9775116b-b463-4fca-9f61-d01ac2355b21
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 127 [290]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: 6ae3c57a-f5fb-4b7e-a886-b8c00af5c693
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 128 [294]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: 00dda8ac-c263-4106-a740-1e4478a7dc44
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: chrome
+- name: 🇺🇸 US 129 [295]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: e27dce75-b33b-49b6-afb7-17e29ce67bb1
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 130 [304]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: b8fca50e-e3bb-4ae2-a44e-bde0e0495b2e
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 131 [305]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: d685c66b-0c11-4989-95da-a28134a776e3
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 132 [310]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: 17e85193-a95c-4430-9b05-d8f303a34ac3
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 133 [317]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: 8a02c9f7-936a-4d78-a88f-c1e9229f4d5d
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 134 [320]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: 137c30a7-d172-4b6c-a97b-c3a6a4fda042
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 135 [320]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: 4f46bf1c-9b81-4d53-99fa-9dceb7fe06e7
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 136 [321]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: 6038e39a-d05e-483d-b853-a176707d4f69
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 137 [328]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: 9109d755-5632-40f1-be82-a9fb2e2cb104
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 138 [328]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: b5f27d9a-4d7a-4fa3-a45a-09bfd3e8a248
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 139 [339]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: 77d4bb66-82c8-4511-98e0-44edb2da8978
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 140 [341]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: beed721d-73b6-47fc-a7b0-cac10e624b98
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 141 [414]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: 18841820-cd3a-4bc5-9ac3-fec72438b872
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 142 [525]
+  type: vless
+  server: 194.55.189.249
+  port: '40443'
+  udp: true
+  uuid: 8212a50b-25bf-4739-bba1-aaffb5ffc84c
+  servername: deepl.com
+  tls: true
+  reality-opts:
+    public-key: KCbW84C8h2Ja01LS0Ro8EpLLfzMTjs11t1ldDWLd5zo
+    short-id: aae8
+  client-fingerprint: random
+- name: 🇺🇸 US 143 [539]
+  type: vless
+  server: 31.58.50.200
+  port: '8443'
+  udp: true
+  uuid: c4783cc5-aeec-4473-855b-1c98965949dd
+  flow: xtls-rprx-vision
+  servername: tradingview.com
+  tls: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+proxy-groups:
+- name: Proxy
+  type: select
+  proxies:
+  - 🇺🇸 US 01 [177]
+  - 🇺🇸 US 02 [201]
+  - 🇺🇸 US 03 [215]
+  - 🇺🇸 US 04 [246]
+  - 🇺🇸 US 05 [381]
+  - 🇺🇸 US 06 [783]
+  - 🇺🇸 US 07 [918]
+  - 🇺🇸 US 08 [954]
+  - 🇺🇸 US 09 [1117]
+  - 🇺🇸 US 10 [1130]
+  - 🇺🇸 US 11 [322]
+  - 🇺🇸 US 12 [584]
+  - 🇺🇸 US 13 [658]
+  - 🇺🇸 US 14 [724]
+  - 🇺🇸 US 15 [726]
+  - 🇺🇸 US 16 [751]
+  - 🇺🇸 US 17 [296]
+  - 🇺🇸 US 18 [1403]
+  - 🇺🇸 US 19 [132]
+  - 🇺🇸 US 20 [132]
+  - 🇺🇸 US 21 [248]
+  - 🇯🇵 JP 01 [639]
+  - 🇯🇵 JP 02 [1378]
+  - 🇸🇬 SG 01 [795]
+  - 🇨🇦 CA 01 [219]
+  - 🇳🇱 NL 01 [477]
+  - 🇳🇱 NL 02 [514]
+  - 🇬🇧 GB 01 [530]
+  - 🇦🇪 AE 01 [533]
+  - 🇩🇪 DE 01 [607]
+  - 🇷🇴 RO 01 [609]
+  - 🇸🇪 SE 01 [723]
+  - 🇸🇪 SE 02 [757]
+  - 🇦🇺 AU 01 [796]
+  - 🇫🇮 FI 01 [800]
+  - 🇩🇪 DE 02 [804]
+  - 🇷🇴 RO 02 [813]
+  - 🇦🇺 AU 02 [823]
+  - 🇷🇺 RU 01 [834]
+  - 🇷🇴 RO 03 [835]
+  - 🇩🇪 DE 03 [992]
+  - 🇧🇷 BR 01 [1007]
+  - 🇮🇳 IN 01 [1042]
+  - 🇫🇷 FR 01 [598]
+  - 🇫🇷 FR 02 [605]
+  - 🇫🇷 FR 03 [626]
+  - 🇩🇪 DE 04 [546]
+  - 🇪🇸 ES 01 [742]
+  - 🇬🇧 GB 02 [913]
+  - 🇨🇭 CH 01 [1090]
+  - 🇦🇪 AE 02 [1199]
+  - CY 01 [1470]
+  - XX 01 [121]
+  - XX 02 [122]
+  - XX 03 [133]
+  - IM 01 [147]
+  - XX 04 [148]
+  - XX 05 [149]
+  - XX 06 [149]
+  - XX 07 [151]
+  - XX 08 [151]
+  - XX 09 [153]
+  - XX 10 [154]
+  - XX 11 [164]
+  - XX 12 [169]
+  - XX 13 [170]
+  - 🇬🇧 GB 03 [172]
+  - XX 14 [173]
+  - XX 15 [176]
+  - XX 16 [188]
+  - XX 17 [237]
+  - 🇩🇪 DE 05 [621]
+  - 🇩🇪 DE 06 [635]
+  - 🇩🇪 DE 07 [688]
+  - 🇫🇮 FI 02 [744]
+  - 🇨🇿 CZ 01 [827]
+  - XX 18 [1246]
+  - 🇷🇴 RO 04 [871]
+  - 🇺🇸 US 22 [113]
+  - 🇺🇸 US 23 [114]
+  - 🇺🇸 US 24 [116]
+  - 🇺🇸 US 25 [117]
+  - 🇺🇸 US 26 [118]
+  - 🇺🇸 US 27 [118]
+  - 🇺🇸 US 28 [118]
+  - 🇺🇸 US 29 [118]
+  - 🇺🇸 US 30 [119]
+  - 🇺🇸 US 31 [119]
+  - 🇺🇸 US 32 [125]
+  - 🇺🇸 US 33 [128]
+  - 🇺🇸 US 34 [136]
+  - 🇺🇸 US 35 [136]
+  - 🇺🇸 US 36 [143]
+  - 🇺🇸 US 37 [147]
+  - 🇺🇸 US 38 [160]
+  - 🇺🇸 US 39 [162]
+  - 🇺🇸 US 40 [181]
+  - 🇺🇸 US 41 [186]
+  - 🇺🇸 US 42 [216]
+  - 🇺🇸 US 43 [223]
+  - 🇺🇸 US 44 [247]
+  - 🇺🇸 US 45 [251]
+  - 🇺🇸 US 46 [288]
+  - 🇺🇸 US 47 [331]
+  - 🇺🇸 US 48 [345]
+  - 🇺🇸 US 49 [756]
+  - 🇺🇸 US 50 [765]
+  - 🇺🇸 US 51 [961]
+  - 🇺🇸 US 52 [85]
+  - 🇺🇸 US 53 [86]
+  - 🇺🇸 US 54 [86]
+  - 🇺🇸 US 55 [86]
+  - 🇺🇸 US 56 [87]
+  - 🇺🇸 US 57 [87]
+  - 🇺🇸 US 58 [88]
+  - 🇺🇸 US 59 [92]
+  - 🇺🇸 US 60 [92]
+  - 🇺🇸 US 61 [94]
+  - 🇺🇸 US 62 [94]
+  - 🇺🇸 US 63 [100]
+  - 🇺🇸 US 64 [134]
+  - 🇺🇸 US 65 [138]
+  - 🇺🇸 US 66 [244]
+  - 🇺🇸 US 67 [257]
+  - 🇺🇸 US 68 [643]
+  - 🇺🇸 US 69 [803]
+  - 🇺🇸 US 70 [118]
+  - 🇺🇸 US 71 [139]
+  - 🇺🇸 US 72 [141]
+  - 🇺🇸 US 73 [141]
+  - 🇺🇸 US 74 [141]
+  - 🇺🇸 US 75 [144]
+  - 🇺🇸 US 76 [149]
+  - 🇺🇸 US 77 [150]
+  - 🇺🇸 US 78 [151]
+  - 🇺🇸 US 79 [152]
+  - 🇺🇸 US 80 [152]
+  - 🇺🇸 US 81 [169]
+  - 🇺🇸 US 82 [184]
+  - 🇺🇸 US 83 [187]
+  - 🇺🇸 US 84 [192]
+  - 🇺🇸 US 85 [196]
+  - 🇺🇸 US 86 [203]
+  - 🇺🇸 US 87 [206]
+  - 🇺🇸 US 88 [211]
+  - 🇺🇸 US 89 [212]
+  - 🇺🇸 US 90 [214]
+  - 🇺🇸 US 91 [214]
+  - 🇺🇸 US 92 [214]
+  - 🇺🇸 US 93 [216]
+  - 🇺🇸 US 94 [216]
+  - 🇺🇸 US 95 [217]
+  - 🇺🇸 US 96 [219]
+  - 🇺🇸 US 97 [220]
+  - 🇺🇸 US 98 [220]
+  - 🇺🇸 US 99 [220]
+  - 🇺🇸 US 100 [221]
+  - 🇺🇸 US 101 [222]
+  - 🇺🇸 US 102 [226]
+  - 🇺🇸 US 103 [229]
+  - 🇺🇸 US 104 [232]
+  - 🇺🇸 US 105 [233]
+  - 🇺🇸 US 106 [236]
+  - 🇺🇸 US 107 [237]
+  - 🇺🇸 US 108 [237]
+  - 🇺🇸 US 109 [238]
+  - 🇺🇸 US 110 [240]
+  - 🇺🇸 US 111 [241]
+  - 🇺🇸 US 112 [241]
+  - 🇺🇸 US 113 [242]
+  - 🇺🇸 US 114 [247]
+  - 🇺🇸 US 115 [249]
+  - 🇺🇸 US 116 [253]
+  - 🇺🇸 US 117 [256]
+  - 🇺🇸 US 118 [259]
+  - 🇺🇸 US 119 [264]
+  - 🇺🇸 US 120 [265]
+  - 🇺🇸 US 121 [267]
+  - 🇺🇸 US 122 [272]
+  - 🇺🇸 US 123 [274]
+  - 🇺🇸 US 124 [284]
+  - 🇺🇸 US 125 [286]
+  - 🇺🇸 US 126 [287]
+  - 🇺🇸 US 127 [290]
+  - 🇺🇸 US 128 [294]
+  - 🇺🇸 US 129 [295]
+  - 🇺🇸 US 130 [304]
+  - 🇺🇸 US 131 [305]
+  - 🇺🇸 US 132 [310]
+  - 🇺🇸 US 133 [317]
+  - 🇺🇸 US 134 [320]
+  - 🇺🇸 US 135 [320]
+  - 🇺🇸 US 136 [321]
+  - 🇺🇸 US 137 [328]
+  - 🇺🇸 US 138 [328]
+  - 🇺🇸 US 139 [339]
+  - 🇺🇸 US 140 [341]
+  - 🇺🇸 US 141 [414]
+  - 🇺🇸 US 142 [525]
+  - 🇺🇸 US 143 [539]
+rules:
+- MATCH,Proxy

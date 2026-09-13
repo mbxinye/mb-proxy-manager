@@ -1,0 +1,3480 @@
+[
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 01 [177]",
+    "server": "198.46.159.171",
+    "port": 8443,
+    "password": "EkkoHY2_2024!",
+    "tls": false,
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml",
+    "latency": 177,
+    "_sub_priority": 100
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 02 [201]",
+    "server": "107.175.219.48",
+    "port": 443,
+    "password": "18bd49994f2eea74ff62798bd75fb7d1",
+    "tls": false,
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml",
+    "latency": 201,
+    "_sub_priority": 100
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 03 [215]",
+    "server": "173.249.210.76",
+    "port": 8443,
+    "password": "Q3mAdf68GvbGEGqTAXkWjg",
+    "tls": false,
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml",
+    "latency": 215,
+    "_sub_priority": 100
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 04 [246]",
+    "server": "clash2.deep-links.com",
+    "port": 443,
+    "password": "4c858cccff331e64c711a199a6cb256a",
+    "tls": false,
+    "sni": "clash2.deep-links.com",
+    "_sub_url": "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml",
+    "latency": 246,
+    "_sub_priority": 100
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 05 [381]",
+    "server": "107.174.255.14",
+    "port": 4356,
+    "password": "c2356e22-b026-4f12-8508-cf61f0b0c867",
+    "sni": "",
+    "skip-cert-verify": true,
+    "obfs": "",
+    "obfs-password": "",
+    "up": "",
+    "down": "",
+    "_sub_url": "https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/all.yaml",
+    "latency": 381,
+    "_sub_priority": 100
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 06 [783]",
+    "server": "38.207.163.44",
+    "port": 8443,
+    "password": "3DMpEHI94Ic7izl0YBXU",
+    "tls": false,
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml",
+    "latency": 783,
+    "_sub_priority": 100
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 07 [918]",
+    "server": "144.31.93.126",
+    "port": 443,
+    "password": "YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc",
+    "tls": false,
+    "sni": "admin.wwwinternetvideo.click",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml",
+    "latency": 918,
+    "_sub_priority": 100
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 08 [954]",
+    "server": "2.27.249.79",
+    "port": 443,
+    "password": "cd74c0a406664a5bc0bac098220a2468",
+    "tls": false,
+    "sni": "nl1.sferavpn.pro",
+    "skip-cert-verify": false,
+    "obfs": "salamander",
+    "obfs-password": "44f1c1e2f8b99e792ceed574627a1eb0",
+    "_sub_url": "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml",
+    "latency": 954,
+    "_sub_priority": 100
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 09 [1117]",
+    "server": "107.172.67.52",
+    "port": 2053,
+    "password": "maintell",
+    "sni": "bing.com",
+    "udp": true,
+    "skip-cert-verify": true,
+    "obfs": "salamander",
+    "obfs-password": "maintell",
+    "_sub_url": "https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/all.yaml",
+    "latency": 1117,
+    "_sub_priority": 100
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 10 [1130]",
+    "server": "144.31.49.138",
+    "port": 443,
+    "password": "cd74c0a406664a5bc0bac098220a2468",
+    "tls": false,
+    "sni": "ru1.sferavpn.pro",
+    "skip-cert-verify": false,
+    "obfs": "salamander",
+    "obfs-password": "44f1c1e2f8b99e792ceed574627a1eb0",
+    "_sub_url": "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml",
+    "latency": 1130,
+    "_sub_priority": 100
+  },
+  {
+    "type": "trojan",
+    "name": "🇺🇸 US 11 [322]",
+    "server": "clash2.deep-links.com",
+    "port": 443,
+    "password": "06da30be2ce5ece28204119359fe4eb3",
+    "udp": true,
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": false,
+    "_sub_url": "https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/all.yaml",
+    "latency": 322,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 12 [584]",
+    "server": "5.34.178.120",
+    "port": 443,
+    "uuid": "9063f9fb-e88a-4ee0-b4a4-a92ca7316a9f",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "www.cloudflare.com",
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": true,
+    "reality-opts": {
+      "public-key": "EVhq2BxKuw2Cody1DmF_HPvUYKwzdXbHP47blUv-eRM",
+      "short-id": "55ab5559e3a6d10a"
+    },
+    "_sub_url": "https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml",
+    "latency": 584,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 13 [658]",
+    "server": "104.245.242.8",
+    "port": 8443,
+    "uuid": "4350213a-b4e7-262a-0bd7-bd16957cf71a",
+    "network": "grpc",
+    "tls": true,
+    "udp": true,
+    "servername": "download.nvidia.com",
+    "client-fingerprint": "chrome",
+    "grpc-opts": {
+      "grpc-mode": "gun",
+      "grpc-service-name": "TunService"
+    },
+    "reality-opts": {
+      "public-key": "FOQzn10eHqu4F5xOxiXW2bTDG8lH4TdOXP6A5rDqKFk"
+    },
+    "_sub_url": "https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/all.yaml",
+    "latency": 658,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 14 [724]",
+    "server": "207.57.135.46",
+    "port": 17144,
+    "uuid": "e1be6b8f-a0f5-45a9-8aa6-634c26793325",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "aws.amazon.com",
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": true,
+    "reality-opts": {
+      "public-key": "vk8mcF1ox2RdeqR31z1eQp1XAhnDN7lY0Xbt3zMAfSc"
+    },
+    "_sub_url": "https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml",
+    "latency": 724,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 15 [726]",
+    "server": "207.57.135.123",
+    "port": 35621,
+    "uuid": "6f8acdfd-0ce0-4386-ba02-5040da4c6fea",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "www.amazon.com",
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": true,
+    "reality-opts": {
+      "public-key": "wK6kCgPEjDA7KADag0eZUc8e523kdIOCh8Qavkb15nA"
+    },
+    "_sub_url": "https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml",
+    "latency": 726,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 16 [751]",
+    "server": "207.57.133.49",
+    "port": 23156,
+    "uuid": "46554735-415f-4be5-9390-a19dc430a15c",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "www.cloudflare.com",
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": true,
+    "reality-opts": {
+      "public-key": "NjDiEVSSYysWC7yheN_cy4YkCXHtP91yB4vbpgQc2Q8"
+    },
+    "_sub_url": "https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml",
+    "latency": 751,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 17 [296]",
+    "server": "plan.api3-max.ru",
+    "port": 443,
+    "uuid": "97ecaad4-452c-45ec-b591-d68d3308aad4",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "plan.api3-max.ru",
+    "client-fingerprint": "chrome",
+    "alpn": [
+      "h2",
+      "http/1.1"
+    ],
+    "_sub_url": "https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/all.yaml",
+    "latency": 296,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 18 [1403]",
+    "server": "news.zoom.us",
+    "port": 8443,
+    "uuid": "29c3dd6b-b164-40ca-a0d5-f06aca52a8b2",
+    "network": "ws",
+    "tls": true,
+    "udp": true,
+    "ws-opts": {
+      "path": "/",
+      "headers": {
+        "Host": "u.srilankangrill.online"
+      }
+    },
+    "servername": "u.srilankangrill.online",
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml",
+    "latency": 1403,
+    "_sub_priority": 100
+  },
+  {
+    "type": "http",
+    "name": "🇺🇸 US 19 [132]",
+    "server": "138.199.35.211",
+    "port": 9002,
+    "password": "null",
+    "tls": true,
+    "skip-cert-verify": true,
+    "username": "null",
+    "_sub_url": "https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/all.yaml",
+    "latency": 132,
+    "_sub_priority": 100
+  },
+  {
+    "type": "http",
+    "name": "🇺🇸 US 20 [132]",
+    "server": "138.199.35.212",
+    "port": 9002,
+    "password": "null",
+    "tls": true,
+    "skip-cert-verify": true,
+    "username": "null",
+    "_sub_url": "https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/all.yaml",
+    "latency": 132,
+    "_sub_priority": 100
+  },
+  {
+    "type": "http",
+    "name": "🇺🇸 US 21 [248]",
+    "server": "jewelscollecti.icu",
+    "port": 443,
+    "password": "null",
+    "tls": true,
+    "skip-cert-verify": true,
+    "username": "null",
+    "_sub_url": "https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/all.yaml",
+    "latency": 248,
+    "_sub_priority": 100
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇯🇵 JP 01 [639]",
+    "server": "138.3.208.26",
+    "port": 50160,
+    "password": "184cdec28da5a09450803c8debcd2cc9",
+    "tls": false,
+    "sni": "www.bing.com",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml",
+    "latency": 639,
+    "_sub_priority": 100
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇯🇵 JP 02 [1378]",
+    "server": "8.211.175.129",
+    "port": 443,
+    "password": "0bffb8e71bca29788862f986caae97b3",
+    "sni": "8.211.175.129",
+    "udp": true,
+    "skip-cert-verify": true,
+    "obfs": "salamander",
+    "obfs-password": "5c8f1a3e7b2d9046c1f8a5e3b7d04f2a",
+    "_sub_url": "https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/all.yaml",
+    "latency": 1378,
+    "_sub_priority": 100
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇸🇬 SG 01 [795]",
+    "server": "47.129.241.226",
+    "port": 443,
+    "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+    "tls": false,
+    "sni": "vpn-sg-001.fastervpn.world",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml",
+    "latency": 795,
+    "_sub_priority": 100
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇨🇦 CA 01 [219]",
+    "server": "15.223.122.197",
+    "port": 443,
+    "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+    "tls": false,
+    "sni": "t.me",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml",
+    "latency": 219,
+    "_sub_priority": 100
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇳🇱 NL 01 [477]",
+    "server": "72.56.102.31",
+    "port": 443,
+    "password": "BWAFlp8g53",
+    "tls": false,
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml",
+    "latency": 477,
+    "_sub_priority": 100
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇳🇱 NL 02 [514]",
+    "server": "hysteria.udpgw.com",
+    "port": 8443,
+    "password": "HowdyHysteria2023w0W",
+    "tls": false,
+    "sni": "sni-here.com",
+    "skip-cert-verify": true,
+    "obfs": "salamander",
+    "obfs-password": "HysteriaHowdy",
+    "_sub_url": "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml",
+    "latency": 514,
+    "_sub_priority": 100
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇬🇧 GB 01 [530]",
+    "server": "vpn-uk-002.fastervpn.world",
+    "port": 443,
+    "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+    "tls": false,
+    "sni": "vpn-uk-002.fastervpn.world",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml",
+    "latency": 530,
+    "_sub_priority": 100
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇦🇪 AE 01 [533]",
+    "server": "130.49.161.70",
+    "port": 443,
+    "password": "p7Q76LzlnS4hIzr1W3staBOnUe_WwSkR",
+    "tls": false,
+    "sni": "hy2.aspidnet.xyz",
+    "skip-cert-verify": false,
+    "obfs": "salamander",
+    "obfs-password": "rG07s3COMIEvdnQipRyWzx_H_2xygNC3",
+    "_sub_url": "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml",
+    "latency": 533,
+    "_sub_priority": 100
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇩🇪 DE 01 [607]",
+    "server": "31.76.27.23",
+    "port": 37009,
+    "password": "Telegram-vpnjey",
+    "tls": false,
+    "sni": "de.vpnjey.store",
+    "skip-cert-verify": true,
+    "obfs": "salamander",
+    "alpn": [
+      "h3"
+    ],
+    "obfs-password": "Telegram@vpnjey",
+    "_sub_url": "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml",
+    "latency": 607,
+    "_sub_priority": 100
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇷🇴 RO 01 [609]",
+    "server": "162.249.126.7",
+    "port": 8443,
+    "password": "9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z",
+    "tls": false,
+    "sni": "hopp-germany-new.ddnsguru.com",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml",
+    "latency": 609,
+    "_sub_priority": 100
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇸🇪 SE 01 [723]",
+    "server": "77.110.96.201",
+    "port": 36264,
+    "password": "Telegram-vpnjey",
+    "tls": false,
+    "sni": "se.vpnjey2.dpdns.org",
+    "skip-cert-verify": true,
+    "obfs": "salamander",
+    "alpn": [
+      "h3"
+    ],
+    "obfs-password": "Telegram@vpnjey",
+    "_sub_url": "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml",
+    "latency": 723,
+    "_sub_priority": 100
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇸🇪 SE 02 [757]",
+    "server": "se-node.rumedia-cdn.com",
+    "port": 25443,
+    "password": "29ffde49-e1d6-4dcd-a135-352920f9f0b8",
+    "tls": false,
+    "sni": "cf2.rumedia-cdn.com",
+    "_sub_url": "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml",
+    "latency": 757,
+    "_sub_priority": 100
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇦🇺 AU 01 [796]",
+    "server": "vpn-au-002.fastervpn.world",
+    "port": 443,
+    "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+    "tls": false,
+    "sni": "whatsapp.com",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml",
+    "latency": 796,
+    "_sub_priority": 100
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇫🇮 FI 01 [800]",
+    "server": "138.124.0.168",
+    "port": 8080,
+    "password": "h_B9x3942fJ9x_Kpx3914KQ_nZ934HFg_rT",
+    "tls": false,
+    "sni": "hopp-legend-se.roxa.org",
+    "skip-cert-verify": false,
+    "_sub_url": "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml",
+    "latency": 800,
+    "_sub_priority": 100
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇩🇪 DE 02 [804]",
+    "server": "85.204.107.181",
+    "port": 8080,
+    "password": "Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0",
+    "tls": false,
+    "sni": "hopp-romania-new.roxa.org",
+    "_sub_url": "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml",
+    "latency": 804,
+    "_sub_priority": 100
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇷🇴 RO 02 [813]",
+    "server": "85.204.107.178",
+    "port": 8080,
+    "password": "Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0",
+    "tls": false,
+    "sni": "hopp-romania-new.roxa.org",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml",
+    "latency": 813,
+    "_sub_priority": 100
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇦🇺 AU 02 [823]",
+    "server": "vpn-au-002.fastervpn.world",
+    "port": 443,
+    "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+    "tls": false,
+    "sni": "css.rbxcdn.com",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml",
+    "latency": 823,
+    "_sub_priority": 100
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇷🇺 RU 01 [834]",
+    "server": "msk.frkn.org",
+    "port": 443,
+    "password": "f317b5d6-d399-4d3d-a051-89d674ae953c",
+    "tls": false,
+    "_sub_url": "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml",
+    "latency": 834,
+    "_sub_priority": 100
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇷🇴 RO 03 [835]",
+    "server": "162.249.125.133",
+    "port": 443,
+    "password": "QCgqi_I4EkV8UR-OgQ_tG4EnVTEVvIyR2GgRBzrIn2s",
+    "tls": false,
+    "sni": "hy2-new.aspidnet.xyz",
+    "skip-cert-verify": false,
+    "obfs": "salamander",
+    "obfs-password": "c1b4086fea89914496c7e10967a419216566",
+    "_sub_url": "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml",
+    "latency": 835,
+    "_sub_priority": 100
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇩🇪 DE 03 [992]",
+    "server": "2.27.59.206",
+    "port": 443,
+    "password": "cd74c0a406664a5bc0bac098220a2468",
+    "tls": false,
+    "sni": "de1.sferavpn.pro",
+    "skip-cert-verify": true,
+    "obfs": "salamander",
+    "obfs-password": "44f1c1e2f8b99e792ceed574627a1eb0",
+    "_sub_url": "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml",
+    "latency": 992,
+    "_sub_priority": 100
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇧🇷 BR 01 [1007]",
+    "server": "go.wwwinternetvideo.click",
+    "port": 443,
+    "password": "YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc",
+    "tls": false,
+    "sni": "admin.wwwinternetvideo.click",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml",
+    "latency": 1007,
+    "_sub_priority": 100
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇮🇳 IN 01 [1042]",
+    "server": "vpn-in-001.fastervpn.world",
+    "port": 443,
+    "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+    "tls": false,
+    "sni": "vpn-in-001.fastervpn.world",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml",
+    "latency": 1042,
+    "_sub_priority": 100
+  },
+  {
+    "type": "trojan",
+    "name": "🇫🇷 FR 01 [598]",
+    "server": "104.16.174.14",
+    "port": 443,
+    "password": "humanity",
+    "network": "ws",
+    "sni": "www.ignitelimit.com",
+    "udp": true,
+    "ws-opts": {
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"
+      },
+      "path": "/assignment"
+    },
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": false,
+    "_sub_url": "https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/all.yaml",
+    "latency": 598,
+    "_sub_priority": 100
+  },
+  {
+    "type": "trojan",
+    "name": "🇫🇷 FR 02 [605]",
+    "server": "172.67.221.242",
+    "port": 443,
+    "password": "humanity",
+    "network": "ws",
+    "sni": "www.ignitelimit.com",
+    "udp": true,
+    "ws-opts": {
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Linux; Android 8.0.0; FIG-LX3 Build/HUAWEIFIG-LX3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36"
+      },
+      "path": "/assignment"
+    },
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": false,
+    "_sub_url": "https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/all.yaml",
+    "latency": 605,
+    "_sub_priority": 100
+  },
+  {
+    "type": "trojan",
+    "name": "🇫🇷 FR 03 [626]",
+    "server": "104.16.7.70",
+    "port": 443,
+    "password": "humanity",
+    "network": "ws",
+    "sni": "www.ignitelimit.com",
+    "udp": true,
+    "ws-opts": {
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36"
+      },
+      "path": "/assignment"
+    },
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": false,
+    "_sub_url": "https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/all.yaml",
+    "latency": 626,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "🇩🇪 DE 04 [546]",
+    "server": "2.59.134.226",
+    "port": 443,
+    "uuid": "88281d02-b387-4fe3-918e-26ed331e6d08",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "rich-falcon.cdn.cachefleet.com",
+    "client-fingerprint": "qq",
+    "skip-cert-verify": true,
+    "reality-opts": {
+      "public-key": "1sSmdw90uTiGuitDvp_q8zcXTcHXKQS3IVjA7T1UNiY"
+    },
+    "_sub_url": "https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml",
+    "latency": 546,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "🇪🇸 ES 01 [742]",
+    "server": "46.28.71.247",
+    "port": 443,
+    "uuid": "12c53e32-e589-47d6-b857-e4132294f767",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "www.cloudflare.com",
+    "client-fingerprint": "firefox",
+    "skip-cert-verify": true,
+    "reality-opts": {
+      "public-key": "v4MuZIvFrTPT5GHMSaPryUAbIZlLstmsUTzmC1E-JTE",
+      "short-id": "0dfc23fe80778c00"
+    },
+    "_sub_url": "https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml",
+    "latency": 742,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "🇬🇧 GB 02 [913]",
+    "server": "188.225.27.78",
+    "port": 443,
+    "uuid": "3b6a9df3-f1d1-4bc1-94a5-0d8f2d5512b1",
+    "network": "raw",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "max.ru",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "Rf2jgZShaYRQ2kh9nF79eB2KFcIdiYHwPWJyFKA_CWU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/all.yaml",
+    "latency": 913,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "🇨🇭 CH 01 [1090]",
+    "server": "132.243.162.30",
+    "port": 46280,
+    "uuid": "12af43c3-84b4-4248-878b-b75f35835487",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "amp-api-edge.apps.apple.com",
+    "client-fingerprint": "chrome",
+    "reality-opts": {
+      "public-key": "3xEvhIbjIvO9bJSqHEF3D91YZEYaA3fWzb2JpxW0XmQ",
+      "short-id": "e53690af52736850"
+    },
+    "_sub_url": "https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/all.yaml",
+    "latency": 1090,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "🇦🇪 AE 02 [1199]",
+    "server": "5.35.81.60",
+    "port": 4443,
+    "uuid": "cabd9303-ae32-4d25-86b9-26b312d0f044",
+    "network": "grpc",
+    "tls": true,
+    "udp": true,
+    "servername": "maps.apple.com",
+    "client-fingerprint": "chrome",
+    "grpc-opts": {
+      "grpc-service-name": "snob-grpc-de"
+    },
+    "reality-opts": {
+      "public-key": "nhvyI4KrKDUSgw9Fa63SDeNATaTsAu9bRZ4qaraydRM",
+      "short-id": "e5f6a1b2"
+    },
+    "_sub_url": "https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/all.yaml",
+    "latency": 1199,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "CY 01 [1470]",
+    "server": "171.22.129.56",
+    "port": 2083,
+    "uuid": "b2744db0-1c64-4218-a93b-9eba0e5f811f",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "swe-one.quiet-rogue.site",
+    "client-fingerprint": "edge",
+    "skip-cert-verify": true,
+    "reality-opts": {
+      "public-key": "40eDnye2AHCQqgM2_ikKzRayZ4Vlu4rnnkHmLmNalQc",
+      "short-id": "32a37218722f0081"
+    },
+    "_sub_url": "https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml",
+    "latency": 1470,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "XX 01 [121]",
+    "server": "162.159.81.104",
+    "port": 80,
+    "uuid": "4b00d726-e072-429b-997e-f07affea3b7f",
+    "network": "ws",
+    "tls": false,
+    "udp": true,
+    "ws-opts": {
+      "path": "/eyJqdW5rIjoiUEVTdDRlR2hhc0JuYyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJlZml4IiwicGFuZWxJUHMiOlsiWzI2MDI6ZmM1OTpiMDo2NDo6XSJdfQ==",
+      "headers": {
+        "Host": "icy-darkness-8ff1.farzambia12mo.workers.dev"
+      }
+    },
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml",
+    "latency": 121,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "XX 02 [122]",
+    "server": "172.64.229.2",
+    "port": 2052,
+    "uuid": "47fcef29-ab4e-4aa6-932b-d95a18f28a4e",
+    "network": "ws",
+    "tls": false,
+    "udp": true,
+    "ws-opts": {
+      "path": "/?ed=2560security=tls",
+      "headers": {
+        "Host": "8nj2r.2k8t.f88.hh.vavava.kdns.fr"
+      }
+    },
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml",
+    "latency": 122,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "XX 03 [133]",
+    "server": "104.16.106.213",
+    "port": 8880,
+    "uuid": "82a3c394-55b7-4780-93a0-5f45c0e89625",
+    "network": "ws",
+    "tls": false,
+    "udp": true,
+    "ws-opts": {
+      "path": "/pyip=ProxyIP.SG.CMLiussss.net",
+      "headers": {
+        "Host": "square-brook-e650.353-3ac.workers.dev"
+      }
+    },
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml",
+    "latency": 133,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "IM 01 [147]",
+    "server": "185.162.229.40",
+    "port": 8880,
+    "uuid": "6202b230-417c-4d8e-b624-0f71afa9c75d",
+    "network": "ws",
+    "tls": false,
+    "udp": true,
+    "ws-opts": {
+      "path": "/?ed=2560",
+      "headers": {
+        "Host": "vms.lifetime61.workers.dev"
+      }
+    },
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml",
+    "latency": 147,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "XX 04 [148]",
+    "server": "104.17.190.223",
+    "port": 2087,
+    "uuid": "42c62a5a-cd31-4551-80ef-908732370287",
+    "network": "ws",
+    "tls": true,
+    "udp": true,
+    "ws-opts": {
+      "path": "/proxyip=154.17.22.207,69.63.210.157,134.195.211.13,172.236.245.153,209.146.115.209,64.186.224.194,149.28.94.52,107.151.188.57",
+      "headers": {
+        "Host": "fq.jp188.dpdns.org"
+      }
+    },
+    "servername": "fq.jp188.dpdns.org",
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml",
+    "latency": 148,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "XX 05 [149]",
+    "server": "104.17.177.165",
+    "port": 2087,
+    "uuid": "8666ab45-8e3d-4988-841b-2561d91e32d5",
+    "network": "ws",
+    "tls": true,
+    "udp": true,
+    "ws-opts": {
+      "path": "/proxyip=154.3.33.43",
+      "headers": {
+        "Host": "mianfei-73q.pages.dev"
+      }
+    },
+    "servername": "mianfei-73q.pages.dev",
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml",
+    "latency": 149,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "XX 06 [149]",
+    "server": "172.67.67.241",
+    "port": 2053,
+    "uuid": "8666ab45-8e3d-4988-841b-2561d91e32d5",
+    "network": "ws",
+    "tls": true,
+    "udp": true,
+    "ws-opts": {
+      "path": "/proxyip=154.3.33.43",
+      "headers": {
+        "Host": "mianfei-73q.pages.dev"
+      }
+    },
+    "servername": "mianfei-73q.pages.dev",
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml",
+    "latency": 149,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "XX 07 [151]",
+    "server": "104.19.49.155",
+    "port": 443,
+    "uuid": "42c62a5a-cd31-4551-80ef-908732370287",
+    "network": "ws",
+    "tls": true,
+    "udp": true,
+    "ws-opts": {
+      "path": "/proxyip=154.17.22.207,69.63.210.157,134.195.211.13,172.236.245.153,209.146.115.209,64.186.224.194,149.28.94.52,107.151.188.57",
+      "headers": {
+        "Host": "fq.jp188.dpdns.org"
+      }
+    },
+    "servername": "fq.jp188.dpdns.org",
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml",
+    "latency": 151,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "XX 08 [151]",
+    "server": "8.34.70.30",
+    "port": 8880,
+    "uuid": "6202b230-417c-4d8e-b624-0f71afa9c75d",
+    "network": "ws",
+    "tls": false,
+    "udp": true,
+    "ws-opts": {
+      "path": "/",
+      "headers": {
+        "Host": "vms.lifetime09.workers.dev"
+      }
+    },
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml",
+    "latency": 151,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "XX 09 [153]",
+    "server": "104.19.151.247",
+    "port": 8443,
+    "uuid": "42c62a5a-cd31-4551-80ef-908732370287",
+    "network": "ws",
+    "tls": true,
+    "udp": true,
+    "ws-opts": {
+      "path": "/proxyip=154.17.22.207,69.63.210.157,134.195.211.13,172.236.245.153,209.146.115.209,64.186.224.194,149.28.94.52,107.151.188.57",
+      "headers": {
+        "Host": "fq.jp188.dpdns.org"
+      }
+    },
+    "servername": "fq.jp188.dpdns.org",
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml",
+    "latency": 153,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "XX 10 [154]",
+    "server": "104.17.158.136",
+    "port": 2053,
+    "uuid": "42c62a5a-cd31-4551-80ef-908732370287",
+    "network": "ws",
+    "tls": true,
+    "udp": true,
+    "ws-opts": {
+      "path": "/proxyip=154.17.22.207,69.63.210.157,134.195.211.13,172.236.245.153,209.146.115.209,64.186.224.194,149.28.94.52,107.151.188.57",
+      "headers": {
+        "Host": "fq.jp188.dpdns.org"
+      }
+    },
+    "servername": "fq.jp188.dpdns.org",
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml",
+    "latency": 154,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "XX 11 [164]",
+    "server": "104.17.62.176",
+    "port": 2096,
+    "uuid": "42c62a5a-cd31-4551-80ef-908732370287",
+    "network": "ws",
+    "tls": true,
+    "udp": true,
+    "ws-opts": {
+      "path": "/proxyip=154.17.22.207,69.63.210.157,134.195.211.13,172.236.245.153,209.146.115.209,64.186.224.194,149.28.94.52,107.151.188.57",
+      "headers": {
+        "Host": "fq.jp188.dpdns.org"
+      }
+    },
+    "servername": "fq.jp188.dpdns.org",
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml",
+    "latency": 164,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "XX 12 [169]",
+    "server": "104.18.33.112",
+    "port": 2096,
+    "uuid": "42c62a5a-cd31-4551-80ef-908732370287",
+    "network": "ws",
+    "tls": true,
+    "udp": true,
+    "ws-opts": {
+      "path": "/proxyip=154.17.22.207,69.63.210.157,134.195.211.13,172.236.245.153,209.146.115.209,64.186.224.194,149.28.94.52,107.151.188.57",
+      "headers": {
+        "Host": "fq.jp188.dpdns.org"
+      }
+    },
+    "servername": "fq.jp188.dpdns.org",
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml",
+    "latency": 169,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "XX 13 [170]",
+    "server": "104.19.50.229",
+    "port": 443,
+    "uuid": "42c62a5a-cd31-4551-80ef-908732370287",
+    "network": "ws",
+    "tls": true,
+    "udp": true,
+    "ws-opts": {
+      "path": "/proxyip=154.17.22.207,69.63.210.157,134.195.211.13,172.236.245.153,209.146.115.209,64.186.224.194,149.28.94.52,107.151.188.57",
+      "headers": {
+        "Host": "fq.jp188.dpdns.org"
+      }
+    },
+    "servername": "fq.jp188.dpdns.org",
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml",
+    "latency": 170,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "🇬🇧 GB 03 [172]",
+    "server": "91.193.59.255",
+    "port": 2096,
+    "uuid": "42c62a5a-cd31-4551-80ef-908732370287",
+    "network": "ws",
+    "tls": true,
+    "udp": true,
+    "ws-opts": {
+      "path": "/proxyip=154.17.22.207,69.63.210.157,134.195.211.13,172.236.245.153,209.146.115.209,64.186.224.194,149.28.94.52,107.151.188.57",
+      "headers": {
+        "Host": "fq.jp188.dpdns.org"
+      }
+    },
+    "servername": "fq.jp188.dpdns.org",
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml",
+    "latency": 172,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "XX 14 [173]",
+    "server": "104.17.179.247",
+    "port": 8443,
+    "uuid": "42c62a5a-cd31-4551-80ef-908732370287",
+    "network": "ws",
+    "tls": true,
+    "udp": true,
+    "ws-opts": {
+      "path": "/proxyip=154.17.22.207,69.63.210.157,134.195.211.13,172.236.245.153,209.146.115.209,64.186.224.194,149.28.94.52,107.151.188.57",
+      "headers": {
+        "Host": "fq.jp188.dpdns.org"
+      }
+    },
+    "servername": "fq.jp188.dpdns.org",
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml",
+    "latency": 173,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "XX 15 [176]",
+    "server": "104.18.33.76",
+    "port": 2087,
+    "uuid": "42c62a5a-cd31-4551-80ef-908732370287",
+    "network": "ws",
+    "tls": true,
+    "udp": true,
+    "ws-opts": {
+      "path": "/proxyip=154.17.22.207,69.63.210.157,134.195.211.13,172.236.245.153,209.146.115.209,64.186.224.194,149.28.94.52,107.151.188.57",
+      "headers": {
+        "Host": "fq.jp188.dpdns.org"
+      }
+    },
+    "servername": "fq.jp188.dpdns.org",
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml",
+    "latency": 176,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "XX 16 [188]",
+    "server": "104.17.221.54",
+    "port": 2053,
+    "uuid": "42c62a5a-cd31-4551-80ef-908732370287",
+    "network": "ws",
+    "tls": true,
+    "udp": true,
+    "ws-opts": {
+      "path": "/proxyip=154.17.22.207,69.63.210.157,134.195.211.13,172.236.245.153,209.146.115.209,64.186.224.194,149.28.94.52,107.151.188.57",
+      "headers": {
+        "Host": "fq.jp188.dpdns.org"
+      }
+    },
+    "servername": "fq.jp188.dpdns.org",
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml",
+    "latency": 188,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "XX 17 [237]",
+    "server": "cf-socks.caoyuwu.eu.org",
+    "port": 443,
+    "uuid": "9cdcbaf0-d244-4f37-b227-90166e43f5b5",
+    "network": "ws",
+    "tls": true,
+    "udp": true,
+    "ws-opts": {
+      "path": "/",
+      "headers": {
+        "Host": "cf-socks.caoyuwu.eu.org"
+      }
+    },
+    "servername": "cf-socks.caoyuwu.eu.org",
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml",
+    "latency": 237,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "🇩🇪 DE 05 [621]",
+    "server": "140.248.186.45",
+    "port": 443,
+    "uuid": "XpnTeam-21",
+    "network": "ws",
+    "tls": true,
+    "udp": true,
+    "ws-opts": {
+      "headers": {
+        "Host": "Appxdn.global.ssl.fastly.net",
+        "User-Agent": "Mozilla/5.0 (Windows NT 5.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36"
+      },
+      "path": "/"
+    },
+    "servername": "ssl.fastly.com",
+    "client-fingerprint": "chrome",
+    "alpn": [
+      "http/1.1"
+    ],
+    "_sub_url": "https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/all.yaml",
+    "latency": 621,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "🇩🇪 DE 06 [635]",
+    "server": "199.232.78.160",
+    "port": 443,
+    "uuid": "XpnTeam-22",
+    "network": "ws",
+    "tls": true,
+    "udp": true,
+    "ws-opts": {
+      "headers": {
+        "Host": "Appxdn.global.ssl.fastly.net",
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36"
+      },
+      "path": "/"
+    },
+    "servername": "ssl.fastly.com",
+    "client-fingerprint": "chrome",
+    "alpn": [
+      "http/1.1"
+    ],
+    "_sub_url": "https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/all.yaml",
+    "latency": 635,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "🇩🇪 DE 07 [688]",
+    "server": "connect6.nyxserver.ir",
+    "port": 8446,
+    "uuid": "0b39a009-2a2a-4035-ba87-cc82894f8e21",
+    "tls": true,
+    "udp": true,
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml",
+    "latency": 688,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "🇫🇮 FI 02 [744]",
+    "server": "a2.arshia-nova.ir",
+    "port": 443,
+    "uuid": "88b44962-7f99-4846-9113-6b0624b5a6a4",
+    "network": "ws",
+    "tls": true,
+    "udp": true,
+    "ws-opts": {
+      "headers": {
+        "Host": "c12.com",
+        "User-Agent": "Mozilla/5.0 (Linux; Android 7.0; BLL-L22 Build/HUAWEIBLL-L22) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.91 Mobile Safari/537.36"
+      },
+      "path": "/"
+    },
+    "servername": "ssl.fastly.com",
+    "client-fingerprint": "chrome",
+    "alpn": [
+      "h2"
+    ],
+    "_sub_url": "https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/all.yaml",
+    "latency": 744,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vless",
+    "name": "🇨🇿 CZ 01 [827]",
+    "server": "103.119.18.30",
+    "port": 443,
+    "uuid": "8666ab45-8e3d-4988-841b-2561d91e32d5",
+    "network": "ws",
+    "tls": true,
+    "udp": true,
+    "ws-opts": {
+      "path": "/proxyip=154.3.33.43",
+      "headers": {
+        "Host": "mianfei-73q.pages.dev"
+      }
+    },
+    "servername": "mianfei-73q.pages.dev",
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml",
+    "latency": 827,
+    "_sub_priority": 100
+  },
+  {
+    "type": "vmess",
+    "name": "XX 18 [1246]",
+    "server": "www.shopify.com",
+    "port": 443,
+    "uuid": "3aa71202-a099-49c1-99fc-6662f3335369",
+    "cipher": "auto",
+    "alterId": 0,
+    "network": "ws",
+    "tls": true,
+    "udp": true,
+    "ws-opts": {
+      "path": "/3aa71202-a099-49c1-99fc-6662f3335369-vm",
+      "headers": {
+        "Host": "yoga-suggesting-recording-calls.trycloudflare.com"
+      }
+    },
+    "skip-cert-verify": true,
+    "security": "auto",
+    "_sub_url": "https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml",
+    "latency": 1246,
+    "_sub_priority": 100
+  },
+  {
+    "type": "http",
+    "name": "🇷🇴 RO 04 [871]",
+    "server": "193.176.84.19",
+    "port": 9002,
+    "password": "null",
+    "tls": true,
+    "skip-cert-verify": true,
+    "username": "null",
+    "_sub_url": "https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/all.yaml",
+    "latency": 871,
+    "_sub_priority": 100
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 22 [113]",
+    "server": "155.248.209.237",
+    "port": 33333,
+    "password": "bce6c821-200d-421f-bf3d-7159e5246ea0",
+    "sni": "hy2.123266.xyz",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/feat/ai-crawler-v2/nodes/merged.yaml",
+    "latency": 113,
+    "_sub_priority": 0
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 23 [114]",
+    "server": "155.248.209.237",
+    "port": 33333,
+    "password": "bce6c821-200d-421f-bf3d-7159e5246ea0",
+    "sni": "155.248.209.237",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 114,
+    "_sub_priority": 0
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 24 [116]",
+    "server": "163.192.14.135",
+    "port": 50160,
+    "password": "099830134df5ac3a04a4b21d39b8c395",
+    "sni": "css.rbxcdn.com",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 116,
+    "_sub_priority": 0
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 25 [117]",
+    "server": "155.248.209.237",
+    "port": 33333,
+    "password": "bce6c821-200d-421f-bf3d-7159e5246ea0",
+    "sni": "155.248.209.2",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 117,
+    "_sub_priority": 0
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 26 [118]",
+    "server": "163.192.14.135",
+    "port": 50160,
+    "password": "099830134df5ac3a04a4b21d39b8c395",
+    "sni": "speedtest.tinkoff.ru",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 118,
+    "_sub_priority": 0
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 27 [118]",
+    "server": "155.248.209.237",
+    "port": 33333,
+    "password": "bce6c821-200d-421f-bf3d-7159e5246ea0",
+    "sni": "",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 118,
+    "_sub_priority": 0
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 28 [118]",
+    "server": "163.192.14.135",
+    "port": 50160,
+    "password": "099830134df5ac3a04a4b21d39b8c395",
+    "sni": "www.bing.com",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/xiaoji235/airport-free/main/v2ray.txt",
+    "latency": 118,
+    "_sub_priority": 0
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 29 [118]",
+    "server": "163.192.14.135",
+    "port": 50160,
+    "password": "099830134df5ac3a04a4b21d39b8c395",
+    "sni": "vk.com",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/xiaoji235/airport-free/main/v2ray.txt",
+    "latency": 118,
+    "_sub_priority": 0
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 30 [119]",
+    "server": "47.77.211.222",
+    "port": 8443,
+    "password": "zW4iYb6fsQ3WJm1DDP/M0nNfajL6tbApGLgrC2dOXFo=",
+    "sni": "",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 119,
+    "_sub_priority": 0
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 31 [119]",
+    "server": "163.192.14.135",
+    "port": 50160,
+    "password": "099830134df5ac3a04a4b21d39b8c395",
+    "sni": "google.com",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/xiaoji235/airport-free/main/v2ray.txt",
+    "latency": 119,
+    "_sub_priority": 0
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 32 [125]",
+    "server": "163.192.14.135",
+    "port": 50160,
+    "password": "099830134df5ac3a04a4b21d39b8c395",
+    "sni": "whatsapp.com",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 125,
+    "_sub_priority": 0
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 33 [128]",
+    "server": "163.192.14.135",
+    "port": 50160,
+    "password": "099830134df5ac3a04a4b21d39b8c395",
+    "sni": "t.me",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/xiaoji235/airport-free/main/v2ray.txt",
+    "latency": 128,
+    "_sub_priority": 0
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 34 [136]",
+    "server": "66.94.121.46",
+    "port": 443,
+    "password": "gf1:gfhysteria2024",
+    "sni": "vk.com",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 136,
+    "_sub_priority": 0
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 35 [136]",
+    "server": "hy2.123266.xyz",
+    "port": 33333,
+    "password": "bce6c821-200d-421f-bf3d-7159e5246ea0",
+    "sni": "",
+    "skip-cert-verify": false,
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 136,
+    "_sub_priority": 0
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 36 [143]",
+    "server": "66.94.121.46",
+    "port": 443,
+    "password": "gf1:gfhysteria2024",
+    "sni": "",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 143,
+    "_sub_priority": 0
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 37 [147]",
+    "server": "66.94.121.46",
+    "port": 443,
+    "password": "gf1:gfhysteria2024",
+    "sni": "www.broadcom.com",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 147,
+    "_sub_priority": 0
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 38 [160]",
+    "server": "hy2.561891.xyz",
+    "port": 44356,
+    "password": "dongtaiwang.com",
+    "sni": "hy2.561891.xyz",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 160,
+    "_sub_priority": 0
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 39 [162]",
+    "server": "142.249.37.90",
+    "port": 44356,
+    "password": "dongtaiwang.com",
+    "sni": "hy2.561891.xyz",
+    "_sub_url": "https://raw.githubusercontent.com/xiaoji235/airport-free/main/v2ray.txt",
+    "latency": 162,
+    "_sub_priority": 0
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 40 [181]",
+    "server": "hy2.561891.xyz",
+    "port": 44356,
+    "password": "dongtaiwang.com",
+    "sni": "",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 181,
+    "_sub_priority": 0
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 41 [186]",
+    "server": "hy2.123266.xyz",
+    "port": 33333,
+    "password": "bce6c821-200d-421f-bf3d-7159e5246ea0",
+    "sni": "hy2.123266.xyz",
+    "skip-cert-verify": false,
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 186,
+    "_sub_priority": 0
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 42 [216]",
+    "server": "107.175.219.48",
+    "port": 443,
+    "password": "18bd49994f2eea74ff62798bd75fb7d1",
+    "sni": "107.175.219.48",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 216,
+    "_sub_priority": 0
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 43 [223]",
+    "server": "vpn-us-006.fastervpn.world",
+    "port": 443,
+    "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+    "sni": "vpn-us-006.fastervpn.world",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/xiaoji235/airport-free/main/v2ray.txt",
+    "latency": 223,
+    "_sub_priority": 0
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 44 [247]",
+    "server": "159.223.157.129",
+    "port": 8443,
+    "password": "suAmQS9LlInNq4Wumh-FUF4GGlpgmG_g",
+    "sni": "www.microsoft.com",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 247,
+    "_sub_priority": 0
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 45 [251]",
+    "server": "159.223.157.129",
+    "port": 8443,
+    "password": "suAmQS9LlInNq4Wumh-FUF4GGlpgmG_g",
+    "sni": "159.223.157.129",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 251,
+    "_sub_priority": 0
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 46 [288]",
+    "server": "144.202.99.96",
+    "port": 443,
+    "password": "user1:ShVN9wnGVNptyPsNNpdBhlTUBG7vKZqh",
+    "sni": "",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 288,
+    "_sub_priority": 0
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 47 [331]",
+    "server": "vpn-us-003.fastervpn.world",
+    "port": 443,
+    "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+    "sni": "127.0.0.1",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/xiaoji235/airport-free/main/v2ray.txt",
+    "latency": 331,
+    "_sub_priority": 0
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 48 [345]",
+    "server": "vpn-us-003.fastervpn.world",
+    "port": 443,
+    "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+    "sni": "vpn-us-003.fastervpn.world",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/xiaoji235/airport-free/main/v2ray.txt",
+    "latency": 345,
+    "_sub_priority": 0
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 49 [756]",
+    "server": "de.1.23.h2corp.org",
+    "port": 443,
+    "password": "mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj",
+    "sni": "germany3.h2corp.local",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/xiaoji235/airport-free/main/v2ray.txt",
+    "latency": 756,
+    "_sub_priority": 0
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 50 [765]",
+    "server": "159.223.157.129",
+    "port": 8443,
+    "password": "suAmQS9LlInNq4Wumh-FUF4GGlpgmG_g",
+    "sni": "",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 765,
+    "_sub_priority": 0
+  },
+  {
+    "type": "hysteria2",
+    "name": "🇺🇸 US 51 [961]",
+    "server": "nl1.sferavpn.pro",
+    "port": 443,
+    "password": "cd74c0a406664a5bc0bac098220a2468",
+    "sni": "nl1.sferavpn.pro",
+    "skip-cert-verify": true,
+    "obfs": "salamander",
+    "obfs-password": "44f1c1e2f8b99e792ceed574627a1eb0",
+    "_sub_url": "https://raw.githubusercontent.com/xiaoji235/airport-free/main/v2ray.txt",
+    "latency": 961,
+    "_sub_priority": 0
+  },
+  {
+    "type": "trojan",
+    "name": "🇺🇸 US 52 [85]",
+    "server": "64.94.95.115",
+    "port": 57142,
+    "password": "kkzh2prsyr2ik47as615",
+    "sni": "64.94.95.115",
+    "network": "tcp",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/xiaoji235/airport-free/main/v2ray.txt",
+    "latency": 85,
+    "_sub_priority": 0
+  },
+  {
+    "type": "trojan",
+    "name": "🇺🇸 US 53 [86]",
+    "server": "64.94.95.118",
+    "port": 57142,
+    "password": "kkzh2prsyr2ik47as615",
+    "network": "tcp",
+    "sni": "64.94.95.118",
+    "udp": true,
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/feat/ai-crawler-v2/nodes/freeclashnode.yaml",
+    "latency": 86,
+    "_sub_priority": 0
+  },
+  {
+    "type": "trojan",
+    "name": "🇺🇸 US 54 [86]",
+    "server": "64.94.95.117",
+    "port": 57142,
+    "password": "kkzh2prsyr2ik47as615",
+    "network": "tcp",
+    "sni": "static.rutube.ru",
+    "udp": true,
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/feat/ai-crawler-v2/nodes/freeclashnode.yaml",
+    "latency": 86,
+    "_sub_priority": 0
+  },
+  {
+    "type": "trojan",
+    "name": "🇺🇸 US 55 [86]",
+    "server": "64.94.95.118",
+    "port": 57142,
+    "password": "kkzh2prsyr2ik47as615",
+    "network": "tcp",
+    "udp": true,
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/feat/ai-crawler-v2/nodes/freeclashnode.yaml",
+    "latency": 86,
+    "_sub_priority": 0
+  },
+  {
+    "type": "trojan",
+    "name": "🇺🇸 US 56 [87]",
+    "server": "64.94.95.115",
+    "port": 57142,
+    "password": "kkzh2prsyr2ik47as615",
+    "network": "tcp",
+    "udp": true,
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/feat/ai-crawler-v2/nodes/freeclashnode.yaml",
+    "latency": 87,
+    "_sub_priority": 0
+  },
+  {
+    "type": "trojan",
+    "name": "🇺🇸 US 57 [87]",
+    "server": "64.94.95.114",
+    "port": 57142,
+    "password": "kkzh2prsyr2ik47as615",
+    "network": "tcp",
+    "sni": "64.94.95.114",
+    "udp": true,
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/feat/ai-crawler-v2/nodes/clashnode.yaml",
+    "latency": 87,
+    "_sub_priority": 0
+  },
+  {
+    "type": "trojan",
+    "name": "🇺🇸 US 58 [88]",
+    "server": "64.94.95.115",
+    "port": 57142,
+    "password": "kkzh2prsyr2ik47as615",
+    "network": "tcp",
+    "sni": "static.rutube.ru",
+    "udp": true,
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/feat/ai-crawler-v2/nodes/freeclashnode.yaml",
+    "latency": 88,
+    "_sub_priority": 0
+  },
+  {
+    "type": "trojan",
+    "name": "🇺🇸 US 59 [92]",
+    "server": "64.94.95.114",
+    "port": 57142,
+    "password": "kkzh2prsyr2ik47as615",
+    "sni": "",
+    "udp": true,
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 92,
+    "_sub_priority": 0
+  },
+  {
+    "type": "trojan",
+    "name": "🇺🇸 US 60 [92]",
+    "server": "64.94.95.117",
+    "port": 57142,
+    "password": "kkzh2prsyr2ik47as615",
+    "network": "tcp",
+    "udp": true,
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/feat/ai-crawler-v2/nodes/freeclashnode.yaml",
+    "latency": 92,
+    "_sub_priority": 0
+  },
+  {
+    "type": "trojan",
+    "name": "🇺🇸 US 61 [94]",
+    "server": "64.94.95.114",
+    "port": 57142,
+    "password": "kkzh2prsyr2ik47as615",
+    "network": "tcp",
+    "sni": "static.rutube.ru",
+    "udp": true,
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/feat/ai-crawler-v2/nodes/freeclashnode.yaml",
+    "latency": 94,
+    "_sub_priority": 0
+  },
+  {
+    "type": "trojan",
+    "name": "🇺🇸 US 62 [94]",
+    "server": "64.94.95.117",
+    "port": 57142,
+    "password": "kkzh2prsyr2ik47as615",
+    "network": "tcp",
+    "sni": "64.94.95.117",
+    "udp": true,
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/feat/ai-crawler-v2/nodes/freeclashnode.yaml",
+    "latency": 94,
+    "_sub_priority": 0
+  },
+  {
+    "type": "trojan",
+    "name": "🇺🇸 US 63 [100]",
+    "server": "64.94.95.118",
+    "port": 57142,
+    "password": "kkzh2prsyr2ik47as615",
+    "network": "tcp",
+    "sni": "static.rutube.ru",
+    "udp": true,
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/feat/ai-crawler-v2/nodes/freeclashnode.yaml",
+    "latency": 100,
+    "_sub_priority": 0
+  },
+  {
+    "type": "trojan",
+    "name": "🇺🇸 US 64 [134]",
+    "server": "104.16.148.5",
+    "port": 443,
+    "password": "19877587-ed94-4033-88cd-4ac50a5e8718",
+    "sni": "dimskiee.biz.id",
+    "network": "ws",
+    "path": "/WangCai-8",
+    "skip-cert-verify": false,
+    "_sub_url": "https://raw.githubusercontent.com/xiaoji235/airport-free/main/v2ray.txt",
+    "latency": 134,
+    "_sub_priority": 0
+  },
+  {
+    "type": "trojan",
+    "name": "🇺🇸 US 65 [138]",
+    "server": "34.94.125.227",
+    "port": 443,
+    "password": "M7v%w11Se*",
+    "network": "tcp",
+    "sni": "mxlo.wsone.icu",
+    "udp": true,
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": false,
+    "_sub_url": "https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/feat/ai-crawler-v2/nodes/freeclashnode.yaml",
+    "latency": 138,
+    "_sub_priority": 0
+  },
+  {
+    "type": "trojan",
+    "name": "🇺🇸 US 66 [244]",
+    "server": "64.20.209.125",
+    "port": 443,
+    "password": "UQfj7bdfjibTjpUHfg72aew51S7fB32g",
+    "sni": "64.20.209.125",
+    "network": "tcp",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/xiaoji235/airport-free/main/v2ray.txt",
+    "latency": 244,
+    "_sub_priority": 0
+  },
+  {
+    "type": "trojan",
+    "name": "🇺🇸 US 67 [257]",
+    "server": "64.20.209.125",
+    "port": 443,
+    "password": "UQfj7bdfjibTjpUHfg72aew51S7fB32g",
+    "network": "tcp",
+    "udp": true,
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": true,
+    "_sub_url": "https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/feat/ai-crawler-v2/nodes/freeclashnode.yaml",
+    "latency": 257,
+    "_sub_priority": 0
+  },
+  {
+    "type": "trojan",
+    "name": "🇺🇸 US 68 [643]",
+    "server": "216.24.57.1",
+    "port": 443,
+    "password": "humanity",
+    "network": "ws",
+    "sni": "www.ignitelimit.com",
+    "udp": true,
+    "ws-opts": {
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; vivo 1606 Build/MMB29M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.124 Mobile Safari/537.36"
+      },
+      "path": "/assignment"
+    },
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": false,
+    "_sub_url": "https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/feat/ai-crawler-v2/nodes/freeclashnode.yaml",
+    "latency": 643,
+    "_sub_priority": 0
+  },
+  {
+    "type": "trojan",
+    "name": "🇺🇸 US 69 [803]",
+    "server": "216.24.57.7",
+    "port": 443,
+    "password": "humanity",
+    "network": "ws",
+    "sni": "www.ignitelimit.com",
+    "udp": true,
+    "ws-opts": {
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+      },
+      "path": "/assignment"
+    },
+    "client-fingerprint": "chrome",
+    "skip-cert-verify": false,
+    "alpn": [
+      "http/1.1"
+    ],
+    "_sub_url": "https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/feat/ai-crawler-v2/nodes/freeclashnode.yaml",
+    "latency": 803,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 70 [118]",
+    "server": "38.180.242.205",
+    "port": 13779,
+    "uuid": "928e6cce-8ced-4243-9a48-a6642edd09b0",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tesla.com",
+    "client-fingerprint": "chrome",
+    "reality-opts": {
+      "public-key": "llTyp52oRXnJmQ3I9UUrmlwbMA79B-wLCRHCu-8dLGg",
+      "short-id": "af1bdd293097b664"
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 118,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 71 [139]",
+    "server": "15.204.97.197",
+    "port": 23576,
+    "uuid": "48ff2b70-e180-582f-8866-d9a2edeed5f5",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "fuck.rkn",
+    "client-fingerprint": "random",
+    "reality-opts": {
+      "public-key": "1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 139,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 72 [141]",
+    "server": "15.204.97.195",
+    "port": 23576,
+    "uuid": "48ff2b70-e180-582f-8866-d9a2edeed5f5",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "fuck.rkn",
+    "client-fingerprint": "random",
+    "reality-opts": {
+      "public-key": "1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 141,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 73 [141]",
+    "server": "15.204.97.216",
+    "port": 23576,
+    "uuid": "48ff2b70-e180-582f-8866-d9a2edeed5f5",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "fuck.rkn",
+    "client-fingerprint": "random",
+    "reality-opts": {
+      "public-key": "1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 141,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 74 [141]",
+    "server": "15.204.97.206",
+    "port": 23576,
+    "uuid": "48ff2b70-e180-582f-8866-d9a2edeed5f5",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "fuck.rkn",
+    "client-fingerprint": "random",
+    "reality-opts": {
+      "public-key": "1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 141,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 75 [144]",
+    "server": "15.204.97.219",
+    "port": 23576,
+    "uuid": "48ff2b70-e180-582f-8866-d9a2edeed5f5",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "fuck.rkn",
+    "client-fingerprint": "random",
+    "reality-opts": {
+      "public-key": "1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 144,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 76 [149]",
+    "server": "15.204.97.198",
+    "port": 23576,
+    "uuid": "48ff2b70-e180-582f-8866-d9a2edeed5f5",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "fuck.rkn",
+    "client-fingerprint": "random",
+    "reality-opts": {
+      "public-key": "1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 149,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 77 [150]",
+    "server": "15.204.97.214",
+    "port": 23576,
+    "uuid": "48ff2b70-e180-582f-8866-d9a2edeed5f5",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "fuck.rkn",
+    "client-fingerprint": "chrome",
+    "reality-opts": {
+      "public-key": "1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s",
+      "short-id": "01"
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 150,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 78 [151]",
+    "server": "15.204.97.209",
+    "port": 23576,
+    "uuid": "48ff2b70-e180-582f-8866-d9a2edeed5f5",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "fuck.rkn",
+    "client-fingerprint": "chrome",
+    "reality-opts": {
+      "public-key": "1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s",
+      "short-id": "01"
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 151,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 79 [152]",
+    "server": "51.81.203.63",
+    "port": 443,
+    "uuid": "cb2dbb6a-a1ea-4023-9ace-6466cee57241",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "www.icloud.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "nqwCf6oW49tEtmQ0EzxigZ0uu1pg0E30CS54G40Iti0",
+      "short-id": "4477382ff6d3d41c"
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 152,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 80 [152]",
+    "server": "51.81.203.63",
+    "port": 443,
+    "uuid": "cb2dbb6a-a1ea-4023-9ace-6466cee57241",
+    "network": "raw",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "www.icloud.com",
+    "client-fingerprint": "chrome",
+    "reality-opts": {
+      "public-key": "nqwCf6oW49tEtmQ0EzxigZ0uu1pg0E30CS54G40Iti0",
+      "short-id": "4477382ff6d3d41c"
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 152,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 81 [169]",
+    "server": "45.149.172.80",
+    "port": 443,
+    "uuid": "91d28760-ecf1-450b-9170-d310111a0e6d",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "www.amazon.com",
+    "client-fingerprint": "chrome",
+    "reality-opts": {
+      "public-key": "FKTaFzF4zfAqXBdDQHwSVl_XyNcC3T17s_FqhHyZchg",
+      "short-id": "fb9456392070128e"
+    },
+    "_sub_url": "https://raw.githubusercontent.com/snakem982/proxypool/main/source/clash-meta-2.yaml",
+    "latency": 169,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 82 [184]",
+    "server": "172.235.43.210",
+    "port": 53957,
+    "uuid": "7ab29f89-6eef-4171-b232-fc4f580ad31b",
+    "network": "raw",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "www.nvidia.com",
+    "client-fingerprint": "chrome",
+    "reality-opts": {
+      "public-key": "XUHlbk5VH5z4E2wxZBhlpLZ33qevyQgqU7dheRDgoGQ",
+      "short-id": "44e82fd7b97b14"
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 184,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 83 [187]",
+    "server": "172.236.233.59",
+    "port": 443,
+    "uuid": "abd1c29a-94cb-4648-8d1e-5baae9d2a807",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "www.cloudflare.com",
+    "client-fingerprint": "chrome",
+    "reality-opts": {
+      "public-key": "oTMDLwY2hloBfA7ShzVsrFhjL4QXR6mY32B93rMLxV0",
+      "short-id": "525e0ffc773f48ba"
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 187,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 84 [192]",
+    "server": "172.235.43.210",
+    "port": 53957,
+    "uuid": "7ab29f89-6eef-4171-b232-fc4f580ad31b",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "www.nvidia.com",
+    "client-fingerprint": "random",
+    "reality-opts": {
+      "public-key": "XUHlbk5VH5z4E2wxZBhlpLZ33qevyQgqU7dheRDgoGQ",
+      "short-id": "44e82fd7b97b14"
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 192,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 85 [196]",
+    "server": "47.253.226.114",
+    "port": 443,
+    "uuid": "055a1ce8-2a16-4a0d-a2c2-22826c9b2413",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "www.cloudflare.com",
+    "client-fingerprint": "edge",
+    "reality-opts": {
+      "public-key": "Svl81isn16RPAFnjtmYw7A6TPnsEPLHuYYaJht65Rzc",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 196,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 86 [203]",
+    "server": "172.235.38.85",
+    "port": 42942,
+    "uuid": "bca46025-bf43-40c0-895b-054a6fbcfd32",
+    "network": "raw",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "www.tesla.com",
+    "client-fingerprint": "chrome",
+    "reality-opts": {
+      "public-key": "JmkfJoDWpAqt6gj4cbc4_cwItsdryMlV7joAGfNTKQU",
+      "short-id": "a56d7d8da977f860"
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 203,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 87 [206]",
+    "server": "172.235.43.210",
+    "port": 53957,
+    "uuid": "7ab29f89-6eef-4171-b232-fc4f580ad31b",
+    "network": "tcp#3👝@oneclickvpnkeys",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "www.nvidia.com",
+    "client-fingerprint": "chrome",
+    "reality-opts": {
+      "public-key": "XUHlbk5VH5z4E2wxZBhlpLZ33qevyQgqU7dheRDgoGQ",
+      "short-id": "44e82fd7b97b14"
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 206,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 88 [211]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "d25940f6-1d52-4f2d-968d-d34016d2b5ee",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 211,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 89 [212]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "62d2db25-dd18-4427-b753-ff62938207ea",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 212,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 90 [214]",
+    "server": "172.235.38.85",
+    "port": 42942,
+    "uuid": "bca46025-bf43-40c0-895b-054a6fbcfd32",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "www.tesla.com",
+    "client-fingerprint": "random",
+    "reality-opts": {
+      "public-key": "JmkfJoDWpAqt6gj4cbc4_cwItsdryMlV7joAGfNTKQU",
+      "short-id": "a56d7d8da977f860"
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 214,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 91 [214]",
+    "server": "47.89.186.170",
+    "port": 55861,
+    "uuid": "d51ed55c-d6dd-400b-aaf6-017c33969bfe",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "www.intel.com",
+    "client-fingerprint": "qq",
+    "reality-opts": {
+      "public-key": "t2ndf6SeVxinFCo5bcemnW_ZZhAtmHWiAkllks5qPWs",
+      "short-id": "7551ed1b"
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 214,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 92 [214]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "4b2fbd30-1a64-4b27-aea9-713d62c9e69b",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "chrome",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 214,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 93 [216]",
+    "server": "192.3.247.109",
+    "port": 43580,
+    "uuid": "25a6a9f3-ad9e-45f2-96e1-be21c9d97789",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "apple.com",
+    "client-fingerprint": "chrome",
+    "reality-opts": {
+      "public-key": "smOBJ9RB9nUF3SCGBJ5A1O24Dla9YlQY_YSUjmHRW2g",
+      "short-id": "0123456789abcdef"
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 216,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 94 [216]",
+    "server": "192.3.247.109",
+    "port": 32132,
+    "uuid": "23504a34-5216-4e10-86a0-b6a70976f996",
+    "network": "tcp",
+    "tls": true,
+    "udp": true,
+    "servername": "apple.com",
+    "client-fingerprint": "chrome",
+    "reality-opts": {
+      "public-key": "Hv-DNm962AntB7xyaLnaHvui6rOJ092OFOY2E7TqyR0",
+      "short-id": "24cbfb05123722"
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 216,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 95 [217]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "72109745-9dbe-42a6-93c7-8b6eeb7aaed3",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 217,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 96 [219]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "813a5411-08ac-4346-888a-992f35acbf89",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 219,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 97 [220]",
+    "server": "137.184.218.169",
+    "port": 36925,
+    "uuid": "c9fd0fb1-8251-4106-b09a-f4b426736f67",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "www.cloudflare.com",
+    "client-fingerprint": "chrome",
+    "reality-opts": {
+      "public-key": "lJ9INPpO4rdnm2Tek_yg0PGFyUrBB6MoKyvqt_Mfqm0",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 220,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 98 [220]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "6fba61f2-d538-4bba-8c86-b19568a0b687",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 220,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 99 [220]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "72d995a9-df53-4e8e-a8b6-e83f3a7d08ea",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 220,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 100 [221]",
+    "server": "195.123.235.177",
+    "port": 443,
+    "uuid": "729dd5f2-f5ff-4070-8c10-863eceded0b1",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "gateway.icloud.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "5B83otQ5ZQwtBFhR7xzsGJRXflkFKRJpQguYbE5JWGI",
+      "short-id": "c85d029f5e8eb393"
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 221,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 101 [222]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "8a02c9f7-936a-4d78-a88f-c1e9229f4d5d",
+    "network": "raw",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 222,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 102 [226]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "e45762cb-9cd1-4e69-8638-9126456b79bd",
+    "network": "raw",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "chrome",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 226,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 103 [229]",
+    "server": "107.173.237.146",
+    "port": 8443,
+    "uuid": "1d39f715-2740-4d99-bc3b-197cc48dcee7",
+    "network": "tcp#5🔥@oneclickvpnkeys",
+    "tls": true,
+    "udp": true,
+    "servername": "updates.cdn-apple.com",
+    "client-fingerprint": "chrome",
+    "reality-opts": {
+      "public-key": "D3ojIs3AUKP_tV0E4TEjh90HBVJp24Nq3qMfdxD30kc",
+      "short-id": "df8611c07d"
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 229,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 104 [232]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "0817a3bb-c8fb-4ddf-a05e-321565b39cd8",
+    "network": "raw",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 232,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 105 [233]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "a7ab9b00-42a1-4943-abba-096590d1edd0",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 233,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 106 [236]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "b222ebc7-569c-45ca-a0e4-756f171b247b",
+    "network": "raw",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 236,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 107 [237]",
+    "server": "172.233.139.46",
+    "port": 53734,
+    "uuid": "56a1b253-cde4-490f-9c5e-09a523882bdd",
+    "network": "raw",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "www.tesla.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "JAG5rl6KEt7KAV0y8Z2x6orWHymCXRSX49SkEnEftWU",
+      "short-id": "a56d7d8da977f860"
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 237,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 108 [237]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "e27dce75-b33b-49b6-afb7-17e29ce67bb1",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 237,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 109 [238]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "06e00e3d-f71f-4621-99a2-779793daf449",
+    "network": "raw",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 238,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 110 [240]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "ab4f3d6c-674d-4e4d-b3fb-1f40d8ee2c18",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 240,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 111 [241]",
+    "server": "144.172.104.26",
+    "port": 443,
+    "uuid": "77da6e30-ad4e-11f1-94d5-525400d1d4f7",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "www.nvidia.com",
+    "client-fingerprint": "safari",
+    "reality-opts": {
+      "public-key": "n25FmewpAEsvLl9Vr0bRFcz044f4IE7orWeWOzu8rwk",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 241,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 112 [241]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "f9bd8170-6d98-4623-85e6-c86b14ea9b9c",
+    "network": "raw",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 241,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 113 [242]",
+    "server": "ww9.levikogjgfdd.ir",
+    "port": 36925,
+    "uuid": "c9fd0fb1-8251-4106-b09a-f4b426736f67",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "www.cloudflare.com",
+    "client-fingerprint": "chrome",
+    "reality-opts": {
+      "public-key": "lJ9INPpO4rdnm2Tek_yg0PGFyUrBB6MoKyvqt_Mfqm0",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 242,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 114 [247]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "984ab184-21c2-44a0-9705-0ebaa410dc87",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 247,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 115 [249]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "e042b105-41f0-4fb7-8e7c-46a0cc6044e0",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 249,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 116 [253]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "00dda8ac-c263-4106-a740-1e4478a7dc44",
+    "network": "tcp#5🎗️@oneclickvpnkeys",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "chrome",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 253,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 117 [256]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "fcdee475-6aa0-4b8b-be8d-f587b5c5478c",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 256,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 118 [259]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "a9dae5b2-ac94-417f-b3dd-882a3d7a6a85",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 259,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 119 [264]",
+    "server": "198.251.78.29",
+    "port": 2053,
+    "uuid": "c423cc1b-f88e-421c-9a16-c480d84da20f",
+    "network": "tcp",
+    "tls": true,
+    "udp": true,
+    "servername": "www.cloudflare.com",
+    "client-fingerprint": "random",
+    "reality-opts": {
+      "public-key": "Uk5b-Wh_uxeCc7R8NS9iWE40xc0h9wWC04rSB9yhgAw",
+      "short-id": "b5d625695ec82c7e"
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 264,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 120 [265]",
+    "server": "167.17.69.171",
+    "port": 443,
+    "uuid": "00144519-7e0d-476b-8d28-435576af9262",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "www.cloudflare.com",
+    "client-fingerprint": "chrome",
+    "reality-opts": {
+      "public-key": "ALT8hIGeZEhi0sQFbXP_ntBg8Xo-v7i0YCLrqTnBxRk",
+      "short-id": "0990d22f"
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 265,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 121 [267]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "8ed35e81-16b9-4316-bcb4-4be6c4db4449",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 267,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 122 [272]",
+    "server": "159.89.87.21",
+    "port": 28190,
+    "uuid": "14c80e0e-f7ce-4991-94fc-99a1db4a9b1e",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "aws.amazon.com",
+    "client-fingerprint": "chrome",
+    "reality-opts": {
+      "public-key": "ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 272,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 123 [274]",
+    "server": "usa.demka.live",
+    "port": 443,
+    "uuid": "6230dfe2-7de5-4d4b-990f-73ac7f53e987",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "usa.demka.live",
+    "client-fingerprint": "edge",
+    "reality-opts": {
+      "public-key": "cU1ph0JNcNsFk-fSIZ88D9MiiMDNMVu2eKKIa4Q6nhQ",
+      "short-id": "2f53900b845a6e34"
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 274,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 124 [284]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "dbaa08bd-7d18-4775-b44f-bab649be4815",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 284,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 125 [286]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "c91b7fa9-e8d1-4b49-94fa-72cce126e61b",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 286,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 126 [287]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "9775116b-b463-4fca-9f61-d01ac2355b21",
+    "network": "raw",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 287,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 127 [290]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "6ae3c57a-f5fb-4b7e-a886-b8c00af5c693",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 290,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 128 [294]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "00dda8ac-c263-4106-a740-1e4478a7dc44",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "chrome",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 294,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 129 [295]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "e27dce75-b33b-49b6-afb7-17e29ce67bb1",
+    "network": "raw",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 295,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 130 [304]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "b8fca50e-e3bb-4ae2-a44e-bde0e0495b2e",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 304,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 131 [305]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "d685c66b-0c11-4989-95da-a28134a776e3",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 305,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 132 [310]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "17e85193-a95c-4430-9b05-d8f303a34ac3",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 310,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 133 [317]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "8a02c9f7-936a-4d78-a88f-c1e9229f4d5d",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 317,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 134 [320]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "137c30a7-d172-4b6c-a97b-c3a6a4fda042",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 320,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 135 [320]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "4f46bf1c-9b81-4d53-99fa-9dceb7fe06e7",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 320,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 136 [321]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "6038e39a-d05e-483d-b853-a176707d4f69",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 321,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 137 [328]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "9109d755-5632-40f1-be82-a9fb2e2cb104",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 328,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 138 [328]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "b5f27d9a-4d7a-4fa3-a45a-09bfd3e8a248",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 328,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 139 [339]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "77d4bb66-82c8-4511-98e0-44edb2da8978",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 339,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 140 [341]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "beed721d-73b6-47fc-a7b0-cac10e624b98",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 341,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 141 [414]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "18841820-cd3a-4bc5-9ac3-fec72438b872",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 414,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 142 [525]",
+    "server": "194.55.189.249",
+    "port": 40443,
+    "uuid": "8212a50b-25bf-4739-bba1-aaffb5ffc84c",
+    "network": "tcp",
+    "tls": true,
+    "udp": true,
+    "servername": "deepl.com",
+    "client-fingerprint": "random",
+    "reality-opts": {
+      "public-key": "KCbW84C8h2Ja01LS0Ro8EpLLfzMTjs11t1ldDWLd5zo",
+      "short-id": "aae8"
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 525,
+    "_sub_priority": 0
+  },
+  {
+    "type": "vless",
+    "name": "🇺🇸 US 143 [539]",
+    "server": "31.58.50.200",
+    "port": 8443,
+    "uuid": "c4783cc5-aeec-4473-855b-1c98965949dd",
+    "network": "tcp",
+    "tls": true,
+    "flow": "xtls-rprx-vision",
+    "udp": true,
+    "servername": "tradingview.com",
+    "client-fingerprint": "firefox",
+    "reality-opts": {
+      "public-key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU",
+      "short-id": ""
+    },
+    "_sub_url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
+    "latency": 539,
+    "_sub_priority": 0
+  }
+]

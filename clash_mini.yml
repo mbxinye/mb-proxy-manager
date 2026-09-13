@@ -1,0 +1,1090 @@
+---
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: warning
+proxies:
+- name: 🇺🇸 US 01 [177]
+  type: hysteria2
+  server: 198.46.159.171
+  port: '8443'
+  password: EkkoHY2_2024!
+  skip-cert-verify: true
+- name: 🇺🇸 US 02 [201]
+  type: hysteria2
+  server: 107.175.219.48
+  port: '443'
+  password: 18bd49994f2eea74ff62798bd75fb7d1
+  skip-cert-verify: true
+- name: 🇺🇸 US 03 [215]
+  type: hysteria2
+  server: 173.249.210.76
+  port: '8443'
+  password: Q3mAdf68GvbGEGqTAXkWjg
+  skip-cert-verify: true
+- name: 🇺🇸 US 04 [246]
+  type: hysteria2
+  server: clash2.deep-links.com
+  port: '443'
+  password: 4c858cccff331e64c711a199a6cb256a
+  sni: clash2.deep-links.com
+- name: 🇺🇸 US 05 [381]
+  type: hysteria2
+  server: 107.174.255.14
+  port: '4356'
+  password: c2356e22-b026-4f12-8508-cf61f0b0c867
+  skip-cert-verify: true
+- name: 🇺🇸 US 06 [783]
+  type: hysteria2
+  server: 38.207.163.44
+  port: '8443'
+  password: 3DMpEHI94Ic7izl0YBXU
+  skip-cert-verify: true
+- name: 🇺🇸 US 07 [918]
+  type: hysteria2
+  server: 144.31.93.126
+  port: '443'
+  password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
+  sni: admin.wwwinternetvideo.click
+  skip-cert-verify: true
+- name: 🇺🇸 US 08 [954]
+  type: hysteria2
+  server: 2.27.249.79
+  port: '443'
+  password: cd74c0a406664a5bc0bac098220a2468
+  sni: nl1.sferavpn.pro
+  obfs: salamander
+  obfs-password: 44f1c1e2f8b99e792ceed574627a1eb0
+- name: 🇺🇸 US 09 [1117]
+  type: hysteria2
+  server: 107.172.67.52
+  port: '2053'
+  udp: true
+  password: maintell
+  sni: bing.com
+  skip-cert-verify: true
+  obfs: salamander
+  obfs-password: maintell
+- name: 🇺🇸 US 10 [1130]
+  type: hysteria2
+  server: 144.31.49.138
+  port: '443'
+  password: cd74c0a406664a5bc0bac098220a2468
+  sni: ru1.sferavpn.pro
+  obfs: salamander
+  obfs-password: 44f1c1e2f8b99e792ceed574627a1eb0
+- name: 🇺🇸 US 11 [322]
+  type: trojan
+  server: clash2.deep-links.com
+  port: '443'
+  udp: true
+  password: 06da30be2ce5ece28204119359fe4eb3
+- name: 🇺🇸 US 12 [584]
+  type: vless
+  server: 5.34.178.120
+  port: '443'
+  udp: true
+  uuid: 9063f9fb-e88a-4ee0-b4a4-a92ca7316a9f
+  flow: xtls-rprx-vision
+  servername: www.cloudflare.com
+  tls: true
+  reality-opts:
+    public-key: EVhq2BxKuw2Cody1DmF_HPvUYKwzdXbHP47blUv-eRM
+    short-id: 55ab5559e3a6d10a
+  client-fingerprint: chrome
+  skip-cert-verify: true
+- name: 🇺🇸 US 13 [658]
+  type: vless
+  server: 104.245.242.8
+  port: '8443'
+  udp: true
+  uuid: 4350213a-b4e7-262a-0bd7-bd16957cf71a
+  servername: download.nvidia.com
+  tls: true
+  reality-opts:
+    public-key: FOQzn10eHqu4F5xOxiXW2bTDG8lH4TdOXP6A5rDqKFk
+  client-fingerprint: chrome
+  network: grpc
+  grpc-opts:
+    grpc-mode: gun
+    grpc-service-name: TunService
+- name: 🇺🇸 US 14 [724]
+  type: vless
+  server: 207.57.135.46
+  port: '17144'
+  udp: true
+  uuid: e1be6b8f-a0f5-45a9-8aa6-634c26793325
+  flow: xtls-rprx-vision
+  servername: aws.amazon.com
+  tls: true
+  reality-opts:
+    public-key: vk8mcF1ox2RdeqR31z1eQp1XAhnDN7lY0Xbt3zMAfSc
+  client-fingerprint: chrome
+  skip-cert-verify: true
+- name: 🇺🇸 US 15 [726]
+  type: vless
+  server: 207.57.135.123
+  port: '35621'
+  udp: true
+  uuid: 6f8acdfd-0ce0-4386-ba02-5040da4c6fea
+  flow: xtls-rprx-vision
+  servername: www.amazon.com
+  tls: true
+  reality-opts:
+    public-key: wK6kCgPEjDA7KADag0eZUc8e523kdIOCh8Qavkb15nA
+  client-fingerprint: chrome
+  skip-cert-verify: true
+- name: 🇺🇸 US 16 [751]
+  type: vless
+  server: 207.57.133.49
+  port: '23156'
+  udp: true
+  uuid: 46554735-415f-4be5-9390-a19dc430a15c
+  flow: xtls-rprx-vision
+  servername: www.cloudflare.com
+  tls: true
+  reality-opts:
+    public-key: NjDiEVSSYysWC7yheN_cy4YkCXHtP91yB4vbpgQc2Q8
+  client-fingerprint: chrome
+  skip-cert-verify: true
+- name: 🇺🇸 US 17 [296]
+  type: vless
+  server: plan.api3-max.ru
+  port: '443'
+  udp: true
+  uuid: 97ecaad4-452c-45ec-b591-d68d3308aad4
+  flow: xtls-rprx-vision
+  servername: plan.api3-max.ru
+  tls: true
+  alpn:
+  - h2
+  - http/1.1
+- name: 🇺🇸 US 18 [1403]
+  type: vless
+  server: news.zoom.us
+  port: '8443'
+  udp: true
+  uuid: 29c3dd6b-b164-40ca-a0d5-f06aca52a8b2
+  servername: u.srilankangrill.online
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: u.srilankangrill.online
+- name: 🇺🇸 US 19 [132]
+  type: http
+  server: 138.199.35.211
+  port: '9002'
+  username: 'null'
+  password: 'null'
+  tls: true
+  skip-cert-verify: true
+- name: 🇺🇸 US 20 [132]
+  type: http
+  server: 138.199.35.212
+  port: '9002'
+  username: 'null'
+  password: 'null'
+  tls: true
+  skip-cert-verify: true
+- name: 🇺🇸 US 21 [248]
+  type: http
+  server: jewelscollecti.icu
+  port: '443'
+  username: 'null'
+  password: 'null'
+  tls: true
+  skip-cert-verify: true
+- name: 🇯🇵 JP 01 [639]
+  type: hysteria2
+  server: 138.3.208.26
+  port: '50160'
+  password: 184cdec28da5a09450803c8debcd2cc9
+  sni: www.bing.com
+  skip-cert-verify: true
+- name: 🇯🇵 JP 02 [1378]
+  type: hysteria2
+  server: 8.211.175.129
+  port: '443'
+  udp: true
+  password: 0bffb8e71bca29788862f986caae97b3
+  sni: 8.211.175.129
+  skip-cert-verify: true
+  obfs: salamander
+  obfs-password: 5c8f1a3e7b2d9046c1f8a5e3b7d04f2a
+- name: 🇸🇬 SG 01 [795]
+  type: hysteria2
+  server: 47.129.241.226
+  port: '443'
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  sni: vpn-sg-001.fastervpn.world
+  skip-cert-verify: true
+- name: 🇨🇦 CA 01 [219]
+  type: hysteria2
+  server: 15.223.122.197
+  port: '443'
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: t.me
+  skip-cert-verify: true
+- name: 🇳🇱 NL 01 [477]
+  type: hysteria2
+  server: 72.56.102.31
+  port: '443'
+  password: BWAFlp8g53
+  skip-cert-verify: true
+- name: 🇳🇱 NL 02 [514]
+  type: hysteria2
+  server: hysteria.udpgw.com
+  port: '8443'
+  password: HowdyHysteria2023w0W
+  sni: sni-here.com
+  skip-cert-verify: true
+  obfs: salamander
+  obfs-password: HysteriaHowdy
+- name: 🇬🇧 GB 01 [530]
+  type: hysteria2
+  server: vpn-uk-002.fastervpn.world
+  port: '443'
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: vpn-uk-002.fastervpn.world
+  skip-cert-verify: true
+- name: 🇦🇪 AE 01 [533]
+  type: hysteria2
+  server: 130.49.161.70
+  port: '443'
+  password: p7Q76LzlnS4hIzr1W3staBOnUe_WwSkR
+  sni: hy2.aspidnet.xyz
+  obfs: salamander
+  obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
+- name: 🇩🇪 DE 01 [607]
+  type: hysteria2
+  server: 31.76.27.23
+  port: '37009'
+  password: Telegram-vpnjey
+  sni: de.vpnjey.store
+  skip-cert-verify: true
+  obfs: salamander
+  obfs-password: Telegram@vpnjey
+  alpn:
+  - h3
+- name: 🇷🇴 RO 01 [609]
+  type: hysteria2
+  server: 162.249.126.7
+  port: '8443'
+  password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
+  sni: hopp-germany-new.ddnsguru.com
+  skip-cert-verify: true
+- name: 🇸🇪 SE 01 [723]
+  type: hysteria2
+  server: 77.110.96.201
+  port: '36264'
+  password: Telegram-vpnjey
+  sni: se.vpnjey2.dpdns.org
+  skip-cert-verify: true
+  obfs: salamander
+  obfs-password: Telegram@vpnjey
+  alpn:
+  - h3
+- name: 🇸🇪 SE 02 [757]
+  type: hysteria2
+  server: se-node.rumedia-cdn.com
+  port: '25443'
+  password: 29ffde49-e1d6-4dcd-a135-352920f9f0b8
+  sni: cf2.rumedia-cdn.com
+- name: 🇦🇺 AU 01 [796]
+  type: hysteria2
+  server: vpn-au-002.fastervpn.world
+  port: '443'
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: whatsapp.com
+  skip-cert-verify: true
+- name: 🇫🇮 FI 01 [800]
+  type: hysteria2
+  server: 138.124.0.168
+  port: '8080'
+  password: h_B9x3942fJ9x_Kpx3914KQ_nZ934HFg_rT
+  sni: hopp-legend-se.roxa.org
+- name: 🇩🇪 DE 02 [804]
+  type: hysteria2
+  server: 85.204.107.181
+  port: '8080'
+  password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
+  sni: hopp-romania-new.roxa.org
+- name: 🇷🇴 RO 02 [813]
+  type: hysteria2
+  server: 85.204.107.178
+  port: '8080'
+  password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
+  sni: hopp-romania-new.roxa.org
+  skip-cert-verify: true
+- name: 🇦🇺 AU 02 [823]
+  type: hysteria2
+  server: vpn-au-002.fastervpn.world
+  port: '443'
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: css.rbxcdn.com
+  skip-cert-verify: true
+- name: 🇷🇺 RU 01 [834]
+  type: hysteria2
+  server: msk.frkn.org
+  port: '443'
+  password: f317b5d6-d399-4d3d-a051-89d674ae953c
+- name: 🇷🇴 RO 03 [835]
+  type: hysteria2
+  server: 162.249.125.133
+  port: '443'
+  password: QCgqi_I4EkV8UR-OgQ_tG4EnVTEVvIyR2GgRBzrIn2s
+  sni: hy2-new.aspidnet.xyz
+  obfs: salamander
+  obfs-password: c1b4086fea89914496c7e10967a419216566
+- name: 🇩🇪 DE 03 [992]
+  type: hysteria2
+  server: 2.27.59.206
+  port: '443'
+  password: cd74c0a406664a5bc0bac098220a2468
+  sni: de1.sferavpn.pro
+  skip-cert-verify: true
+  obfs: salamander
+  obfs-password: 44f1c1e2f8b99e792ceed574627a1eb0
+- name: 🇧🇷 BR 01 [1007]
+  type: hysteria2
+  server: go.wwwinternetvideo.click
+  port: '443'
+  password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
+  sni: admin.wwwinternetvideo.click
+  skip-cert-verify: true
+- name: 🇮🇳 IN 01 [1042]
+  type: hysteria2
+  server: vpn-in-001.fastervpn.world
+  port: '443'
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: vpn-in-001.fastervpn.world
+  skip-cert-verify: true
+- name: 🇫🇷 FR 01 [598]
+  type: trojan
+  server: 104.16.174.14
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.ignitelimit.com
+  network: ws
+  ws-opts:
+    headers:
+      User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like
+        Gecko) Chrome/69.0.3497.100 Safari/537.36
+    path: /assignment
+- name: 🇫🇷 FR 02 [605]
+  type: trojan
+  server: 172.67.221.242
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.ignitelimit.com
+  network: ws
+  ws-opts:
+    headers:
+      User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; FIG-LX3 Build/HUAWEIFIG-LX3)
+        AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36
+    path: /assignment
+- name: 🇫🇷 FR 03 [626]
+  type: trojan
+  server: 104.16.7.70
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.ignitelimit.com
+  network: ws
+  ws-opts:
+    headers:
+      User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/70.0.3538.110 Safari/537.36
+    path: /assignment
+- name: 🇩🇪 DE 04 [546]
+  type: vless
+  server: 2.59.134.226
+  port: '443'
+  udp: true
+  uuid: 88281d02-b387-4fe3-918e-26ed331e6d08
+  flow: xtls-rprx-vision
+  servername: rich-falcon.cdn.cachefleet.com
+  tls: true
+  reality-opts:
+    public-key: 1sSmdw90uTiGuitDvp_q8zcXTcHXKQS3IVjA7T1UNiY
+  client-fingerprint: qq
+  skip-cert-verify: true
+- name: 🇪🇸 ES 01 [742]
+  type: vless
+  server: 46.28.71.247
+  port: '443'
+  udp: true
+  uuid: 12c53e32-e589-47d6-b857-e4132294f767
+  flow: xtls-rprx-vision
+  servername: www.cloudflare.com
+  tls: true
+  reality-opts:
+    public-key: v4MuZIvFrTPT5GHMSaPryUAbIZlLstmsUTzmC1E-JTE
+    short-id: 0dfc23fe80778c00
+  client-fingerprint: firefox
+  skip-cert-verify: true
+- name: 🇬🇧 GB 02 [913]
+  type: vless
+  server: 188.225.27.78
+  port: '443'
+  udp: true
+  uuid: 3b6a9df3-f1d1-4bc1-94a5-0d8f2d5512b1
+  flow: xtls-rprx-vision
+  servername: max.ru
+  tls: true
+  reality-opts:
+    public-key: Rf2jgZShaYRQ2kh9nF79eB2KFcIdiYHwPWJyFKA_CWU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇨🇭 CH 01 [1090]
+  type: vless
+  server: 132.243.162.30
+  port: '46280'
+  udp: true
+  uuid: 12af43c3-84b4-4248-878b-b75f35835487
+  flow: xtls-rprx-vision
+  servername: amp-api-edge.apps.apple.com
+  tls: true
+  reality-opts:
+    public-key: 3xEvhIbjIvO9bJSqHEF3D91YZEYaA3fWzb2JpxW0XmQ
+    short-id: e53690af52736850
+  client-fingerprint: chrome
+- name: 🇦🇪 AE 02 [1199]
+  type: vless
+  server: 5.35.81.60
+  port: '4443'
+  udp: true
+  uuid: cabd9303-ae32-4d25-86b9-26b312d0f044
+  servername: maps.apple.com
+  tls: true
+  reality-opts:
+    public-key: nhvyI4KrKDUSgw9Fa63SDeNATaTsAu9bRZ4qaraydRM
+    short-id: e5f6a1b2
+  client-fingerprint: chrome
+  network: grpc
+  grpc-opts:
+    grpc-service-name: snob-grpc-de
+- name: CY 01 [1470]
+  type: vless
+  server: 171.22.129.56
+  port: '2083'
+  udp: true
+  uuid: b2744db0-1c64-4218-a93b-9eba0e5f811f
+  flow: xtls-rprx-vision
+  servername: swe-one.quiet-rogue.site
+  tls: true
+  reality-opts:
+    public-key: 40eDnye2AHCQqgM2_ikKzRayZ4Vlu4rnnkHmLmNalQc
+    short-id: 32a37218722f0081
+  client-fingerprint: edge
+  skip-cert-verify: true
+- name: XX 01 [121]
+  type: vless
+  server: 162.159.81.104
+  port: '80'
+  udp: true
+  uuid: 4b00d726-e072-429b-997e-f07affea3b7f
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /eyJqdW5rIjoiUEVTdDRlR2hhc0JuYyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJlZml4IiwicGFuZWxJUHMiOlsiWzI2MDI6ZmM1OTpiMDo2NDo6XSJdfQ==
+    headers:
+      Host: icy-darkness-8ff1.farzambia12mo.workers.dev
+- name: XX 02 [122]
+  type: vless
+  server: 172.64.229.2
+  port: '2052'
+  udp: true
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: XX 03 [133]
+  type: vless
+  server: 104.16.106.213
+  port: '8880'
+  udp: true
+  uuid: 82a3c394-55b7-4780-93a0-5f45c0e89625
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /pyip=ProxyIP.SG.CMLiussss.net
+    headers:
+      Host: square-brook-e650.353-3ac.workers.dev
+- name: IM 01 [147]
+  type: vless
+  server: 185.162.229.40
+  port: '8880'
+  udp: true
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: vms.lifetime61.workers.dev
+- name: XX 04 [148]
+  type: vless
+  server: 104.17.190.223
+  port: '2087'
+  udp: true
+  uuid: 42c62a5a-cd31-4551-80ef-908732370287
+  servername: fq.jp188.dpdns.org
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /proxyip=154.17.22.207,69.63.210.157,134.195.211.13,172.236.245.153,209.146.115.209,64.186.224.194,149.28.94.52,107.151.188.57
+    headers:
+      Host: fq.jp188.dpdns.org
+- name: XX 05 [149]
+  type: vless
+  server: 104.17.177.165
+  port: '2087'
+  udp: true
+  uuid: 8666ab45-8e3d-4988-841b-2561d91e32d5
+  servername: mianfei-73q.pages.dev
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /proxyip=154.3.33.43
+    headers:
+      Host: mianfei-73q.pages.dev
+- name: XX 06 [149]
+  type: vless
+  server: 172.67.67.241
+  port: '2053'
+  udp: true
+  uuid: 8666ab45-8e3d-4988-841b-2561d91e32d5
+  servername: mianfei-73q.pages.dev
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /proxyip=154.3.33.43
+    headers:
+      Host: mianfei-73q.pages.dev
+- name: XX 07 [151]
+  type: vless
+  server: 104.19.49.155
+  port: '443'
+  udp: true
+  uuid: 42c62a5a-cd31-4551-80ef-908732370287
+  servername: fq.jp188.dpdns.org
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /proxyip=154.17.22.207,69.63.210.157,134.195.211.13,172.236.245.153,209.146.115.209,64.186.224.194,149.28.94.52,107.151.188.57
+    headers:
+      Host: fq.jp188.dpdns.org
+- name: XX 08 [151]
+  type: vless
+  server: 8.34.70.30
+  port: '8880'
+  udp: true
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: vms.lifetime09.workers.dev
+- name: XX 09 [153]
+  type: vless
+  server: 104.19.151.247
+  port: '8443'
+  udp: true
+  uuid: 42c62a5a-cd31-4551-80ef-908732370287
+  servername: fq.jp188.dpdns.org
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /proxyip=154.17.22.207,69.63.210.157,134.195.211.13,172.236.245.153,209.146.115.209,64.186.224.194,149.28.94.52,107.151.188.57
+    headers:
+      Host: fq.jp188.dpdns.org
+- name: XX 10 [154]
+  type: vless
+  server: 104.17.158.136
+  port: '2053'
+  udp: true
+  uuid: 42c62a5a-cd31-4551-80ef-908732370287
+  servername: fq.jp188.dpdns.org
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /proxyip=154.17.22.207,69.63.210.157,134.195.211.13,172.236.245.153,209.146.115.209,64.186.224.194,149.28.94.52,107.151.188.57
+    headers:
+      Host: fq.jp188.dpdns.org
+- name: XX 11 [164]
+  type: vless
+  server: 104.17.62.176
+  port: '2096'
+  udp: true
+  uuid: 42c62a5a-cd31-4551-80ef-908732370287
+  servername: fq.jp188.dpdns.org
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /proxyip=154.17.22.207,69.63.210.157,134.195.211.13,172.236.245.153,209.146.115.209,64.186.224.194,149.28.94.52,107.151.188.57
+    headers:
+      Host: fq.jp188.dpdns.org
+- name: XX 12 [169]
+  type: vless
+  server: 104.18.33.112
+  port: '2096'
+  udp: true
+  uuid: 42c62a5a-cd31-4551-80ef-908732370287
+  servername: fq.jp188.dpdns.org
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /proxyip=154.17.22.207,69.63.210.157,134.195.211.13,172.236.245.153,209.146.115.209,64.186.224.194,149.28.94.52,107.151.188.57
+    headers:
+      Host: fq.jp188.dpdns.org
+- name: XX 13 [170]
+  type: vless
+  server: 104.19.50.229
+  port: '443'
+  udp: true
+  uuid: 42c62a5a-cd31-4551-80ef-908732370287
+  servername: fq.jp188.dpdns.org
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /proxyip=154.17.22.207,69.63.210.157,134.195.211.13,172.236.245.153,209.146.115.209,64.186.224.194,149.28.94.52,107.151.188.57
+    headers:
+      Host: fq.jp188.dpdns.org
+- name: 🇬🇧 GB 03 [172]
+  type: vless
+  server: 91.193.59.255
+  port: '2096'
+  udp: true
+  uuid: 42c62a5a-cd31-4551-80ef-908732370287
+  servername: fq.jp188.dpdns.org
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /proxyip=154.17.22.207,69.63.210.157,134.195.211.13,172.236.245.153,209.146.115.209,64.186.224.194,149.28.94.52,107.151.188.57
+    headers:
+      Host: fq.jp188.dpdns.org
+- name: XX 14 [173]
+  type: vless
+  server: 104.17.179.247
+  port: '8443'
+  udp: true
+  uuid: 42c62a5a-cd31-4551-80ef-908732370287
+  servername: fq.jp188.dpdns.org
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /proxyip=154.17.22.207,69.63.210.157,134.195.211.13,172.236.245.153,209.146.115.209,64.186.224.194,149.28.94.52,107.151.188.57
+    headers:
+      Host: fq.jp188.dpdns.org
+- name: XX 15 [176]
+  type: vless
+  server: 104.18.33.76
+  port: '2087'
+  udp: true
+  uuid: 42c62a5a-cd31-4551-80ef-908732370287
+  servername: fq.jp188.dpdns.org
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /proxyip=154.17.22.207,69.63.210.157,134.195.211.13,172.236.245.153,209.146.115.209,64.186.224.194,149.28.94.52,107.151.188.57
+    headers:
+      Host: fq.jp188.dpdns.org
+- name: XX 16 [188]
+  type: vless
+  server: 104.17.221.54
+  port: '2053'
+  udp: true
+  uuid: 42c62a5a-cd31-4551-80ef-908732370287
+  servername: fq.jp188.dpdns.org
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /proxyip=154.17.22.207,69.63.210.157,134.195.211.13,172.236.245.153,209.146.115.209,64.186.224.194,149.28.94.52,107.151.188.57
+    headers:
+      Host: fq.jp188.dpdns.org
+- name: XX 17 [237]
+  type: vless
+  server: cf-socks.caoyuwu.eu.org
+  port: '443'
+  udp: true
+  uuid: 9cdcbaf0-d244-4f37-b227-90166e43f5b5
+  servername: cf-socks.caoyuwu.eu.org
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: cf-socks.caoyuwu.eu.org
+- name: 🇩🇪 DE 05 [621]
+  type: vless
+  server: 140.248.186.45
+  port: '443'
+  udp: true
+  uuid: XpnTeam-21
+  servername: ssl.fastly.com
+  tls: true
+  network: ws
+  ws-opts:
+    headers:
+      Host: Appxdn.global.ssl.fastly.net
+      User-Agent: Mozilla/5.0 (Windows NT 5.1; WOW64) AppleWebKit/537.36 (KHTML, like
+        Gecko) Chrome/46.0.2490.80 Safari/537.36
+    path: /
+  alpn:
+  - http/1.1
+- name: 🇩🇪 DE 06 [635]
+  type: vless
+  server: 199.232.78.160
+  port: '443'
+  udp: true
+  uuid: XpnTeam-22
+  servername: ssl.fastly.com
+  tls: true
+  network: ws
+  ws-opts:
+    headers:
+      Host: Appxdn.global.ssl.fastly.net
+      User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/65.0.3325.181 Safari/537.36
+    path: /
+  alpn:
+  - http/1.1
+- name: 🇩🇪 DE 07 [688]
+  type: vless
+  server: connect6.nyxserver.ir
+  port: '8446'
+  udp: true
+  uuid: 0b39a009-2a2a-4035-ba87-cc82894f8e21
+  tls: true
+  skip-cert-verify: true
+- name: 🇫🇮 FI 02 [744]
+  type: vless
+  server: a2.arshia-nova.ir
+  port: '443'
+  udp: true
+  uuid: 88b44962-7f99-4846-9113-6b0624b5a6a4
+  servername: ssl.fastly.com
+  tls: true
+  network: ws
+  ws-opts:
+    headers:
+      Host: c12.com
+      User-Agent: Mozilla/5.0 (Linux; Android 7.0; BLL-L22 Build/HUAWEIBLL-L22) AppleWebKit/537.36
+        (KHTML, like Gecko) Chrome/55.0.2883.91 Mobile Safari/537.36
+    path: /
+  alpn:
+  - h2
+- name: 🇨🇿 CZ 01 [827]
+  type: vless
+  server: 103.119.18.30
+  port: '443'
+  udp: true
+  uuid: 8666ab45-8e3d-4988-841b-2561d91e32d5
+  servername: mianfei-73q.pages.dev
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /proxyip=154.3.33.43
+    headers:
+      Host: mianfei-73q.pages.dev
+- name: XX 18 [1246]
+  type: vmess
+  server: www.shopify.com
+  port: '443'
+  udp: true
+  uuid: 3aa71202-a099-49c1-99fc-6662f3335369
+  alterId: 0
+  cipher: auto
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /3aa71202-a099-49c1-99fc-6662f3335369-vm
+    headers:
+      Host: yoga-suggesting-recording-calls.trycloudflare.com
+- name: 🇷🇴 RO 04 [871]
+  type: http
+  server: 193.176.84.19
+  port: '9002'
+  username: 'null'
+  password: 'null'
+  tls: true
+  skip-cert-verify: true
+- name: 🇺🇸 US 22 [113]
+  type: hysteria2
+  server: 155.248.209.237
+  port: '33333'
+  password: bce6c821-200d-421f-bf3d-7159e5246ea0
+  sni: hy2.123266.xyz
+  skip-cert-verify: true
+- name: 🇺🇸 US 23 [114]
+  type: hysteria2
+  server: 155.248.209.237
+  port: '33333'
+  password: bce6c821-200d-421f-bf3d-7159e5246ea0
+  sni: 155.248.209.237
+  skip-cert-verify: true
+- name: 🇺🇸 US 24 [116]
+  type: hysteria2
+  server: 163.192.14.135
+  port: '50160'
+  password: 099830134df5ac3a04a4b21d39b8c395
+  sni: css.rbxcdn.com
+  skip-cert-verify: true
+- name: 🇺🇸 US 25 [117]
+  type: hysteria2
+  server: 155.248.209.237
+  port: '33333'
+  password: bce6c821-200d-421f-bf3d-7159e5246ea0
+  sni: 155.248.209.2
+  skip-cert-verify: true
+- name: 🇺🇸 US 26 [118]
+  type: hysteria2
+  server: 163.192.14.135
+  port: '50160'
+  password: 099830134df5ac3a04a4b21d39b8c395
+  sni: speedtest.tinkoff.ru
+  skip-cert-verify: true
+- name: 🇺🇸 US 27 [118]
+  type: hysteria2
+  server: 155.248.209.237
+  port: '33333'
+  password: bce6c821-200d-421f-bf3d-7159e5246ea0
+  skip-cert-verify: true
+- name: 🇺🇸 US 28 [118]
+  type: hysteria2
+  server: 163.192.14.135
+  port: '50160'
+  password: 099830134df5ac3a04a4b21d39b8c395
+  sni: www.bing.com
+  skip-cert-verify: true
+- name: 🇺🇸 US 29 [118]
+  type: hysteria2
+  server: 163.192.14.135
+  port: '50160'
+  password: 099830134df5ac3a04a4b21d39b8c395
+  sni: vk.com
+  skip-cert-verify: true
+- name: 🇺🇸 US 30 [119]
+  type: hysteria2
+  server: 47.77.211.222
+  port: '8443'
+  password: zW4iYb6fsQ3WJm1DDP/M0nNfajL6tbApGLgrC2dOXFo=
+  skip-cert-verify: true
+- name: 🇺🇸 US 31 [119]
+  type: hysteria2
+  server: 163.192.14.135
+  port: '50160'
+  password: 099830134df5ac3a04a4b21d39b8c395
+  sni: google.com
+  skip-cert-verify: true
+- name: 🇺🇸 US 32 [125]
+  type: hysteria2
+  server: 163.192.14.135
+  port: '50160'
+  password: 099830134df5ac3a04a4b21d39b8c395
+  sni: whatsapp.com
+  skip-cert-verify: true
+- name: 🇺🇸 US 33 [128]
+  type: hysteria2
+  server: 163.192.14.135
+  port: '50160'
+  password: 099830134df5ac3a04a4b21d39b8c395
+  sni: t.me
+  skip-cert-verify: true
+- name: 🇺🇸 US 34 [136]
+  type: hysteria2
+  server: 66.94.121.46
+  port: '443'
+  password: gf1:gfhysteria2024
+  sni: vk.com
+  skip-cert-verify: true
+- name: 🇺🇸 US 35 [136]
+  type: hysteria2
+  server: hy2.123266.xyz
+  port: '33333'
+  password: bce6c821-200d-421f-bf3d-7159e5246ea0
+- name: 🇺🇸 US 36 [143]
+  type: hysteria2
+  server: 66.94.121.46
+  port: '443'
+  password: gf1:gfhysteria2024
+  skip-cert-verify: true
+- name: 🇺🇸 US 37 [147]
+  type: hysteria2
+  server: 66.94.121.46
+  port: '443'
+  password: gf1:gfhysteria2024
+  sni: www.broadcom.com
+  skip-cert-verify: true
+- name: 🇺🇸 US 38 [160]
+  type: hysteria2
+  server: hy2.561891.xyz
+  port: '44356'
+  password: dongtaiwang.com
+  sni: hy2.561891.xyz
+  skip-cert-verify: true
+- name: 🇺🇸 US 39 [162]
+  type: hysteria2
+  server: 142.249.37.90
+  port: '44356'
+  password: dongtaiwang.com
+  sni: hy2.561891.xyz
+- name: 🇺🇸 US 40 [181]
+  type: hysteria2
+  server: hy2.561891.xyz
+  port: '44356'
+  password: dongtaiwang.com
+  skip-cert-verify: true
+- name: 🇺🇸 US 41 [186]
+  type: hysteria2
+  server: hy2.123266.xyz
+  port: '33333'
+  password: bce6c821-200d-421f-bf3d-7159e5246ea0
+  sni: hy2.123266.xyz
+- name: 🇺🇸 US 42 [216]
+  type: hysteria2
+  server: 107.175.219.48
+  port: '443'
+  password: 18bd49994f2eea74ff62798bd75fb7d1
+  sni: 107.175.219.48
+  skip-cert-verify: true
+- name: 🇺🇸 US 43 [223]
+  type: hysteria2
+  server: vpn-us-006.fastervpn.world
+  port: '443'
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: vpn-us-006.fastervpn.world
+  skip-cert-verify: true
+proxy-groups:
+- name: Proxy
+  type: select
+  proxies:
+  - 🇺🇸 US 01 [177]
+  - 🇺🇸 US 02 [201]
+  - 🇺🇸 US 03 [215]
+  - 🇺🇸 US 04 [246]
+  - 🇺🇸 US 05 [381]
+  - 🇺🇸 US 06 [783]
+  - 🇺🇸 US 07 [918]
+  - 🇺🇸 US 08 [954]
+  - 🇺🇸 US 09 [1117]
+  - 🇺🇸 US 10 [1130]
+  - 🇺🇸 US 11 [322]
+  - 🇺🇸 US 12 [584]
+  - 🇺🇸 US 13 [658]
+  - 🇺🇸 US 14 [724]
+  - 🇺🇸 US 15 [726]
+  - 🇺🇸 US 16 [751]
+  - 🇺🇸 US 17 [296]
+  - 🇺🇸 US 18 [1403]
+  - 🇺🇸 US 19 [132]
+  - 🇺🇸 US 20 [132]
+  - 🇺🇸 US 21 [248]
+  - 🇯🇵 JP 01 [639]
+  - 🇯🇵 JP 02 [1378]
+  - 🇸🇬 SG 01 [795]
+  - 🇨🇦 CA 01 [219]
+  - 🇳🇱 NL 01 [477]
+  - 🇳🇱 NL 02 [514]
+  - 🇬🇧 GB 01 [530]
+  - 🇦🇪 AE 01 [533]
+  - 🇩🇪 DE 01 [607]
+  - 🇷🇴 RO 01 [609]
+  - 🇸🇪 SE 01 [723]
+  - 🇸🇪 SE 02 [757]
+  - 🇦🇺 AU 01 [796]
+  - 🇫🇮 FI 01 [800]
+  - 🇩🇪 DE 02 [804]
+  - 🇷🇴 RO 02 [813]
+  - 🇦🇺 AU 02 [823]
+  - 🇷🇺 RU 01 [834]
+  - 🇷🇴 RO 03 [835]
+  - 🇩🇪 DE 03 [992]
+  - 🇧🇷 BR 01 [1007]
+  - 🇮🇳 IN 01 [1042]
+  - 🇫🇷 FR 01 [598]
+  - 🇫🇷 FR 02 [605]
+  - 🇫🇷 FR 03 [626]
+  - 🇩🇪 DE 04 [546]
+  - 🇪🇸 ES 01 [742]
+  - 🇬🇧 GB 02 [913]
+  - 🇨🇭 CH 01 [1090]
+  - 🇦🇪 AE 02 [1199]
+  - CY 01 [1470]
+  - XX 01 [121]
+  - XX 02 [122]
+  - XX 03 [133]
+  - IM 01 [147]
+  - XX 04 [148]
+  - XX 05 [149]
+  - XX 06 [149]
+  - XX 07 [151]
+  - XX 08 [151]
+  - XX 09 [153]
+  - XX 10 [154]
+  - XX 11 [164]
+  - XX 12 [169]
+  - XX 13 [170]
+  - 🇬🇧 GB 03 [172]
+  - XX 14 [173]
+  - XX 15 [176]
+  - XX 16 [188]
+  - XX 17 [237]
+  - 🇩🇪 DE 05 [621]
+  - 🇩🇪 DE 06 [635]
+  - 🇩🇪 DE 07 [688]
+  - 🇫🇮 FI 02 [744]
+  - 🇨🇿 CZ 01 [827]
+  - XX 18 [1246]
+  - 🇷🇴 RO 04 [871]
+  - 🇺🇸 US 22 [113]
+  - 🇺🇸 US 23 [114]
+  - 🇺🇸 US 24 [116]
+  - 🇺🇸 US 25 [117]
+  - 🇺🇸 US 26 [118]
+  - 🇺🇸 US 27 [118]
+  - 🇺🇸 US 28 [118]
+  - 🇺🇸 US 29 [118]
+  - 🇺🇸 US 30 [119]
+  - 🇺🇸 US 31 [119]
+  - 🇺🇸 US 32 [125]
+  - 🇺🇸 US 33 [128]
+  - 🇺🇸 US 34 [136]
+  - 🇺🇸 US 35 [136]
+  - 🇺🇸 US 36 [143]
+  - 🇺🇸 US 37 [147]
+  - 🇺🇸 US 38 [160]
+  - 🇺🇸 US 39 [162]
+  - 🇺🇸 US 40 [181]
+  - 🇺🇸 US 41 [186]
+  - 🇺🇸 US 42 [216]
+  - 🇺🇸 US 43 [223]
+rules:
+- MATCH,Proxy
