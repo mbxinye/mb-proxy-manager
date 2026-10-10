@@ -1,0 +1,1934 @@
+---
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: warning
+proxies:
+- name: 🇺🇸 US 01 [1420]
+  type: hysteria2
+  server: 173.249.210.76
+  port: '8443'
+  password: Q3mAdf68GvbGEGqTAXkWjg
+  skip-cert-verify: true
+- name: 🇺🇸 US 02 [1452]
+  type: trojan
+  server: 162.159.91.211
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.calmlunch.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    headers:
+      Host: www.calmlunch.com
+    path: /assignment
+- name: 🇯🇵 JP 01 [1025]
+  type: hysteria2
+  server: rb.mangshe.xyz
+  port: '2060'
+  password: 5d0a6445-a30d-4522-bb1f-94f1d3ad63be
+  sni: 127.0.0.1
+  skip-cert-verify: true
+- name: 🇯🇵 JP 02 [882]
+  type: vless
+  server: jpga01.xyy123.bid
+  port: '443'
+  udp: true
+  uuid: 05453546-201f-4e8d-97ae-fd70da0e951f
+  flow: xtls-rprx-vision
+  servername: shop.business.amazon.com
+  tls: true
+  reality-opts:
+    public-key: AgTktefiMM58y7f-KFgEtmVti_YJbd0GPSkxNeJ0RH4
+    short-id: cfffc6b65acb2ad3
+  client-fingerprint: chrome
+  skip-cert-verify: true
+- name: 🇸🇬 SG 01 [1391]
+  type: hysteria2
+  server: 43.156.36.253
+  port: '8443'
+  password: WvH8ooM9hom4KOOJHFJz1x5umE0aV4R0
+  sni: tx-hy2
+  skip-cert-verify: true
+- name: 🇸🇬 SG 02 [695]
+  type: trojan
+  server: pet-antelope.rooster465.autos
+  port: '443'
+  password: UX82473651
+  sni: pet-antelope.rooster465.autos
+- name: 🇸🇬 SG 03 [938]
+  type: vless
+  server: sg.fasti.win
+  port: '443'
+  udp: true
+  uuid: a16bd0e2-ff2e-4e4c-a955-0c684255a065
+  flow: xtls-rprx-vision
+  servername: sg.fasti.win
+  tls: true
+  reality-opts:
+    public-key: -YTGWg5DjsLDyaDfr1D83kiUK22LVcrK3yC53lqqigs
+    short-id: feedbacc
+  client-fingerprint: chrome
+  skip-cert-verify: true
+- name: 🇸🇬 SG 04 [491]
+  type: vless
+  server: 172.64.150.28
+  port: '2082'
+  uuid: e5cc16a6-ea42-46b2-82ae-ad2157e1641b
+  network: ws
+  ws-opts:
+    headers:
+      Host: hhlfy.twiladaphne.ndjp.net
+    path: /fp
+- name: 🇸🇬 SG 05 [934]
+  type: vless
+  server: 104.26.4.2
+  port: '443'
+  uuid: d342d11e-d224-4463-b982-532309285094
+  servername: ccc.010304.xyz
+  tls: true
+  network: ws
+  ws-opts:
+    headers:
+      Host: ccc.010304.xyz
+    path: /fp=chrome
+- name: 🇭🇰 HK 01 [711]
+  type: vless
+  server: 34.92.19.135
+  port: '443'
+  udp: true
+  uuid: 90153538-ef08-4942-b8e1-41e7c523e659
+  servername: www.cloudflare.com
+  tls: true
+  reality-opts:
+    public-key: tSBJnEt6E1dy6UgX9gX5wUfvZ2KAXjGWVKsEq886OWM
+    short-id: 56d4e7ae4f86fa39
+  client-fingerprint: chrome
+  skip-cert-verify: true
+- name: 🇭🇰 HK 02 [902]
+  type: vless
+  server: 188.114.97.6
+  port: '443'
+  uuid: e6df2095-a73c-4043-8693-8d5a03686870
+  servername: lucasjow.us.ci
+  tls: true
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    headers:
+      Host: lucasjow.us.ci
+    path: /cart/docs/www/proxyip=108.160.132.132?ed#Telegram---PLANB_NET---PLANB_NET---PLANB_NET---PLANB_NET
+  alpn:
+  - http/1.1
+- name: 🇦🇺 AU 01 [1344]
+  type: hysteria2
+  server: 137.23.2.56
+  port: '20000'
+  password: b42d90fa667942aebc734d60
+  sni: rmgyvpn.rest
+  skip-cert-verify: true
+  obfs: salamander
+  obfs-password: b42d90fa667942aebc734d60
+- name: 🇷🇴 RO 01 [1412]
+  type: hysteria2
+  server: 77.74.123.107
+  port: '8443'
+  password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
+  sni: grape-test-italy.dynuddns.net
+  skip-cert-verify: true
+- name: 🇷🇴 RO 02 [1443]
+  type: hysteria2
+  server: 77.74.123.109
+  port: '8443'
+  password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
+  sni: grape-test-italy.dynuddns.net
+- name: 🇫🇷 FR 01 [1394]
+  type: trojan
+  server: 212.183.88.136
+  port: '443'
+  password: humanity
+  sni: www.calmlunch.com
+  network: ws
+  ws-opts:
+    headers:
+      Host: www.calmlunch.com
+    path: '%2Fassignment'
+- name: 🇳🇱 NL 01 [1434]
+  type: trojan
+  server: 172.66.40.99
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.trusteeforward.com
+  network: ws
+  ws-opts:
+    headers:
+      User-Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/70.0.3538.67 Safari/537.36
+    path: /assignment
+  alpn:
+  - http/1.1
+- name: 🇨🇭 CH 01 [1220]
+  type: vless
+  server: dobro.ali-bard.online
+  port: '443'
+  udp: true
+  uuid: 12e95f93-443c-45f0-9a2a-5b318b9124cf
+  flow: xtls-rprx-vision
+  servername: dobro.ali-bard.online
+  tls: true
+  reality-opts:
+    public-key: SB1uC0OEveYjSiS_Nuw9Ld-uVVXWqi794OGnldthY3I
+  client-fingerprint: firefox
+  skip-cert-verify: true
+- name: 🇩🇪 DE 01 [1284]
+  type: vless
+  server: ge-s-1.pythonmakemigreat.wiki
+  port: '443'
+  udp: true
+  uuid: f8d52ece-fad4-478d-875d-df6eed3befa7
+  flow: xtls-rprx-vision
+  servername: ge-s-1.pythonmakemigreat.wiki
+  tls: true
+  reality-opts:
+    public-key: 5fkwwCKZzMsE6Eb_b3iqluu-1AWIfnYl-p0N3EL9Al8
+    short-id: 2c9a2790ad5900b2
+  client-fingerprint: chrome
+  skip-cert-verify: true
+- name: 🇳🇱 NL 02 [1286]
+  type: vless
+  server: fi-s-1.pythonmakemigreat.wiki
+  port: '443'
+  udp: true
+  uuid: f8d52ece-fad4-478d-875d-df6eed3befa7
+  flow: xtls-rprx-vision
+  servername: fi-s-1.pythonmakemigreat.wiki
+  tls: true
+  reality-opts:
+    public-key: ZqVz1kWNxh_5zQ5PPkoPHoaXQOvppM0ZyIo8uKp2dCg
+    short-id: 78f97d82e16aaad6
+  client-fingerprint: chrome
+  skip-cert-verify: true
+- name: 🇩🇪 DE 02 [1365]
+  type: vless
+  server: defrnode.xyy123.bid
+  port: '443'
+  udp: true
+  uuid: 8af93649-403b-46d8-9966-923d4c58402c
+  flow: xtls-rprx-vision
+  servername: p-y3-www-amazon-com-kalias.amazon.com
+  tls: true
+  reality-opts:
+    public-key: XTarABsaaFbjYNk6lRKnUzGavHzeqMIP7B8dZGNCvkE
+    short-id: 0fa4a0e2493392
+  client-fingerprint: chrome
+  skip-cert-verify: true
+- name: 🇿🇦 ZA 01 [496]
+  type: vless
+  server: platform117.golnamakcert.top
+  port: '80'
+  uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
+  network: ws
+  ws-opts:
+    headers:
+      Host: platform117.halalkhor.info
+    path: /platform117
+- name: 🇿🇦 ZA 02 [500]
+  type: vless
+  server: platform101.golnamakcert.top
+  port: '80'
+  uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
+  network: ws
+  ws-opts:
+    headers:
+      Host: platform101.halalkhor.info
+    path: /platform101
+- name: 🇿🇦 ZA 03 [504]
+  type: vless
+  server: platform109.golnamakcert.top
+  port: '80'
+  uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
+  servername: platform109.halalkhor.info
+  network: ws
+  ws-opts:
+    headers:
+      Host: platform109.halalkhor.info
+    path: /platform109
+- name: 🇨🇱 CL 01 [529]
+  type: vless
+  server: platform118.golnamakcert.top
+  port: '80'
+  uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
+  network: ws
+  ws-opts:
+    headers:
+      Host: platform118.halalkhor.info
+    path: /platform118
+- name: 🇲🇾 MY 01 [551]
+  type: vless
+  server: 45.195.69.230
+  port: '80'
+  uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
+  network: ws
+  ws-opts:
+    headers:
+      Host: platform103.halalkhor.info
+    path: /platform103
+- name: 🇿🇦 ZA 04 [556]
+  type: vless
+  server: platform106.golnamakcert.top
+  port: '80'
+  uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
+  network: ws
+  ws-opts:
+    headers:
+      Host: platform106.halalkhor.info
+    path: /platform106
+- name: 🇲🇾 MY 02 [559]
+  type: vless
+  server: platform115.golnamakcert.top
+  port: '80'
+  uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
+  servername: platform115.halalkhor.info
+  network: ws
+  ws-opts:
+    headers:
+      Host: platform115.halalkhor.info
+    path: /platform115
+- name: 🇮🇹 IT 01 [682]
+  type: vless
+  server: 204.216.216.23
+  port: '10086'
+  uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
+- name: 🇿🇦 ZA 05 [689]
+  type: vless
+  server: platform103.golnamakcert.top
+  port: '80'
+  uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
+  servername: platform103.halalkhor.info
+  network: ws
+  ws-opts:
+    headers:
+      Host: platform103.halalkhor.info
+    path: /platform103
+- name: 🇬🇧 GB 01 [1155]
+  type: vless
+  server: 186.190.211.188
+  port: '443'
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  servername: 186.190.211.188
+  tls: true
+  skip-cert-verify: true
+  alpn:
+  - http/1.1
+- name: 🇩🇪 DE 03 [1414]
+  type: vless
+  server: milo.rubinaz.xyz
+  port: '8080'
+  udp: true
+  uuid: 6bceb548-d9b6-461f-8e37-a5a7fbcdc2c8
+  skip-cert-verify: true
+- name: EE 01 [1482]
+  type: vless
+  server: 94.183.170.135
+  port: '8443'
+  uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
+  servername: estproxy4.lockdwn.com
+  tls: true
+- name: 🇳🇱 NL 03 [1350]
+  type: vmess
+  server: nl-2a972c8052.shamanapp.online
+  port: '33736'
+  udp: true
+  uuid: 1281acca-f21d-475c-bf04-eccbee7f8df2
+  alterId: 0
+  cipher: auto
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /vmess-ws
+- name: 🇺🇸 US 03 [1363]
+  type: hysteria2
+  server: 155.248.209.237
+  port: '33333'
+  password: bce6c821-200d-421f-bf3d-7159e5246ea0
+  sni: hy2.123266.xyz
+  skip-cert-verify: true
+- name: 🇺🇸 US 04 [1381]
+  type: hysteria2
+  server: 142.249.37.90
+  port: '44356'
+  password: dongtaiwang.com
+  sni: hy2.561891.xyz
+- name: 🇺🇸 US 05 [1398]
+  type: hysteria2
+  server: hy2.561891.xyz
+  port: '44356'
+  password: dongtaiwang.com
+  sni: hy2.561891.xyz
+- name: 🇺🇸 US 06 [1399]
+  type: hysteria2
+  server: hy2.123266.xyz
+  port: '33333'
+  password: bce6c821-200d-421f-bf3d-7159e5246ea0
+  sni: hy2.123266.xyz
+  skip-cert-verify: true
+- name: 🇺🇸 US 07 [1400]
+  type: hysteria2
+  server: 155.248.209.237
+  port: '33333'
+  password: bce6c821-200d-421f-bf3d-7159e5246ea0
+  skip-cert-verify: true
+- name: 🇺🇸 US 08 [1410]
+  type: hysteria2
+  server: 155.248.209.237
+  port: '33333'
+  password: bce6c821-200d-421f-bf3d-7159e5246ea0
+  sni: 155.248.209.237
+  skip-cert-verify: true
+- name: 🇺🇸 US 09 [1413]
+  type: hysteria2
+  server: 163.192.14.135
+  port: '50160'
+  password: 099830134df5ac3a04a4b21d39b8c395
+  skip-cert-verify: true
+- name: 🇺🇸 US 10 [1420]
+  type: hysteria2
+  server: 155.248.209.237
+  port: '33333'
+  password: bce6c821-200d-421f-bf3d-7159e5246ea0
+  sni: 155.248.209.2
+  skip-cert-verify: true
+- name: 🇺🇸 US 11 [1425]
+  type: hysteria2
+  server: 163.192.14.135
+  port: '50160'
+  password: 099830134df5ac3a04a4b21d39b8c395
+  sni: speedtest.tinkoff.ru
+  skip-cert-verify: true
+- name: 🇺🇸 US 12 [1426]
+  type: hysteria2
+  server: 163.192.14.135
+  port: '50160'
+  password: 099830134df5ac3a04a4b21d39b8c395
+  sni: vk.com
+  skip-cert-verify: true
+- name: 🇺🇸 US 13 [1438]
+  type: hysteria2
+  server: 163.192.14.135
+  port: '50160'
+  password: 099830134df5ac3a04a4b21d39b8c395
+  sni: whatsapp.com
+  skip-cert-verify: true
+- name: 🇺🇸 US 14 [1461]
+  type: hysteria2
+  server: 163.192.14.135
+  port: '50160'
+  password: 099830134df5ac3a04a4b21d39b8c395
+  sni: t.me
+  skip-cert-verify: true
+- name: 🇺🇸 US 15 [1126]
+  type: trojan
+  server: www.7770031.xyz
+  port: '39493'
+  udp: true
+  password: KiUXpE53Xd
+- name: 🇺🇸 US 16 [1189]
+  type: trojan
+  server: 34.94.125.227
+  port: '443'
+  udp: true
+  password: M7v%w11Se*
+  sni: mxlo.wsone.icu
+- name: 🇺🇸 US 17 [1296]
+  type: trojan
+  server: alert-titmouse.rooster465.autos
+  port: '443'
+  password: UX82473651
+  sni: alert-titmouse.rooster465.autos
+  skip-cert-verify: true
+- name: 🇺🇸 US 18 [1323]
+  type: trojan
+  server: pro-mako.rooster465.autos
+  port: '443'
+  udp: true
+  password: UX82473651
+  skip-cert-verify: true
+- name: 🇺🇸 US 19 [1334]
+  type: trojan
+  server: pro-mako.rooster465.autos
+  port: '443'
+  udp: true
+  password: UX82473651
+  sni: pro-mako.rooster465.autos
+  skip-cert-verify: true
+- name: 🇺🇸 US 20 [1491]
+  type: trojan
+  server: guided-ferret.rooster465.autos
+  port: '443'
+  udp: true
+  password: UX82473651
+  sni: guided-ferret.rooster465.autos
+  skip-cert-verify: true
+- name: 🇺🇸 US 21 [1091]
+  type: vless
+  server: 137.175.82.40
+  port: '30556'
+  udp: true
+  uuid: 949d278e-6d98-4014-84e9-59f1c6c93e0e
+  flow: xtls-rprx-vision
+  servername: www.lovelive-anime.jp
+  tls: true
+  reality-opts:
+    public-key: EcmNQqZxyW4GCEQF-7nH54w3qgBkLzsfqFSgafGjB0E
+    short-id: d082f567
+  client-fingerprint: chrome
+- name: 🇺🇸 US 22 [1144]
+  type: vless
+  server: 137.175.82.40
+  port: '30556'
+  udp: true
+  uuid: 949d278e-6d98-4014-84e9-59f1c6c93e0e
+  flow: xtls-rprx-vision
+  servername: www.lovelive-anime.jp
+  tls: true
+  reality-opts:
+    public-key: EcmNQqZxyW4GCEQF-7nH54w3qgBkLzsfqFSgafGjB0E
+    short-id: d082f567
+  client-fingerprint: chrome
+- name: 🇺🇸 US 23 [1311]
+  type: vless
+  server: 172.245.253.16
+  port: '443'
+  udp: true
+  uuid: b67422ff-101b-433b-8f66-4ab282960b36
+  flow: xtls-rprx-vision
+  servername: www.apple.com
+  tls: true
+  reality-opts:
+    public-key: Vh8dv6ENmfFd4JlPgj9-R1Fbet2m6JyRFukcVvDq5A8
+    short-id: e7dc2c820ba8bbd4
+  client-fingerprint: chrome
+- name: 🇺🇸 US 24 [1313]
+  type: vless
+  server: 172.245.253.16
+  port: '443'
+  udp: true
+  uuid: b67422ff-101b-433b-8f66-4ab282960b36
+  flow: xtls-rprx-vision
+  servername: www.apple.com
+  tls: true
+  reality-opts:
+    public-key: Vh8dv6ENmfFd4JlPgj9-R1Fbet2m6JyRFukcVvDq5A8
+    short-id: e7dc2c820ba8bbd4
+  client-fingerprint: random
+- name: 🇺🇸 US 25 [1335]
+  type: vless
+  server: 137.184.218.169
+  port: '36925'
+  udp: true
+  uuid: c9fd0fb1-8251-4106-b09a-f4b426736f67
+  flow: xtls-rprx-vision
+  servername: www.cloudflare.com
+  tls: true
+  reality-opts:
+    public-key: lJ9INPpO4rdnm2Tek_yg0PGFyUrBB6MoKyvqt_Mfqm0
+    short-id: ''
+  client-fingerprint: chrome
+- name: 🇺🇸 US 26 [1336]
+  type: vless
+  server: 2.24.124.64
+  port: '443'
+  udp: true
+  uuid: 719b9354-45e2-4718-8709-d965b64554db
+  flow: xtls-rprx-vision
+  servername: www.cloudflare.com
+  tls: true
+  reality-opts:
+    public-key: zpXR6Y36C8qUCIVk2p_j8C9KGeBk5xisLw66j3WFOls
+    short-id: 9f1fc5a631ef3126
+  client-fingerprint: random
+- name: 🇺🇸 US 27 [1348]
+  type: vless
+  server: 150.241.101.17
+  port: '8443'
+  udp: true
+  uuid: 47d9b534-8a0a-4bd2-90f1-1d6ade14427e
+  flow: xtls-rprx-vision
+  servername: yandex.net
+  tls: true
+  reality-opts:
+    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
+    short-id: 6ba85179e30d4fc2
+  client-fingerprint: chrome
+- name: 🇺🇸 US 28 [1364]
+  type: vless
+  server: tk1.high-speed-test-56424.me
+  port: '443'
+  udp: true
+  uuid: 37615d66-5467-44a3-bc23-f2c3bef7f761
+  flow: xtls-rprx-vision
+  servername: aws.amazon.com
+  tls: true
+  reality-opts:
+    public-key: p8VhFzvFOBAhWAEAeWmwDxT3xBSRsGYixqi0qnLFnBM
+    short-id: 21270a66
+  client-fingerprint: chrome
+  skip-cert-verify: false
+- name: 🇺🇸 US 29 [1366]
+  type: vless
+  server: 137.184.218.169
+  port: '36925'
+  udp: true
+  uuid: c9fd0fb1-8251-4106-b09a-f4b426736f67
+  flow: xtls-rprx-vision
+  servername: www.cloudflare.com
+  tls: true
+  reality-opts:
+    public-key: lJ9INPpO4rdnm2Tek_yg0PGFyUrBB6MoKyvqt_Mfqm0
+    short-id: ''
+  client-fingerprint: chrome
+- name: 🇺🇸 US 30 [1370]
+  type: vless
+  server: 136.67.16.72
+  port: '443'
+  udp: true
+  uuid: 9d0395c0-016f-453e-b0be-fc66f1ee1d80
+  servername: www.cloudflare.com
+  tls: true
+  reality-opts:
+    public-key: aGm3egxU7SVqVw-oxqXbJ0u4ctldnmTjwaDh4Mao2EE
+    short-id: bd4aa541e5306ba2
+  client-fingerprint: chrome
+- name: 🇺🇸 US 31 [1372]
+  type: vless
+  server: 159.89.87.21
+  port: '28190'
+  udp: true
+  uuid: 14c80e0e-f7ce-4991-94fc-99a1db4a9b1e
+  flow: xtls-rprx-vision
+  servername: aws.amazon.com
+  tls: true
+  reality-opts:
+    public-key: ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 US 32 [1372]
+  type: vless
+  server: 15.204.97.216
+  port: '23576'
+  udp: true
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+  flow: xtls-rprx-vision
+  servername: fuck.rkn
+  tls: true
+  reality-opts:
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: ''
+  client-fingerprint: random
+- name: 🇺🇸 US 33 [1374]
+  type: vless
+  server: 15.204.97.195
+  port: '23576'
+  udp: true
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+  flow: xtls-rprx-vision
+  servername: fuck.rkn
+  tls: true
+  reality-opts:
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: ''
+  client-fingerprint: random
+- name: 🇺🇸 US 34 [1389]
+  type: vless
+  server: ww9.levikogjgfdd.ir
+  port: '36925'
+  udp: true
+  uuid: c9fd0fb1-8251-4106-b09a-f4b426736f67
+  flow: xtls-rprx-vision
+  servername: www.cloudflare.com
+  tls: true
+  reality-opts:
+    public-key: lJ9INPpO4rdnm2Tek_yg0PGFyUrBB6MoKyvqt_Mfqm0
+    short-id: ''
+  client-fingerprint: chrome
+- name: 🇺🇸 US 35 [1398]
+  type: vless
+  server: ww9.levikogjgfdd.ir
+  port: '36925'
+  udp: true
+  uuid: c9fd0fb1-8251-4106-b09a-f4b426736f67
+  flow: xtls-rprx-vision
+  servername: www.cloudflare.com
+  tls: true
+  reality-opts:
+    public-key: lJ9INPpO4rdnm2Tek_yg0PGFyUrBB6MoKyvqt_Mfqm0
+    short-id: ''
+  client-fingerprint: chrome
+- name: 🇺🇸 US 36 [1404]
+  type: vless
+  server: 15.204.97.206
+  port: '23576'
+  udp: true
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+  flow: xtls-rprx-vision
+  servername: fuck.rkn
+  tls: true
+  reality-opts:
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: ''
+  client-fingerprint: random
+- name: 🇺🇸 US 37 [1412]
+  type: vless
+  server: 159.89.87.21
+  port: '28190'
+  udp: true
+  uuid: 14c80e0e-f7ce-4991-94fc-99a1db4a9b1e
+  flow: xtls-rprx-vision
+  servername: aws.amazon.com
+  tls: true
+  reality-opts:
+    public-key: ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno
+    short-id: ''
+  client-fingerprint: chrome
+- name: 🇺🇸 US 38 [1416]
+  type: vless
+  server: 51.81.203.63
+  port: '443'
+  udp: true
+  uuid: cb2dbb6a-a1ea-4023-9ace-6466cee57241
+  flow: xtls-rprx-vision
+  servername: www.icloud.com
+  tls: true
+  reality-opts:
+    public-key: nqwCf6oW49tEtmQ0EzxigZ0uu1pg0E30CS54G40Iti0
+    short-id: 4477382ff6d3d41c
+  client-fingerprint: chrome
+- name: 🇺🇸 US 39 [1425]
+  type: vless
+  server: 51.81.203.63
+  port: '443'
+  udp: true
+  uuid: cb2dbb6a-a1ea-4023-9ace-6466cee57241
+  flow: xtls-rprx-vision
+  servername: www.icloud.com
+  tls: true
+  reality-opts:
+    public-key: nqwCf6oW49tEtmQ0EzxigZ0uu1pg0E30CS54G40Iti0
+    short-id: 4477382ff6d3d41c
+  client-fingerprint: chrome
+- name: 🇺🇸 US 40 [1428]
+  type: vless
+  server: 15.204.97.197
+  port: '23576'
+  udp: true
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+  flow: xtls-rprx-vision
+  servername: fuck.rkn
+  tls: true
+  reality-opts:
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: '01'
+  client-fingerprint: chrome
+- name: 🇺🇸 US 41 [1443]
+  type: vless
+  server: 107.173.237.146
+  port: '8443'
+  udp: true
+  uuid: 1d39f715-2740-4d99-bc3b-197cc48dcee7
+  servername: updates.cdn-apple.com
+  tls: true
+  reality-opts:
+    public-key: D3ojIs3AUKP_tV0E4TEjh90HBVJp24Nq3qMfdxD30kc
+    short-id: df8611c07d
+  client-fingerprint: chrome
+- name: 🇺🇸 US 42 [1444]
+  type: vless
+  server: 31.59.210.24
+  port: '2087'
+  udp: true
+  uuid: 5413edfb-08d6-4fba-b51c-809c04feb127
+  servername: www.yandex.ru
+  tls: true
+  reality-opts:
+    public-key: W2OLbQ682PLJ9yHQ21Q0nPJk9U8RuL5YnlP-U1fdQzI
+    short-id: a11023050f134216
+  client-fingerprint: firefox
+  skip-cert-verify: true
+  network: grpc
+  grpc-opts:
+    grpc-service-name: astracat
+- name: 🇺🇸 US 43 [1460]
+  type: vless
+  server: 136.107.170.196
+  port: '443'
+  udp: true
+  uuid: d6d58f01-b5ce-4d47-bce0-b8a806155852
+  servername: www.cloudflare.com
+  tls: true
+  reality-opts:
+    public-key: L1S0DpFtHPBeyENZUvJPcrFZIct6kcHUPxuzNaGXIFY
+    short-id: 4c69c4b51c580d60
+  client-fingerprint: chrome
+- name: 🇺🇸 US 44 [1480]
+  type: vless
+  server: 107.173.237.146
+  port: '8443'
+  udp: true
+  uuid: 1d39f715-2740-4d99-bc3b-197cc48dcee7
+  servername: updates.cdn-apple.com
+  tls: true
+  reality-opts:
+    public-key: D3ojIs3AUKP_tV0E4TEjh90HBVJp24Nq3qMfdxD30kc
+    short-id: df8611c07d
+  client-fingerprint: chrome
+- name: 🇺🇸 US 45 [1486]
+  type: vless
+  server: 198.251.78.29
+  port: '2053'
+  udp: true
+  uuid: c423cc1b-f88e-421c-9a16-c480d84da20f
+  servername: www.cloudflare.com
+  tls: true
+  reality-opts:
+    public-key: Uk5b-Wh_uxeCc7R8NS9iWE40xc0h9wWC04rSB9yhgAw
+    short-id: b5d625695ec82c7e
+  client-fingerprint: chrome
+- name: 🇺🇸 US 46 [904]
+  type: vless
+  server: 104.243.33.154
+  port: '45299'
+  udp: true
+  uuid: 261f011c-e97a-4d72-b596-e6329b50b47b
+- name: 🇺🇸 US 47 [670]
+  type: vmess
+  server: 67.220.95.3
+  port: '18000'
+  udp: true
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  skip-cert-verify: false
+- name: 🇺🇸 US 48 [719]
+  type: vmess
+  server: gz2.vatilon.cc
+  port: '23201'
+  udp: true
+  uuid: aec8e5e3-bb81-4b22-8802-0b88c54997b3
+  alterId: 0
+  cipher: auto
+  skip-cert-verify: true
+- name: 🇺🇸 US 49 [750]
+  type: vmess
+  server: 84.17.41.2
+  port: '18000'
+  udp: true
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  skip-cert-verify: false
+- name: 🇺🇸 US 50 [757]
+  type: vmess
+  server: 84.17.41.2
+  port: '18000'
+  udp: true
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  skip-cert-verify: false
+- name: 🇺🇸 US 51 [763]
+  type: vmess
+  server: 84.17.41.2
+  port: '18000'
+  udp: true
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  skip-cert-verify: false
+- name: 🇺🇸 US 52 [765]
+  type: vmess
+  server: 169.197.142.22
+  port: '18000'
+  udp: true
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  skip-cert-verify: false
+- name: 🇺🇸 US 53 [767]
+  type: vmess
+  server: 169.197.142.22
+  port: '18000'
+  udp: true
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  skip-cert-verify: false
+- name: 🇺🇸 US 54 [858]
+  type: vmess
+  server: sh.polymarket.party
+  port: '20401'
+  udp: true
+  uuid: aec8e5e3-bb81-4b22-8802-0b88c54997b3
+  alterId: 0
+  cipher: auto
+  skip-cert-verify: true
+- name: 🇺🇸 US 55 [870]
+  type: vmess
+  server: 67.220.85.46
+  port: '18000'
+  udp: true
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: aes-128-gcm
+  skip-cert-verify: false
+- name: 🇺🇸 US 56 [888]
+  type: vmess
+  server: 38.91.107.49
+  port: '18000'
+  udp: true
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  skip-cert-verify: false
+- name: 🇺🇸 US 57 [889]
+  type: vmess
+  server: jp-x2.vatilon.cc
+  port: '10001'
+  udp: true
+  uuid: aec8e5e3-bb81-4b22-8802-0b88c54997b3
+  alterId: 0
+  cipher: auto
+  skip-cert-verify: true
+- name: 🇺🇸 US 58 [912]
+  type: vmess
+  server: us.australiacaregroup.site
+  port: '10001'
+  udp: true
+  uuid: aec8e5e3-bb81-4b22-8802-0b88c54997b3
+  alterId: 0
+  cipher: auto
+  skip-cert-verify: true
+- name: 🇺🇸 US 59 [919]
+  type: vmess
+  server: gz2.vatilon.cc
+  port: '36021'
+  udp: true
+  uuid: aec8e5e3-bb81-4b22-8802-0b88c54997b3
+  alterId: 0
+  cipher: auto
+  skip-cert-verify: true
+- name: 🇺🇸 US 60 [955]
+  type: vmess
+  server: 38.91.107.49
+  port: '18000'
+  udp: true
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  skip-cert-verify: false
+- name: 🇺🇸 US 61 [988]
+  type: vmess
+  server: 38.110.1.246
+  port: '18000'
+  udp: true
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  skip-cert-verify: false
+- name: 🇺🇸 US 62 [1162]
+  type: vmess
+  server: 129.146.77.248
+  port: '39495'
+  udp: true
+  uuid: f836c736-87fc-4fde-aabc-00857ecdff3e
+  alterId: 0
+  cipher: auto
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    headers:
+      Host: 129.146.77.248
+    path: /cctv13.m3u8
+- name: 🇺🇸 US 63 [1175]
+  type: vmess
+  server: 129.146.77.248
+  port: '39495'
+  udp: true
+  uuid: f836c736-87fc-4fde-aabc-00857ecdff3e
+  alterId: 0
+  cipher: auto
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    headers: {}
+    path: /cctv13.m3u8
+- name: 🇺🇸 US 64 [658]
+  type: ss
+  server: 144.48.107.10
+  port: '19142'
+  udp: true
+  cipher: aes-128-gcm
+  password: 645af07ee09c066da207ad26d78322c2
+- name: 🇺🇸 US 65 [689]
+  type: ss
+  server: 5.78.51.123
+  port: '1080'
+  udp: true
+  cipher: chacha20-ietf-poly1305
+  password: 8tmnvX5zYuWGVIDP2jglZw
+- name: 🇺🇸 US 66 [718]
+  type: ss
+  server: 31.57.185.253
+  port: '53396'
+  udp: true
+  cipher: 2022-blake3-aes-256-gcm
+  password: hUCKEbPeJ4HGtnuDnMOx/ue3vqlCIthES0ogLhl8rYc=:wSwRV4rUZjBzsx2gqnsPoSR2oojnnSIYU/v+JxX36YI=
+- name: 🇺🇸 US 67 [774]
+  type: ss
+  server: 66.23.205.83
+  port: '17529'
+  udp: true
+  cipher: aes-128-gcm
+  password: bdd35b65a5b716eb7a91150c06764956
+- name: 🇺🇸 US 68 [777]
+  type: ss
+  server: 156.146.38.167
+  port: '443'
+  udp: true
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇺🇸 US 69 [791]
+  type: ss
+  server: 138.199.42.68
+  port: '8080'
+  udp: true
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
+- name: 🇺🇸 US 70 [798]
+  type: ss
+  server: 156.146.38.169
+  port: '443'
+  udp: true
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇺🇸 US 71 [801]
+  type: ss
+  server: 156.146.38.170
+  port: '443'
+  udp: true
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇺🇸 US 72 [831]
+  type: ss
+  server: 156.146.38.168
+  port: '443'
+  udp: true
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇺🇸 US 73 [857]
+  type: ss
+  server: 107.151.182.197
+  port: '8080'
+  udp: true
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
+- name: 🇺🇸 US 74 [867]
+  type: ss
+  server: 173.244.56.9
+  port: '443'
+  udp: true
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇺🇸 US 75 [869]
+  type: ss
+  server: 107.155.57.51
+  port: '8080'
+  udp: true
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
+- name: 🇺🇸 US 76 [886]
+  type: ss
+  server: 37.19.198.244
+  port: '443'
+  udp: true
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇺🇸 US 77 [902]
+  type: ss
+  server: 173.244.56.6
+  port: '443'
+  udp: true
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇺🇸 US 78 [902]
+  type: ss
+  server: 138.199.43.159
+  port: '8080'
+  udp: true
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
+- name: 🇺🇸 US 79 [912]
+  type: ss
+  server: 64.74.163.67
+  port: '18764'
+  udp: true
+  cipher: aes-128-gcm
+  password: 4efe1af272e7292139b889f6a63ee071
+- name: 🇺🇸 US 80 [914]
+  type: ss
+  server: 107.155.57.11
+  port: '8080'
+  udp: true
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
+- name: 🇺🇸 US 81 [918]
+  type: ss
+  server: 37.19.198.243
+  port: '443'
+  udp: true
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇺🇸 US 82 [922]
+  type: ss
+  server: 23.251.121.242
+  port: '8080'
+  udp: true
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
+- name: 🇺🇸 US 83 [923]
+  type: ss
+  server: 37.19.198.160
+  port: '443'
+  udp: true
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇺🇸 US 84 [934]
+  type: ss
+  server: 37.19.198.236
+  port: '443'
+  udp: true
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇺🇸 US 85 [939]
+  type: ss
+  server: 205.209.126.205
+  port: '19049'
+  udp: true
+  cipher: aes-128-gcm
+  password: e72a793d634d99748cf908d21fd935c3
+- name: 🇺🇸 US 86 [942]
+  type: ss
+  server: 15.204.233.41
+  port: '8882'
+  udp: true
+  cipher: aes-256-gcm
+  password: kDWvXYZoTBcGkC4
+- name: 🇺🇸 US 87 [950]
+  type: ss
+  server: 79.110.53.169
+  port: '8080'
+  udp: true
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
+- name: 🇺🇸 US 88 [976]
+  type: ss
+  server: 15.204.246.132
+  port: '7307'
+  udp: true
+  cipher: aes-256-gcm
+  password: FoOiGlkAA9yPEGP
+- name: 🇺🇸 US 89 [1070]
+  type: ss
+  server: 198.98.53.130
+  port: '443'
+  udp: true
+  cipher: chacha20-ietf-poly1305
+  password: eDfN7SODQceIOmIAbtJJtK
+- name: 🇺🇸 US 90 [1161]
+  type: ss
+  server: 15.204.247.206
+  port: '4444'
+  udp: true
+  cipher: aes-256-gcm
+  password: pKEW8JPByTVTLtM
+- name: 🇺🇸 US 91 [1212]
+  type: http
+  server: 154.26.192.123
+  port: '10988'
+  udp: true
+  username: fQ67Dpe5dU
+  password: gs4BXwT6SW
+- name: 🇺🇸 US 92 [1469]
+  type: http
+  server: 138.199.35.217
+  port: '9002'
+  udp: true
+  username: 'null'
+  password: 'null'
+  tls: true
+  skip-cert-verify: true
+- name: 🇺🇸 US 93 [1488]
+  type: http
+  server: 138.199.35.216
+  port: '9002'
+  udp: true
+  username: 'null'
+  password: 'null'
+  tls: true
+  skip-cert-verify: true
+- name: 🇰🇷 KR 01 [1030]
+  type: hysteria2
+  server: 52.78.119.244
+  port: '443'
+  password: H7mP2xY9kJ4nQ9wR5tF6vB3z
+  sni: 52.78.119.244
+  skip-cert-verify: true
+- name: 🇰🇷 KR 02 [1032]
+  type: hysteria2
+  server: 152.67.200.82
+  port: '50160'
+  password: 3d7634af8cb2c6cb4bac1c0efad8b43d
+  sni: 152-67-200-82.liao.kdns.fr
+  skip-cert-verify: true
+- name: 🇰🇷 KR 03 [1041]
+  type: hysteria2
+  server: 152.67.200.82
+  port: '50160'
+  password: 3d7634af8cb2c6cb4bac1c0efad8b43d
+  sni: whatsapp.com
+  skip-cert-verify: true
+- name: 🇰🇷 KR 04 [1045]
+  type: hysteria2
+  server: 152.67.200.82
+  port: '50160'
+  password: 3d7634af8cb2c6cb4bac1c0efad8b43d
+  sni: vk.com
+  skip-cert-verify: true
+- name: 🇰🇷 KR 05 [1049]
+  type: hysteria2
+  server: 152.67.200.82
+  port: '50160'
+  password: 3d7634af8cb2c6cb4bac1c0efad8b43d
+  sni: t.me
+  skip-cert-verify: true
+- name: 🇰🇷 KR 06 [1052]
+  type: hysteria2
+  server: 152.67.200.82
+  port: '50160'
+  password: 3d7634af8cb2c6cb4bac1c0efad8b43d
+  sni: 152.67.200.82
+  skip-cert-verify: true
+- name: 🇰🇷 KR 07 [1055]
+  type: hysteria2
+  server: 13.124.119.204
+  port: '443'
+  password: H7mP2xY9kJ4nQ9wR5tF6vB3z
+  sni: vpn-kr-002.fastervpn.world
+  skip-cert-verify: true
+- name: 🇰🇷 KR 08 [1060]
+  type: hysteria2
+  server: 3.38.115.120
+  port: '443'
+  password: H7mP2xY9kJ4nQ9wR5tF6vB3z
+  sni: 3.38.115.120
+  skip-cert-verify: true
+- name: 🇰🇷 KR 09 [1061]
+  type: hysteria2
+  server: 3.38.115.120
+  port: '443'
+  password: H7mP2xY9kJ4nQ9wR5tF6vB3z
+  sni: vpn-kr-002.fastervpn.world
+  skip-cert-verify: true
+- name: 🇰🇷 KR 10 [1064]
+  type: hysteria2
+  server: 152.70.237.123
+  port: '2053'
+  password: maintell
+  sni: bing.com
+  skip-cert-verify: true
+- name: 🇰🇷 KR 11 [1065]
+  type: hysteria2
+  server: 3.38.115.120
+  port: '443'
+  password: H7mP2xY9kJ4nQ9wR5tF6vB3z
+  skip-cert-verify: true
+- name: 🇰🇷 KR 12 [1069]
+  type: hysteria2
+  server: 3.38.251.233
+  port: '443'
+  password: H7mP2xY9kJ4nQ9wR5tF6vB3z
+  sni: vpn-kr-002.fastervpn.world
+  skip-cert-verify: true
+- name: 🇰🇷 KR 13 [1070]
+  type: hysteria2
+  server: 13.124.119.204
+  port: '443'
+  password: H7mP2xY9kJ4nQ9wR5tF6vB3z
+  sni: 13.124.119.204
+  skip-cert-verify: true
+- name: 🇰🇷 KR 14 [1071]
+  type: hysteria2
+  server: 43.203.225.50
+  port: '443'
+  password: H7mP2xY9kJ4nQ9wR5tF6vB3z
+  sni: vpn-kr-002.fastervpn.world
+  skip-cert-verify: true
+- name: 🇰🇷 KR 15 [1071]
+  type: hysteria2
+  server: 152-69-231-175.liao.kdns.fr
+  port: '50160'
+  password: 1beb216e3f60aea9555dae60d219a5ca
+  sni: 152-69-231-175.liao.kdns.fr
+- name: 🇰🇷 KR 16 [1076]
+  type: hysteria2
+  server: 43.203.202.217
+  port: '443'
+  password: H7mP2xY9kJ4nQ9wR5tF6vB3z
+  sni: vpn-kr-002.fastervpn.world
+  skip-cert-verify: true
+- name: 🇰🇷 KR 17 [1077]
+  type: hysteria2
+  server: vpn-kr-002.fastervpn.world
+  port: '443'
+  password: H7mP2xY9kJ4nQ9wR5tF6vB3z
+  skip-cert-verify: true
+- name: 🇰🇷 KR 18 [1082]
+  type: hysteria2
+  server: 3.34.95.215
+  port: '443'
+  password: H7mP2xY9kJ4nQ9wR5tF6vB3z
+  sni: vpn-kr-002.fastervpn.world
+  skip-cert-verify: true
+- name: 🇰🇷 KR 19 [1084]
+  type: hysteria2
+  server: 3.34.95.215
+  port: '443'
+  password: H7mP2xY9kJ4nQ9wR5tF6vB3z
+  skip-cert-verify: true
+- name: 🇰🇷 KR 20 [1084]
+  type: hysteria2
+  server: 52.78.158.255
+  port: '443'
+  password: H7mP2xY9kJ4nQ9wR5tF6vB3z
+  sni: 52.78.158.255
+  skip-cert-verify: true
+- name: 🇰🇷 KR 21 [1086]
+  type: hysteria2
+  server: vpn-kr-002.fastervpn.world
+  port: '443'
+  password: H7mP2xY9kJ4nQ9wR5tF6vB3z
+  sni: 127.0.0.1
+  skip-cert-verify: true
+- name: 🇰🇷 KR 22 [1087]
+  type: hysteria2
+  server: 43.203.202.217
+  port: '443'
+  password: H7mP2xY9kJ4nQ9wR5tF6vB3z
+  skip-cert-verify: true
+- name: 🇰🇷 KR 23 [1087]
+  type: hysteria2
+  server: 54.180.231.160
+  port: '443'
+  password: H7mP2xY9kJ4nQ9wR5tF6vB3z
+  sni: 54.180.231.160
+  skip-cert-verify: true
+- name: 🇰🇷 KR 24 [1087]
+  type: hysteria2
+  server: 52.78.100.155
+  port: '443'
+  password: H7mP2xY9kJ4nQ9wR5tF6vB3z
+  skip-cert-verify: true
+- name: 🇰🇷 KR 25 [1089]
+  type: hysteria2
+  server: 132.226.226.189
+  port: '50160'
+  password: 1671a252e2a97dc2bda4e515475931da
+  sni: www.bing.com
+  skip-cert-verify: true
+- name: 🇰🇷 KR 26 [1089]
+  type: hysteria2
+  server: vpn-kr-002.fastervpn.world
+  port: '443'
+  password: H7mP2xY9kJ4nQ9wR5tF6vB3z
+  sni: vpn-kr-002.fastervpn.world
+  skip-cert-verify: true
+- name: 🇰🇷 KR 27 [1091]
+  type: hysteria2
+  server: 52.78.158.255
+  port: '443'
+  password: H7mP2xY9kJ4nQ9wR5tF6vB3z
+  sni: vpn-kr-002.fastervpn.world
+  skip-cert-verify: true
+- name: 🇰🇷 KR 28 [1093]
+  type: hysteria2
+  server: 152.67.200.82
+  port: '50160'
+  password: 3d7634af8cb2c6cb4bac1c0efad8b43d
+  sni: google.com
+  skip-cert-verify: true
+- name: 🇰🇷 KR 29 [1094]
+  type: hysteria2
+  server: 3.38.251.233
+  port: '443'
+  password: H7mP2xY9kJ4nQ9wR5tF6vB3z
+  skip-cert-verify: true
+- name: 🇰🇷 KR 30 [1097]
+  type: hysteria2
+  server: 152-69-231-175.liao.kdns.fr
+  port: '50160'
+  password: 1beb216e3f60aea9555dae60d219a5ca
+  skip-cert-verify: true
+- name: 🇰🇷 KR 31 [1098]
+  type: hysteria2
+  server: 152.67.200.82
+  port: '50160'
+  password: 3d7634af8cb2c6cb4bac1c0efad8b43d
+  skip-cert-verify: true
+- name: 🇰🇷 KR 32 [1102]
+  type: hysteria2
+  server: 132.226.226.189
+  port: '50160'
+  password: 1671a252e2a97dc2bda4e515475931da
+  skip-cert-verify: true
+- name: 🇰🇷 KR 33 [1102]
+  type: hysteria2
+  server: 52.78.119.244
+  port: '443'
+  password: H7mP2xY9kJ4nQ9wR5tF6vB3z
+  sni: vpn-kr-002.fastervpn.world
+  skip-cert-verify: true
+- name: 🇰🇷 KR 34 [1105]
+  type: hysteria2
+  server: 54.180.231.160
+  port: '443'
+  password: H7mP2xY9kJ4nQ9wR5tF6vB3z
+  sni: vpn-kr-002.fastervpn.world
+  skip-cert-verify: true
+- name: 🇰🇷 KR 35 [1106]
+  type: hysteria2
+  server: 43.203.202.217
+  port: '443'
+  password: H7mP2xY9kJ4nQ9wR5tF6vB3z
+  sni: 43.203.202.217
+  skip-cert-verify: true
+- name: 🇰🇷 KR 36 [1108]
+  type: hysteria2
+  server: 3.38.251.233
+  port: '443'
+  password: H7mP2xY9kJ4nQ9wR5tF6vB3z
+  sni: 3.38.251.233
+  skip-cert-verify: true
+- name: 🇰🇷 KR 37 [1113]
+  type: hysteria2
+  server: 132.226.226.189
+  port: '50160'
+  password: 1671a252e2a97dc2bda4e515475931da
+  sni: 132.226.226.189
+  skip-cert-verify: true
+- name: 🇰🇷 KR 38 [1119]
+  type: hysteria2
+  server: 152.70.237.123
+  port: '2053'
+  password: maintell
+  skip-cert-verify: true
+- name: 🇰🇷 KR 39 [1195]
+  type: hysteria2
+  server: 152.67.200.82
+  port: '50160'
+  password: 3d7634af8cb2c6cb4bac1c0efad8b43d
+  sni: css.rbxcdn.com
+  skip-cert-verify: true
+- name: 🇰🇷 KR 40 [1235]
+  type: hysteria2
+  server: 152.67.200.82
+  port: '50160'
+  password: 3d7634af8cb2c6cb4bac1c0efad8b43d
+  sni: www.bing.com
+  skip-cert-verify: true
+- name: 🇰🇷 KR 41 [754]
+  type: trojan
+  server: glorious-lark.rooster465.autos
+  port: '443'
+  udp: true
+  password: UX82473651
+  skip-cert-verify: true
+- name: 🇰🇷 KR 42 [770]
+  type: trojan
+  server: pure-kodiak.rooster465.autos
+  port: '443'
+  udp: true
+  password: UX82473651
+  skip-cert-verify: true
+- name: 🇰🇷 KR 43 [778]
+  type: trojan
+  server: 3.34.192.47
+  port: '443'
+  udp: true
+  password: UX82473651
+  sni: central-jawfish.rooster465.autos
+  skip-cert-verify: true
+- name: 🇰🇷 KR 44 [794]
+  type: trojan
+  server: 52.78.42.192
+  port: '443'
+  udp: true
+  password: UX82473651
+  sni: working-tomcat.rooster465.autos
+- name: 🇰🇷 KR 45 [808]
+  type: trojan
+  server: glorious-lark.rooster465.autos
+  port: '443'
+  password: UX82473651
+  sni: glorious-lark.rooster465.autos
+  skip-cert-verify: true
+- name: 🇰🇷 KR 46 [809]
+  type: trojan
+  server: central-jawfish.rooster465.autos
+  port: '443'
+  password: UX82473651
+  sni: central-jawfish.rooster465.autos
+  skip-cert-verify: true
+- name: 🇰🇷 KR 47 [809]
+  type: trojan
+  server: cunning-grub.rooster465.autos
+  port: '443'
+  udp: true
+  password: UX82473651
+- name: 🇰🇷 KR 48 [857]
+  type: trojan
+  server: central-jawfish.rooster465.autos
+  port: '443'
+  udp: true
+  password: UX82473651
+  skip-cert-verify: true
+- name: 🇰🇷 KR 49 [875]
+  type: trojan
+  server: main-fawn.rooster465.autos
+  port: '443'
+  udp: true
+  password: UX82473651
+  skip-cert-verify: true
+- name: 🇰🇷 KR 50 [888]
+  type: trojan
+  server: cunning-grub.rooster465.autos
+  port: '443'
+  password: UX82473651
+  sni: cunning-grub.rooster465.autos
+  skip-cert-verify: true
+- name: 🇰🇷 KR 51 [902]
+  type: trojan
+  server: inviting-rabbit.rooster465.autos
+  port: '443'
+  password: UX82473651
+  sni: inviting-rabbit.rooster465.autos
+  skip-cert-verify: true
+- name: 🇰🇷 KR 52 [905]
+  type: trojan
+  server: fancy-skink.rooster465.autos
+  port: '443'
+  password: UX82473651
+  sni: fancy-skink.rooster465.autos
+  skip-cert-verify: true
+- name: 🇰🇷 KR 53 [909]
+  type: trojan
+  server: 3.35.168.225
+  port: '443'
+  udp: true
+  password: UX82473651
+  sni: noted-cougar.rooster465.autos
+- name: 🇰🇷 KR 54 [912]
+  type: trojan
+  server: 3.35.207.188
+  port: '443'
+  udp: true
+  password: UX82473651
+  sni: main-fawn.rooster465.autos
+  skip-cert-verify: true
+- name: 🇰🇷 KR 55 [914]
+  type: trojan
+  server: pure-kodiak.rooster465.autos
+  port: '443'
+  password: UX82473651
+  sni: pure-kodiak.rooster465.autos
+  skip-cert-verify: true
+- name: 🇰🇷 KR 56 [916]
+  type: trojan
+  server: 3.34.131.153
+  port: '443'
+  udp: true
+  password: UX82473651
+  sni: pretty-rat.rooster465.autos
+- name: 🇰🇷 KR 57 [917]
+  type: trojan
+  server: 43.201.100.203
+  port: '443'
+  udp: true
+  password: UX82473651
+  sni: optimum-snapper.rooster465.autos
+  skip-cert-verify: true
+- name: 🇰🇷 KR 58 [921]
+  type: trojan
+  server: working-tomcat.rooster465.autos
+  port: '443'
+  password: UX82473651
+  sni: working-tomcat.rooster465.autos
+  skip-cert-verify: true
+- name: 🇰🇷 KR 59 [943]
+  type: trojan
+  server: 3.39.225.215
+  port: '443'
+  udp: true
+  password: UX82473651
+  sni: kind-stork.rooster465.autos
+  skip-cert-verify: true
+- name: 🇰🇷 KR 60 [948]
+  type: trojan
+  server: optimum-snapper.rooster465.autos
+  port: '443'
+  password: UX82473651
+  sni: optimum-snapper.rooster465.autos
+- name: 🇰🇷 KR 61 [959]
+  type: trojan
+  server: main-fawn.rooster465.autos
+  port: '443'
+  password: UX82473651
+  sni: main-fawn.rooster465.autos
+- name: 🇰🇷 KR 62 [964]
+  type: trojan
+  server: pretty-rat.rooster465.autos
+  port: '443'
+  udp: true
+  password: UX82473651
+  sni: pretty-rat.rooster465.autos
+- name: 🇰🇷 KR 63 [982]
+  type: trojan
+  server: delicate-buck.rooster465.autos
+  port: '443'
+  udp: true
+  password: UX82473651
+- name: 🇰🇷 KR 64 [1005]
+  type: trojan
+  server: engaging-toucan.rooster465.autos
+  port: '443'
+  udp: true
+  password: UX82473651
+- name: 🇰🇷 KR 65 [1007]
+  type: trojan
+  server: pretty-rat.rooster465.autos
+  port: '443'
+  udp: true
+  password: UX82473651
+- name: 🇰🇷 KR 66 [1070]
+  type: trojan
+  server: 154.90.62.70
+  port: '56127'
+  udp: true
+  password: p5jTPcffLgi4gaNOJd2KUTb9YEPBBD5B
+  sni: 154.90.62.70
+  skip-cert-verify: true
+- name: 🇰🇷 KR 67 [1075]
+  type: trojan
+  server: 154.90.62.70
+  port: '56127'
+  udp: true
+  password: p5jTPcffLgi4gaNOJd2KUTb9YEPBBD5B
+  skip-cert-verify: true
+- name: 🇰🇷 KR 68 [1091]
+  type: trojan
+  server: engaging-toucan.rooster465.autos
+  port: '443'
+  udp: true
+  password: UX82473651
+  sni: engaging-toucan.rooster465.autos
+- name: 🇰🇷 KR 69 [1096]
+  type: trojan
+  server: noted-cougar.rooster465.autos
+  port: '443'
+  udp: true
+  password: UX82473651
+  skip-cert-verify: true
+- name: 🇰🇷 KR 70 [1097]
+  type: trojan
+  server: kind-stork.rooster465.autos
+  port: '443'
+  password: UX82473651
+  sni: kind-stork.rooster465.autos
+- name: 🇰🇷 KR 71 [1136]
+  type: trojan
+  server: 13.125.69.162
+  port: '443'
+  udp: true
+  password: UX82473651
+  sni: engaging-toucan.rooster465.autos
+- name: 🇰🇷 KR 72 [862]
+  type: vless
+  server: 3.39.4.109
+  port: '13672'
+  udp: true
+  uuid: 814bd064-544d-4255-a070-5705c03f6da9
+  flow: xtls-rprx-vision
+  servername: www.apple.com
+  tls: true
+  reality-opts:
+    public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
+    short-id: 48050fab
+  client-fingerprint: chrome
+- name: 🇰🇷 KR 73 [872]
+  type: vless
+  server: 3.39.4.109
+  port: '18967'
+  udp: true
+  uuid: 814bd064-544d-4255-a070-5705c03f6da9
+  flow: xtls-rprx-vision
+  servername: www.apple.com
+  tls: true
+  reality-opts:
+    public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
+    short-id: 48050fab
+  client-fingerprint: chrome
+- name: 🇰🇷 KR 74 [982]
+  type: vless
+  server: 151.245.106.49
+  port: '2053'
+  udp: true
+  uuid: a2de9567-9646-45a9-a410-7303a43bdb6c
+  servername: www.cloudflare.com
+  tls: true
+  reality-opts:
+    public-key: F6C33iIbfmt1mUsuLTarIC8ygdHKMqsaGvrSQltyxUo
+    short-id: 429499c03d4cc8a0
+  client-fingerprint: firefox
+- name: 🇰🇷 KR 75 [1007]
+  type: vless
+  server: 3.39.4.109
+  port: '18967'
+  udp: true
+  uuid: 814bd064-544d-4255-a070-5705c03f6da9
+  flow: xtls-rprx-vision
+  servername: www.apple.com
+  tls: true
+  reality-opts:
+    public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
+    short-id: 48050fab
+  client-fingerprint: chrome
+- name: 🇰🇷 KR 76 [1008]
+  type: vless
+  server: 64.176.231.183
+  port: '443'
+  udp: true
+  uuid: 583cc910-b57c-4dd0-a4a7-cea51a30b032
+  flow: xtls-rprx-vision
+  servername: www.apple.com
+  tls: true
+  reality-opts:
+    public-key: GR_zPAgxF9PZ70Z9UpSmMlcd2STyoAC0fZTSHkTTCGE
+    short-id: ca193e889d958f81
+  client-fingerprint: chrome
+proxy-groups:
+- name: Proxy
+  type: select
+  proxies:
+  - 🇺🇸 US 01 [1420]
+  - 🇺🇸 US 02 [1452]
+  - 🇯🇵 JP 01 [1025]
+  - 🇯🇵 JP 02 [882]
+  - 🇸🇬 SG 01 [1391]
+  - 🇸🇬 SG 02 [695]
+  - 🇸🇬 SG 03 [938]
+  - 🇸🇬 SG 04 [491]
+  - 🇸🇬 SG 05 [934]
+  - 🇭🇰 HK 01 [711]
+  - 🇭🇰 HK 02 [902]
+  - 🇦🇺 AU 01 [1344]
+  - 🇷🇴 RO 01 [1412]
+  - 🇷🇴 RO 02 [1443]
+  - 🇫🇷 FR 01 [1394]
+  - 🇳🇱 NL 01 [1434]
+  - 🇨🇭 CH 01 [1220]
+  - 🇩🇪 DE 01 [1284]
+  - 🇳🇱 NL 02 [1286]
+  - 🇩🇪 DE 02 [1365]
+  - 🇿🇦 ZA 01 [496]
+  - 🇿🇦 ZA 02 [500]
+  - 🇿🇦 ZA 03 [504]
+  - 🇨🇱 CL 01 [529]
+  - 🇲🇾 MY 01 [551]
+  - 🇿🇦 ZA 04 [556]
+  - 🇲🇾 MY 02 [559]
+  - 🇮🇹 IT 01 [682]
+  - 🇿🇦 ZA 05 [689]
+  - 🇬🇧 GB 01 [1155]
+  - 🇩🇪 DE 03 [1414]
+  - EE 01 [1482]
+  - 🇳🇱 NL 03 [1350]
+  - 🇺🇸 US 03 [1363]
+  - 🇺🇸 US 04 [1381]
+  - 🇺🇸 US 05 [1398]
+  - 🇺🇸 US 06 [1399]
+  - 🇺🇸 US 07 [1400]
+  - 🇺🇸 US 08 [1410]
+  - 🇺🇸 US 09 [1413]
+  - 🇺🇸 US 10 [1420]
+  - 🇺🇸 US 11 [1425]
+  - 🇺🇸 US 12 [1426]
+  - 🇺🇸 US 13 [1438]
+  - 🇺🇸 US 14 [1461]
+  - 🇺🇸 US 15 [1126]
+  - 🇺🇸 US 16 [1189]
+  - 🇺🇸 US 17 [1296]
+  - 🇺🇸 US 18 [1323]
+  - 🇺🇸 US 19 [1334]
+  - 🇺🇸 US 20 [1491]
+  - 🇺🇸 US 21 [1091]
+  - 🇺🇸 US 22 [1144]
+  - 🇺🇸 US 23 [1311]
+  - 🇺🇸 US 24 [1313]
+  - 🇺🇸 US 25 [1335]
+  - 🇺🇸 US 26 [1336]
+  - 🇺🇸 US 27 [1348]
+  - 🇺🇸 US 28 [1364]
+  - 🇺🇸 US 29 [1366]
+  - 🇺🇸 US 30 [1370]
+  - 🇺🇸 US 31 [1372]
+  - 🇺🇸 US 32 [1372]
+  - 🇺🇸 US 33 [1374]
+  - 🇺🇸 US 34 [1389]
+  - 🇺🇸 US 35 [1398]
+  - 🇺🇸 US 36 [1404]
+  - 🇺🇸 US 37 [1412]
+  - 🇺🇸 US 38 [1416]
+  - 🇺🇸 US 39 [1425]
+  - 🇺🇸 US 40 [1428]
+  - 🇺🇸 US 41 [1443]
+  - 🇺🇸 US 42 [1444]
+  - 🇺🇸 US 43 [1460]
+  - 🇺🇸 US 44 [1480]
+  - 🇺🇸 US 45 [1486]
+  - 🇺🇸 US 46 [904]
+  - 🇺🇸 US 47 [670]
+  - 🇺🇸 US 48 [719]
+  - 🇺🇸 US 49 [750]
+  - 🇺🇸 US 50 [757]
+  - 🇺🇸 US 51 [763]
+  - 🇺🇸 US 52 [765]
+  - 🇺🇸 US 53 [767]
+  - 🇺🇸 US 54 [858]
+  - 🇺🇸 US 55 [870]
+  - 🇺🇸 US 56 [888]
+  - 🇺🇸 US 57 [889]
+  - 🇺🇸 US 58 [912]
+  - 🇺🇸 US 59 [919]
+  - 🇺🇸 US 60 [955]
+  - 🇺🇸 US 61 [988]
+  - 🇺🇸 US 62 [1162]
+  - 🇺🇸 US 63 [1175]
+  - 🇺🇸 US 64 [658]
+  - 🇺🇸 US 65 [689]
+  - 🇺🇸 US 66 [718]
+  - 🇺🇸 US 67 [774]
+  - 🇺🇸 US 68 [777]
+  - 🇺🇸 US 69 [791]
+  - 🇺🇸 US 70 [798]
+  - 🇺🇸 US 71 [801]
+  - 🇺🇸 US 72 [831]
+  - 🇺🇸 US 73 [857]
+  - 🇺🇸 US 74 [867]
+  - 🇺🇸 US 75 [869]
+  - 🇺🇸 US 76 [886]
+  - 🇺🇸 US 77 [902]
+  - 🇺🇸 US 78 [902]
+  - 🇺🇸 US 79 [912]
+  - 🇺🇸 US 80 [914]
+  - 🇺🇸 US 81 [918]
+  - 🇺🇸 US 82 [922]
+  - 🇺🇸 US 83 [923]
+  - 🇺🇸 US 84 [934]
+  - 🇺🇸 US 85 [939]
+  - 🇺🇸 US 86 [942]
+  - 🇺🇸 US 87 [950]
+  - 🇺🇸 US 88 [976]
+  - 🇺🇸 US 89 [1070]
+  - 🇺🇸 US 90 [1161]
+  - 🇺🇸 US 91 [1212]
+  - 🇺🇸 US 92 [1469]
+  - 🇺🇸 US 93 [1488]
+  - 🇰🇷 KR 01 [1030]
+  - 🇰🇷 KR 02 [1032]
+  - 🇰🇷 KR 03 [1041]
+  - 🇰🇷 KR 04 [1045]
+  - 🇰🇷 KR 05 [1049]
+  - 🇰🇷 KR 06 [1052]
+  - 🇰🇷 KR 07 [1055]
+  - 🇰🇷 KR 08 [1060]
+  - 🇰🇷 KR 09 [1061]
+  - 🇰🇷 KR 10 [1064]
+  - 🇰🇷 KR 11 [1065]
+  - 🇰🇷 KR 12 [1069]
+  - 🇰🇷 KR 13 [1070]
+  - 🇰🇷 KR 14 [1071]
+  - 🇰🇷 KR 15 [1071]
+  - 🇰🇷 KR 16 [1076]
+  - 🇰🇷 KR 17 [1077]
+  - 🇰🇷 KR 18 [1082]
+  - 🇰🇷 KR 19 [1084]
+  - 🇰🇷 KR 20 [1084]
+  - 🇰🇷 KR 21 [1086]
+  - 🇰🇷 KR 22 [1087]
+  - 🇰🇷 KR 23 [1087]
+  - 🇰🇷 KR 24 [1087]
+  - 🇰🇷 KR 25 [1089]
+  - 🇰🇷 KR 26 [1089]
+  - 🇰🇷 KR 27 [1091]
+  - 🇰🇷 KR 28 [1093]
+  - 🇰🇷 KR 29 [1094]
+  - 🇰🇷 KR 30 [1097]
+  - 🇰🇷 KR 31 [1098]
+  - 🇰🇷 KR 32 [1102]
+  - 🇰🇷 KR 33 [1102]
+  - 🇰🇷 KR 34 [1105]
+  - 🇰🇷 KR 35 [1106]
+  - 🇰🇷 KR 36 [1108]
+  - 🇰🇷 KR 37 [1113]
+  - 🇰🇷 KR 38 [1119]
+  - 🇰🇷 KR 39 [1195]
+  - 🇰🇷 KR 40 [1235]
+  - 🇰🇷 KR 41 [754]
+  - 🇰🇷 KR 42 [770]
+  - 🇰🇷 KR 43 [778]
+  - 🇰🇷 KR 44 [794]
+  - 🇰🇷 KR 45 [808]
+  - 🇰🇷 KR 46 [809]
+  - 🇰🇷 KR 47 [809]
+  - 🇰🇷 KR 48 [857]
+  - 🇰🇷 KR 49 [875]
+  - 🇰🇷 KR 50 [888]
+  - 🇰🇷 KR 51 [902]
+  - 🇰🇷 KR 52 [905]
+  - 🇰🇷 KR 53 [909]
+  - 🇰🇷 KR 54 [912]
+  - 🇰🇷 KR 55 [914]
+  - 🇰🇷 KR 56 [916]
+  - 🇰🇷 KR 57 [917]
+  - 🇰🇷 KR 58 [921]
+  - 🇰🇷 KR 59 [943]
+  - 🇰🇷 KR 60 [948]
+  - 🇰🇷 KR 61 [959]
+  - 🇰🇷 KR 62 [964]
+  - 🇰🇷 KR 63 [982]
+  - 🇰🇷 KR 64 [1005]
+  - 🇰🇷 KR 65 [1007]
+  - 🇰🇷 KR 66 [1070]
+  - 🇰🇷 KR 67 [1075]
+  - 🇰🇷 KR 68 [1091]
+  - 🇰🇷 KR 69 [1096]
+  - 🇰🇷 KR 70 [1097]
+  - 🇰🇷 KR 71 [1136]
+  - 🇰🇷 KR 72 [862]
+  - 🇰🇷 KR 73 [872]
+  - 🇰🇷 KR 74 [982]
+  - 🇰🇷 KR 75 [1007]
+  - 🇰🇷 KR 76 [1008]
+rules:
+- MATCH,Proxy
