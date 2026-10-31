@@ -1,0 +1,1129 @@
+---
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: warning
+proxies:
+- name: 🇺🇸 US 01 [617]
+  type: trojan
+  server: 172.64.150.28
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.calmlunch.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇺🇸 US 02 [649]
+  type: trojan
+  server: 104.19.229.21
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.calmlunch.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.calmlunch.com
+- name: 🇺🇸 US 03 [662]
+  type: trojan
+  server: 165.215.250.14
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.calmlunch.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇺🇸 US 04 [978]
+  type: trojan
+  server: 179.255.127.82
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇺🇸 US 05 [1092]
+  type: trojan
+  server: 78.40.209.33
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇺🇸 US 06 [1124]
+  type: trojan
+  server: 141.98.41.20
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇺🇸 US 07 [1317]
+  type: trojan
+  server: 172.64.150.181
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇺🇸 US 08 [1320]
+  type: trojan
+  server: 104.17.61.37
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇺🇸 US 09 [1322]
+  type: trojan
+  server: 104.19.212.207
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇺🇸 US 10 [1328]
+  type: trojan
+  server: 104.17.116.75
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇺🇸 US 11 [1359]
+  type: trojan
+  server: 104.18.46.127
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇺🇸 US 12 [1360]
+  type: trojan
+  server: 172.67.203.46
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.cordweave.com
+  alpn:
+  - http/1.1
+- name: 🇺🇸 US 13 [1361]
+  type: trojan
+  server: 172.64.52.127
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇺🇸 US 14 [130]
+  type: vless
+  server: 169.128.83.4
+  port: '57259'
+  uuid: a1962f23-f8f8-412d-f2ce-3361e7b72889
+- name: 🇺🇸 US 15 [1263]
+  type: vless
+  server: us007.zestapp778.com
+  port: '18580'
+  uuid: e9a8144e-5237-488a-afb1-9ca3d8d54c80
+  servername: us007.zestapp778.com
+  tls: true
+- name: 🇺🇸 US 16 [871]
+  type: vmess
+  server: www.ubuntuupdates.com
+  port: '443'
+  udp: true
+  uuid: 83b09a64-1eaf-4c4d-89ed-866d4b6b8115
+  alterId: 0
+  cipher: auto
+  tls: true
+  servername: www.ubuntuupdates.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /truth
+    headers:
+      Host: www.ubuntuupdates.com
+- name: 🇺🇸 US 17 [1148]
+  type: vmess
+  server: www.windowssearchtools.com
+  port: '443'
+  udp: true
+  uuid: ba1116e2-8c2f-4e3d-8e50-c954360cf970
+  alterId: 0
+  cipher: auto
+  tls: true
+  servername: www.windowssearchtools.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /truth
+    headers:
+      Host: www.windowssearchtools.com
+- name: 🇯🇵 JP 01 [1382]
+  type: vless
+  server: 152.69.195.67
+  port: '47878'
+  uuid: eb8613e3-8393-4cff-a3ad-6501fd4adc63
+  servername: 152.69.195.67
+- name: 🇸🇬 SG 01 [68]
+  type: vless
+  server: 104.18.0.181
+  port: '8080'
+  uuid: e5cc16a6-ea42-46b2-82ae-ad2157e1641b
+  network: ws
+  ws-opts:
+    headers:
+      Host: hhlfy.twiladaphne.ndjp.net
+    path: /
+- name: 🇸🇬 SG 02 [81]
+  type: vless
+  server: 104.18.45.38
+  port: '443'
+  uuid: d342d11e-d224-4463-b982-532309285094
+  servername: ccc.010304.xyz
+  tls: true
+  network: ws
+  ws-opts:
+    headers:
+      Host: ccc.010304.xyz
+    path: /?TELEGRAM--MARAMBASHI--MARAMBASHI--MARAMBASHI--MARAMBASHI?ed=2560
+- name: 🇸🇬 SG 03 [84]
+  type: vless
+  server: 172.64.152.241
+  port: '443'
+  uuid: d342d11e-d224-4463-b982-532309285094
+  servername: ccc.010304.xyz
+  tls: true
+  network: ws
+  ws-opts:
+    headers:
+      Host: ccc.010304.xyz
+    path: /fp=chrome
+- name: 🇸🇬 SG 04 [857]
+  type: vless
+  server: 43.174.193.1
+  port: '443'
+  uuid: d342d11e-d224-4463-b982-532309285094
+  servername: ccc.010304.xyz
+  tls: true
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    headers:
+      Host: ccc.010304.xyz
+    path: /fp=chrome
+- name: 🇭🇰 HK 01 [685]
+  type: vless
+  server: 38.76.180.144
+  port: '1443'
+  uuid: d98b67d4-024a-4bba-91e2-e6ebece6df11
+  servername: 38.76.180.144
+  network: ws
+  ws-opts:
+    headers:
+      Host: 38.76.180.144
+    path: /vless-ws
+- name: 🇭🇰 HK 02 [1000]
+  type: vless
+  server: 195.58.144.56
+  port: '11907'
+  uuid: 07cb07b9-0c4d-46c1-a15a-b147511b6b07
+  tls: true
+  skip-cert-verify: false
+  alpn:
+  - h2
+  - http/1.1
+- name: 🇩🇪 DE 01 [593]
+  type: hysteria2
+  server: 179.61.138.145
+  port: '36264'
+  password: VPNJEY
+  sni: de2.jey.cc.cd
+  skip-cert-verify: true
+  obfs: salamander
+  obfs-password: Telegram@vpnjey
+- name: 🇦🇪 AE 01 [684]
+  type: hysteria2
+  server: 130.49.161.70
+  port: '443'
+  password: p7Q76LzlnS4hIzr1W3staBOnUe_WwSkR
+  sni: hy2.aspidnet.xyz
+  obfs: salamander
+  obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
+- name: 🇳🇱 NL 01 [1162]
+  type: hysteria2
+  server: 9.247.54.69
+  port: '443'
+  password: 2a0fc918-9c61-451b-a9ad-e8f796e70f52
+  sni: nl1.obxodvpn.us
+  skip-cert-verify: true
+- name: 🇫🇷 FR 01 [646]
+  type: trojan
+  server: 45.130.125.160
+  port: '443'
+  password: humanity
+  sni: www.calmlunch.com
+  network: ws
+  ws-opts:
+    headers:
+      Host: www.calmlunch.com
+    path: '%2Fassignment'
+- name: 🇫🇷 FR 02 [664]
+  type: trojan
+  server: www.calmlunch.com
+  port: '443'
+  password: humanity
+  sni: www.calmlunch.com
+  network: ws
+  ws-opts:
+    headers:
+      Host: www.calmlunch.com
+    path: /assignment
+- name: 🇳🇱 NL 02 [708]
+  type: trojan
+  server: 172.66.40.99
+  port: '443'
+  password: humanity
+  sni: www.trusteeforward.com
+  network: ws
+  ws-opts:
+    headers:
+      Host: www.trusteeforward.com
+    path: '%2Fassignment'
+  alpn:
+  - http/1.1
+- name: 🇫🇷 FR 03 [727]
+  type: trojan
+  server: 185.114.72.31
+  port: '2053'
+  password: humanity
+  sni: www.calmlunch.com
+  network: ws
+  ws-opts:
+    headers:
+      Host: www.calmlunch.com
+    path: /assignment
+- name: 🇫🇷 FR 04 [782]
+  type: trojan
+  server: 45.87.41.18
+  port: '443'
+  password: humanity
+  sni: www.calmlunch.com
+  network: ws
+  ws-opts:
+    headers:
+      Host: www.calmlunch.com
+    path: /assignment
+- name: 🇬🇧 GB 01 [846]
+  type: trojan
+  server: 143.110.175.165
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇨🇦 CA 01 [872]
+  type: trojan
+  server: 104.17.145.145
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇫🇷 FR 05 [895]
+  type: trojan
+  server: 207.180.209.128
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇨🇦 CA 02 [900]
+  type: trojan
+  server: 172.66.0.118
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇨🇦 CA 03 [919]
+  type: trojan
+  server: 104.18.255.167
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇨🇦 CA 04 [930]
+  type: trojan
+  server: 104.18.42.190
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇨🇦 CA 05 [932]
+  type: trojan
+  server: 104.19.154.200
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇳🇱 NL 03 [937]
+  type: trojan
+  server: 161.35.192.122
+  port: '443'
+  password: humanity
+  sni: www.pleadcourt.org
+  network: ws
+  ws-opts:
+    headers:
+      Host: www.pleadcourt.org
+    path: /assignment
+  alpn:
+  - http/1.1
+- name: 🇨🇦 CA 06 [972]
+  type: trojan
+  server: 104.18.151.172
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇨🇦 CA 07 [993]
+  type: trojan
+  server: 104.19.34.37
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: SK 01 [1004]
+  type: trojan
+  server: 185.112.249.201
+  port: '8443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇨🇦 CA 08 [1013]
+  type: trojan
+  server: 104.17.191.193
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇨🇦 CA 09 [1053]
+  type: trojan
+  server: 104.19.48.73
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇨🇦 CA 10 [1054]
+  type: trojan
+  server: 104.16.244.188
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇨🇦 CA 11 [1063]
+  type: trojan
+  server: 104.17.117.104
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇨🇦 CA 12 [1094]
+  type: trojan
+  server: 104.17.145.43
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇨🇦 CA 13 [1128]
+  type: trojan
+  server: 172.67.74.177
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇳🇱 NL 04 [1153]
+  type: trojan
+  server: 202.50.55.76
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇲🇽 MX 01 [1165]
+  type: trojan
+  server: 131.196.254.151
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇩🇪 DE 02 [1182]
+  type: trojan
+  server: 108.165.236.229
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇧🇬 BG 01 [1190]
+  type: trojan
+  server: 185.82.218.224
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇨🇦 CA 14 [1209]
+  type: trojan
+  server: 104.16.240.177
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇨🇦 CA 15 [1248]
+  type: trojan
+  server: 172.67.94.180
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇵🇹 PT 01 [1253]
+  type: trojan
+  server: 195.133.92.71
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇪🇸 ES 01 [1281]
+  type: trojan
+  server: 193.17.183.48
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇨🇦 CA 16 [1289]
+  type: trojan
+  server: 172.64.154.144
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇨🇦 CA 17 [1295]
+  type: trojan
+  server: 172.64.148.230
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: HU 01 [1314]
+  type: trojan
+  server: 38.180.225.247
+  port: '2053'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇷🇺 RU 01 [1423]
+  type: trojan
+  server: 201.24.57.254
+  port: '2053'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇨🇦 CA 18 [1444]
+  type: trojan
+  server: 104.26.3.162
+  port: '443'
+  udp: true
+  password: humanity
+  sni: www.cordweave.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇵🇱 PL 01 [79]
+  type: vless
+  server: 104.21.221.158
+  port: '443'
+  uuid: d342d11e-d224-4463-b982-532309285094
+  servername: ccc.010304.xyz
+  tls: true
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    headers:
+      Host: ccc.010304.xyz
+    path: /fp=chrome
+- name: 🇮🇳 IN 01 [620]
+  type: vless
+  server: 141.11.139.215
+  port: '443'
+  uuid: d342d11e-d224-4463-b982-532309285094
+  servername: ccc.010304.xyz
+  tls: true
+  network: ws
+  ws-opts:
+    headers:
+      Host: ccc.010304.xyz
+    path: /
+- name: 🇬🇧 GB 02 [677]
+  type: vless
+  server: 159.65.51.189
+  port: '443'
+  uuid: d342d11e-d224-4463-b982-532309285094
+  servername: ccc.010304.xyz
+  tls: true
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    headers:
+      Host: ccc.010304.xyz
+    path: /
+- name: 🇸🇪 SE 01 [679]
+  type: vless
+  server: 5.178.109.174
+  port: '14430'
+  uuid: 80de563a-cac8-40ea-8cb0-4cb082dd92f9
+  network: ws
+  ws-opts:
+    headers:
+      Host: 5.178.109.174
+    path: /vless
+- name: 🇨🇦 CA 19 [689]
+  type: vless
+  server: milo.networkforexir.site
+  port: '8080'
+  uuid: 6bceb548-d9b6-461f-8e37-a5a7fbcdc2c8
+  servername: milo.networkforexir.site
+- name: 🇳🇱 NL 05 [695]
+  type: vless
+  server: 198.211.123.90
+  port: '443'
+  uuid: d342d11e-d224-4463-b982-532309285094
+  servername: ccc.010304.xyz
+  tls: true
+  network: ws
+  ws-opts:
+    headers:
+      Host: ccc.010304.xyz
+    path: /fp=unsafe
+- name: BY 01 [822]
+  type: vless
+  server: 178.172.227.124
+  port: '14430'
+  uuid: 1af36694-b548-4b18-89a0-bc076eab4ed7
+  servername: 178.172.227.124
+  network: ws
+  ws-opts:
+    headers:
+      Host: 178.172.227.124
+    path: /vless
+- name: 🇲🇾 MY 01 [899]
+  type: vless
+  server: 188.114.98.0
+  port: '443'
+  uuid: fc7d2cfe-f5ef-40c8-a848-a0bdc11f6349
+  servername: vpn.cintaku.qzz.io
+  tls: true
+  network: ws
+  ws-opts:
+    headers:
+      Host: vpn.cintaku.qzz.io
+    path: /vlessws
+  alpn:
+  - http/1.1
+- name: 🇷🇺 RU 02 [914]
+  type: vless
+  server: 201.24.121.243
+  port: '443'
+  uuid: 32b5ca9b-3f81-4031-965d-e8b074216e8d
+  servername: kk-ru24a1.testkknegr.online
+  tls: true
+  skip-cert-verify: false
+  network: grpc
+  grpc-opts:
+    grpc-service-name: vlgrpc
+  alpn:
+  - h2
+- name: 🇮🇳 IN 02 [933]
+  type: vless
+  server: 13.140.56.100
+  port: '14430'
+  uuid: 68512eac-cd53-4de3-8d1e-08f6e04af1a9
+  servername: 13.140.56.100
+  network: ws
+  ws-opts:
+    headers:
+      Host: 13.140.56.100
+    path: /vless
+- name: 🇨🇦 CA 20 [1004]
+  type: vless
+  server: 172.64.91.69
+  port: '443'
+  udp: true
+  uuid: f27b6f65-6e59-4f89-b929-afa397ca587f
+  servername: n.bitpulse.me
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /019bcbad-3813-7cce-8786-3ac0e418f128?ed=2560
+    headers:
+      Host: n.bitpulse.me
+- name: 🇻🇳 VN 01 [1028]
+  type: vless
+  server: 150.95.109.109
+  port: '2086'
+  uuid: b83faafc-cbb7-4655-99d4-2c4c39a49d1b
+- name: 🇹🇷 TR 01 [1038]
+  type: vless
+  server: 177.3.208.65
+  port: '443'
+  uuid: 4f34bc04-479c-49ba-91a8-6bb9ed15031c
+  servername: tgmansion.site
+  tls: true
+  network: ws
+  ws-opts:
+    path: /vless-tr
+- name: 🇷🇺 RU 03 [1088]
+  type: vless
+  server: 194.87.143.165
+  port: '8443'
+  udp: true
+  uuid: f9613819-d2fe-4b3a-a2e6-40c184c6854c
+  servername: wsru1.wba-pn.ru
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 194.87.143.165
+- name: 🇩🇪 DE 03 [1233]
+  type: vless
+  server: 104.18.42.98
+  port: '443'
+  udp: true
+  uuid: 4e4f1f70-5e56-4a76-bb9d-db087f4690c4
+  servername: jp3.yohototo.top
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /tyxyws
+    headers:
+      Host: jp3.yohototo.top
+- name: 🇧🇬 BG 02 [1246]
+  type: vless
+  server: 155.103.71.142
+  port: '443'
+  uuid: d342d11e-d224-4463-b982-532309285094
+  servername: ccc.010304.xyz
+  tls: true
+  network: ws
+  ws-opts:
+    headers:
+      Host: ccc.010304.xyz
+    path: /fp=chrome
+- name: BY 02 [1426]
+  type: vless
+  server: 95.128.71.79
+  port: '14430'
+  uuid: 8cef7621-c6f0-486e-b51d-59c30c5b0b25
+  network: ws
+  ws-opts:
+    headers:
+      Host: 95.128.71.79
+    path: /vless
+- name: 🇬🇧 GB 03 [1393]
+  type: ss
+  server: 94.156.250.148
+  port: '7001'
+  cipher: aes-256-gcm
+  password: RexnBgU7EV5ADxG
+- name: 🇺🇸 US 18 [54]
+  type: hysteria2
+  server: 198.46.146.118
+  port: '36720'
+  password: 4fUg3KH31LpMhko6o0Ka9Q
+  sni: bing.com
+  skip-cert-verify: true
+- name: 🇺🇸 US 19 [63]
+  type: hysteria2
+  server: 192.236.226.182
+  port: '2053'
+  password: 46647da9-d4b4-407f-bea6-ad0b1abc561f
+  sni: 192.236.226.182
+  skip-cert-verify: true
+- name: 🇺🇸 US 20 [84]
+  type: hysteria2
+  server: 155.248.209.237
+  port: '33333'
+  password: bce6c821-200d-421f-bf3d-7159e5246ea0
+  sni: hy2.123266.xyz
+  skip-cert-verify: true
+- name: 🇺🇸 US 21 [84]
+  type: hysteria2
+  server: 155.248.209.237
+  port: '33333'
+  password: bce6c821-200d-421f-bf3d-7159e5246ea0
+  skip-cert-verify: true
+- name: 🇺🇸 US 22 [85]
+  type: hysteria2
+  server: hy2.123266.xyz
+  port: '33333'
+  password: bce6c821-200d-421f-bf3d-7159e5246ea0
+  skip-cert-verify: true
+- name: 🇺🇸 US 23 [86]
+  type: hysteria2
+  server: 163.192.14.135
+  port: '50160'
+  password: 099830134df5ac3a04a4b21d39b8c395
+  sni: www.bing.com
+  skip-cert-verify: true
+- name: 🇺🇸 US 24 [86]
+  type: hysteria2
+  server: 155.248.209.237
+  port: '33333'
+  password: bce6c821-200d-421f-bf3d-7159e5246ea0
+  sni: 155.248.209.2
+  skip-cert-verify: true
+- name: 🇺🇸 US 25 [86]
+  type: hysteria2
+  server: 155.248.209.237
+  port: '33333'
+  password: bce6c821-200d-421f-bf3d-7159e5246ea0
+  sni: 155.248.209.237
+  skip-cert-verify: true
+- name: 🇺🇸 US 26 [88]
+  type: hysteria2
+  server: 163.192.14.135
+  port: '50160'
+  password: 099830134df5ac3a04a4b21d39b8c395
+  sni: 'off'
+  skip-cert-verify: true
+- name: 🇺🇸 US 27 [88]
+  type: hysteria2
+  server: 155.248.209.237
+  port: '33333'
+  password: bce6c821-200d-421f-bf3d-7159e5246ea0
+  sni: 'off'
+  skip-cert-verify: true
+- name: 🇺🇸 US 28 [88]
+  type: hysteria2
+  server: 163.192.14.135
+  port: '50160'
+  password: 099830134df5ac3a04a4b21d39b8c395
+  sni: 163.192.14.135
+  skip-cert-verify: true
+- name: 🇺🇸 US 29 [88]
+  type: hysteria2
+  server: 163.192.14.135
+  port: '50160'
+  password: 099830134df5ac3a04a4b21d39b8c395
+  sni: whatsapp.com
+  skip-cert-verify: true
+- name: 🇺🇸 US 30 [89]
+  type: hysteria2
+  server: 163.192.14.135
+  port: '50160'
+  password: 099830134df5ac3a04a4b21d39b8c395
+  sni: vk.com#🍁97@oneclickvpnkeysvless://e13cf851-b4fd-413b-8d49-146e6eb8e5d4@166.88.35.245:80?encryption=none
+  skip-cert-verify: true
+- name: 🇺🇸 US 31 [90]
+  type: hysteria2
+  server: 163.192.14.135
+  port: '50160'
+  password: 099830134df5ac3a04a4b21d39b8c395
+  sni: google.com
+  skip-cert-verify: true
+- name: 🇺🇸 US 32 [91]
+  type: hysteria2
+  server: 163.192.14.135
+  port: '50160'
+  password: 099830134df5ac3a04a4b21d39b8c395
+  sni: css.rbxcdn.com
+  skip-cert-verify: true
+- name: 🇺🇸 US 33 [91]
+  type: hysteria2
+  server: 163.192.14.135
+  port: '50160'
+  password: 099830134df5ac3a04a4b21d39b8c395
+  sni: t.me
+  skip-cert-verify: true
+- name: 🇺🇸 US 34 [99]
+  type: hysteria2
+  server: 163.192.14.135
+  port: '50160'
+  password: 099830134df5ac3a04a4b21d39b8c395
+  skip-cert-verify: true
+- name: 🇺🇸 US 35 [104]
+  type: hysteria2
+  server: 163.192.14.135
+  port: '50160'
+  password: 099830134df5ac3a04a4b21d39b8c395
+  sni: speedtest.tinkoff.ru
+  skip-cert-verify: true
+- name: 🇺🇸 US 36 [115]
+  type: hysteria2
+  server: hy2.123266.xyz
+  port: '33333'
+  password: bce6c821-200d-421f-bf3d-7159e5246ea0
+  sni: hy2.123266.xyz
+  skip-cert-verify: true
+- name: 🇺🇸 US 37 [207]
+  type: hysteria2
+  server: 129.213.91.185
+  port: '35013'
+  password: 4291c983-c520-46ac-82cc-48f14bef573f
+  skip-cert-verify: true
+proxy-groups:
+- name: Proxy
+  type: select
+  proxies:
+  - 🇺🇸 US 01 [617]
+  - 🇺🇸 US 02 [649]
+  - 🇺🇸 US 03 [662]
+  - 🇺🇸 US 04 [978]
+  - 🇺🇸 US 05 [1092]
+  - 🇺🇸 US 06 [1124]
+  - 🇺🇸 US 07 [1317]
+  - 🇺🇸 US 08 [1320]
+  - 🇺🇸 US 09 [1322]
+  - 🇺🇸 US 10 [1328]
+  - 🇺🇸 US 11 [1359]
+  - 🇺🇸 US 12 [1360]
+  - 🇺🇸 US 13 [1361]
+  - 🇺🇸 US 14 [130]
+  - 🇺🇸 US 15 [1263]
+  - 🇺🇸 US 16 [871]
+  - 🇺🇸 US 17 [1148]
+  - 🇯🇵 JP 01 [1382]
+  - 🇸🇬 SG 01 [68]
+  - 🇸🇬 SG 02 [81]
+  - 🇸🇬 SG 03 [84]
+  - 🇸🇬 SG 04 [857]
+  - 🇭🇰 HK 01 [685]
+  - 🇭🇰 HK 02 [1000]
+  - 🇩🇪 DE 01 [593]
+  - 🇦🇪 AE 01 [684]
+  - 🇳🇱 NL 01 [1162]
+  - 🇫🇷 FR 01 [646]
+  - 🇫🇷 FR 02 [664]
+  - 🇳🇱 NL 02 [708]
+  - 🇫🇷 FR 03 [727]
+  - 🇫🇷 FR 04 [782]
+  - 🇬🇧 GB 01 [846]
+  - 🇨🇦 CA 01 [872]
+  - 🇫🇷 FR 05 [895]
+  - 🇨🇦 CA 02 [900]
+  - 🇨🇦 CA 03 [919]
+  - 🇨🇦 CA 04 [930]
+  - 🇨🇦 CA 05 [932]
+  - 🇳🇱 NL 03 [937]
+  - 🇨🇦 CA 06 [972]
+  - 🇨🇦 CA 07 [993]
+  - SK 01 [1004]
+  - 🇨🇦 CA 08 [1013]
+  - 🇨🇦 CA 09 [1053]
+  - 🇨🇦 CA 10 [1054]
+  - 🇨🇦 CA 11 [1063]
+  - 🇨🇦 CA 12 [1094]
+  - 🇨🇦 CA 13 [1128]
+  - 🇳🇱 NL 04 [1153]
+  - 🇲🇽 MX 01 [1165]
+  - 🇩🇪 DE 02 [1182]
+  - 🇧🇬 BG 01 [1190]
+  - 🇨🇦 CA 14 [1209]
+  - 🇨🇦 CA 15 [1248]
+  - 🇵🇹 PT 01 [1253]
+  - 🇪🇸 ES 01 [1281]
+  - 🇨🇦 CA 16 [1289]
+  - 🇨🇦 CA 17 [1295]
+  - HU 01 [1314]
+  - 🇷🇺 RU 01 [1423]
+  - 🇨🇦 CA 18 [1444]
+  - 🇵🇱 PL 01 [79]
+  - 🇮🇳 IN 01 [620]
+  - 🇬🇧 GB 02 [677]
+  - 🇸🇪 SE 01 [679]
+  - 🇨🇦 CA 19 [689]
+  - 🇳🇱 NL 05 [695]
+  - BY 01 [822]
+  - 🇲🇾 MY 01 [899]
+  - 🇷🇺 RU 02 [914]
+  - 🇮🇳 IN 02 [933]
+  - 🇨🇦 CA 20 [1004]
+  - 🇻🇳 VN 01 [1028]
+  - 🇹🇷 TR 01 [1038]
+  - 🇷🇺 RU 03 [1088]
+  - 🇩🇪 DE 03 [1233]
+  - 🇧🇬 BG 02 [1246]
+  - BY 02 [1426]
+  - 🇬🇧 GB 03 [1393]
+  - 🇺🇸 US 18 [54]
+  - 🇺🇸 US 19 [63]
+  - 🇺🇸 US 20 [84]
+  - 🇺🇸 US 21 [84]
+  - 🇺🇸 US 22 [85]
+  - 🇺🇸 US 23 [86]
+  - 🇺🇸 US 24 [86]
+  - 🇺🇸 US 25 [86]
+  - 🇺🇸 US 26 [88]
+  - 🇺🇸 US 27 [88]
+  - 🇺🇸 US 28 [88]
+  - 🇺🇸 US 29 [88]
+  - 🇺🇸 US 30 [89]
+  - 🇺🇸 US 31 [90]
+  - 🇺🇸 US 32 [91]
+  - 🇺🇸 US 33 [91]
+  - 🇺🇸 US 34 [99]
+  - 🇺🇸 US 35 [104]
+  - 🇺🇸 US 36 [115]
+  - 🇺🇸 US 37 [207]
+rules:
+- MATCH,Proxy
