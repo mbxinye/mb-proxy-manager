@@ -1,0 +1,880 @@
+---
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: warning
+proxies:
+- name: 🇺🇸 US 01 [121]
+  type: trojan
+  server: 216.152.155.176
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: blog.nextjobopportunityandclaimyouridealrole.com
+- name: 🇺🇸 US 02 [134]
+  type: trojan
+  server: 216.152.155.50
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: cdn.nextjobopportunityandclaimyouridealrole.com
+- name: 🇺🇸 US 03 [134]
+  type: trojan
+  server: 170.101.101.211
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: api.explorecreativejobsandenhanceyourcareerportfolio.com
+- name: 🇺🇸 US 04 [143]
+  type: trojan
+  server: 170.101.101.67
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: courses.explorecreativejobsandenhanceyourcareerportfolio.com
+- name: 🇺🇸 US 05 [165]
+  type: trojan
+  server: 216.152.155.158
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: resources.nextjobopportunityandclaimyouridealrole.com
+- name: 🇺🇸 US 06 [169]
+  type: trojan
+  server: 66.163.122.7
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: www.searchnationwidecareerchangehelperandguidancetoday.com
+- name: 🇺🇸 US 07 [178]
+  type: trojan
+  server: 170.101.101.131
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: blog.explorecreativejobsandenhanceyourcareerportfolio.com
+- name: 🇺🇸 US 08 [178]
+  type: trojan
+  server: 170.101.101.53
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: www.explorecreativejobsandenhanceyourcareerportfolio.com
+- name: 🇺🇸 US 09 [179]
+  type: trojan
+  server: 170.101.101.19
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: learn.explorecreativejobsandenhanceyourcareerportfolio.com
+- name: 🇺🇸 US 10 [182]
+  type: trojan
+  server: 170.101.101.237
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: cdn.explorecreativejobsandenhanceyourcareerportfolio.com
+- name: 🇺🇸 US 11 [189]
+  type: trojan
+  server: 170.101.101.112
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: resources.explorecreativejobsandenhanceyourcareerportfolio.com
+- name: 🇺🇸 US 12 [190]
+  type: trojan
+  server: 66.163.122.30
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: resources.searchnationwidecareerchangehelperandguidancetoday.com
+- name: 🇺🇸 US 13 [197]
+  type: trojan
+  server: 66.163.122.46
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: searchnationwidecareerchangehelperandguidancetoday.com
+- name: 🇺🇸 US 14 [206]
+  type: trojan
+  server: 66.163.122.25
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: cdn.searchnationwidecareerchangehelperandguidancetoday.com
+- name: 🇺🇸 US 15 [206]
+  type: trojan
+  server: 216.152.156.159
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: resources.healthcarejobshubenhancemedicalprofessionalskillstoday.com
+- name: 🇺🇸 US 16 [212]
+  type: trojan
+  server: 66.163.122.26
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: blog.searchnationwidecareerchangehelperandguidancetoday.com
+- name: 🇺🇸 US 17 [214]
+  type: trojan
+  server: 66.163.112.147
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: courses.unlockyourfuturefindyourperfectcareer.com
+- name: 🇺🇸 US 18 [215]
+  type: trojan
+  server: 216.106.186.33
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: resources.findlocaljobnetworkandbuildcommunityconnections.com
+- name: 🇺🇸 US 19 [218]
+  type: trojan
+  server: 216.106.186.32
+  port: '443'
+  udp: true
+  password: dba20dcb635e430fa4d3bfc303a149d2
+  sni: blog.findlocaljobnetworkandbuildcommunityconnections.com
+- name: 🇺🇸 US 20 [220]
+  type: trojan
+  server: 216.106.186.155
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: api.findlocaljobnetworkandbuildcommunityconnections.com
+- name: 🇺🇸 US 21 [220]
+  type: trojan
+  server: 216.106.186.46
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: cdn.findlocaljobnetworkandbuildcommunityconnections.com
+- name: 🇺🇸 US 22 [223]
+  type: trojan
+  server: www.findlocaljobnetworkandbuildcommunityconnections.com
+  port: '443'
+  udp: true
+  password: 242a3d8eee5e4ed1a6bfa4141d549a25
+- name: 🇺🇸 US 23 [223]
+  type: trojan
+  server: 216.152.156.65
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: learn.healthcarejobshubenhancemedicalprofessionalskillstoday.com
+- name: 🇺🇸 US 24 [224]
+  type: trojan
+  server: 216.106.186.66
+  port: '443'
+  udp: true
+  password: 242a3d8eee5e4ed1a6bfa4141d549a25
+  sni: www.findlocaljobnetworkandbuildcommunityconnections.com
+- name: 🇺🇸 US 25 [224]
+  type: trojan
+  server: 216.152.156.81
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: www.healthcarejobshubenhancemedicalprofessionalskillstoday.com
+- name: 🇺🇸 US 26 [225]
+  type: trojan
+  server: 167.88.61.20
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: api.browseseniorrolesandenhanceyourcareertoday.com
+- name: 🇺🇸 US 27 [225]
+  type: trojan
+  server: 167.88.61.52
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: courses.browseseniorrolesandenhanceyourcareertoday.com
+- name: 🇺🇸 US 28 [226]
+  type: trojan
+  server: 167.88.61.175
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: blog.browseseniorrolesandenhanceyourcareertoday.com
+- name: 🇺🇸 US 29 [233]
+  type: trojan
+  server: resources.findlocaljobnetworkandbuildcommunityconnections.com
+  port: '443'
+  udp: true
+  password: f0eb8c92ce8946aaba856569cff1a16b
+  sni: resources.findlocaljobnetworkandbuildcommunityconnections.com
+- name: 🇺🇸 US 30 [235]
+  type: trojan
+  server: 216.152.156.49
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: cdn.healthcarejobshubenhancemedicalprofessionalskillstoday.com
+- name: 🇺🇸 US 31 [236]
+  type: trojan
+  server: 216.152.156.212
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: courses.healthcarejobshubenhancemedicalprofessionalskillstoday.com
+- name: 🇺🇸 US 32 [241]
+  type: trojan
+  server: 66.163.114.166
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: blog.findconnectwithemployersandbuildprofessionalnetwork.com
+- name: 🇺🇸 US 33 [249]
+  type: trojan
+  server: 66.163.112.142
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: cdn.unlockyourfuturefindyourperfectcareer.com
+- name: 🇺🇸 US 34 [268]
+  type: trojan
+  server: blog.findlocaljobnetworkandbuildcommunityconnections.com
+  port: '443'
+  udp: true
+  password: dba20dcb635e430fa4d3bfc303a149d2
+  sni: blog.findlocaljobnetworkandbuildcommunityconnections.com
+- name: 🇺🇸 US 35 [270]
+  type: trojan
+  server: 216.106.186.82
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: courses.findlocaljobnetworkandbuildcommunityconnections.com
+- name: 🇺🇸 US 36 [295]
+  type: trojan
+  server: 169.197.140.171
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: cdn.discoverfreshgraduatejobsstartyourprofessionaljourney.com
+- name: 🇺🇸 US 37 [300]
+  type: trojan
+  server: 169.197.140.214
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: courses.discoverfreshgraduatejobsstartyourprofessionaljourney.com
+- name: 🇺🇸 US 38 [301]
+  type: trojan
+  server: 169.197.140.208
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: blog.discoverfreshgraduatejobsstartyourprofessionaljourney.com
+- name: 🇺🇸 US 39 [303]
+  type: trojan
+  server: 169.197.140.245
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: www.discoverfreshgraduatejobsstartyourprofessionaljourney.com
+- name: 🇺🇸 US 40 [313]
+  type: trojan
+  server: 169.197.140.218
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: learn.discoverfreshgraduatejobsstartyourprofessionaljourney.com
+- name: 🇺🇸 US 41 [315]
+  type: trojan
+  server: 169.197.140.169
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: api.discoverfreshgraduatejobsstartyourprofessionaljourney.com
+- name: 🇺🇸 US 42 [1120]
+  type: trojan
+  server: 216.152.155.59
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: api.nextjobopportunityandclaimyouridealrole.com
+- name: 🇺🇸 US 43 [1138]
+  type: trojan
+  server: 216.152.155.23
+  port: '443'
+  udp: true
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: courses.nextjobopportunityandclaimyouridealrole.com
+- name: 🇺🇸 US 44 [230]
+  type: vless
+  server: 15.204.97.197
+  port: '23576'
+  udp: true
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+  flow: xtls-rprx-vision
+  servername: fuck.rkn
+  tls: true
+  reality-opts:
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: '01'
+  client-fingerprint: chrome
+  skip-cert-verify: false
+- name: 🇺🇸 US 45 [251]
+  type: vless
+  server: 15.204.97.206
+  port: '23576'
+  udp: true
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+  flow: xtls-rprx-vision
+  servername: fuck.rkn
+  tls: true
+  reality-opts:
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: '01'
+  client-fingerprint: chrome
+  skip-cert-verify: false
+- name: 🇺🇸 US 46 [280]
+  type: vless
+  server: 15.204.97.214
+  port: '23576'
+  udp: true
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+  flow: xtls-rprx-vision
+  servername: fuck.rkn
+  tls: true
+  reality-opts:
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: '01'
+  client-fingerprint: chrome
+  skip-cert-verify: false
+- name: 🇺🇸 US 47 [327]
+  type: vless
+  server: ww13.levikogjgfdd.ir
+  port: '23576'
+  udp: true
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+  flow: xtls-rprx-vision
+  servername: fuck.rkn
+  tls: true
+  reality-opts:
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: '01'
+  client-fingerprint: chrome
+  skip-cert-verify: false
+- name: 🇺🇸 US 48 [506]
+  type: vless
+  server: edge.bookmai.com
+  port: '443'
+  udp: true
+  uuid: b9bfa54d-bc44-4592-a6d6-89a9665d286f
+  flow: xtls-rprx-vision
+  servername: mother-earth.fyi
+  tls: true
+  reality-opts:
+    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
+  client-fingerprint: chrome
+  skip-cert-verify: false
+- name: 🇺🇸 US 49 [285]
+  type: vless
+  server: kuruish.org
+  port: '443'
+  udp: true
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  servername: kuruish.org
+  tls: true
+  skip-cert-verify: false
+- name: 🇺🇸 US 50 [1221]
+  type: vless
+  server: 45.138.100.248
+  port: '14430'
+  udp: true
+  uuid: ae908ff5-f749-402c-af25-e6e9aef4d6bb
+  servername: 45.138.100.248
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /vless
+- name: 🇺🇸 US 51 [141]
+  type: vmess
+  server: 67.220.85.46
+  port: '18000'
+  udp: true
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  skip-cert-verify: false
+- name: 🇺🇸 US 52 [165]
+  type: vmess
+  server: 84.17.41.2
+  port: '18000'
+  udp: true
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  skip-cert-verify: false
+- name: 🇺🇸 US 53 [173]
+  type: vmess
+  server: 129.146.143.80
+  port: '48111'
+  udp: true
+  uuid: d4603cc2-e0ee-4651-83f5-1db5b7168177
+  alterId: 0
+  cipher: auto
+  skip-cert-verify: false
+- name: 🇺🇸 US 54 [174]
+  type: vmess
+  server: 169.197.142.22
+  port: '18000'
+  udp: true
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  skip-cert-verify: false
+- name: 🇺🇸 US 55 [225]
+  type: vmess
+  server: 129.146.77.248
+  port: '39495'
+  udp: true
+  uuid: f836c736-87fc-4fde-aabc-00857ecdff3e
+  alterId: 0
+  cipher: auto
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /cctv13.m3u8
+    headers:
+      Host: 129.146.77.248
+- name: 🇺🇸 US 56 [329]
+  type: vmess
+  server: 38.110.1.246
+  port: '18000'
+  udp: true
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  skip-cert-verify: false
+- name: 🇺🇸 US 57 [350]
+  type: vmess
+  server: 38.91.107.49
+  port: '18000'
+  udp: true
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  skip-cert-verify: false
+- name: 🇺🇸 US 58 [538]
+  type: vmess
+  server: 38.11.69.48
+  port: '30004'
+  udp: true
+  uuid: 418048af-a293-4b99-9b0c-98ca3580dd24
+  alterId: 64
+  cipher: auto
+  tls: true
+  servername: www.83761815.xyz
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /path/1698843555400
+    headers:
+      Host: www.83761815.xyz
+- name: 🇺🇸 US 59 [52]
+  type: ss
+  server: 167.88.62.203
+  port: '19999'
+  udp: true
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇺🇸 US 60 [53]
+  type: ss
+  server: 167.88.62.56
+  port: '19999'
+  udp: true
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇺🇸 US 61 [54]
+  type: ss
+  server: 67.220.73.178
+  port: '19999'
+  udp: true
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇺🇸 US 62 [59]
+  type: ss
+  server: 156.146.38.170
+  port: '443'
+  udp: true
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇺🇸 US 63 [60]
+  type: ss
+  server: 156.146.38.169
+  port: '443'
+  udp: true
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇺🇸 US 64 [60]
+  type: ss
+  server: 156.146.38.168
+  port: '443'
+  udp: true
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇺🇸 US 65 [90]
+  type: ss
+  server: 193.151.163.18
+  port: '19999'
+  udp: true
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇺🇸 US 66 [94]
+  type: ss
+  server: 37.19.198.236
+  port: '443'
+  udp: true
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇺🇸 US 67 [101]
+  type: ss
+  server: 38.128.66.32
+  port: '19999'
+  udp: true
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇺🇸 US 68 [103]
+  type: ss
+  server: 37.19.198.244
+  port: '443'
+  udp: true
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇺🇸 US 69 [104]
+  type: ss
+  server: 37.19.198.243
+  port: '443'
+  udp: true
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇺🇸 US 70 [105]
+  type: ss
+  server: 135.148.42.13
+  port: '8388'
+  udp: true
+  cipher: aes-256-gcm
+  password: itzvpn@321
+- name: 🇺🇸 US 71 [109]
+  type: ss
+  server: 37.19.198.160
+  port: '443'
+  udp: true
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇺🇸 US 72 [110]
+  type: ss
+  server: 200.102.179.179
+  port: '8388'
+  udp: true
+  cipher: aes-256-gcm
+  password: itzvpn@321
+- name: 🇺🇸 US 73 [111]
+  type: ss
+  server: 38.91.100.39
+  port: '19999'
+  udp: true
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇺🇸 US 74 [118]
+  type: ss
+  server: 216.106.178.169
+  port: '19999'
+  udp: true
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇺🇸 US 75 [132]
+  type: ss
+  server: 149.40.57.133
+  port: '19999'
+  udp: true
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇺🇸 US 76 [134]
+  type: ss
+  server: 149.40.57.138
+  port: '19999'
+  udp: true
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇺🇸 US 77 [143]
+  type: ss
+  server: 198.98.53.130
+  port: '443'
+  udp: true
+  cipher: chacha20-ietf-poly1305
+  password: eDfN7SODQceIOmIAbtJJtK
+- name: 🇺🇸 US 78 [144]
+  type: ss
+  server: 185.230.230.18
+  port: '19999'
+  udp: true
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇺🇸 US 79 [145]
+  type: ss
+  server: 45.86.51.18
+  port: '19999'
+  udp: true
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇺🇸 US 80 [148]
+  type: ss
+  server: 172.111.38.72
+  port: '19999'
+  udp: true
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇺🇸 US 81 [151]
+  type: ss
+  server: 23.150.152.38
+  port: '19999'
+  udp: true
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇺🇸 US 82 [152]
+  type: ss
+  server: 40.160.86.43
+  port: '8388'
+  udp: true
+  cipher: aes-256-gcm
+  password: itzvpn@321
+- name: 🇺🇸 US 83 [161]
+  type: ss
+  server: 95.215.201.18
+  port: '19999'
+  udp: true
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇺🇸 US 84 [164]
+  type: ss
+  server: 173.244.56.9
+  port: '443'
+  udp: true
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇺🇸 US 85 [167]
+  type: ss
+  server: 38.143.66.146
+  port: '19999'
+  udp: true
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇺🇸 US 86 [168]
+  type: ss
+  server: 136.148.77.250
+  port: '8388'
+  udp: true
+  cipher: aes-256-gcm
+  password: itzvpn@321
+- name: 🇺🇸 US 87 [169]
+  type: ss
+  server: 137.184.89.151
+  port: '19999'
+  udp: true
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇺🇸 US 88 [172]
+  type: ss
+  server: 185.215.132.9
+  port: '19999'
+  udp: true
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇺🇸 US 89 [172]
+  type: ss
+  server: 15.204.247.206
+  port: '4444'
+  udp: true
+  cipher: aes-256-gcm
+  password: pKEW8JPByTVTLtM
+- name: 🇺🇸 US 90 [174]
+  type: ss
+  server: 169.197.142.68
+  port: '19999'
+  udp: true
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇺🇸 US 91 [175]
+  type: ss
+  server: 132.226.77.186
+  port: '50356'
+  udp: true
+  cipher: 2022-blake3-chacha20-poly1305
+  password: YG3nrWleyOJy8hUVHF1Nc8vOY0JgKdiT4n627Bj32+8=
+- name: 🇺🇸 US 92 [178]
+  type: ss
+  server: 173.244.56.6
+  port: '443'
+  udp: true
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇺🇸 US 93 [178]
+  type: ss
+  server: 38.22.17.214
+  port: '19999'
+  udp: true
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇺🇸 US 94 [187]
+  type: ss
+  server: 185.215.132.18
+  port: '19999'
+  udp: true
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇺🇸 US 95 [193]
+  type: ss
+  server: 167.88.63.99
+  port: '19999'
+  udp: true
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇺🇸 US 96 [202]
+  type: ss
+  server: 38.22.17.129
+  port: '19999'
+  udp: true
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇺🇸 US 97 [213]
+  type: ss
+  server: 38.121.43.225
+  port: '19999'
+  udp: true
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇺🇸 US 98 [214]
+  type: ss
+  server: 38.121.43.231
+  port: '19999'
+  udp: true
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇺🇸 US 99 [215]
+  type: ss
+  server: 38.121.43.18
+  port: '19999'
+  udp: true
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇺🇸 US 100 [221]
+  type: ss
+  server: 38.22.17.139
+  port: '19999'
+  udp: true
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+proxy-groups:
+- name: Proxy
+  type: select
+  proxies:
+  - 🇺🇸 US 01 [121]
+  - 🇺🇸 US 02 [134]
+  - 🇺🇸 US 03 [134]
+  - 🇺🇸 US 04 [143]
+  - 🇺🇸 US 05 [165]
+  - 🇺🇸 US 06 [169]
+  - 🇺🇸 US 07 [178]
+  - 🇺🇸 US 08 [178]
+  - 🇺🇸 US 09 [179]
+  - 🇺🇸 US 10 [182]
+  - 🇺🇸 US 11 [189]
+  - 🇺🇸 US 12 [190]
+  - 🇺🇸 US 13 [197]
+  - 🇺🇸 US 14 [206]
+  - 🇺🇸 US 15 [206]
+  - 🇺🇸 US 16 [212]
+  - 🇺🇸 US 17 [214]
+  - 🇺🇸 US 18 [215]
+  - 🇺🇸 US 19 [218]
+  - 🇺🇸 US 20 [220]
+  - 🇺🇸 US 21 [220]
+  - 🇺🇸 US 22 [223]
+  - 🇺🇸 US 23 [223]
+  - 🇺🇸 US 24 [224]
+  - 🇺🇸 US 25 [224]
+  - 🇺🇸 US 26 [225]
+  - 🇺🇸 US 27 [225]
+  - 🇺🇸 US 28 [226]
+  - 🇺🇸 US 29 [233]
+  - 🇺🇸 US 30 [235]
+  - 🇺🇸 US 31 [236]
+  - 🇺🇸 US 32 [241]
+  - 🇺🇸 US 33 [249]
+  - 🇺🇸 US 34 [268]
+  - 🇺🇸 US 35 [270]
+  - 🇺🇸 US 36 [295]
+  - 🇺🇸 US 37 [300]
+  - 🇺🇸 US 38 [301]
+  - 🇺🇸 US 39 [303]
+  - 🇺🇸 US 40 [313]
+  - 🇺🇸 US 41 [315]
+  - 🇺🇸 US 42 [1120]
+  - 🇺🇸 US 43 [1138]
+  - 🇺🇸 US 44 [230]
+  - 🇺🇸 US 45 [251]
+  - 🇺🇸 US 46 [280]
+  - 🇺🇸 US 47 [327]
+  - 🇺🇸 US 48 [506]
+  - 🇺🇸 US 49 [285]
+  - 🇺🇸 US 50 [1221]
+  - 🇺🇸 US 51 [141]
+  - 🇺🇸 US 52 [165]
+  - 🇺🇸 US 53 [173]
+  - 🇺🇸 US 54 [174]
+  - 🇺🇸 US 55 [225]
+  - 🇺🇸 US 56 [329]
+  - 🇺🇸 US 57 [350]
+  - 🇺🇸 US 58 [538]
+  - 🇺🇸 US 59 [52]
+  - 🇺🇸 US 60 [53]
+  - 🇺🇸 US 61 [54]
+  - 🇺🇸 US 62 [59]
+  - 🇺🇸 US 63 [60]
+  - 🇺🇸 US 64 [60]
+  - 🇺🇸 US 65 [90]
+  - 🇺🇸 US 66 [94]
+  - 🇺🇸 US 67 [101]
+  - 🇺🇸 US 68 [103]
+  - 🇺🇸 US 69 [104]
+  - 🇺🇸 US 70 [105]
+  - 🇺🇸 US 71 [109]
+  - 🇺🇸 US 72 [110]
+  - 🇺🇸 US 73 [111]
+  - 🇺🇸 US 74 [118]
+  - 🇺🇸 US 75 [132]
+  - 🇺🇸 US 76 [134]
+  - 🇺🇸 US 77 [143]
+  - 🇺🇸 US 78 [144]
+  - 🇺🇸 US 79 [145]
+  - 🇺🇸 US 80 [148]
+  - 🇺🇸 US 81 [151]
+  - 🇺🇸 US 82 [152]
+  - 🇺🇸 US 83 [161]
+  - 🇺🇸 US 84 [164]
+  - 🇺🇸 US 85 [167]
+  - 🇺🇸 US 86 [168]
+  - 🇺🇸 US 87 [169]
+  - 🇺🇸 US 88 [172]
+  - 🇺🇸 US 89 [172]
+  - 🇺🇸 US 90 [174]
+  - 🇺🇸 US 91 [175]
+  - 🇺🇸 US 92 [178]
+  - 🇺🇸 US 93 [178]
+  - 🇺🇸 US 94 [187]
+  - 🇺🇸 US 95 [193]
+  - 🇺🇸 US 96 [202]
+  - 🇺🇸 US 97 [213]
+  - 🇺🇸 US 98 [214]
+  - 🇺🇸 US 99 [215]
+  - 🇺🇸 US 100 [221]
+rules:
+- MATCH,Proxy
