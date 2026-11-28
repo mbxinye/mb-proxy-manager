@@ -1,0 +1,998 @@
+---
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: warning
+proxies:
+- name: 🇺🇸 US 01 [430]
+  type: trojan
+  server: ipfast.kingmna.com
+  port: '443'
+  udp: true
+  password: Z-jckziI1rW4yrUMorrv0Q
+  sni: cdn.akamai.steamstatic.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /TELEGRAM-@NUFiLTER-TELEGRAM-@NUFiLTER-TELEGRAM-@NUFiLTER-TELEGRAM-@NUFiLTER-TELEGRAM-@NUFiLTER-TELEGRAM-@NUFiLTER-TELEGRAM-@NUFiLTER-TELEGRAM-@NUFiLTER
+    headers:
+      Host: loosnsj5aboijji.global.ssl.fastly.net
+- name: 🇺🇸 US 02 [230]
+  type: vless
+  server: 216.106.185.158
+  port: '443'
+  udp: true
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  servername: /?TELEGRAM---MARAMBASHI---MARAMBASHI---MARAMBASHI---MARAMBASHI
+  tls: true
+  skip-cert-verify: true
+- name: 🇺🇸 US 03 [260]
+  type: vless
+  server: kuruish.org
+  port: '443'
+  udp: true
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  servername: kuruish.org
+  tls: true
+  skip-cert-verify: true
+- name: 🇺🇸 US 04 [269]
+  type: vless
+  server: x.m-90.xyz
+  port: '443'
+  udp: true
+  uuid: eee8ae65-bc48-438f-a606-a96f10bfb3b8
+  servername: x.m-90.xyz
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: t.me/TEAMNETGRATISCOL
+- name: 🇺🇸 US 05 [365]
+  type: vless
+  server: 129.153.71.28
+  port: '28863'
+  udp: true
+  uuid: b3a15df4-c8ad-4e98-b427-7a679aee2b18
+  servername: 8n9qi6t-owl.gevc9s4n60cc3wzcmwhjyezydpmbchocxp.workers.dev
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /@Marisa_kristi
+    headers:
+      Host: 8n9qi6t-owl.gevc9s4n60cc3wzcmwhjyezydpmbchocxp.workers.dev
+- name: 🇺🇸 US 06 [1480]
+  type: vless
+  server: 188.114.98.0
+  port: '443'
+  uuid: eee8ae65-bc48-438f-a606-a96f10bfb3b8
+  servername: x.m-90.xyz
+  tls: true
+  network: ws
+  ws-opts:
+    headers:
+      Host: x.m-90.xyz
+    path: t.me/TEAMNETGRATISCOL
+  alpn:
+  - http/1.1
+- name: 🇺🇸 US 07 [54]
+  type: ss
+  server: 67.220.73.247
+  port: '443'
+  udp: true
+  cipher: chacha20-ietf-poly1305
+  password: DGjtV63aPW3E
+- name: 🇺🇸 US 08 [59]
+  type: ss
+  server: 156.146.38.169
+  port: '443'
+  udp: true
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇺🇸 US 09 [61]
+  type: ss
+  server: 156.146.38.168
+  port: '443'
+  udp: true
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇺🇸 US 10 [67]
+  type: ss
+  server: 108.181.88.2
+  port: '443'
+  udp: true
+  cipher: chacha20-ietf-poly1305
+  password: 6yzcGxLalx0T
+- name: 🇺🇸 US 11 [70]
+  type: ss
+  server: 156.146.38.170
+  port: '443'
+  udp: true
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇺🇸 US 12 [95]
+  type: ss
+  server: 37.19.198.160
+  port: '443'
+  udp: true
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇺🇸 US 13 [109]
+  type: ss
+  server: 37.19.198.244
+  port: '443'
+  udp: true
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇺🇸 US 14 [109]
+  type: ss
+  server: 37.19.198.236
+  port: '443'
+  udp: true
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇺🇸 US 15 [116]
+  type: ss
+  server: 37.19.198.243
+  port: '443'
+  udp: true
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇺🇸 US 16 [130]
+  type: ss
+  server: 38.99.82.34
+  port: '443'
+  udp: true
+  cipher: chacha20-ietf-poly1305
+  password: TyWIy6paiFUX
+- name: 🇺🇸 US 17 [140]
+  type: ss
+  server: 173.244.56.9
+  port: '443'
+  udp: true
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇺🇸 US 18 [148]
+  type: ss
+  server: 198.98.53.130
+  port: '443'
+  udp: true
+  cipher: chacha20-ietf-poly1305
+  password: eDfN7SODQceIOmIAbtJJtK
+- name: 🇺🇸 US 19 [150]
+  type: ss
+  server: 216.105.168.18
+  port: '443'
+  udp: true
+  cipher: chacha20-ietf-poly1305
+  password: bQZl7HDxSabr1FurTYQHFU
+- name: 🇺🇸 US 20 [160]
+  type: ss
+  server: 173.244.56.6
+  port: '443'
+  udp: true
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇺🇸 US 21 [237]
+  type: ss
+  server: 15.204.247.244
+  port: '443'
+  udp: true
+  cipher: aes-256-gcm
+  password: pKEW8JPByTVTLtM
+- name: 🇺🇸 US 22 [277]
+  type: socks5
+  server: 66.253.2.69
+  port: '62000'
+  username: u_rb1dba2
+  password: l1tlrdx52v
+- name: 🇺🇸 US 23 [195]
+  type: http
+  server: 138.199.35.206
+  port: '9002'
+  username: 'null'
+  password: 'null'
+  tls: true
+  skip-cert-verify: true
+- name: 🇺🇸 US 24 [200]
+  type: http
+  server: 138.199.35.204
+  port: '9002'
+  username: 'null'
+  password: 'null'
+  tls: true
+  skip-cert-verify: true
+- name: 🇺🇸 US 25 [221]
+  type: http
+  server: 138.199.35.220
+  port: '9002'
+  username: 'null'
+  password: 'null'
+  tls: true
+  skip-cert-verify: true
+- name: 🇰🇷 KR 01 [951]
+  type: vless
+  server: krd.80782636.xyz
+  port: '443'
+  uuid: db906786-8c49-4b17-9182-cea680ef954d
+  servername: krd.80782636.xyz
+  tls: true
+  network: ws
+  ws-opts:
+    headers:
+      Host: krd.80782636.xyz
+    path: /kw7x2mq9
+- name: 🇰🇷 KR 02 [603]
+  type: vmess
+  server: 140.238.2.250
+  port: '443'
+  udp: true
+  uuid: 41a7089a-040b-4538-8b8d-010902405bde
+  alterId: 0
+  cipher: auto
+  skip-cert-verify: true
+- name: 🇯🇵 JP 01 [1445]
+  type: vless
+  server: jp2music.xyy123.win
+  port: '443'
+  udp: true
+  uuid: 330a570e-c0ba-4a9d-8e37-d20540cc8eaa
+  flow: xtls-rprx-vision
+  servername: stg.nvbugspro.nvidia.com
+  tls: true
+  reality-opts:
+    public-key: KBPuCiAKJQQtlsodm5MIBFfYf-TGsrjCK5GGJzJJli4
+    short-id: 6a3c0a718181
+  client-fingerprint: chrome
+  skip-cert-verify: true
+- name: 🇯🇵 JP 02 [589]
+  type: vless
+  server: 50.7.159.242
+  port: '443'
+  uuid: 8840fac2-5361-4cb6-b887-cd1b95092394
+  servername: jp.reddotcorp.org
+  tls: true
+- name: 🇯🇵 JP 03 [577]
+  type: vmess
+  server: 168.138.43.75
+  port: '80'
+  udp: true
+  uuid: 11c3627f-31e8-4695-dfbd-34076e2f1f5d
+  alterId: 0
+  cipher: auto
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /cctv13.m3u8
+    headers:
+      Host: 168.138.43.75
+- name: 🇸🇬 SG 01 [1198]
+  type: socks5
+  server: 47.236.168.243
+  port: '1080'
+  username: '8888'
+  password: '8888'
+- name: 🇭🇰 HK 01 [699]
+  type: hysteria2
+  server: 136.148.83.69
+  port: '443'
+  password: 87bb2ac4-b7a1-0001-b11d-2107709ea6cb
+  sni: szqbx-ru-77dc.my-fade.cloud
+  skip-cert-verify: true
+- name: 🇭🇰 HK 02 [733]
+  type: hysteria2
+  server: 152.32.254.68
+  port: '5010'
+  password: eBTe6Ax2pUts8oMEWoYVDfnSlHfkLffQ
+  sni: nas.aizhzo.com
+  obfs: salamander
+  obfs-password: 7M4RXPFcQyQEGbkxBPfXo4bilMhCW2U9
+- name: 🇭🇰 HK 03 [909]
+  type: vmess
+  server: 47.86.90.31
+  port: '443'
+  udp: true
+  uuid: 234a8041-2b4d-44a3-a8d8-523cbfd58dc4
+  alterId: 0
+  cipher: auto
+  tls: true
+  servername: bywxdhirqkjj8xaz.v.3dns.vip
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /ws-vmess
+    headers:
+      Host: bywxdhirqkjj8xaz.v.3dns.vip
+- name: 🇭🇰 HK 04 [1392]
+  type: ss
+  server: 143.20.71.68
+  port: '28014'
+  udp: true
+  cipher: chacha20-ietf-poly1305
+  password: abc62f00-95a8-4c2e-a85d-36a2cdc977da
+- name: 🇳🇱 NL 01 [446]
+  type: hysteria2
+  server: 185.200.199.179
+  port: '54706'
+  password: Cqx5aT9Zux
+  sni: 185.200.199.179
+- name: 🇳🇱 NL 02 [470]
+  type: hysteria2
+  server: 50.7.38.243
+  port: '443'
+  password: d4ca9415f0eac7897472e1e5b86d2e96
+  sni: promo.betust.net
+  skip-cert-verify: true
+- name: 🇳🇱 NL 03 [474]
+  type: hysteria2
+  server: 212.34.137.105
+  port: '443'
+  password: 549766c3-fa5f-471e-8031-ffc1f8d5064f
+  sni: shorts.blog-forme.ru
+- name: 🇳🇱 NL 04 [478]
+  type: hysteria2
+  server: 94.183.164.119
+  port: '24403'
+  password: 549766c3-fa5f-471e-8031-ffc1f8d5064f
+  sni: docs.blog-forme.ru
+- name: 🇫🇷 FR 01 [504]
+  type: hysteria2
+  server: 13.36.234.11
+  port: '443'
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: vpn-fr-001.fastervpn.world
+  skip-cert-verify: true
+- name: 🇩🇪 DE 01 [506]
+  type: hysteria2
+  server: 135.126.21.106
+  port: '443'
+  password: 6ac6d17d-040c-4fab-940e-8f5d72c3fed6
+  sni: de1-balance.rezproffx.ru
+  skip-cert-verify: true
+- name: 🇦🇪 AE 01 [510]
+  type: hysteria2
+  server: 128.254.186.190
+  port: '13337'
+  password: 900c8c92-1979-4c7c-8f2f-63e87d53d8fe
+  sni: mother-earth.fyi
+- name: 🇩🇪 DE 02 [519]
+  type: hysteria2
+  server: uk-tube-01.stre4m.net
+  port: '13337'
+  password: 900c8c92-1979-4c7c-8f2f-63e87d53d8fe
+  skip-cert-verify: true
+- name: 🇩🇪 DE 03 [521]
+  type: hysteria2
+  server: 179.61.138.145
+  port: '36264'
+  password: vpNJEy
+  sni: de2.jey.cc.cd#
+  skip-cert-verify: true
+  obfs: salamander
+  obfs-password: Telegram@vpnjey
+- name: 🇩🇪 DE 04 [531]
+  type: hysteria2
+  server: 179.61.138.145
+  port: '36264'
+  password: vpNJEy
+  sni: de2.jey.cc.cd
+  skip-cert-verify: true
+  obfs: salamander
+  obfs-password: Telegram@vpnjey
+- name: 🇳🇱 NL 05 [532]
+  type: hysteria2
+  server: hysteria.udpgw.com
+  port: '8443'
+  password: HowdyHysteria2023w0W
+  sni: sni-here.com#
+  skip-cert-verify: true
+  obfs: salamander
+  obfs-password: HysteriaHowdy
+- name: 🇦🇪 AE 02 [533]
+  type: hysteria2
+  server: 128.254.186.57
+  port: '13337'
+  password: 900c8c92-1979-4c7c-8f2f-63e87d53d8fe
+  sni: mother-earth.fyi
+  skip-cert-verify: true
+- name: 🇩🇪 DE 05 [544]
+  type: hysteria2
+  server: uk-tube-01.stre4m.net
+  port: '13337'
+  password: 900c8c92-1979-4c7c-8f2f-63e87d53d8fe
+  sni: 127.0.0.1
+  skip-cert-verify: true
+- name: 🇩🇪 DE 06 [546]
+  type: hysteria2
+  server: 128.254.186.163
+  port: '13337'
+  password: 900c8c92-1979-4c7c-8f2f-63e87d53d8fe
+  sni: mother-earth.fyi
+- name: 🇩🇪 DE 07 [565]
+  type: hysteria2
+  server: uk-tube-01.stre4m.net
+  port: '13337'
+  password: 900c8c92-1979-4c7c-8f2f-63e87d53d8fe
+  sni: mother-earth.fyi
+  skip-cert-verify: true
+- name: 🇳🇱 NL 06 [477]
+  type: vless
+  server: 147.45.61.144
+  port: '443'
+  udp: true
+  uuid: 04812b68-47ad-48ee-b96d-ab9127679634
+  flow: xtls-rprx-vision
+  servername: s2.frenchymyrsep.click
+  tls: true
+  reality-opts:
+    public-key: tmiOsPsVgiWU7usQWetCpVdEp3ZTWl9tPY-r399JdCs
+    short-id: b725584749527b07
+  client-fingerprint: chrome
+  skip-cert-verify: true
+- name: 🇳🇱 NL 07 [490]
+  type: vless
+  server: 144.31.203.145
+  port: '443'
+  udp: true
+  uuid: f4b08bf1-d9bd-4755-aa88-ba922282c608
+  flow: xtls-rprx-vision
+  servername: nemicro543.aidating.am
+  tls: true
+  reality-opts:
+    public-key: MAcch2LXcj3xo0ZZQIBvxS4GptpZ9ipzFNNn2BUa6mg
+    short-id: a54ec85c94547b17
+  client-fingerprint: firefox
+  skip-cert-verify: true
+- name: 🇩🇪 DE 08 [498]
+  type: vless
+  server: 78.17.215.141
+  port: '443'
+  udp: true
+  uuid: a346c521-7a7f-452b-9356-a4893feb5982
+  flow: xtls-rprx-vision
+  servername: de15-r.bankai.party
+  tls: true
+  reality-opts:
+    public-key: FWitre1jinQR7qz5HQ0q2Q4Gg9xA9B0SyizCziN7Ch0
+    short-id: 457fab2ac885dbe0
+  client-fingerprint: chrome
+  skip-cert-verify: true
+- name: 🇵🇱 PL 01 [577]
+  type: vless
+  server: 201.58.178.197
+  port: '443'
+  udp: true
+  uuid: e894c08a-fecc-46f5-bf03-c95d0274c79d
+  flow: xtls-rprx-vision
+  servername: lesson4.schoolpizorbz.xyz
+  tls: true
+  reality-opts:
+    public-key: EUuZAVtneL8O7MgjETmHvOyInaxqJu2RD6hiFQdDPwk
+    short-id: 0df067145606c0b0
+  client-fingerprint: chrome
+  skip-cert-verify: true
+- name: 🇫🇮 FI 01 [700]
+  type: vless
+  server: 201.58.176.19
+  port: '443'
+  udp: true
+  uuid: e894c08a-fecc-46f5-bf03-c95d0274c79d
+  flow: xtls-rprx-vision
+  servername: lesson9.schoolpizorbz.xyz
+  tls: true
+  reality-opts:
+    public-key: LkXRut71yrHguNpmKfCrLITrAxk7amJiI2npZ4jRYx8
+    short-id: 06df4d3e93672c24
+  client-fingerprint: chrome
+  skip-cert-verify: true
+- name: XX 01 [124]
+  type: vless
+  server: 172.64.154.113
+  port: '8443'
+  uuid: 53bbdad4-2f4e-45db-8df4-fa491a6a7227
+  servername: freeceshi6.frii.site
+  tls: true
+  network: ws
+  ws-opts:
+    headers:
+      Host: freeceshi6.frii.site
+    path: /proxyip=ProxyIP.JP.CMLiussss.net
+- name: 🇨🇦 CA 01 [258]
+  type: vless
+  server: 66.163.113.9
+  port: '443'
+  udp: true
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  servername: kuruish.org
+  tls: true
+  skip-cert-verify: true
+- name: 🇳🇱 NL 08 [447]
+  type: vless
+  server: 51.194.118.38
+  port: '443'
+  uuid: 7ff1e7e1-2b5a-4e53-ae77-1516f9eb7754
+  servername: a1259.ve8nzuk.com
+  tls: true
+  network: grpc
+  grpc-opts:
+    grpc-service-name: 50a5f706c8ea4433838a207d435fbf031b008a9a
+- name: 🇳🇱 NL 09 [480]
+  type: vless
+  server: 163.172.213.174
+  port: '80'
+  udp: true
+  uuid: e73df646-1f62-41bf-8c50-653497d603d0
+  servername: sc-thenetherlands2.09vpn.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /vless/
+- name: 🇸🇪 SE 01 [533]
+  type: vless
+  server: 5.178.109.174
+  port: '14430'
+  uuid: 80de563a-cac8-40ea-8cb0-4cb082dd92f9
+  network: ws
+  ws-opts:
+    headers:
+      Host: 5.178.109.174
+    path: /vless
+- name: 🇳🇱 NL 10 [556]
+  type: vless
+  server: 163.172.213.174
+  port: '80'
+  uuid: e73df646-1f62-41bf-8c50-653497d603d0
+  network: ws
+  ws-opts:
+    headers:
+      Host: SC-TheNetherlands2.09vpn.com
+    path: /vless/
+- name: 🇸🇪 SE 02 [571]
+  type: vless
+  server: 138.124.86.230
+  port: '48115'
+  uuid: b2fe1fa4-6a79-4938-a3f4-63b54ae7f16b
+  servername: 138-124-86-230.sslip.io
+  tls: true
+  network: grpc
+  grpc-opts:
+    grpc-service-name: 138-124-86-230-sslip-io
+- name: 🇷🇺 RU 01 [703]
+  type: vless
+  server: vps3.nemnogogo.com
+  port: '443'
+  udp: true
+  uuid: 38308ff1-5aa9-494f-a25a-0f2870d56b3e
+  tls: true
+  skip-cert-verify: true
+  network: grpc
+  grpc-opts:
+    grpc-service-name: mobile.api.Event
+- name: 🇷🇺 RU 02 [704]
+  type: vless
+  server: 201.51.12.98
+  port: '443'
+  udp: true
+  uuid: 38308ff1-5aa9-494f-a25a-0f2870d56b3e
+  servername: vps3.nemnogogo.com
+  tls: true
+  skip-cert-verify: true
+  network: grpc
+  grpc-opts:
+    grpc-service-name: mobile.api.Event
+- name: 🇷🇺 RU 03 [733]
+  type: vless
+  server: 201.24.116.192
+  port: '443'
+  udp: true
+  uuid: 38308ff1-5aa9-494f-a25a-0f2870d56b3e
+  servername: vps3.nemnogogo.com
+  tls: true
+  network: grpc
+  grpc-opts:
+    grpc-mode: gun
+    grpc-service-name: mobile.api.Event
+- name: BY 01 [751]
+  type: vless
+  server: 95.128.71.79
+  port: '14430'
+  udp: true
+  uuid: 8cef7621-c6f0-486e-b51d-59c30c5b0b25
+  network: ws
+  ws-opts:
+    headers:
+      Host: 95.128.71.79
+    path: /vless
+- name: 🇳🇱 NL 11 [788]
+  type: vless
+  server: 171.22.183.167
+  port: '443'
+  udp: true
+  uuid: 04920673-035c-410d-94e4-5b1469d3fb6f
+  flow: xtls-rprx-vision
+  tls: true
+  skip-cert-verify: true
+- name: XX 02 [844]
+  type: vless
+  server: 188.114.99.137
+  port: '80'
+  uuid: c762af05-2e92-4133-bc30-8cf45dd40a28
+  network: ws
+  ws-opts:
+    headers:
+      Host: suh.cryptofront.uk
+    path: /
+- name: 🇫🇮 FI 02 [872]
+  type: vless
+  server: mail1.besttotaldns.com
+  port: '443'
+  udp: true
+  uuid: da14e323-6af7-406f-a5c2-1eb7975ada8b
+  flow: xtls-rprx-vision
+  servername: mail1.besttotaldns.com
+  tls: true
+  skip-cert-verify: true
+- name: 🇷🇺 RU 04 [880]
+  type: vless
+  server: 85.8.201.186
+  port: '443'
+  udp: true
+  uuid: 7aa77858-f235-0004-9434-7ab060848b17
+  flow: xtls-rprx-vision
+  servername: cdn.mornismp.ru
+  tls: true
+  skip-cert-verify: true
+  alpn:
+  - h2
+  - http/1.1
+- name: 🇸🇪 SE 03 [953]
+  type: vless
+  server: ws.dhafhdtjdti.site
+  port: '2053'
+  uuid: 9f749472-c636-4c5a-af51-7f8feefaac81
+  servername: ws.dhafhdtjdti.site
+  tls: true
+  network: ws
+  ws-opts:
+    headers:
+      Host: ws.dhafhdtjdti.site
+    path: /
+- name: 🇮🇳 IN 01 [1078]
+  type: vless
+  server: 147.93.171.8
+  port: '8443'
+  udp: true
+  uuid: 591e7de6-f2dd-4ff9-ae21-8e00d5affa2a
+  servername: 147-93-171-8.sslip.io
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /vpn-live
+    headers:
+      Host: 147-93-171-8.sslip.io
+  alpn:
+  - http/1.1
+- name: 🇷🇺 RU 05 [1134]
+  type: vless
+  server: 136.148.83.70
+  port: '443'
+  udp: true
+  uuid: 00000000-0000-0001-0000-000000000000
+  servername: aszbk-ru-78dc.my-fade.cloud
+  tls: true
+  skip-cert-verify: true
+- name: 🇦🇪 AE 03 [1142]
+  type: vless
+  server: 95.174.68.188
+  port: '14430'
+  uuid: 965ffbbe-c6b6-4d5f-8dea-6d8abc55d9c0
+  servername: 95.174.68.188
+  network: ws
+  ws-opts:
+    headers:
+      Host: 95.174.68.188
+    path: /vless
+- name: 🇳🇱 NL 12 [1196]
+  type: vless
+  server: fr-free.fastestrelay.com
+  port: '443'
+  udp: true
+  uuid: 43BCAE0A-10A6-4003-8615-BD510F4215BA
+  servername: fr-free.fastestrelay.com
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /700gvl-us-free
+- name: 🇻🇳 VN 01 [1244]
+  type: vless
+  server: 221.133.21.135
+  port: '8444'
+  udp: true
+  uuid: 2144e802-a64f-4261-af53-41309fee1d99
+  servername: www.bing.com
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /tk
+    headers:
+      Host: 221.133.21.135
+- name: IR 01 [1484]
+  type: vless
+  server: ns2.irts.lol
+  port: '443'
+  udp: true
+  uuid: ff1906a5-a446-44e4-8e72-4e2d61775fa0
+  servername: ns2.irts.lol
+  tls: true
+  skip-cert-verify: true
+- name: 🇨🇦 CA 02 [165]
+  type: ss
+  server: 134.195.198.163
+  port: '443'
+  udp: true
+  cipher: chacha20-ietf-poly1305
+  password: PmCqK98WqhSC
+- name: 🇨🇦 CA 03 [181]
+  type: ss
+  server: 149.22.95.183
+  port: '443'
+  udp: true
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇳🇱 NL 13 [348]
+  type: ss
+  server: 108.181.124.226
+  port: '443'
+  udp: true
+  cipher: chacha20-ietf-poly1305
+  password: 6daLqV3AjUb3
+- name: 🇩🇪 DE 09 [363]
+  type: ss
+  server: 47.91.74.232
+  port: '443'
+  udp: true
+  cipher: 2022-blake3-chacha20-poly1305
+  password: 8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y=
+- name: 🇩🇪 DE 10 [369]
+  type: ss
+  server: 8.211.56.98
+  port: '443'
+  udp: true
+  cipher: 2022-blake3-chacha20-poly1305
+  password: 8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y=
+- name: 🇩🇪 DE 11 [379]
+  type: ss
+  server: 18.135.5.220
+  port: '443'
+  udp: true
+  cipher: 2022-blake3-chacha20-poly1305
+  password: Cg2Dw4OhdBZhqbeO9ZTA3g/Gk/AvsrYZGhAJeGnQIx4=
+- name: 🇩🇪 DE 12 [380]
+  type: ss
+  server: 8.209.117.187
+  port: '443'
+  udp: true
+  cipher: 2022-blake3-chacha20-poly1305
+  password: 8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y=
+- name: 🇩🇪 DE 13 [385]
+  type: ss
+  server: 8.220.81.25
+  port: '443'
+  udp: true
+  cipher: 2022-blake3-chacha20-poly1305
+  password: 8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y=
+- name: 🇬🇧 GB 01 [387]
+  type: ss
+  server: 141.98.101.179
+  port: '443'
+  udp: true
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇬🇧 GB 02 [393]
+  type: ss
+  server: 82.38.31.165
+  port: '443'
+  udp: true
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+- name: 🇩🇪 DE 14 [394]
+  type: ss
+  server: 47.254.174.203
+  port: '443'
+  udp: true
+  cipher: 2022-blake3-chacha20-poly1305
+  password: 8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y=
+- name: 🇳🇱 NL 14 [396]
+  type: ss
+  server: 193.29.139.235
+  port: '443'
+  udp: true
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+- name: 🇫🇷 FR 02 [399]
+  type: ss
+  server: 23.162.152.245
+  port: '443'
+  udp: true
+  cipher: chacha20-ietf-poly1305
+  password: ySGkGhr2sKHV
+- name: 🇬🇧 GB 03 [406]
+  type: ss
+  server: 18.171.191.130
+  port: '443'
+  udp: true
+  cipher: 2022-blake3-chacha20-poly1305
+  password: Cg2Dw4OhdBZhqbeO9ZTA3g/Gk/AvsrYZGhAJeGnQIx4=
+- name: 🇮🇹 IT 01 [411]
+  type: ss
+  server: 202.50.253.90
+  port: '19999'
+  udp: true
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇫🇷 FR 03 [478]
+  type: ss
+  server: leviko-fr1459.shopingggg.ir
+  port: '443'
+  udp: true
+  cipher: chacha20-ietf-poly1305
+  password: ySGkGhr2sKHV
+- name: 🇳🇱 NL 15 [505]
+  type: ss
+  server: leviko-nl1751.shopingggg.ir
+  port: '443'
+  udp: true
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇩🇪 DE 15 [532]
+  type: ss
+  server: 8.209.119.13
+  port: '443'
+  udp: true
+  cipher: 2022-blake3-chacha20-poly1305
+  password: 8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y=
+- name: 🇩🇪 DE 16 [548]
+  type: ss
+  server: 8.209.72.224
+  port: '443'
+  udp: true
+  cipher: 2022-blake3-chacha20-poly1305
+  password: 8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y=
+- name: 🇩🇪 DE 17 [903]
+  type: ss
+  server: 47.245.167.223
+  port: '443'
+  udp: true
+  cipher: 2022-blake3-chacha20-poly1305
+  password: 8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y=
+- name: 🇩🇪 DE 18 [929]
+  type: ss
+  server: 8.209.106.54
+  port: '443'
+  udp: true
+  cipher: 2022-blake3-chacha20-poly1305
+  password: 8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y=
+- name: 🇩🇪 DE 19 [1010]
+  type: ss
+  server: 8.211.57.86
+  port: '443'
+  udp: true
+  cipher: 2022-blake3-chacha20-poly1305
+  password: 8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y=
+- name: 🇩🇪 DE 20 [1027]
+  type: ss
+  server: 8.211.38.49
+  port: '443'
+  udp: true
+  cipher: 2022-blake3-chacha20-poly1305
+  password: 8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y=
+proxy-groups:
+- name: Proxy
+  type: select
+  proxies:
+  - 🇺🇸 US 01 [430]
+  - 🇺🇸 US 02 [230]
+  - 🇺🇸 US 03 [260]
+  - 🇺🇸 US 04 [269]
+  - 🇺🇸 US 05 [365]
+  - 🇺🇸 US 06 [1480]
+  - 🇺🇸 US 07 [54]
+  - 🇺🇸 US 08 [59]
+  - 🇺🇸 US 09 [61]
+  - 🇺🇸 US 10 [67]
+  - 🇺🇸 US 11 [70]
+  - 🇺🇸 US 12 [95]
+  - 🇺🇸 US 13 [109]
+  - 🇺🇸 US 14 [109]
+  - 🇺🇸 US 15 [116]
+  - 🇺🇸 US 16 [130]
+  - 🇺🇸 US 17 [140]
+  - 🇺🇸 US 18 [148]
+  - 🇺🇸 US 19 [150]
+  - 🇺🇸 US 20 [160]
+  - 🇺🇸 US 21 [237]
+  - 🇺🇸 US 22 [277]
+  - 🇺🇸 US 23 [195]
+  - 🇺🇸 US 24 [200]
+  - 🇺🇸 US 25 [221]
+  - 🇰🇷 KR 01 [951]
+  - 🇰🇷 KR 02 [603]
+  - 🇯🇵 JP 01 [1445]
+  - 🇯🇵 JP 02 [589]
+  - 🇯🇵 JP 03 [577]
+  - 🇸🇬 SG 01 [1198]
+  - 🇭🇰 HK 01 [699]
+  - 🇭🇰 HK 02 [733]
+  - 🇭🇰 HK 03 [909]
+  - 🇭🇰 HK 04 [1392]
+  - 🇳🇱 NL 01 [446]
+  - 🇳🇱 NL 02 [470]
+  - 🇳🇱 NL 03 [474]
+  - 🇳🇱 NL 04 [478]
+  - 🇫🇷 FR 01 [504]
+  - 🇩🇪 DE 01 [506]
+  - 🇦🇪 AE 01 [510]
+  - 🇩🇪 DE 02 [519]
+  - 🇩🇪 DE 03 [521]
+  - 🇩🇪 DE 04 [531]
+  - 🇳🇱 NL 05 [532]
+  - 🇦🇪 AE 02 [533]
+  - 🇩🇪 DE 05 [544]
+  - 🇩🇪 DE 06 [546]
+  - 🇩🇪 DE 07 [565]
+  - 🇳🇱 NL 06 [477]
+  - 🇳🇱 NL 07 [490]
+  - 🇩🇪 DE 08 [498]
+  - 🇵🇱 PL 01 [577]
+  - 🇫🇮 FI 01 [700]
+  - XX 01 [124]
+  - 🇨🇦 CA 01 [258]
+  - 🇳🇱 NL 08 [447]
+  - 🇳🇱 NL 09 [480]
+  - 🇸🇪 SE 01 [533]
+  - 🇳🇱 NL 10 [556]
+  - 🇸🇪 SE 02 [571]
+  - 🇷🇺 RU 01 [703]
+  - 🇷🇺 RU 02 [704]
+  - 🇷🇺 RU 03 [733]
+  - BY 01 [751]
+  - 🇳🇱 NL 11 [788]
+  - XX 02 [844]
+  - 🇫🇮 FI 02 [872]
+  - 🇷🇺 RU 04 [880]
+  - 🇸🇪 SE 03 [953]
+  - 🇮🇳 IN 01 [1078]
+  - 🇷🇺 RU 05 [1134]
+  - 🇦🇪 AE 03 [1142]
+  - 🇳🇱 NL 12 [1196]
+  - 🇻🇳 VN 01 [1244]
+  - IR 01 [1484]
+  - 🇨🇦 CA 02 [165]
+  - 🇨🇦 CA 03 [181]
+  - 🇳🇱 NL 13 [348]
+  - 🇩🇪 DE 09 [363]
+  - 🇩🇪 DE 10 [369]
+  - 🇩🇪 DE 11 [379]
+  - 🇩🇪 DE 12 [380]
+  - 🇩🇪 DE 13 [385]
+  - 🇬🇧 GB 01 [387]
+  - 🇬🇧 GB 02 [393]
+  - 🇩🇪 DE 14 [394]
+  - 🇳🇱 NL 14 [396]
+  - 🇫🇷 FR 02 [399]
+  - 🇬🇧 GB 03 [406]
+  - 🇮🇹 IT 01 [411]
+  - 🇫🇷 FR 03 [478]
+  - 🇳🇱 NL 15 [505]
+  - 🇩🇪 DE 15 [532]
+  - 🇩🇪 DE 16 [548]
+  - 🇩🇪 DE 17 [903]
+  - 🇩🇪 DE 18 [929]
+  - 🇩🇪 DE 19 [1010]
+  - 🇩🇪 DE 20 [1027]
+rules:
+- MATCH,Proxy
